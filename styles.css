@@ -5,3 +5,7 @@ h1 {
 p {
     color : blue;
 }
+
+img {
+    align-self: center;
+}
