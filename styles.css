@@ -8,4 +8,5 @@ p {
 
 img {
     align-self: center;
+    object-fit: cover;
 }
