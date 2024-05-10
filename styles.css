@@ -10,3 +10,7 @@ img {
     align-self: center;
     object-fit: cover;
 }
+
+.navbar-text {
+    margin-inline: 20px;
+}
