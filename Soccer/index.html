@@ -117,5 +117,14 @@
       };
       document.body.appendChild(script);
     </script>
+    <script>
+      (function(){
+        document.addEventListener('click', function(e){
+          if(e.target.closest('a[href^="tel:"]')){
+    gtag('event', 'conversion', {'send_to': 'AW-633415510/YH_3CNrLxrQZENbOhK4C'})
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
