@@ -15,12 +15,6 @@ img {
   margin-inline: 20px;
 }
 
-.services-list {
-  column-count: 2;
-  column-gap: 1.5rem;
-  margin: 0 auto; /* centers the whole block */
-  max-width: 600px; /* prevents over‑stretch on large screens */
-}
 @media (max-width: 576px) {
   /* Bootstrap "xs" */
   .services-list {
