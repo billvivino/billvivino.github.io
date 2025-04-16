@@ -14,10 +14,3 @@ img {
 .navbar-text {
   margin-inline: 20px;
 }
-
-@media (max-width: 576px) {
-  /* Bootstrap "xs" */
-  .services-list {
-    column-count: 1;
-  } /* single column on mobile */
-}
