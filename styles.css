@@ -14,3 +14,16 @@ img {
 .navbar-text {
     margin-inline: 20px;
 }
+
+/* Center the PayPal hosted‑button wrapper */
+.paypal-centered {
+    display: flex;
+    justify-content: center;   /* horizontal center */
+  }
+  
+  /* PayPal injects an inner <div style="float:left">; clear it */
+  .paypal-centered > div {
+    float: none !important;
+    margin: 0 auto;
+  }
+  
