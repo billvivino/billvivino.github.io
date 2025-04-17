@@ -206,9 +206,24 @@
                     A social media app for craft beer lovers, built from scratch
                     using SwiftUI, Kotlin, and Firebase.
                   </p>
-                  <button class="btn btn-primary" onclick="showAppModal('https://apps.apple.com/us/app/craft-the-social-beer-app/id6444923219')">CRAFT - the Social Beer App - iOS</button>
-                  <button class="btn btn-primary" onclick="showAppModal('https://play.google.com/apps/testing/com.vivinobrothers.craft_thesocialbeerapp')">CRAFT - the Social Beer App - Android</button>
-                  <button class="btn btn-primary" onclick="showAppModal('https://craft---the-social-beer-6b1e6.web.app')">CRAFT - the Social Beer App - Website</button>
+                  <button
+                    class="btn btn-primary"
+                    onclick="showAppModal('https://apps.apple.com/us/app/craft-the-social-beer-app/id6444923219')"
+                  >
+                    CRAFT - the Social Beer App - iOS
+                  </button>
+                  <button
+                    class="btn btn-primary"
+                    onclick="showAppModal('https://play.google.com/apps/testing/com.vivinobrothers.craft_thesocialbeerapp')"
+                  >
+                    CRAFT - the Social Beer App - Android
+                  </button>
+                  <button
+                    class="btn btn-primary"
+                    onclick="showAppModal('https://craft---the-social-beer-6b1e6.web.app')"
+                  >
+                    CRAFT - the Social Beer App - Website
+                  </button>
                 </div>
               </div>
             </div>
@@ -226,7 +241,10 @@
                   <p class="card-text">
                     A tour of the Weather Satellites, built in Unity.
                   </p>
-                  <button class="btn btn-primary" onclick="showAppModal('https://apps.apple.com/cm/app/weathersats-ar/id6444034201?l=en')">
+                  <button
+                    class="btn btn-primary"
+                    onclick="showAppModal('https://apps.apple.com/cm/app/weathersats-ar/id6444034201?l=en')"
+                  >
                     NASA WeatherSats AR - iOS/Android
                   </button>
                 </div>
@@ -244,7 +262,12 @@
                 <div class="card-body">
                   <h5 class="card-title">Modavision</h5>
                   <p class="card-text">Find Your Fit. Everytime.</p>
-                  <button class="btn btn-primary" onclick="showAppModal('https://apps.apple.com/us/app/modavision/id6473058672')">ModaVision App - iOS</button>
+                  <button
+                    class="btn btn-primary"
+                    onclick="showAppModal('https://apps.apple.com/us/app/modavision/id6473058672')"
+                  >
+                    ModaVision App - iOS
+                  </button>
                 </div>
               </div>
             </div>
@@ -268,16 +291,29 @@
     ></script>
 
     <!-- Modal Structure -->
-    <div class="modal fade" id="appModal" tabindex="-1" aria-labelledby="appModalLabel" aria-hidden="true">
+    <div
+      class="modal fade"
+      id="appModal"
+      tabindex="-1"
+      aria-labelledby="appModalLabel"
+      aria-hidden="true"
+    >
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="appModalLabel">Leaving to App Store</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
           </div>
           <div class="modal-body text-center">
             <p id="appModalMessage">You're about to visit an external link.</p>
-            <button id="proceedToAppStore" class="btn btn-primary">Continue</button>
+            <button id="proceedToAppStore" class="btn btn-primary">
+              Continue
+            </button>
           </div>
         </div>
       </div>
@@ -285,26 +321,39 @@
 
     <!-- Modal Logic -->
     <script>
-      let appStoreUrl = '';
+      let appStoreUrl = "";
       function showAppModal(url) {
         appStoreUrl = url;
-        const messageEl = document.getElementById('appModalMessage');
-        if (url.includes('apps.apple.com')) {
+
+        // ✅ Push event for GTM
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "app_link_click",
+          link_type: url.includes("apps.apple.com")
+            ? "iOS"
+            : url.includes("play.google.com")
+            ? "Android"
+            : "Web",
+          app_url: url,
+        });
+
+        const messageEl = document.getElementById("appModalMessage");
+        if (url.includes("apps.apple.com")) {
           messageEl.innerText = "You're about to open the App Store.";
-        } else if (url.includes('play.google.com')) {
+        } else if (url.includes("play.google.com")) {
           messageEl.innerText = "You're about to open the Play Store.";
         } else {
           messageEl.innerText = "You're about to open an external website.";
         }
 
-        var modal = new bootstrap.Modal(document.getElementById('appModal'));
+        var modal = new bootstrap.Modal(document.getElementById("appModal"));
         modal.show();
       }
 
-      document.addEventListener('DOMContentLoaded', function () {
-        const proceedBtn = document.getElementById('proceedToAppStore');
+      document.addEventListener("DOMContentLoaded", function () {
+        const proceedBtn = document.getElementById("proceedToAppStore");
         if (proceedBtn) {
-          proceedBtn.addEventListener('click', function () {
+          proceedBtn.addEventListener("click", function () {
             window.location.href = appStoreUrl;
           });
         }
