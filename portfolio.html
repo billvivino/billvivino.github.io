@@ -102,8 +102,9 @@
                   <button
                     class="dropdown-item"
                     onclick="showAppModal('https://www.upwork.com/freelancers/billvivino?viewMode=1')"
-                    >Upwork Profile</button
                   >
+                    Upwork Profile
+                  </button>
                 </li>
                 <li>
                   <a class="dropdown-item" href="privacy.html"
@@ -158,18 +159,21 @@
                   <button
                     class="btn btn-primary"
                     onclick="showAppModal('https://apps.apple.com/us/app/craft-the-social-beer-app/id6444923219')"
-                    >CRAFT - the Social Beer App - iOS</button
                   >
+                    CRAFT - the Social Beer App - iOS
+                  </button>
                   <button
                     class="btn btn-primary"
                     onclick="showAppModal('https://play.google.com/apps/testing/com.vivinobrothers.craft_thesocialbeerapp')"
-                    >CRAFT - the Social Beer App - Android</button
                   >
+                    CRAFT - the Social Beer App - Android
+                  </button>
                   <button
                     class="btn btn-primary"
                     onclick="showAppModal('https://craft---the-social-beer-6b1e6.web.app')"
-                    >CRAFT - the Social Beer App - Website</button
                   >
+                    CRAFT - the Social Beer App - Website
+                  </button>
                 </div>
               </div>
             </div>
@@ -192,8 +196,9 @@
                   <button
                     class="btn btn-primary"
                     onclick="showAppModal('https://apps.apple.com/us/app/modavision/id6473058672')"
-                    >ModaVision App - iOS</button
                   >
+                    ModaVision App - iOS
+                  </button>
                 </div>
               </div>
             </div>
@@ -237,8 +242,9 @@
                   <button
                     class="btn btn-primary"
                     onclick="showAppModal('https://apps.apple.com/us/app/stupid-simple-macro-tracker/id1210995590')"
-                    >Stupid Simple Macro Tracker - iOS</button
                   >
+                    Stupid Simple Macro Tracker - iOS
+                  </button>
                 </div>
               </div>
             </div>
@@ -256,8 +262,9 @@
                   <button
                     class="btn btn-primary"
                     onclick="showAppModal('https://www.newdigitalcommune.com')"
-                    >New Digital Commune - Built for iOS</button
                   >
+                    New Digital Commune - Built for iOS
+                  </button>
                 </div>
               </div>
             </div>
@@ -277,8 +284,9 @@
                   <button
                     class="btn btn-primary"
                     onclick="showAppModal('https://play.unity.com/mg/other/webgl-builds-154388')"
-                    >Arrows - Built in Unity</button
                   >
+                    Arrows - Built in Unity
+                  </button>
                 </div>
               </div>
             </div>
@@ -321,8 +329,9 @@
                   <button
                     class="btn btn-primary"
                     onclick="showAppModal('https://apps.apple.com/us/app/eureka-canvas-sports-edition/id1643624044')"
-                    >Eureka Canvas - Built for iOS</button
                   >
+                    Eureka Canvas - Built for iOS
+                  </button>
                 </div>
               </div>
             </div>
@@ -343,8 +352,9 @@
                   <button
                     class="btn btn-primary"
                     onclick="showAppModal('https://apps.apple.com/us/app/planet-xr-1-spatial-ar-world/id1605504634')"
-                    >Planet XR - Built for iOS</button
                   >
+                    Planet XR - Built for iOS
+                  </button>
                 </div>
               </div>
             </div>
@@ -358,48 +368,74 @@
         crossorigin="anonymous"
       ></script>
     </div>
-  <!-- Modal Structure -->
-  <div class="modal fade" id="appModal" tabindex="-1" aria-labelledby="appModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="appModalLabel">Leaving the Site</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body text-center">
-          <p id="appModalMessage">You're about to visit an external link.</p>
-          <button id="proceedToAppStore" class="btn btn-primary">Continue</button>
+    <!-- Modal Structure -->
+    <div
+      class="modal fade"
+      id="appModal"
+      tabindex="-1"
+      aria-labelledby="appModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="appModalLabel">Leaving the Site</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body text-center">
+            <p id="appModalMessage">You're about to visit an external link.</p>
+            <button id="proceedToAppStore" class="btn btn-primary">
+              Continue
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  
-  <!-- Modal Logic -->
-  <script>
-    let appStoreUrl = '';
-    function showAppModal(url) {
-      appStoreUrl = url;
-      const messageEl = document.getElementById('appModalMessage');
-      if (url.includes('apps.apple.com')) {
-        messageEl.innerText = "You're about to open the App Store.";
-      } else if (url.includes('play.google.com')) {
-        messageEl.innerText = "You're about to open the Play Store.";
-      } else {
-        messageEl.innerText = "You're about to open an external website.";
-      }
 
-      var modal = new bootstrap.Modal(document.getElementById('appModal'));
-      modal.show();
-    }
+    <!-- Modal Logic -->
+    <script>
+      let appStoreUrl = "";
+      function showAppModal(url) {
+        appStoreUrl = url;
 
-    document.addEventListener('DOMContentLoaded', function () {
-      const proceedBtn = document.getElementById('proceedToAppStore');
-      if (proceedBtn) {
-        proceedBtn.addEventListener('click', function () {
-          window.location.href = appStoreUrl;
+        // ✅ Push event for GTM
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "app_link_click",
+          link_type: url.includes("apps.apple.com")
+            ? "iOS"
+            : url.includes("play.google.com")
+            ? "Android"
+            : "Web",
+          app_url: url,
         });
+
+        const messageEl = document.getElementById("appModalMessage");
+        if (url.includes("apps.apple.com")) {
+          messageEl.innerText = "You're about to open the App Store.";
+        } else if (url.includes("play.google.com")) {
+          messageEl.innerText = "You're about to open the Play Store.";
+        } else {
+          messageEl.innerText = "You're about to open an external website.";
+        }
+
+        var modal = new bootstrap.Modal(document.getElementById("appModal"));
+        modal.show();
       }
-    });
-  </script>
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const proceedBtn = document.getElementById("proceedToAppStore");
+        if (proceedBtn) {
+          proceedBtn.addEventListener("click", function () {
+            window.location.href = appStoreUrl;
+          });
+        }
+      });
+    </script>
   </body>
 </html>
