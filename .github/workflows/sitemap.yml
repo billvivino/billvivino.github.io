@@ -3,7 +3,7 @@ name: Generate sitemap
 # Run every time you push to the main branch
 on:
   push:
-    branches: [main]        # change to 'master' or your default branch if different
+    branches: [main] # change to 'master' or your default branch if different
 
 jobs:
   build:
@@ -15,8 +15,16 @@ jobs:
       - name: Generate sitemap
         uses: cicirello/generate-sitemap@v1
         with:
-          base-url-path: 'https://billvivino.github.io'   # or your custom domain should work
-          include-html: true                         # index every .html file
+          base-url-path: "https://billvivino.github.io" # or your custom domain should work
+          include-html: true # index every .html file
+      - name: Add XSL stylesheet reference
+        run: |
+          # Insert the PI right after the XML declaration.
+          tmp=tmp_sitemap.xml
+          { head -n 1 sitemap.xml; \
+            echo '<?xml-stylesheet type="text/xsl" href="sitemap-style.xsl"?>'; \
+            tail -n +2 sitemap.xml; } > "$tmp"
+          mv "$tmp" sitemap.xml
 
       - name: Commit sitemap
         run: |
