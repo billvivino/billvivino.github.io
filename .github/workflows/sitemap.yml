@@ -1,0 +1,31 @@
+name: Generate sitemap
+
+# Run every time you push to the main branch
+on:
+  push:
+    branches: [main]        # change to 'master' or your default branch if different
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate sitemap
+        uses: cicirello/generate-sitemap@v1
+        with:
+          base-url: 'https://billvivino.github.io'   # or your custom domain
+          include-html: true                         # index every .html file
+
+      - name: Commit sitemap
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add sitemap.xml
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Update sitemap"
+            git push
+          fi
