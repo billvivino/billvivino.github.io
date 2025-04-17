@@ -15,7 +15,7 @@ jobs:
       - name: Generate sitemap
         uses: cicirello/generate-sitemap@v1
         with:
-          base-url: 'https://billvivino.github.io'   # or your custom domain
+          base-url: 'https://billvivino.github.io'   # or your custom domain should work
           include-html: true                         # index every .html file
 
       - name: Commit sitemap
