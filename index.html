@@ -142,9 +142,9 @@
     <div class="text-center small">
       <h3>Why Choose Bill Vivino Technology</h3>
       <p>
-        Leading a team of experienced software engineers, we specialize in building
-        secure, scalable iOS, Android, Web, and Cloud solutions, helping founders and enterprises
-        bring their ideas to life.
+        Leading a team of experienced software engineers, we specialize in
+        building secure, scalable iOS, Android, Web, and Cloud solutions,
+        helping founders and enterprises bring their ideas to life.
       </p>
       <h3>Core Development Services</h3>
       <div class="text-center small mb-0 px-3">
@@ -164,7 +164,6 @@
             </ul>
           </div>
         </div>
-        
       </div>
     </div>
     <div class="row mt-0">
@@ -411,6 +410,29 @@
             window.location.href = appStoreUrl;
           });
         }
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const videos = document.querySelectorAll("video");
+
+        videos.forEach((video) => {
+          video.addEventListener("play", function () {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              event: "video_play",
+              videoUrl: video.currentSrc,
+            });
+          });
+
+          video.addEventListener("pause", function () {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              event: "video_pause",
+              videoUrl: video.currentSrc,
+            });
+          });
+        });
       });
     </script>
   </body>
