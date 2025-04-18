@@ -50,20 +50,3 @@ ul.list-unstyled {
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
 }
-
-<div class="row text-start justify-content-center">
-  <div class="col-md-5">
-    <ul class="list-unstyled">
-      <li>iOS &amp; SwiftUI app development</li>
-      <li>Android &amp; Kotlin app development</li>
-      <li>React Native &amp; Expo cross-platform/hybrid apps</li>
-    </ul>
-  </div>
-  <div class="col-md-5">
-    <ul class="list-unstyled">
-      <li>Backend APIs &amp; Firebase/Node.js architecture</li>
-      <li>AR/VR &amp; Unity-based experiences</li>
-      <li>AI &amp; Machine Learning integrations</li>
-    </ul>
-  </div>
-</div>
