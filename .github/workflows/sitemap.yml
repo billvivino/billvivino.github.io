@@ -1,9 +1,9 @@
-name: Generate sitemap
+name: Generate JSON sitemap
 
 # Run every time you push to the main branch
 on:
   push:
-    branches: [main] # change to 'master' or your default branch if different
+    branches: [main]
 
 jobs:
   build:
@@ -12,20 +12,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Generate sitemap
-        uses: cicirello/generate-sitemap@v1
-        with:
-          base-url-path: "https://billvivino.github.io" # or your custom domain should work
-          include-html: true # index every .html file
+      - name: Generate JSON Sitemap
+        run: |
+          echo '{"urls": [' > sitemap.json
+          first=true
+          for file in $(find . -type f -name "*.html"); do
+            if [ "$first" = true ]; then
+              first=false
+            else
+              echo ',' >> sitemap.json
+            fi
+            echo "{\"url\": \"https://billvivino.github.io${file#.}\", \"lastmod\": \"$(date +%F)\"}" >> sitemap.json
+          done
+          echo ']}' >> sitemap.json
 
-      - name: Commit sitemap
+      - name: Commit JSON sitemap
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add sitemap.xml
+          git add sitemap.json
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Update sitemap"
+            git commit -m "Update JSON sitemap"
             git push
           fi
