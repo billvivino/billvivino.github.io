@@ -106,8 +106,8 @@
                   >
                 </li>
                 <li>
-                    <a class="dropdown-item" href="blog.html">Blog</a>
-                  </li>
+                  <a class="dropdown-item" href="blog.html">Blog</a>
+                </li>
                 <li>
                   <a class="dropdown-item" href="privacy.html"
                     >Privacy Policy</a
@@ -124,24 +124,145 @@
       </div>
     </nav>
 
-    <section class="container pt-0 pb-5">
+    <section id="blog-posts" class="container pt-0 pb-5">
       <div class="text-center my-4">
         <h1>Blog</h1>
         <p>Insights, updates, and stories from Bill Vivino Technology.</p>
       </div>
-      <article class="mt-5">
+      <div class="mb-4">
+        <label for="postFilter" class="form-label me-2">Jump to date:</label>
+        <select id="postFilter" class="form-select d-inline-block w-auto"></select>
+      </div>
+      <!-- NEW POST – 2025‑04‑21 -->
+      <article class="post" data-date="2025-04-21">
+        <h2>Brewing a Better Beer‑Lovers App: A Behind‑the‑Scenes Tour</h2>
+        <small class="date">April&nbsp;21,&nbsp;2025</small>
+
+        <p>
+          If you’ve followed our journey, you know we set out to create a place
+          where craft‑beer fans can share pours, swap notes, and keep track of
+          their personal bottle collections. Over the past few months we’ve
+          shipped dozens of updates—big and small—that push us closer to that
+          vision. Here’s a peek at the highlights, told in plain English (no
+          code required!).
+        </p>
+
+        <h3>1. A Feed That Feels Alive</h3>
+        <p>
+          The home feed is the heart of the app, so we focused first on making
+          posting and reacting effortless—and fun: one‑tap photo &amp;
+          tasting‑note posts, animated emoji “pours” with a crisp can‑opening
+          sound, plus lightning‑fast search and tag suggestions.
+        </p>
+
+        <h3>2. Your Personal “Cellar”</h3>
+        <p>
+          Collectors begged for an easy way to remember what’s aging in the back
+          of the fridge. The Cellar tab lets you add beers in seconds, sort by
+          style or “drink‑by” reminders, and shows each bottle on a slick rack
+          graphic.
+        </p>
+
+        <h3>3. Smoother Onboarding</h3>
+        <p>
+          Early testers on small phones couldn’t see the Sign‑Up button—now the
+          screen scrolls naturally on any device and signup steps dropped from
+          four to two.
+        </p>
+
+        <h3>4. Night‑Friendly Dark Mode</h3>
+        <p>
+          Blue links on black were unreadable in bars. We reworked the palette
+          for sharper contrast so everything stays legible, even on
+          low‑brightness Night Shift screens.
+        </p>
+
+        <h3>5. Notifications That Land in the Right Place</h3>
+        <p>
+          Tapping a “Bill commented” alert now jumps straight to that
+          conversation—no more random detours.
+        </p>
+
+        <h3>6. In‑App Messaging, Refreshed</h3>
+        <p>
+          Messages once required a force‑quit to refresh. A new swipe‑to‑refresh
+          action and smarter caching keep chats live.
+        </p>
+
+        <h3>7. Under‑the‑Hood Tune‑Ups</h3>
+        <ul>
+          <li>Faster load times after reorganizing our database</li>
+          <li>Profile‑photo updates propagate everywhere automatically</li>
+          <li>Weeks of multi‑device testing for rock‑solid reliability</li>
+        </ul>
+
+        <h3>8. What’s Next?</h3>
+        <p>
+          We’re polishing a tipping feature so you can buy digital rounds for
+          helpful beer experts. Stay tuned for curated pub feeds and even more
+          cellar tools.
+        </p>
+
+        <p>
+          Craft beer is best enjoyed with friends, and building this app is no
+          different. Huge thanks to everyone who posted notes, squashed bugs, or
+          just told us the contrast was off at 2 a.m. Cheers! 🍻
+        </p>
+      </article>
+
+      <article class="post mt-5" data-date="2025-04-20">
+        <h2>Building NASA’s WeatherSats AR App</h2>
+        <small class="date">April&nbsp;20,&nbsp;2025</small>
+
+        <h3>Project Background</h3>
+        <p>
+          In 2022 I joined NASA’s WeatherSats AR project when the app was
+          roughly halfway complete.
+        </p>
+
+        <h3>My Role</h3>
+        <p>
+          My first responsibility was to ensure the satellite AR models
+          functioned correctly within the application. I also implemented
+          several user‑interface updates to improve the overall experience.
+        </p>
+
+        <h3>Stabilising the Codebase</h3>
+        <p>
+          The build I inherited contained numerous bugs. I spent significant
+          time tracing issues—especially in the scene‑loader logic—and fixing
+          defects to make the app production‑ready.
+        </p>
+
+        <h3>Technology Stack</h3>
+        <p>
+          WeatherSats AR is built in Unity and written in C#. Unity’s
+          cross‑platform workflow let us target both iOS and Android from the
+          same project.
+        </p>
+
+        <h3>What Came Next</h3>
+        <p>
+          Since that engagement I’ve taken on additional Unity contracts,
+          working on AR experiences and video‑game projects that required custom
+          algorithm work. I enjoy creating cross‑platform apps in Unity and look
+          forward to future challenges.
+        </p>
+      </article>
+
+      <article class="post mt-5" data-date="2025-04-18">
         <h2>
-          Meet Bill Vivino: Your Experienced Software Developer for Mobile, Unity,
-          and More
+          Meet Bill Vivino: Your Experienced Software Developer for Mobile,
+          Unity, and More
         </h2>
-        <p><em>Published: April 18, 2025</em></p>
+        <small class="date">April&nbsp;18,&nbsp;2025</small>
 
         <h3>Introduction</h3>
         <p>
           Hi! My name is Bill Vivino, and I'd like to help you develop your
           project from its initial ideas to completion. With extensive
-          experience in Unity, mobile development, and API integrations, I'm here
-          to turn your vision into reality.
+          experience in Unity, mobile development, and API integrations, I'm
+          here to turn your vision into reality.
         </p>
 
         <h3>My Professional Journey</h3>
@@ -157,9 +278,9 @@
         <h3>Educational Background</h3>
         <p>
           I earned a Bachelor of Science degree in Computer Science from Rutgers
-          University. I recently began my journey as a freelance contract software developer,
-          driven by a renewed passion for creating impactful digital
-          experiences.
+          University. I recently began my journey as a freelance contract
+          software developer, driven by a renewed passion for creating impactful
+          digital experiences.
         </p>
 
         <h3>Recent Projects and Experience</h3>
@@ -223,54 +344,47 @@
 
         <p>Let's build something great together!</p>
       </article>
-      <article class="mt-5">
-        <h2>Building NASA’s WeatherSats AR App</h2>
-        <p><em>Published: April 20, 2025</em></p>
-
-        <h3>Project Background</h3>
-        <p>
-          In 2022 I joined NASA’s WeatherSats AR project when the app was roughly
-          halfway complete.
-        </p>
-
-        <h3>My Role</h3>
-        <p>
-          My first responsibility was to ensure the satellite AR models functioned
-          correctly within the application. I also implemented several user‑interface
-          updates to improve the overall experience.
-        </p>
-
-        <h3>Stabilising the Codebase</h3>
-        <p>
-          The build I inherited contained numerous bugs. I spent significant time
-          tracing issues—especially in the scene‑loader logic—and fixing defects to
-          make the app production‑ready.
-        </p>
-
-        <h3>Technology Stack</h3>
-        <p>
-          WeatherSats AR is built in Unity and written in C#. Unity’s cross‑platform
-          workflow let us target both iOS and Android from the same project.
-        </p>
-
-        <h3>What Came Next</h3>
-        <p>
-          Since that engagement I’ve taken on additional Unity contracts, working on
-          AR experiences and video‑game projects that required custom algorithm
-          work. I enjoy creating cross‑platform apps in Unity and look forward to
-          future challenges.
-        </p>
-      </article>
     </section>
 
     <section class="bg-light py-4 mt-5">
       <div class="container text-center mb-4">
-        <a href="portfolio.html" class="btn btn-primary m-1">View B2B Project Portfolio</a>
-        <a href="pricing.html" class="btn btn-primary m-1">See Pricing Details</a>
+        <a href="portfolio.html" class="btn btn-primary m-1"
+          >View B2B Project Portfolio</a
+        >
+        <a href="pricing.html" class="btn btn-primary m-1"
+          >See Pricing Details</a
+        >
         <a href="contact.html" class="btn btn-primary m-1">Contact Us</a>
       </div>
     </section>
 
+    <script>
+      // Build the date selector
+      const select   = document.getElementById('postFilter');
+      const articles = [...document.querySelectorAll('#blog-posts .post')];
+
+      articles.forEach(a => {
+        const d = a.dataset.date;              // "YYYY-MM-DD"
+        if (!d) return;
+
+        const option = document.createElement('option');
+        option.value = d;
+
+        // Create a date object in *local* time to avoid the UTC shift
+        const [y, m, day] = d.split('-').map(Number);
+        option.text = new Date(y, m - 1, day).toLocaleDateString();
+
+        select.appendChild(option);
+      });
+
+      // Scroll to the chosen post
+      select.addEventListener('change', e => {
+        const target = document.querySelector(
+          `#blog-posts .post[data-date="${e.target.value}"]`
+        );
+        if (target) target.scrollIntoView({behavior:'smooth'});
+      });
+    </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
