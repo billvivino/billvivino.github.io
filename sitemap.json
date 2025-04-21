@@ -1,33 +1,17 @@
-name: Generate XML Sitemap
-
-on:
-  push:
-    branches: [main]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Generate XML Sitemap
-        run: |
-          echo '<?xml version="1.0" encoding="UTF-8"?>' > sitemap.xml
-          echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' >> sitemap.xml
-          for file in $(find . -type f -name "*.html"); do
-            echo "<url><loc>https://billvivino.github.io${file#.}</loc><lastmod>$(date +%F)</lastmod></url>" >> sitemap.xml
-          done
-          echo '</urlset>' >> sitemap.xml
-
-      - name: Commit XML Sitemap
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add sitemap.xml
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-          else
-            git commit -m "Update XML sitemap"
-            git push
-          fi
+{"urls": [
+{"url": "https://billvivino.github.io/index.html", "lastmod": "2025-04-21"}
+,
+{"url": "https://billvivino.github.io/thanks.html", "lastmod": "2025-04-21"}
+,
+{"url": "https://billvivino.github.io/blog.html", "lastmod": "2025-04-21"}
+,
+{"url": "https://billvivino.github.io/pricing.html", "lastmod": "2025-04-21"}
+,
+{"url": "https://billvivino.github.io/contact.html", "lastmod": "2025-04-21"}
+,
+{"url": "https://billvivino.github.io/portfolio.html", "lastmod": "2025-04-21"}
+,
+{"url": "https://billvivino.github.io/Soccer/index.html", "lastmod": "2025-04-21"}
+,
+{"url": "https://billvivino.github.io/privacy.html", "lastmod": "2025-04-21"}
+]}
