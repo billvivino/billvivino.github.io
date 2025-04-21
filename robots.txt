@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://billvivino.github.io/sitemap.xml
