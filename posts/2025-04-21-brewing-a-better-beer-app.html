@@ -1,232 +1,265 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <!-- Google Tag Manager -->
-  <script>
-    (function (w, d, s, l, i) {
-      w[l] = w[l] || [];
-      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-      var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s),
-        dl = l != "dataLayer" ? "&l=" + l : "";
-      j.async = true;
-      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, "script", "dataLayer", "GTM-KNB6ZKLD");
-  </script>
-  <!-- End Google Tag Manager -->
+  <head>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-KNB6ZKLD");
+    </script>
+    <!-- End Google Tag Manager -->
 
-  <meta charset="UTF-8" />
-  <title>Brewing a Better Beer‑Lovers App | Bill Vivino Technology</title>
-  <meta
-    name="description"
-    content="A behind‑the‑scenes look at the new features, design tweaks, and performance upgrades powering our craft‑beer social app."
-  />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <title>Brewing a Better Beer‑Lovers App | Bill Vivino Technology</title>
+    <meta
+      name="description"
+      content="A behind‑the‑scenes look at the new features, design tweaks, and performance upgrades powering our craft‑beer social app."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Site stylesheet -->
-  <link rel="stylesheet" href="../styles.css" />
+    <!-- Site stylesheet -->
+    <link rel="stylesheet" href="../styles.css" />
 
-  <!-- Bootstrap CSS -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-    crossorigin="anonymous"
-  />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
 
-  <style>
-    /* Keep all card images a uniform height while remaining responsive */
-    .card-img-top.img-fluid {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-    }
-    /* Add breathing room between testimonial text and footer */
-    .carousel .blockquote-footer {
-      margin-top: 0.5rem;
-    }
-  </style>
-</head>
-<body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript
-    ><iframe
-      src="https://www.googletagmanager.com/ns.html?id=GTM-KNB6ZKLD"
-      height="0"
-      width="0"
-      style="display:none;visibility:hidden"
-    ></iframe
-  ></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+    <style>
+      /* Keep all card images a uniform height while remaining responsive */
+      .card-img-top.img-fluid {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+      }
+      /* Add breathing room between testimonial text and footer */
+      .carousel .blockquote-footer {
+        margin-top: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-KNB6ZKLD"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg bg-light border-bottom shadow-sm">
-    <div class="container-fluid">
-      <a class="navbar-brand d-flex align-items-center" href="../index.html">
-        <img
-          src="/assets/logo.png"
-          alt="App Icon"
-          style="height: 50px; width: auto; margin-right: 8px"
-        />
-        Bill Vivino Technology, LLC
-      </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="../index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../portfolio.html">Portfolio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../pricing.html">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../contact.html">Contact</a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              href="https://www.upwork.com/freelancers/billvivino?viewMode=1"
-              >Upwork Profile</a
-            >
-          </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              More
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="/assets/Bill_Vivino_-_Detailed_Experience.pdf"
-                  >Resume</a
-                >
-              </li>
-              <li><a class="dropdown-item" href="../blog.html">Blog</a></li>
-              <li>
-                <a class="dropdown-item" href="../privacy.html">Privacy Policy</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg bg-light border-bottom shadow-sm">
+      <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center" href="../index.html">
+          <img
+            src="/assets/logo.png"
+            alt="App Icon"
+            style="height: 50px; width: auto; margin-right: 8px"
+          />
+          Bill Vivino Technology, LLC
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="../index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../portfolio.html">Portfolio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../pricing.html">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../contact.html">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="https://www.upwork.com/freelancers/billvivino?viewMode=1"
+                >Upwork Profile</a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                More
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="/assets/Bill_Vivino_-_Detailed_Experience.pdf"
+                    >Resume</a
+                  >
+                </li>
+                <li><a class="dropdown-item" href="../blog.html">Blog</a></li>
+                <li>
+                  <a class="dropdown-item" href="../privacy.html"
+                    >Privacy Policy</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <a class="btn btn-primary" href="../contact.html">Contact Us Now</a>
+        <div class="navbar-text">
+          <a href="tel:+19733582341">(973)358-2341</a>
+        </div>
       </div>
-      <a class="btn btn-primary" href="../contact.html">Contact Us Now</a>
-      <div class="navbar-text">
-        <a href="tel:+19733582341">(973)358-2341</a>
-      </div>
+    </nav>
+
+    <!-- Main article container -->
+    <div class="container py-4">
+      <h1 class="mb-1">
+        Brewing a Better Beer‑Lovers App: A Behind‑the‑Scenes Tour
+      </h1>
+      <small class="text-muted">April&nbsp;21,&nbsp;2025</small>
+      
+      <p class="mt-4">
+        If you’ve followed our journey, you know we set out to create a place
+        where craft‑beer fans can share pours, swap notes, and keep track of
+        their personal bottle collections. Over the past few months we’ve
+        shipped dozens of updates—big and small—that push us closer to that
+        vision. Here’s a peek at the highlights, told in plain English (no code
+        required!).
+      </p>
+
+      <h3>1. A Feed That Feels Alive</h3>
+      <p>
+        The home feed is the heart of the app, so we focused first on making
+        posting and reacting effortless—and fun:
+      </p>
+      <ul>
+        <li><strong>One‑tap photo &amp; tasting‑note posts</strong></li>
+        <li>
+          <strong>Animated emoji “pours”</strong> with a crisp
+          <em>pssst!</em> can‑opening sound
+        </li>
+        <li>
+          Lightning‑fast search and tag suggestions, so your stout or saison is
+          easy to find for everyone else
+        </li>
+      </ul>
+
+      <h3>2. Your Personal “Cellar”</h3>
+      <p>
+        Collectors begged for an easy way to remember what’s aging in the back
+        of the fridge, so we built a dedicated Cellar tab:
+      </p>
+      <ul>
+        <li>
+          <strong>Add beers in seconds</strong>—just snap a label or choose from
+          popular breweries
+        </li>
+        <li>
+          <strong>Smart sorting</strong> by style, date added, or “drink‑by”
+          reminders
+        </li>
+        <li>
+          A slick bottle‑rack graphic with realistic shadows that make labels
+          pop
+        </li>
+      </ul>
+
+      <h3>3. Smoother Onboarding</h3>
+      <p>
+        A few early testers couldn’t reach the Sign‑Up button on smaller
+        phones—yikes! We rebuilt that screen so it scrolls naturally on any
+        device and trimmed the number of steps from four to two.
+      </p>
+
+      <h3>4. Night‑Friendly Dark Mode</h3>
+      <p>
+        Many beer‑hunters browse in dim bars, so dark mode matters. Testers told
+        us blue links on black were unreadable. We reworked the color palette
+        for sharper contrast and tweaked banner highlights so everything stays
+        legible, even with Night Shift or low brightness.
+      </p>
+
+      <h3>5. Notifications That Land in the Right Place</h3>
+      <p>
+        Nothing breaks the vibe faster than tapping “Bill commented on your
+        post” and ending up somewhere random. We rewired our notification system
+        so every tap now dives straight to the conversation that sparked it.
+      </p>
+
+      <h3>6. In‑App Messaging, Refreshed</h3>
+      <p>
+        Early versions cached old chats and refused to show new ones unless you
+        force‑quit—annoying! We added swipe‑to‑refresh, smarter caching, and the
+        groundwork for push alerts so replies appear the moment they’re sent.
+      </p>
+
+      <h3>7. Under‑the‑Hood Tune‑Ups</h3>
+      <ul>
+        <li>
+          <strong>Faster load times</strong> after reorganizing our database
+        </li>
+        <li>
+          <strong>Profile‑picture magic</strong>—change your avatar once and it
+          updates everywhere, thanks to a new background task
+        </li>
+        <li>
+          <strong>Reliability checks</strong> on repeat: weeks of multi‑device
+          testing to ensure every update sticks
+        </li>
+      </ul>
+
+      <h3>8. What’s Next?</h3>
+      <p>
+        We’re polishing a tipping feature so you can buy a digital round for the
+        beer experts who share killer finds. Expect smoother push notifications,
+        curated “pub” feeds, and even more cellar tools soon.
+      </p>
+
+      <p>
+        Craft beer is best enjoyed with friends, and building this app is no
+        different. Huge thanks to everyone who posted tasting notes, squashed
+        bugs, or simply reminded us the contrast was off at 2&nbsp;a.m. Your
+        feedback keeps the taps flowing—cheers! 🍻
+      </p>
+
+      <p class="mt-4">
+        <a href="../blog.html">&larr; Back to all posts</a>
+      </p>
     </div>
-  </nav>
-
-  <!-- Main article container -->
-  <div class="container py-4">
-  <h1 class="mb-1">Brewing a Better Beer‑Lovers App: A Behind‑the‑Scenes Tour</h1>
-  <small class="text-muted">April&nbsp;21,&nbsp;2025</small>
- 
-  <p class="mt-4">
-    If you’ve followed our journey, you know we set out to create a place where craft‑beer fans
-    can share pours, swap notes, and keep track of their personal bottle collections. Over the
-    past few months we’ve shipped dozens of updates—big and small—that push us closer to that
-    vision. Here’s a peek at the highlights, told in plain English (no code required!).
-  </p>
- 
-  <h3>1. A Feed That Feels Alive</h3>
-  <p>
-    The home feed is the heart of the app, so we focused first on making posting and reacting
-    effortless—and fun:
-  </p>
-  <ul>
-    <li><strong>One‑tap photo &amp; tasting‑note posts</strong></li>
-    <li><strong>Animated emoji “pours”</strong> with a crisp <em>pssst!</em> can‑opening sound</li>
-    <li>Lightning‑fast search and tag suggestions, so your stout or saison is easy to find for everyone else</li>
-  </ul>
- 
-  <h3>2. Your Personal “Cellar”</h3>
-  <p>
-    Collectors begged for an easy way to remember what’s aging in the back of the fridge, so we built
-    a dedicated Cellar tab:
-  </p>
-  <ul>
-    <li><strong>Add beers in seconds</strong>—just snap a label or choose from popular breweries</li>
-    <li><strong>Smart sorting</strong> by style, date added, or “drink‑by” reminders</li>
-    <li>A slick bottle‑rack graphic with realistic shadows that make labels pop</li>
-  </ul>
- 
-  <h3>3. Smoother Onboarding</h3>
-  <p>
-    A few early testers couldn’t reach the Sign‑Up button on smaller phones—yikes! We rebuilt that
-    screen so it scrolls naturally on any device and trimmed the number of steps from four to two.
-  </p>
- 
-  <h3>4. Night‑Friendly Dark Mode</h3>
-  <p>
-    Many beer‑hunters browse in dim bars, so dark mode matters. Testers told us blue links on black
-    were unreadable. We reworked the color palette for sharper contrast and tweaked banner highlights
-    so everything stays legible, even with Night Shift or low brightness.
-  </p>
- 
-  <h3>5. Notifications That Land in the Right Place</h3>
-  <p>
-    Nothing breaks the vibe faster than tapping “Bill commented on your post” and ending up
-    somewhere random. We rewired our notification system so every tap now dives straight to the
-    conversation that sparked it.
-  </p>
- 
-  <h3>6. In‑App Messaging, Refreshed</h3>
-  <p>
-    Early versions cached old chats and refused to show new ones unless you force‑quit—annoying!
-    We added swipe‑to‑refresh, smarter caching, and the groundwork for push alerts so replies appear
-    the moment they’re sent.
-  </p>
- 
-  <h3>7. Under‑the‑Hood Tune‑Ups</h3>
-  <ul>
-    <li><strong>Faster load times</strong> after reorganizing our database</li>
-    <li><strong>Profile‑picture magic</strong>—change your avatar once and it updates everywhere, thanks to a new background task</li>
-    <li><strong>Reliability checks</strong> on repeat: weeks of multi‑device testing to ensure every update sticks</li>
-  </ul>
- 
-  <h3>8. What’s Next?</h3>
-  <p>
-    We’re polishing a tipping feature so you can buy a digital round for the beer experts who share
-    killer finds. Expect smoother push notifications, curated “pub” feeds, and even more cellar tools soon.
-  </p>
- 
-  <p>
-    Craft beer is best enjoyed with friends, and building this app is no different. Huge thanks to
-    everyone who posted tasting notes, squashed bugs, or simply reminded us the contrast was off at
-    2&nbsp;a.m. Your feedback keeps the taps flowing—cheers! 🍻
-  </p>
- 
-  <p class="mt-4">
-    <a href="../blog.html">&larr; Back to all posts</a>
-  </p>
-</div>
     <!-- Bootstrap JS -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
       crossorigin="anonymous"
     ></script>
-</body>
+  </body>
 </html>
