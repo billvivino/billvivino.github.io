@@ -135,6 +135,16 @@
       </div>
       <!-- NEW POST – 2025‑04‑21 -->
       <article class="post" data-date="2025-04-21">
+      <!-- NEW POST – 2025‑05‑03 -->
+      <article class="post" data-date="2025-05-03">
+        <h2>You Need Human Beings “Involved” in Your Code</h2>
+        <small class="date">May&nbsp;3,&nbsp;2025</small>
+        <a href="posts/2025-05-04-you-need-human-beings-involved-in-your-code.html" class="ms-2">Permalink</a>
+
+        <p>
+          Forget the hype: AI can’t refactor your legacy codebase or untangle years of tech‑debt without a seasoned engineer at the helm. In this piece I break down why “hands‑off” coding is a myth, how to Marie Kondo your codebase, and why interviews that hinge on LeetCode still miss the point.
+        </p>
+      </article>
       <!-- NEW POST – 2025‑04‑23 -->
       <article class="post mt-5" data-date="2025-04-23">
         <h2>How Much Does It Cost to Make an App?</h2>
@@ -426,7 +436,8 @@
     <script>
       // Build the date selector
       const select   = document.getElementById('postFilter');
-      const articles = [...document.querySelectorAll('#blog-posts .post')];
+      const articles = [...document.querySelectorAll('#blog-posts .post')]
+                        .sort((a, b) => b.dataset.date.localeCompare(a.dataset.date)); // sort DESC
 
       articles.forEach(a => {
         const d = a.dataset.date;              // "YYYY-MM-DD"
