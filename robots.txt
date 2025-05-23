@@ -1,4 +1,3 @@
-User-agent: *
-Allow: /
-
 Sitemap: https://billvivino.github.io/sitemap.txt
+User-agent: *
+Disallow:
