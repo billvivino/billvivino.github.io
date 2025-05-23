@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://billvivino.github.io/sitemap.xml
+Sitemap: https://billvivino.github.io/tiny-sitemap.xml
