@@ -40,6 +40,22 @@
       .carousel .blockquote-footer {
         margin-top: 0.5rem; /* adjust spacing as needed */
       }
+      /* Play icon overlay on video thumbnails */
+      .play-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 4rem;
+        color: #ffffff;
+        opacity: 0.85;
+        pointer-events: none; /* keep the link clickable */
+        text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+      }
+      .video-thumb {
+        position: relative; /* establishes positioning context */
+        display: block;
+      }
     </style>
   </head>
 
@@ -194,13 +210,14 @@
             <div class="col-lg-6 col-sm-12">
               <div class="card">
                 <div class="d-flex justify-content-center">
-                  <a href="/videos/software-development-services-bill-vivino-technology.html" class="w-100">
+                  <a href="/videos/software-development-services-bill-vivino-technology.html" class="video-thumb w-100">
                     <img
                       src="/assets/Dreams Into Reality simple compose 2.png"
                       alt="Watch Bill Vivino Software Developer Promo video"
                       class="card-img-top img-fluid w-100"
                       loading="lazy"
                     />
+                    <span class="play-overlay">&#9658;</span>
                   </a>
                 </div>
                 <div class="card-body">
@@ -217,13 +234,14 @@
             <div class="col-lg-6 col-sm-12">
               <div class="card">
                 <div class="d-flex justify-content-center">
-                  <a href="/videos/ios-social-media-app-for-artists.html" class="w-100">
+                  <a href="/videos/ios-social-media-app-for-artists.html" class="video-thumb w-100">
                     <img
                       src="/assets/NDC Case Study.png"
                       alt="Watch iOS Social Media App Case Study video"
                       class="card-img-top img-fluid w-100"
                       loading="lazy"
                     />
+                    <span class="play-overlay">&#9658;</span>
                   </a>
                 </div>
                 <div class="card-body">
