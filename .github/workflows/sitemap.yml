@@ -1,4 +1,4 @@
-name: Generate JSON sitemap
+name: Generate XML sitemap
 
 # Run every time you push to the main branch
 on:
@@ -12,28 +12,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Generate JSON Sitemap
+      - name: Generate XML Sitemap
         run: |
-          echo '{"urls": [' > sitemap.json
-          first=true
+          echo '<?xml version="1.0" encoding="UTF-8"?>' > sitemap.xml
+          echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' >> sitemap.xml
           for file in $(find . -type f -name "*.html"); do
-            if [ "$first" = true ]; then
-              first=false
-            else
-              echo ',' >> sitemap.json
-            fi
-            echo "{\"url\": \"https://billvivino.github.io${file#.}\", \"lastmod\": \"$(date +%F)\"}" >> sitemap.json
+            loc="https://billvivino.github.io${file#.}"
+            echo "  <url><loc>${loc}</loc><lastmod>$(date +%F)</lastmod></url>" >> sitemap.xml
           done
-          echo ']}' >> sitemap.json
+          echo '</urlset>' >> sitemap.xml
 
-      - name: Commit JSON sitemap
+      - name: Commit XML sitemap
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add sitemap.json
+          git add sitemap.xml
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Update JSON sitemap"
+            git commit -m "Update XML sitemap"
             git push
           fi

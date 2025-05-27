@@ -15,3 +15,4 @@ https://billvivino.github.io/posts/new-article-template.html
 https://billvivino.github.io/posts/2025-04-23-how-much-does-it-cost-to-make-an-app.html
 https://billvivino.github.io/posts/2025-04-20-nasa-weathersats-ar.html
 https://billvivino.github.io/posts/2025-05-04-you-need-human-beings-involved-in-your-code.html
+https://billvivino.github.io/swiftui-firebase-cost-calculator.html

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>SwiftUI + Firebase Cost Calculator | Bill Vivino Technology</title>
+    <meta name="description" content="Instantly estimate the cost of building a SwiftUI mobile app backed by Firebase. Enter screens & features and get a ball-park quote in seconds." />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap (same version used on main site) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+    <style>
+      body {
+        background: #fdfdfd;
+      }
+      .calculator-card {
+        max-width: 720px;
+        margin: 2rem auto;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        border-radius: 1rem;
+      }
+      .price-out {
+        font-size: 2.5rem;
+        font-weight: 700;
+      }
+    </style>
+
+    <!-- FAQ structured data -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How accurate is the SwiftUI + Firebase cost calculator?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The calculator gives a ball-park figure (+/- 25%) based on historical project data from Bill Vivino Technology. For a detailed quote, book a free scoping call." }
+    },
+    {
+      "@type": "Question",
+      "name": "What factors influence the final price?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Screen count, authentication method, real-time features, 3rd-party APIs, testing depth, and post-launch support all affect cost." }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does a typical SwiftUI + Firebase MVP take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most MVPs take 6–10 weeks from kick-off to TestFlight launch, depending on feature set." }
+    }
+  ]
+}
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light border-bottom">
+      <div class="container">
+        <a class="navbar-brand" href="/">← Back to main site</a>
+      </div>
+    </nav>
+
+    <header class="text-center mt-4">
+      <h1 class="display-5 fw-bold">SwiftUI + Firebase Cost Calculator</h1>
+      <p class="lead">Estimate your mobile-app budget in under 30 seconds.</p>
+    </header>
+
+    <main class="calculator-card bg-white p-4">
+      <form id="calcForm">
+        <div class="mb-3">
+          <label for="screens" class="form-label">How many unique screens?</label>
+          <input type="number" min="1" max="40" value="5" class="form-control" id="screens" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Select features:</label>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="auth" id="featureAuth" checked />
+            <label class="form-check-label" for="featureAuth">Email / Social Authentication</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="realtime" id="featureRealtime" />
+            <label class="form-check-label" for="featureRealtime">Real-time Database / Sync</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="push" id="featurePush" />
+            <label class="form-check-label" for="featurePush">Push Notifications</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="payments" id="featurePayments" />
+            <label class="form-check-label" for="featurePayments">In-App Purchases / Stripe</label>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primary w-100" onclick="calculate()">Calculate Cost</button>
+      </form>
+
+      <hr />
+      <div class="text-center">
+        <span class="price-out" id="price">$0</span>
+        <p class="mb-0">Estimated project budget</p>
+        <a href="/pricing.html" class="btn btn-outline-primary mt-2">See detailed pricing tiers</a>
+        <a href="/contact.html" class="btn btn-success mt-2">Book a free scoping call</a>
+      </div>
+    </main>
+
+    <footer class="text-center text-muted mt-5 mb-3">
+      © <span id="year"></span> Bill Vivino Technology, LLC · Estimates exclude taxes & third-party fees.
+    </footer>
+
+    <script>
+      const basePerScreen = 800; // USD
+      const featureCosts = {
+        auth: 1200,
+        realtime: 1800,
+        push: 600,
+        payments: 1400,
+      };
+      function number(val) {
+        return isNaN(val) ? 0 : parseInt(val, 10);
+      }
+      function calculate() {
+        const screens = number(document.getElementById("screens").value);
+        let total = screens * basePerScreen;
+        ["featureAuth", "featureRealtime", "featurePush", "featurePayments"].forEach((id) => {
+          const el = document.getElementById(id);
+          if (el.checked) total += featureCosts[el.value];
+        });
+        document.getElementById("price").innerText = `$${total.toLocaleString()}`;
+      }
+      // Initialize price on load
+      calculate();
+      document.getElementById("year").innerText = new Date().getFullYear();
+    </script>
+  </body>
+</html>
