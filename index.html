@@ -550,28 +550,5 @@
         }
       });
     </script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const videos = document.querySelectorAll("video");
-
-        videos.forEach((video) => {
-          video.addEventListener("play", function () {
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-              event: "video_play",
-              videoUrl: video.currentSrc,
-            });
-          });
-
-          video.addEventListener("pause", function () {
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-              event: "video_pause",
-              videoUrl: video.currentSrc,
-            });
-          });
-        });
-      });
-    </script>
   </body>
 </html>
