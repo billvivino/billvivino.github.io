@@ -186,10 +186,7 @@
         novalidate
       >
         <!-- honeypot -->
-        <input type="text" name="_gotcha" style="display: none" />
-
-        <!-- reCAPTCHA token (enable in Formspree) -->
-        <input type="hidden" name="_captcha" />
+        <input type="text" name="_gotcha" style="display:none" />
 
         <div class="mb-3">
           <label for="budget" class="form-label">Approximate Budget</label>
@@ -211,7 +208,7 @@
             <option>Native Cross-Platform (SwiftUI/Kotlin-Jetpack)</option>
             <option>React Native Cross-Platform</option>
             <option>Backend / Firebase</option>
-            <option>AR / VR / 3D or Game (Unity)</option>
+            <option>AR / VR / 3D / Game (Unity)</option>
           </select>
         </div>
 
@@ -227,7 +224,22 @@
             placeholder="Tell us your goal, timeline, and must-have features…"
           ></textarea>
         </div>
-        <!-- rest of form unchanged -->
+        <div class="mb-3">
+          <label for="timeline" class="form-label"
+            >Desired Timeline / Deadline</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="timeline"
+            name="timeline"
+            placeholder="e.g., MVP in 3 months"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary w-100">
+          Send Message
+        </button>
+
       </form>
       <p class="mt-3 text-center">
         Prefer phone? Call&nbsp;<a href="tel:+19733582341">(973) 358‑2341</a>
