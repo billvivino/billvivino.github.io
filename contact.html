@@ -28,7 +28,7 @@
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
-      content="https://billvivino.github.io/contact.html"
+      content="https://billvivinotechnology.com/contact.html"
     />
     <link rel="stylesheet" href="styles.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -186,8 +186,8 @@
         class="needs-validation"
       >
         <!-- honeypot -->
-        <input type="text" name="_gotcha" style="display:none" />
-        <input type="hidden" id="ts" name="ts" value="">
+        <input type="text" name="_gotcha" style="display: none" />
+        <input type="hidden" id="ts" name="ts" value="" />
 
         <div class="mb-3">
           <label for="budget" class="form-label">Approximate Budget</label>
@@ -253,57 +253,67 @@
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
       crossorigin="anonymous"
     ></script>
-<script>
-  // Ensure budget, project type, and timeline are filled
-  document.addEventListener("DOMContentLoaded", function () {
-    var form = document.querySelector("form[action^='https://formspree.io']");
-    if (!form) return;
+    <script>
+      // Ensure budget, project type, and timeline are filled
+      document.addEventListener("DOMContentLoaded", function () {
+        var form = document.querySelector(
+          "form[action^='https://formspree.io']"
+        );
+        if (!form) return;
 
-    form.addEventListener("submit", function (e) {
-      var budget   = document.getElementById("budget");
-      var type     = document.getElementById("type");
-      var timeline = document.getElementById("timeline");
+        form.addEventListener("submit", function (e) {
+          var budget = document.getElementById("budget");
+          var type = document.getElementById("type");
+          var timeline = document.getElementById("timeline");
 
-      if (!budget.value || !type.value || !timeline.value.trim()) {
-        e.preventDefault();
-        alert("Please select Budget, Project Type, and provide your desired Timeline before submitting.");
-        return false;
-      }
-    });
-  });
-</script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector("form[action^='https://formspree.io']");
-    if (!form) return;
+          if (!budget.value || !type.value || !timeline.value.trim()) {
+            e.preventDefault();
+            alert(
+              "Please select Budget, Project Type, and provide your desired Timeline before submitting."
+            );
+            return false;
+          }
+        });
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector(
+          "form[action^='https://formspree.io']"
+        );
+        if (!form) return;
 
-    // set timestamp value when page loads
-    const tsField = document.getElementById("ts");
-    if (tsField) tsField.value = Date.now().toString();
+        // set timestamp value when page loads
+        const tsField = document.getElementById("ts");
+        if (tsField) tsField.value = Date.now().toString();
 
-    form.addEventListener("submit", function (e) {
-      const msgEl = document.getElementById("message");
-      if (!msgEl) return;
-      const msg = msgEl.value.trim();
+        form.addEventListener("submit", function (e) {
+          const msgEl = document.getElementById("message");
+          if (!msgEl) return;
+          const msg = msgEl.value.trim();
 
-      /* 1 — enforce 30‑second dwell time */
-      const dwell = Date.now() - parseInt(tsField.value || "0", 10);
-      if (dwell < 20000) {
-        e.preventDefault();
-        alert("Please spend at least 20 seconds on the form before submitting.");
-        return false;
-      }
+          /* 1 — enforce 30‑second dwell time */
+          const dwell = Date.now() - parseInt(tsField.value || "0", 10);
+          if (dwell < 20000) {
+            e.preventDefault();
+            alert(
+              "Please spend at least 20 seconds on the form before submitting."
+            );
+            return false;
+          }
 
-      /* 2 — reject low‑detail or repetitive text */
-      const uniqueWords = [...new Set(msg.split(/\s+/))].length;
-      const repeatedChars = /([a-zA-Z])\1{4,}/.test(msg); // 5+ identical chars
-      if (uniqueWords < 20 || repeatedChars) {
-        e.preventDefault();
-        alert("Please provide at least 100 meaningful characters about your project.");
-        return false;
-      }
-    });
-  });
-</script>
+          /* 2 — reject low‑detail or repetitive text */
+          const uniqueWords = [...new Set(msg.split(/\s+/))].length;
+          const repeatedChars = /([a-zA-Z])\1{4,}/.test(msg); // 5+ identical chars
+          if (uniqueWords < 20 || repeatedChars) {
+            e.preventDefault();
+            alert(
+              "Please provide at least 100 meaningful characters about your project."
+            );
+            return false;
+          }
+        });
+      });
+    </script>
   </body>
 </html>
