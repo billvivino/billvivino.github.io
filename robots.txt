@@ -1,3 +1,3 @@
-Sitemap: https://billvivino.github.io/sitemap.xml
+Sitemap: https://billvivinotechnology.com/sitemap.xml
 User-agent: *
 Allow: /
