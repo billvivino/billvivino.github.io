@@ -222,9 +222,9 @@
             id="message"
             name="message"
             rows="5"
-            minlength="100"
+            minlength="50"
             required
-            placeholder="Tell us your goal, timeline, and must‑have features (minimum 100 characters)…"
+            placeholder="Tell us your goal, timeline, and must‑have features (minimum 50 characters)…"
           ></textarea>
         </div>
         <div class="mb-3">
@@ -308,7 +308,7 @@
           if (uniqueWords < 20 || repeatedChars) {
             e.preventDefault();
             alert(
-              "Please provide at least 100 meaningful characters about your project."
+              "Please provide at least 50 meaningful characters about your project."
             );
             return false;
           }
