@@ -1,163 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>How I Include My Non-Technical, Vibe Coder Clients as Devs in Their Projects (and Save Them Time and Money)</title>
-  <meta name="description" content="Exploring how non-technical founders can work alongside AI agents and developers to ship code effectively." />
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-      max-width: 700px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      line-height: 1.6;
-      color: #222;
-      background: #fff;
-    }
-    h1, h2 {
-      font-weight: 700;
-      color: #111;
-    }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    h2 {
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-    }
-    ul {
-      margin-left: 1.5rem;
-    }
-    img {
-      max-width: 100%;
-      height: auto;
-      margin: 1rem 0;
-      border-radius: 8px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
-    }
-    a {
-      color: #0066cc;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    hr {
-      margin: 3rem 0;
-      border: none;
-      border-top: 1px solid #eee;
-    }
-    footer {
-      font-size: 0.9rem;
-      color: #555;
-      margin-top: 4rem;
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
-  <article>
-    <h1>How I Include My Non-Technical, Vibe Coder Clients as Devs in Their Projects (and Save Them Time and Money)</h1>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-KNB6ZKLD");
+    </script>
+    <!-- End Google Tag Manager -->
 
-    <p>In today’s world of AI-assisted development, the line between developer and visionary is blurring—and I’ve seen firsthand how non-technical founders can step into a more empowered role, working alongside AI agents to actually ship code.</p>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ Page Title }} | Bill Vivino Technology</title>
 
-    <p>For years, I’ve worked with founders who bring powerful product ideas but not a line of code. They hire me to bring those ideas to life. But recently, something shifted. With tools like Cursor, Replit, and Windsurf, I’ve started embedding my clients <em>into the development process</em> in a surprisingly effective way—and it’s changing how we work together.</p>
+    <!-- Global styles + Bootstrap -->
+    <link rel="stylesheet" href="../styles.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
-    <p>Many of my recent projects now include founder collaboration directly inside the development workflow. For example, some of my clients use Cursor, Replit, or Windsurf to co-edit codebases alongside me. They explore ideas with their agent, test changes, and verify outcomes — while I provide the review layer that ensures production-readiness.</p>
+    <style>
+      /* Uniform card-image height across the site */
+      .card-img-top.img-fluid {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+      }
+      /* Extra breathing room under testimonials */
+      .carousel .blockquote-footer {
+        margin-top: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-KNB6ZKLD"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End GTM (noscript) -->
 
-    <h2>🧑‍💻 The Rise of the Vibe Coder Founder</h2>
+    <!-- Site navigation (identical across posts) -->
+    <nav class="navbar navbar-expand-lg bg-light border-bottom shadow-sm">
+      <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center" href="../index.html">
+          <img
+            src="/assets/logo.png"
+            alt="Logo"
+            style="height: 50px; width: auto; margin-right: 8px"
+          />
+          Bill Vivino Technology, LLC
+        </a>
 
-    <p>The "vibe coder" founder is someone who:</p>
-    <ul>
-      <li>Doesn’t write code from scratch</li>
-      <li>Knows their product deeply</li>
-      <li>Can explain user flows and priorities clearly</li>
-      <li>Uses AI tools to participate in development alongside an expert</li>
-    </ul>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <p>Instead of being siloed from the engineering process, they now:</p>
-    <ul>
-      <li>Prompt Cursor or Windsurf with code tasks</li>
-      <li>Review and commit AI-generated suggestions</li>
-      <li>Send me their diffs or collaborate on GitHub</li>
-    </ul>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../portfolio.html">Portfolio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../pricing.html">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../contact.html">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="https://www.upwork.com/freelancers/billvivino?viewMode=1"
+                >Upwork Profile</a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                More
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="/assets/Bill_Vivino_-_Detailed_Experience.pdf"
+                    >Resume</a
+                  >
+                </li>
+                <li><a class="dropdown-item" href="../blog.html">Blog</a></li>
+                <li>
+                  <a class="dropdown-item" href="../privacy.html"
+                    >Privacy Policy</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
 
-    <h2>⚖️ A New Collaboration Flow</h2>
+        <a class="btn btn-primary" href="../contact.html">Contact Us Now</a>
+        <div class="navbar-text">
+          <a href="tel:+19733582341">(973) 358-2341</a>
+        </div>
+      </div>
+    </nav>
 
-    <p>Here's the model I use:</p>
-    <ol>
-      <li><strong>I own the repo and work in short, functional commits</strong>
+    <!-- Main article container -->
+    <div class="container py-4">
+      <article>
+        <h1>
+          How I Include My Non-Technical, Vibe Coder Clients as Devs in Their
+          Projects (and Save Them Time and Money)
+        </h1>
+
+        <p>
+          In today’s world of AI-assisted development, the line between
+          developer and visionary is blurring—and I’ve seen firsthand how
+          non-technical founders can step into a more empowered role, working
+          alongside AI agents to actually ship code.
+        </p>
+
+        <p>
+          For years, I’ve worked with founders who bring powerful product ideas
+          but not a line of code. They hire me to bring those ideas to life. But
+          recently, something shifted. With tools like Cursor, Replit, and
+          Windsurf, I’ve started embedding my clients
+          <em>into the development process</em> in a surprisingly effective
+          way—and it’s changing how we work together.
+        </p>
+
+        <p>
+          Many of my recent projects now include founder collaboration directly
+          inside the development workflow. For example, some of my clients use
+          Cursor, Replit, or Windsurf to co-edit codebases alongside me. They
+          explore ideas with their agent, test changes, and verify outcomes —
+          while I provide the review layer that ensures production-readiness.
+        </p>
+
+        <h2>🧑‍💻 The Rise of the Vibe Coder Founder</h2>
+
+        <p>The "vibe coder" founder is someone who:</p>
         <ul>
-          <li>Think: "fix iOS audio bug" or "implement auth error fallback"</li>
+          <li>Doesn’t write code from scratch</li>
+          <li>Knows their product deeply</li>
+          <li>Can explain user flows and priorities clearly</li>
+          <li>
+            Uses AI tools to participate in development alongside an expert
+          </li>
         </ul>
-      </li>
-      <li><strong>Client uses Replit or Windsurf to view the latest working code</strong>
+
+        <p>Instead of being siloed from the engineering process, they now:</p>
         <ul>
-          <li>They can run the app in-browser or locally</li>
+          <li>Prompt Cursor or Windsurf with code tasks</li>
+          <li>Review and commit AI-generated suggestions</li>
+          <li>Send me their diffs or collaborate on GitHub</li>
         </ul>
-      </li>
-      <li><strong>They submit micro-changes with help from the AI assistant</strong>
+
+        <h2>⚖️ A New Collaboration Flow</h2>
+
+        <p>Here's the model I use:</p>
+        <ol>
+          <li>
+            <strong
+              >I own the repo and work in short, functional commits</strong
+            >
+            <ul>
+              <li>
+                Think: "fix iOS audio bug" or "implement auth error fallback"
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong
+              >Client uses Replit or Windsurf to view the latest working
+              code</strong
+            >
+            <ul>
+              <li>They can run the app in-browser or locally</li>
+            </ul>
+          </li>
+          <li>
+            <strong
+              >They submit micro-changes with help from the AI assistant</strong
+            >
+            <ul>
+              <li>Example: update the copy, tweak a UI label, adjust colors</li>
+            </ul>
+          </li>
+          <li>
+            <strong>I review and integrate their changes</strong>
+            <ul>
+              <li>This keeps the codebase consistent and avoids regressions</li>
+            </ul>
+          </li>
+        </ol>
+
+        <p>This has been wildly effective for:</p>
         <ul>
-          <li>Example: update the copy, tweak a UI label, adjust colors</li>
+          <li>Validating ideas quickly</li>
+          <li>Empowering non-technical founders to iterate</li>
+          <li>Keeping costs low by reducing back-and-forth</li>
         </ul>
-      </li>
-      <li><strong>I review and integrate their changes</strong>
+
+        <h2>🌟 Why It Works</h2>
+
         <ul>
-          <li>This keeps the codebase consistent and avoids regressions</li>
+          <li><strong>AI acts as a pair programmer for the founder</strong></li>
+          <li>
+            <strong>I'm the quality gate</strong> who ensures commits are safe
+            and useful
+          </li>
+          <li>
+            <strong>They learn fast</strong>, and over time their AI usage
+            becomes smarter
+          </li>
+          <li>
+            <strong>We share context</strong> on Slack or iMessage, but the real
+            sync is in the repo
+          </li>
         </ul>
-      </li>
-    </ol>
 
-    <p>This has been wildly effective for:</p>
-    <ul>
-      <li>Validating ideas quickly</li>
-      <li>Empowering non-technical founders to iterate</li>
-      <li>Keeping costs low by reducing back-and-forth</li>
-    </ul>
+        <h2>⚡ Real Examples</h2>
 
-    <h2>🌟 Why It Works</h2>
+        <ul>
+          <li>
+            A climate tech founder tweaked their onboarding flow with ChatGPT +
+            Replit and I polished it for production
+          </li>
+          <li>
+            An indie app founder rebuilt a screen layout with Windsurf, then I
+            connected it to the Firebase backend
+          </li>
+          <li>
+            A first-time founder built their pricing calculator UI entirely in
+            Cursor, and I handled state + animation
+          </li>
+        </ul>
 
-    <ul>
-      <li><strong>AI acts as a pair programmer for the founder</strong></li>
-      <li><strong>I'm the quality gate</strong> who ensures commits are safe and useful</li>
-      <li><strong>They learn fast</strong>, and over time their AI usage becomes smarter</li>
-      <li><strong>We share context</strong> on Slack or iMessage, but the real sync is in the repo</li>
-    </ul>
+        <h2>🚀 Get Started</h2>
 
-    <h2>⚡ Real Examples</h2>
+        <p>
+          Want to co-build with me and AI?<br />
+          If you have:
+        </p>
+        <ul>
+          <li>A clear idea</li>
+          <li>The ability to learn with AI tools like Cursor or Replit</li>
+          <li>A desire to stay close to your product</li>
+        </ul>
 
-    <ul>
-      <li>A climate tech founder tweaked their onboarding flow with ChatGPT + Replit and I polished it for production</li>
-      <li>An indie app founder rebuilt a screen layout with Windsurf, then I connected it to the Firebase backend</li>
-      <li>A first-time founder built their pricing calculator UI entirely in Cursor, and I handled state + animation</li>
-    </ul>
+        <p>I’ll help you go from concept to launch.</p>
 
-    <h2>🚀 Get Started</h2>
+        <p><strong>Let’s build. Together.</strong></p>
 
-    <p>Want to co-build with me and AI?<br />
-    If you have:</p>
-    <ul>
-      <li>A clear idea</li>
-      <li>The ability to learn with AI tools like Cursor or Replit</li>
-      <li>A desire to stay close to your product</li>
-    </ul>
+        <p>
+          Visit
+          <a
+            href="https://billvivinotechnology.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            >billvivinotechnology.com</a
+          >
+          or reach out via
+          <a
+            href="https://billvivinotechnology.com/contact.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            >my contact page</a
+          >.
+        </p>
 
-    <p>I’ll help you go from concept to launch.</p>
+        <hr />
 
-    <p><strong>Let’s build. Together.</strong></p>
+        <p>
+          <em
+            >PS: If you're a founder who wants to understand code but not drown
+            in it, this might be your new superpower.</em
+          >
+        </p>
+      </article>
+    </div>
 
-    <p>Visit <a href="https://billvivinotechnology.com" target="_blank" rel="noopener noreferrer">billvivinotechnology.com</a> or reach out via <a href="https://billvivinotechnology.com/contact.html" target="_blank" rel="noopener noreferrer">my contact page</a>.</p>
-
-    <hr />
-
-    <p><em>PS: If you're a founder who wants to understand code but not drown in it, this might be your new superpower.</em></p>
-  </article>
-
-  <footer>
-    &copy; 2025 Bill Vivino
-  </footer>
-</body>
+    <!-- Bootstrap JS (Popper included) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
