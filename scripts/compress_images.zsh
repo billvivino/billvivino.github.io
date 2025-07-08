@@ -17,6 +17,8 @@ echo "💾 Output: $OUT_DIR"
 find "$IMG_DIR" -maxdepth 1 -type f \( -iname '*.jpg' -o -iname '*.jpeg' \) | \
 while read -r f; do
   bn=$(basename "$f")
+  # remove any previous optimized copy to avoid "target file already exists" errors
+  rm -f "$OUT_DIR/$bn"
   echo "→ Compressing $bn (JPEG)"
   jpegoptim --strip-all -m85 --dest="$OUT_DIR" "$f"
   cwebp -q 80 "$f" -o "$OUT_DIR/${bn%.*}.webp"
@@ -27,10 +29,13 @@ done
 find "$IMG_DIR" -maxdepth 1 -type f -iname '*.png' | \
 while read -r f; do
   bn=$(basename "$f")
+  # remove any previous optimized copy to avoid overwriting errors
+  rm -f "$OUT_DIR/$bn"
   echo "→ Compressing $bn (PNG)"
   pngquant --quality=70-90 --speed 1 --force --output "$OUT_DIR/$bn" -- "$f"
   oxipng -o 4 --strip all "$OUT_DIR/$bn"
   cwebp -q 80 "$f" -o "$OUT_DIR/${bn%.*}.webp"
+  avifenc --min 25 --max 35 "$f" "$OUT_DIR/${bn%.*}.avif"
 done
 
 echo "✅  Optimisation complete."
