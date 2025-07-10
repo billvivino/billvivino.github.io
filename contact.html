@@ -243,6 +243,42 @@
         <input type="hidden" id="ts" name="ts" value="" />
 
         <div class="mb-3">
+          <label for="name" class="form-label">Your Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            required
+            placeholder="Jane Doe"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email Address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="_replyto"
+            required
+            placeholder="you@example.com"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input
+            type="tel"
+            class="form-control"
+            id="phone"
+            name="phone"
+            required
+            placeholder="(973) 555‑1234"
+          />
+        </div>
+
+        <div class="mb-3">
           <label for="budget" class="form-label">Approximate Budget</label>
           <select id="budget" name="budget" class="form-select" required>
             <option value="" disabled selected>Select a range</option>
@@ -307,7 +343,7 @@
       crossorigin="anonymous"
     ></script>
     <script>
-      // Ensure budget, project type, and timeline are filled
+      // Ensure all required fields are filled
       document.addEventListener("DOMContentLoaded", function () {
         var form = document.querySelector(
           "form[action^='https://formspree.io']"
@@ -315,14 +351,24 @@
         if (!form) return;
 
         form.addEventListener("submit", function (e) {
-          var budget = document.getElementById("budget");
-          var type = document.getElementById("type");
-          var timeline = document.getElementById("timeline");
+          var nameEl   = document.getElementById("name");
+          var emailEl  = document.getElementById("email");
+          var phoneEl  = document.getElementById("phone");
+          var budgetEl = document.getElementById("budget");
+          var typeEl   = document.getElementById("type");
+          var timelineEl = document.getElementById("timeline");
 
-          if (!budget.value || !type.value || !timeline.value.trim()) {
+          if (
+            !nameEl.value.trim() ||
+            !emailEl.value.trim() ||
+            !phoneEl.value.trim() ||
+            !budgetEl.value ||
+            !typeEl.value ||
+            !timelineEl.value.trim()
+          ) {
             e.preventDefault();
             alert(
-              "Please select Budget, Project Type, and provide your desired Timeline before submitting."
+              "Please fill in Name, Email, Phone, Budget, Project Type, and Timeline before submitting."
             );
             return false;
           }
