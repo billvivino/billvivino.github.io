@@ -1,0 +1,42 @@
+name: Build posts.json automatically
+
+on:
+  push:
+    paths:
+      - 'posts/**'          # Trigger when something in /posts changes
+      - '.github/workflows/generate-posts-index.yml'
+  workflow_dispatch:        # Allow manual run from Actions tab
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Generate posts.json
+        run: |
+          echo "[" > posts/posts.json
+          first=true
+          for file in $(find posts -maxdepth 1 -name "*.html" | sort -r); do
+            fname=$(basename "$file")
+            date_part=${fname:0:10}
+            title=$(grep -m1 -oP '(?<=<title>).*?(?=</title>)' "$file" || echo "$fname")
+            excerpt=$(grep -A2 -m1 "<p" "$file" | sed -E 's/<[^>]+>//g' | head -c 150 | sed 's/"/\\"/g')
+            if [ "$first" = true ]; then
+              first=false
+            else
+              echo "," >> posts/posts.json
+            fi
+            echo "  {\"title\": \"${title}\", \"date\": \"${date_part}\", \"excerpt\": \"${excerpt}...\", \"url\": \"posts/${fname}\"}" >> posts/posts.json
+          done
+          echo "]" >> posts/posts.json
+
+      - name: Commit updated posts.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add posts/posts.json
+          git commit -m "Auto-update posts.json" || echo "No changes to commit"
+          git push
