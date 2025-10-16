@@ -41,6 +41,8 @@ jobs:
             echo "  {\"title\": \"${title}\", \"date\": \"${date_part}\", \"excerpt\": \"${excerpt}...\", \"url\": \"posts/${fname}\"}" >> posts/posts.json
           done
           echo "]" >> posts/posts.json
+          jq -c . posts/posts.json > posts/tmp.json && mv posts/tmp.json posts/posts.json
+
 
       - name: Commit and push updated posts.json
         run: |
