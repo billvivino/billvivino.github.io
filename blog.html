@@ -176,57 +176,33 @@
       </p>
     </div>
 
-    <!-- Filter -->
-    <div class="text-center mb-4">
-      <label for="postFilter" class="form-label me-2 fw-semibold text-dark">Jump to date:</label>
-      <select id="postFilter" class="form-select d-inline-block w-auto shadow-sm border-0">
-        <option value="">All posts</option>
-      </select>
-    </div>
-
-    <!-- Blog Posts Grid -->
-<div class="row g-4" id="blogGrid"></div>
-
+    <div class="row g-4" id="blogGrid"></div>
+  </div>
 </section>
 
-    
 
-    <section class="bg-light py-4 mt-5">
-      <div class="container text-center mb-4">
-        <a href="portfolio.html" class="btn btn-primary m-1"
-          >View B2B Project Portfolio</a
-        >
-        <a href="pricing.html" class="btn btn-primary m-1"
-          >See Pricing Details</a
-        >
-        <a href="contact.html" class="btn btn-primary m-1">Contact Us</a>
-      </div>
-    </section>
-
-    <script>
+   <script>
   async function loadBlogPosts() {
     try {
       const res = await fetch("posts/posts.json");
       const posts = await res.json();
 
-      // Sort newest → oldest
+      // Sort newest first and limit to 9 posts
       posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-      // Show latest 9 only
       const latest = posts.slice(0, 9);
+
       const grid = document.getElementById("blogGrid");
+      grid.innerHTML = "";
 
       latest.forEach(post => {
         const col = document.createElement("div");
         col.className = "col-md-6 col-lg-4";
         col.innerHTML = `
-          <div class="blog-card h-100 p-4 bg-white rounded-3 shadow-sm border-0">
+          <div class="blog-card h-100 p-4 bg-white shadow-sm rounded">
             <h5 class="fw-bold mb-2">${post.title}</h5>
-            <p class="text-muted small mb-2">${new Date(post.date).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric"
-            })}</p>
+            <p class="text-muted small mb-2">
+              ${new Date(post.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+            </p>
             <p>${post.excerpt}</p>
             <a href="${post.url}" class="stretched-link text-primary fw-semibold">Read More →</a>
           </div>
@@ -240,6 +216,7 @@
 
   loadBlogPosts();
 </script>
+
 
   </body>
 </html>
