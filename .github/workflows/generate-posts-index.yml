@@ -3,14 +3,13 @@ name: Build posts.json automatically
 on:
   push:
     paths:
-      - 'posts/**'          # Trigger when something in /posts changes
-      - '.github/workflows/generate-posts-index.yml'
-  workflow_dispatch:        # Allow manual run from Actions tab
+      - "posts/**"
+      - ".github/workflows/generate-posts-index.yml"
+  workflow_dispatch:
 
 jobs:
   generate:
     runs-on: ubuntu-latest
-
     steps:
       - name: Check out repo
         uses: actions/checkout@v4
@@ -20,11 +19,11 @@ jobs:
           mkdir -p posts
           echo "[" > posts/posts.json
           first=true
-          for file in $(find posts -maxdepth 1 -name "*.html" | sort -r); do
+          for file in $(find posts -maxdepth 1 -type f -name "*.html" | sort -r); do
             fname=$(basename "$file")
             date_part=${fname:0:10}
             title=$(grep -m1 -oP '(?<=<title>).*?(?=</title>)' "$file" || echo "$fname")
-            excerpt=$(grep -A2 -m1 "<p" "$file" | sed -E 's/<[^>]+>//g' | head -c 150 | sed 's/"/\\"/g')
+            excerpt=$(grep -A3 -m1 "<p" "$file" | sed -E 's/<[^>]+>//g' | head -c 200 | sed 's/"/\\"/g')
             if [ "$first" = true ]; then
               first=false
             else
@@ -38,7 +37,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git pull --rebase origin main || true
+          git pull --rebase origin main
           git add posts/posts.json
           git commit -m "Auto-update posts.json" || echo "No changes to commit"
-          git push
+          git push origin main
