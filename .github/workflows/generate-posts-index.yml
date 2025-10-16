@@ -33,11 +33,17 @@ jobs:
           done
           echo "]" >> posts/posts.json
 
-      - name: Commit updated posts.json
+        - name: Commit and push updated posts.json
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git pull --rebase origin main
+
+          # stash any local changes (like new posts.json)
+          git stash --include-untracked
+          git pull --rebase origin main || true
+          git stash pop || true
+
           git add posts/posts.json
           git commit -m "Auto-update posts.json" || echo "No changes to commit"
-          git push origin main
+          git push origin main || echo "Push failed"
+
