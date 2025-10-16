@@ -184,16 +184,19 @@
    <script>
   async function loadBlogPosts() {
     try {
-      const res = await fetch("posts/posts.json");
+      // ✅ fetch the JSON file with your post list
+      const res = await fetch("/posts/posts.json");
       const posts = await res.json();
 
-      // Sort newest first and limit to 9 posts
+      // ✅ sort newest first and keep only the latest 9
       posts.sort((a, b) => new Date(b.date) - new Date(a.date));
       const latest = posts.slice(0, 9);
 
+      // ✅ find the container for posts
       const grid = document.getElementById("blogGrid");
       grid.innerHTML = "";
 
+      // ✅ loop through posts and create cards
       latest.forEach(post => {
         const col = document.createElement("div");
         col.className = "col-md-6 col-lg-4";
@@ -216,6 +219,7 @@
 
   loadBlogPosts();
 </script>
+
 
 
   </body>
