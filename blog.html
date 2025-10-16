@@ -167,181 +167,29 @@
         </div>
       </div>
     </nav>
+<section id="blog-posts" class="py-5 bg-light">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h1 class="fw-bold">Latest Insights & Case Studies</h1>
+      <p class="text-muted">
+        Dev lessons, founder stories, and project write-ups from Bill Vivino Technology.
+      </p>
+    </div>
 
-    <section id="blog-posts" class="container pt-0 pb-5">
-      <div class="text-center my-4">
-        <h1>Blog</h1>
-        <p>Insights, updates, and case studies from Bill Vivino Technology—serving North Jersey, the NYC metro area, and nationwide.</p>
-      </div>
-      <div class="mb-4">
-        <label for="postFilter" class="form-label me-2">Jump to date:</label>
-        <select
-          id="postFilter"
-          class="form-select d-inline-block w-auto"
-        ></select>
-      </div>
-      <!-- NEW POST – 2025‑09‑22 -->
-      <article class="post mt-5" data-date="2025-09-22">
-        <h2>The Real Dangers of Vibe Coding (And Why You’ll Probably Need a Cleanup Specialist)</h2>
-        <small class="date">September&nbsp;22,&nbsp;2025</small>
-        <a
-          href="posts/2025-09-22-the-real-dangers-of-vibe-coding.html"
-          class="ms-2"
-          >Read More</a
-        >
-        <p>
-          Meet Chris, the vibe coder. With tools like Cursor, Replit, and Copilot, he can spin up apps overnight—but soon faces bugs, security issues, API costs, and stalled launches. This post explains why cleanup specialists are now essential to stabilize and ship vibe‑coded projects.
-        </p>
-      </article>
-      <!-- NEW POST – 2025‑08‑01 -->
-      <article class="post mt-5" data-date="2025-08-01">
-        <h2>What to Do If Your Developer Disappears</h2>
-        <small class="date">August&nbsp;1,&nbsp;2025</small>
-        <a
-          href="posts/2025-08-01-what-to-do-if-your-developer-disappears.html"
-          class="ms-2"
-          >Read More</a
-        >
-        <p>
-          If your app developer vanishes without handing over the source code, you could lose everything. This post is a survival guide: how to lock down your GitHub repo, protect your accounts, recover the project, and avoid being ghosted again.
-        </p>
-      </article>
-      <!-- NEW POST – 2025‑07‑16 -->
-      <article class="post mt-5" data-date="2025-07-16">
-        <h2>Best Tech Stack for MVPs in 2025</h2>
-        <small class="date">July&nbsp;16,&nbsp;2025</small>
-        <a
-          href="posts/2025-07-16-best-tech-stack-for-mvps-in-2025.html"
-          class="ms-2"
-          >Read More</a
-        >
-        <p>
-          A practical guide for startup founders choosing the right tech stack for their MVP. Includes real-world examples and a breakdown of tools like Swift, Kotlin, Firebase, React Native, and more.
-        </p>
-      </article>
-      <!-- NEW POST – 2025‑07‑02 -->
-      <article class="post mt-5" data-date="2025-07-02">
-        <h2>
-          How I Save My Clients Time by Collaborating with Cursor + Replit
-        </h2>
-        <small class="date">July&nbsp;2,&nbsp;2025</small>
-        <a
-          href="posts/2025-07-02-vibe-coder-founder-collaboration.html"
-          class="ms-2"
-          >Read More</a
-        >
-        <p>
-          I work with non-technical startup founders using Cursor, Replit, or
-          Windsurf to co-develop software. By reviewing, editing, and validating
-          their changes in real-time—then syncing those updates back into the
-          repo—I keep momentum high and timelines short. It’s like pair
-          programming across a skill gap.
-        </p>
-      </article>
-      <!-- NEW POST – 2025‑06‑30 -->
-      <article class="post mt-5" data-date="2025-06-30">
-        <h2>Case Study: Firebase Social App for Creators</h2>
-        <small class="date">June&nbsp;30,&nbsp;2025</small>
-        <a href="posts/2025-06-30-social-media-app-case-study.html" class="ms-2"
-          >Read More</a
-        >
+    <!-- Filter -->
+    <div class="text-center mb-4">
+      <label for="postFilter" class="form-label me-2 fw-semibold text-dark">Jump to date:</label>
+      <select id="postFilter" class="form-select d-inline-block w-auto shadow-sm border-0">
+        <option value="">All posts</option>
+      </select>
+    </div>
 
-        <p>
-          How we helped a funded founder launch a creator-focused iOS social app
-          using Firebase, SwiftUI, and custom media caching. Real-time feeds,
-          video playback, and a companion analytics dashboard—all in under 6
-          months.
-        </p>
-      </article>
-      <!-- NEW POST – 2025‑05‑24 -->
-      <article class="post" data-date="2025-05-24">
-        <h2>Why a 3-Hour Time-Cap Makes Debugging Efficient</h2>
-        <small class="date">May&nbsp;24,&nbsp;2025</small>
-        <a
-          href="posts/2025-05-24-why-a-3‑hour-time‑cap-makes-debugging-efficient.html"
-          class="ms-2"
-          >Read More</a
-        >
+    <!-- Blog Posts Grid -->
+<div class="row g-4" id="blogGrid"></div>
 
-        <p>
-          Debugging isn’t about guessing—it’s detective work. Learn why I always
-          begin with a fixed, three‑hour discovery sprint and how that model
-          keeps your budget safe while giving me the space to uncover the real
-          culprit in your code.
-        </p>
-      </article>
-      <!-- NEW POST – 2025‑05‑03 -->
-      <article class="post" data-date="2025-05-03">
-        <h2>You Need Human Beings “Involved” in Your Code</h2>
-        <small class="date">May&nbsp;3,&nbsp;2025</small>
-        <a
-          href="posts/2025-05-04-you-need-human-beings-involved-in-your-code.html"
-          class="ms-2"
-          >Read More</a
-        >
+</section>
 
-        <p>
-          Forget the hype: AI can’t refactor your legacy codebase or untangle
-          years of tech‑debt without a seasoned engineer at the helm. In this
-          piece I break down why “hands‑off” coding is a myth, how to Marie
-          Kondo your codebase, and why interviews that hinge on LeetCode still
-          miss the point.
-        </p>
-      </article>
-      <!-- NEW POST – 2025‑04‑23 -->
-      <article class="post mt-5" data-date="2025-04-23">
-        <h2>How Much Does It Cost to Make an App?</h2>
-        <small class="date">April&nbsp;23,&nbsp;2025</small>
-        <a
-          href="posts/2025-04-23-how-much-does-it-cost-to-make-an-app.html"
-          class="ms-2"
-          >Read More</a
-        >
-
-        <p>
-          One critical question founders always ask is budget: app development rarely ends after launch. This quick guide explains why MVPs start around $25k–$50k and how ongoing updates shape total cost.
-        </p>
-      </article>
-      <!-- NEW POST – 2025‑04‑21 -->
-      <article class="post" data-date="2025-04-21">
-        <h2>Brewing a Better Beer‑Lovers App: A Behind‑the‑Scenes Tour</h2>
-        <small class="date">April&nbsp;21,&nbsp;2025</small>
-        <a href="posts/2025-04-21-brewing-a-better-beer-app.html" class="ms-2"
-          >Read More</a
-        >
-
-        <p>
-          We overhauled our craft‑beer social app: real‑time feed, personal cellar, dark mode, smarter notifications, and major performance boosts—all in one sprint.
-        </p>
-      </article>
-
-      <article class="post mt-5" data-date="2025-04-20">
-        <h2>Building NASA’s WeatherSats AR App</h2>
-        <small class="date">April&nbsp;20,&nbsp;2025</small>
-        <a href="posts/2025-04-20-nasa-weathersats-ar.html" class="ms-2"
-          >Read More</a
-        >
-
-        <p>
-          A behind‑the‑scenes look at stabilising NASA’s WeatherSats AR viewer in Unity: satellite models, UI fixes, and codebase clean‑up.
-        </p>
-      </article>
-
-      <article class="post mt-5" data-date="2025-04-18">
-        <h2>
-          Meet Bill Vivino: Your Experienced Software Developer for Mobile,
-          Unity, and More
-        </h2>
-        <small class="date">April&nbsp;18,&nbsp;2025</small>
-        <a href="posts/2025-04-18-meet-bill-vivino-technology.html" class="ms-2"
-          >Read More</a
-        >
-
-        <p>
-          Hi, I’m Bill Vivino—Rutgers‑trained developer specialising in Unity/C#, SwiftUI, and API integrations. Here’s a snapshot of my journey and how I help clients ship.
-        </p>
-      </article>
-    </section>
+    
 
     <section class="bg-light py-4 mt-5">
       <div class="container text-center mb-4">
@@ -356,38 +204,42 @@
     </section>
 
     <script>
-      // Build the date selector
-      const select = document.getElementById("postFilter");
-      const articles = [...document.querySelectorAll("#blog-posts .post")].sort(
-        (a, b) => b.dataset.date.localeCompare(a.dataset.date)
-      ); // sort DESC
+  async function loadBlogPosts() {
+    try {
+      const res = await fetch("posts/posts.json");
+      const posts = await res.json();
 
-      articles.forEach((a) => {
-        const d = a.dataset.date; // "YYYY-MM-DD"
-        if (!d) return;
+      // Sort newest → oldest
+      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-        const option = document.createElement("option");
-        option.value = d;
+      // Show latest 9 only
+      const latest = posts.slice(0, 9);
+      const grid = document.getElementById("blogGrid");
 
-        // Create a date object in *local* time to avoid the UTC shift
-        const [y, m, day] = d.split("-").map(Number);
-        option.text = new Date(y, m - 1, day).toLocaleDateString();
-
-        select.appendChild(option);
+      latest.forEach(post => {
+        const col = document.createElement("div");
+        col.className = "col-md-6 col-lg-4";
+        col.innerHTML = `
+          <div class="blog-card h-100 p-4 bg-white rounded-3 shadow-sm border-0">
+            <h5 class="fw-bold mb-2">${post.title}</h5>
+            <p class="text-muted small mb-2">${new Date(post.date).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric"
+            })}</p>
+            <p>${post.excerpt}</p>
+            <a href="${post.url}" class="stretched-link text-primary fw-semibold">Read More →</a>
+          </div>
+        `;
+        grid.appendChild(col);
       });
+    } catch (err) {
+      console.error("Error loading blog posts:", err);
+    }
+  }
 
-      // Scroll to the chosen post
-      select.addEventListener("change", (e) => {
-        const target = document.querySelector(
-          `#blog-posts .post[data-date="${e.target.value}"]`
-        );
-        if (target) target.scrollIntoView({ behavior: "smooth" });
-      });
-    </script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-      crossorigin="anonymous"
-    ></script>
+  loadBlogPosts();
+</script>
+
   </body>
 </html>
