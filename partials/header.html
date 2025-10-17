@@ -1,0 +1,84 @@
+<!-- /partials/header.html -->
+<!-- Shared Header Include for Bill Vivino Blog Posts -->
+
+<!-- Google Tag Manager -->
+<script>
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s),
+      dl = l != "dataLayer" ? "&l=" + l : "";
+    j.async = true;
+    j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, "script", "dataLayer", "GTM-KNB6ZKLD");
+</script>
+<!-- End Google Tag Manager -->
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Global Styles -->
+<link rel="stylesheet" href="/styles.css" />
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+/>
+
+<!-- Dynamic Schema + Default Social Tags -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const title = document.querySelector("title")?.innerText || document.title;
+    const description =
+      document
+        .querySelector("meta[name='description']")
+        ?.getAttribute("content") || "Bill Vivino Technology Blog";
+    const url = window.location.href;
+    const image =
+      document
+        .querySelector("meta[property='og:image']")
+        ?.getAttribute("content") ||
+      "https://billvivinotechnology.com/assets/logo.png";
+    const date =
+      document.querySelector("time")?.getAttribute("datetime") ||
+      new Date().toISOString();
+
+    // Ensure OG + Twitter fallbacks
+    if (!document.querySelector("meta[property='og:title']")) {
+      const metaTags = [
+        ["og:type", "article"],
+        ["og:title", title],
+        ["og:description", description],
+        ["og:image", image],
+        ["og:url", url],
+        ["twitter:card", "summary_large_image"],
+        ["twitter:title", title],
+        ["twitter:description", description],
+        ["twitter:image", image],
+      ];
+      metaTags.forEach(([prop, content]) => {
+        const m = document.createElement("meta");
+        if (prop.startsWith("og:")) m.setAttribute("property", prop);
+        else m.setAttribute("name", prop);
+        m.setAttribute("content", content);
+        document.head.appendChild(m);
+      });
+    }
+
+    // Auto Schema
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: title,
+      description,
+      image,
+      author: { "@type": "Person", name: "Bill Vivino" },
+      publisher: {
+        "@type": "Organization",
+        name: "Bill Vivino Technology, LLC",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://billvivinotechnology.com/assets/logo.png",
+        },
+      }
