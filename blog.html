@@ -176,27 +176,28 @@
       </p>
     </div>
 
-    <div class="row g-4" id="blogGrid"></div>
+    <div id="blogGrid" class="row g-4"></div>
   </div>
 </section>
 
 
-   <script>
+   <<script>
   async function loadBlogPosts() {
     try {
-      // ✅ fetch the JSON file with your post list
-      const res = await fetch("/posts/posts.json");
+      // fetch the JSON file with your post list
+      const res = await fetch("/posts/posts.json"); // change to "/posts/posts.json" when deploying on GitHub Pages
       const posts = await res.json();
+      console.log("Loaded posts:", posts);
 
-      // ✅ sort newest first and keep only the latest 9
+      // sort newest first and keep only the latest 9
       posts.sort((a, b) => new Date(b.date) - new Date(a.date));
       const latest = posts.slice(0, 9);
 
-      // ✅ find the container for posts
+      // find the container for posts
       const grid = document.getElementById("blogGrid");
       grid.innerHTML = "";
 
-      // ✅ loop through posts and create cards
+      // loop through posts and create cards
       latest.forEach(post => {
         const col = document.createElement("div");
         col.className = "col-md-6 col-lg-4";
@@ -215,10 +216,10 @@
     } catch (err) {
       console.error("Error loading blog posts:", err);
     }
-  }
-
+  } // ← this was missing
   loadBlogPosts();
 </script>
+
 
 
 
