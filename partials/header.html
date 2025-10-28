@@ -28,57 +28,84 @@
 
 <!-- Dynamic Schema + Default Social Tags -->
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const title = document.querySelector("title")?.innerText || document.title;
+  document.addEventListener('DOMContentLoaded', () => {
+    const title =
+      document.title ||
+      document.querySelector('title')?.innerText ||
+      'Bill Vivino Technology';
     const description =
       document
         .querySelector("meta[name='description']")
-        ?.getAttribute("content") || "Bill Vivino Technology Blog";
+        ?.getAttribute('content') || 'Bill Vivino Technology Blog';
     const url = window.location.href;
     const image =
       document
         .querySelector("meta[property='og:image']")
-        ?.getAttribute("content") ||
-      "https://billvivinotechnology.com/assets/logo.png";
+        ?.getAttribute('content') ||
+      'https://billvivinotechnology.com/assets/logo.png';
     const date =
-      document.querySelector("time")?.getAttribute("datetime") ||
+      document.querySelector('time')?.getAttribute('datetime') ||
       new Date().toISOString();
 
-    // Ensure OG + Twitter fallbacks
-    if (!document.querySelector("meta[property='og:title']")) {
-      const metaTags = [
-        ["og:type", "article"],
-        ["og:title", title],
-        ["og:description", description],
-        ["og:image", image],
-        ["og:url", url],
-        ["twitter:card", "summary_large_image"],
-        ["twitter:title", title],
-        ["twitter:description", description],
-        ["twitter:image", image],
-      ];
-      metaTags.forEach(([prop, content]) => {
-        const m = document.createElement("meta");
-        if (prop.startsWith("og:")) m.setAttribute("property", prop);
-        else m.setAttribute("name", prop);
-        m.setAttribute("content", content);
-        document.head.appendChild(m);
-      });
+    // Ensure a canonical link exists
+    if (!document.querySelector("link[rel='canonical']")) {
+      const link = document.createElement('link');
+      link.setAttribute('rel', 'canonical');
+      link.setAttribute('href', url.split('#')[0]);
+      document.head.appendChild(link);
     }
 
-    // Auto Schema
+    // Helper to ensure meta tags (avoids duplicates)
+    const ensureMeta = (key, name, content) => {
+      const selector = key === 'property' ? `meta[property='${name}']` : `meta[name='${name}']`;
+      if (!document.querySelector(selector)) {
+        const m = document.createElement('meta');
+        if (key === 'property') m.setAttribute('property', name);
+        else m.setAttribute('name', name);
+        m.setAttribute('content', content);
+        document.head.appendChild(m);
+      }
+    };
+
+    // Open Graph + Twitter cards
+    ensureMeta('property', 'og:type', 'article');
+    ensureMeta('property', 'og:title', title);
+    ensureMeta('property', 'og:description', description);
+    ensureMeta('property', 'og:image', image);
+    ensureMeta('property', 'og:url', url);
+    ensureMeta('name', 'twitter:card', 'summary_large_image');
+    ensureMeta('name', 'twitter:title', title);
+    ensureMeta('name', 'twitter:description', description);
+    ensureMeta('name', 'twitter:image', image);
+
+    // JSON-LD Schema.org
     const schema = {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
       headline: title,
-      description,
-      image,
+      description: description,
+      image: [image],
+      datePublished: date,
+      dateModified: date,
+      url: url,
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": url
+      },
       author: { "@type": "Person", name: "Bill Vivino" },
       publisher: {
         "@type": "Organization",
         name: "Bill Vivino Technology, LLC",
         logo: {
           "@type": "ImageObject",
-          url: "https://billvivinotechnology.com/assets/logo.png",
-        },
+          url: "https://billvivinotechnology.com/assets/logo.png"
+        }
       }
+    };
+
+    const ld = document.createElement('script');
+    ld.type = 'application/ld+json';
+    ld.text = JSON.stringify(schema);
+    document.head.appendChild(ld);
+  });
+</script>
