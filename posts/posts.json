@@ -1,0 +1,87 @@
+[
+ 
+  {
+    "title": "The Real Dangers of Vibe Coding (And Why You’ll Probably Need a Cleanup Specialist)",
+    "date": "2025-09-22",
+    "excerpt": "What happens when AI-powered vibe coding goes wrong—and how to clean it up. Meet Chris, the Vibe Coder turned cleanup specialist who helps founders rescue broken MVPs.",
+    "url": "posts/2025-09-22-the-real-dangers-of-vibe-coding.html",
+    "thumb": "assets/images/vibe-coding-thumb.jpg"
+  },
+  {
+    "title": "What to Do If Your Developer Disappears (Recovery Checklist)",
+    "date": "2025-08-01",
+    "excerpt": "A survival guide for founders ghosted mid-build. Your app was almost done. Then the developer stopped responding. No handoff. No documentation. Just silence.",
+    "url": "posts/2025-08-01-what-to-do-if-your-developer-disappears.html",
+    "thumb": "assets/images/developer-disappears-thumb.png"
+  },
+  {
+    "title": "Best Tech Stack for MVPs in 2025 (Real Examples)",
+    "date": "2025-07-16",
+    "excerpt": "When you're launching a new product, speed matters. You want to get your Minimum Viable Product (MVP) out the door quickly, learn from users, and scale intelligently.",
+    "url": "posts/2025-07-16-best-tech-stack-for-mvps-in-2025.html",
+    "thumb": "assets/images/mvp-tech-stack-thumb.png"
+  },
+  {
+    "title": "How I Include Vibe-Coder Founders in Development | Bill Vivino Technology",
+    "date": "2025-07-02",
+    "excerpt": "In today's world of AI-assisted development, the line between developer and visionary is blurring—and I've seen firsthand how collaboration creates better products.",
+    "url": "posts/2025-07-02-vibe-coder-founder-collaboration.html",
+    "thumb": "assets/images/vibe-founder-collaboration-thumb.png"
+  },
+  {
+    "title": "Social Media App Case Study iOS MVP in 12 Weeks",
+    "date": "2025-06-30",
+    "excerpt": "A founder approached us to build a scalable, media-rich iOS social app for creators to share short-form content and connect in curated interest groups.",
+    "url": "posts/2025-06-30-social-media-app-case-study.html",
+    "thumb": "assets/images/social-media-app-thumb.png"
+  },
+  {
+    "title": "Why a 3-Hour Time Cap Makes Debugging Efficient",
+    "date": "2025-05-24",
+    "excerpt": "When you bring me into your project to chase down a stubborn bug, you're asking me to solve a mystery—not patch a fender. Here's why I always propose a 3-hour time cap.",
+    "url": "posts/2025-05-24-why-a-3‑hour-time‑cap-makes-debugging-efficient.html",
+    "thumb": "assets/images/debugging-timecap-thumb.png"
+  },
+  {
+    "title": "Why Human Engineers Still Matter in Software Development",
+    "date": "2025-05-04",
+    "excerpt": "🎧 Listen to this article: even with AI tools everywhere, human creativity and discipline are what keep software reliable, maintainable, and meaningful.",
+    "url": "posts/2025-05-04-you-need-human-beings-involved-in-your-code.html",
+    "thumb": "assets/images/human-engineers-thumb.png"
+  },
+  {
+    "title": "How Much Does It Cost to Build an App in 2025?",
+    "date": "2025-04-23",
+    "excerpt": "So, how much does it actually cost to build an app? We break down timelines, tech stack choices, and hidden expenses founders overlook.",
+    "url": "posts/2025-04-23-how-much-does-it-cost-to-make-an-app.html",
+    "thumb": "assets/images/app-cost-thumb.png"
+  },
+  {
+    "title": "Brewing a Better Beer App Product Thinking Tips",
+    "date": "2025-04-21",
+    "excerpt": "We set out to create a place where craft-beer fans can share pours, swap notes, and keep track of what they're drinking—here's what we learned building it.",
+    "url": "posts/2025-04-21-brewing-a-better-beer-app.html",
+    "thumb": "assets/images/beer-app-thumb.png"
+  },
+  {
+    "title": "Building NASA’s WeatherSats AR App | Bill Vivino Technology",
+    "date": "2025-04-20",
+    "excerpt": "In 2022 I joined NASA’s WeatherSats AR project halfway through. The goal: give visitors an immersive way to explore Earth-observing satellites in real time.",
+    "url": "posts/2025-04-20-nasa-weathersats-ar.html",
+    "thumb": "assets/images/nasa-weathersats-thumb.png"
+  },
+  {
+    "title": "Meet the Founder Bill Vivino Technology",
+    "date": "2025-04-18",
+    "excerpt": "Hi! My name is Bill Vivino, and I'd like to help you develop your project from its initial ideas to completion. With extensive experience in Unity, mobile development, and scalable app design, I build tech that actually ships.",
+    "url": "posts/2025-04-18-meet-bill-vivino-technology.html",
+    "thumb": "assets/images/founder-thumb.jpg"
+  },
+  {
+    "title": "Why AI-Generated Code Fails Security Audits",
+    "date": "2025-10-23",
+    "excerpt": "AI-generated code can dramatically speed up development but often introduces hidden security flaws that can compromise reliability and compliance. Here’s how to prevent that.",
+    "url": "posts/2025-10-23-wh-ai-generated-code-fails-security-audits.html",
+    "thumb": "assets/images/ai-vibe-coders.png"
+  }
+]
