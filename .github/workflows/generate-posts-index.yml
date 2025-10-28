@@ -1,0 +1,59 @@
+name: Build posts.json automatically
+
+on:
+  push:
+    paths:
+      - 'posts/**'
+      - '.github/workflows/generate-posts-index.yml'
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Generate posts.json
+        run: |
+          mkdir -p posts
+          echo "[" > posts/posts.json
+          first=true
+          for file in $(find posts -maxdepth 1 -name "*.html" | sort -r); do
+            fname=$(basename "$file")
+            date_part=${fname:0:10}
+            title=$(grep -m1 -oP '(?<=<title>).*?(?=</title>)' "$file" | sed 's/"/\\"/g')
+
+            # if no <title> tag found, use a cleaned version of the filename
+            if [ -z "$title" ]; then
+              title=$(echo "$fname" | sed 's/[-_]/ /g; s/.html//g; s/\b\(.\)/\u\1/g')
+            fi
+
+            excerpt=$(grep -A2 -m1 "<p" "$file" | sed -E 's/<[^>]+>//g' | head -c 180 | sed 's/"/\\"/g')
+
+            if [ "$first" = true ]; then
+              first=false
+            else
+              echo "," >> posts/posts.json
+            fi
+
+            echo "  {\"title\": \"${title}\", \"date\": \"${date_part}\", \"excerpt\": \"${excerpt}...\", \"url\": \"posts/${fname}\"}" >> posts/posts.json
+          done
+          echo "]" >> posts/posts.json
+          jq -c . posts/posts.json > posts/tmp.json && mv posts/tmp.json posts/posts.json
+
+
+      - name: Commit and push updated posts.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # stash and safely rebase to avoid conflicts
+          git stash --include-untracked
+          git pull --rebase origin main || true
+          git stash pop || true
+
+          git add posts/posts.json
+          git commit -m "Auto-update posts.json" || echo "No changes to commit"
+          git push origin main || echo "Push failed"

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Load the shared global header -->
+    <script>
+      fetch("../partials/header.html")
+        .then(res => res.text())
+        .then(html => document.head.insertAdjacentHTML("beforeend", html))
+        .catch(err => console.error("Header include failed:", err));
+    </script>
+
+    <!-- Page-specific meta -->
+    <title>Testing the New Blog Layout</title>
+    <meta
+      name="description"
+      content="Test of the new optimized blog layout for Bill Vivino Technology — cleaner design, better readability, and improved SEO/AEO performance."
+    />
+    <meta property="og:image" content="https://billvivinotechnology.com/assets/logo.png" />
+  </head>
+
+  <body>
+    <!-- Nothing tracking-related here -->
+    <!-- Normal page content starts -->
+
+    <nav class="navbar navbar-expand-lg bg-light border-bottom shadow-sm">
+      <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center" href="../index.html">
+          <img src="/assets/logo.png" alt="Logo" style="height:50px;width:auto;margin-right:8px" />
+          Bill Vivino Technology, LLC
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../portfolio.html">Portfolio</a></li>
+            <li class="nav-item"><a class="nav-link" href="../pricing.html">Pricing</a></li>
+            <li class="nav-item"><a class="nav-link" href="../contact.html">Contact</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">More</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/assets/Bill_Vivino_-_Detailed_Experience.pdf">Resume</a></li>
+                <li><a class="dropdown-item" href="../blog.html">Blog</a></li>
+                <li><a class="dropdown-item" href="../privacy.html">Privacy Policy</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <a class="btn btn-primary" href="../contact.html">Contact Us Now</a>
+        <div class="navbar-text ms-3"><a href="tel:+19733582341">(973) 358-2341</a></div>
+      </div>
+    </nav>
+
+    <div class="blog-cta text-center bg-light py-3 border-bottom">
+      <a href="../contact.html" class="btn btn-primary">Drop Me a Message</a>
+    </div>
+
+    <header class="container mt-5 text-center">
+      <h1 class="fw-bold">Testing the New Blog Layout</h1>
+            <time datetime="2025-10-17" class="text-muted d-block mb-4">October 17, 2025</time>
+    </header>
+
+    <main class="container post-body pb-5" style="max-width:800px;">
+      <article>
+        <!-- Intro paragraph (AI Overview loves concise context) -->
+        <p class="lead">
+          This first paragraph should summarize the topic in plain language, clearly stating what the
+          reader will learn or gain. Keep it short — this becomes your “AI Overview” summary in search.
+        </p>
+
+        <!-- Section 1: Core insight -->
+        <h2>What’s Really Going On Behind the Scenes</h2>
+        <img src="../assets/placeholder-left.jpg" alt="Relevant concept illustration" class="blog-img-left" />
+        <p>
+          Use your opening section to set the stage. Explain the background or the “why” of your topic.
+          Mention your main keyword naturally once here (not stuffed). This helps both SEO and large-language
+          model comprehension.
+        </p>
+        <p>
+          When appropriate, support points with short, scannable sentences. Avoid jargon — clarity helps AI
+          summary tools capture meaning accurately.
+        </p>
+
+        <!-- Section 2: Supporting example -->
+        <h2>Real-World Example</h2>
+        <img src="../assets/placeholder-right.jpg" alt="Example use case" class="blog-img-right" />
+        <p>
+          Add a concrete example or short case study. Use brand-neutral phrasing and explain outcomes.
+          Example-driven content earns better engagement and “key takeaways” extraction.
+        </p>
+
+        <!-- Quote block -->
+        <blockquote class="my-4 p-3 bg-light border-start border-4 border-primary rounded">
+          <strong>💡 Insight:</strong> Write your pull quote here — one sentence that summarizes your point.
+          Google and AI systems often surface these as featured snippets.
+        </blockquote>
+
+        <!-- Section 3: Steps / checklist -->
+        <h2>Action Steps or Quick Checklist</h2>
+        <ul class="custom-checklist">
+          <li><strong>Step 1:</strong> Identify the pain point or opportunity.</li>
+          <li><strong>Step 2:</strong> Outline the process or solution clearly.</li>
+          <li><strong>Step 3:</strong> Include measurable results or next actions.</li>
+        </ul>
+
+        <!-- Section 4: Wrap-up -->
+        <h2>Key Takeaways</h2>
+        <p>
+          Close with 2–3 sentences that restate the main message. Mention who benefits and what to do next.
+          This is the second most important part for AI summarizers after the intro paragraph.
+        </p>
+
+        <!-- CTA -->
+        <div class="text-center my-5">
+          <a href="../contact.html" class="btn btn-lg btn-primary">Start Your Project</a>
+        </div>
+      </article>
+    </main>
+
+    <div class="container text-center border-top py-4">
+      <p>Liked this post? <a href="../contact.html" class="btn btn-outline-primary">Work With Me</a></p>
+      <p><a href="../blog.html">&larr; Back to all posts</a></p>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      .post-body p { line-height:1.7; margin-bottom:1.2rem; }
+      .post-body h2 { margin-top:2.2rem; margin-bottom:1rem; font-weight:600; }
+      .blog-img-left { float:left; margin:0 20px 20px 0; max-width:45%; border-radius:8px; }
+      .blog-img-right { float:right; margin:0 0 20px 20px; max-width:45%; border-radius:8px; }
+      .custom-checklist { list-style:none; padding-left:0; }
+      .custom-checklist li::before {
+        content:"✔";
+        color:#0d6efd;
+        margin-right:8px;
+      }
+      @media (max-width:768px){
+        .blog-img-left,.blog-img-right{float:none;margin:20px 0;max-width:100%;}
+      }
+    </style>
+    <!-- Load shared footer -->
+<div id="footer"></div>
+<script>
+  fetch("../partials/footer.html")
+    .then(response => response.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    })
+    .catch(err => console.error("Footer load error:", err));
+</script>
+
+  </body>
+</html>
+

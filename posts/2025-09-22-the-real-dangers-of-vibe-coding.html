@@ -246,5 +246,13 @@
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
       crossorigin="anonymous"
     ></script>
+    <!-- Shared Footer Include -->
+<script>
+  fetch("../partials/footer.html")
+    .then(res => res.text())
+    .then(html => document.body.insertAdjacentHTML("beforeend", html))
+    .catch(err => console.error("Footer include failed:", err));
+</script>
+
   </body>
 </html>

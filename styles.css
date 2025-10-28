@@ -359,4 +359,37 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 1rem 1rem 0 0;
   box-shadow: inset 0 0 20px rgba(0,0,0,0.05); /* softens edges */
 }
+/* --- Blog Page Modern Layout --- */
+#blog-posts {
+  background-color: #f9fafb;
+}
+
+.blog-card {
+  background: #fff;
+  border: 1px solid #e6e9ec;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.blog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+.blog-card h5 {
+  color: #0a2540;
+}
+
+.blog-card p {
+  color: #495057;
+}
+
+#postFilter {
+  border-radius: 50px;
+  padding: 0.4rem 1rem;
+  background: #fff;
+}
 
