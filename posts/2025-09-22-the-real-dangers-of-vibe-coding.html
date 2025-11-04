@@ -1,258 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Google Tag Manager -->
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-KNB6ZKLD");
-    </script>
-    <!-- End Google Tag Manager -->
+<head>
+  <script>
+    fetch("../partials/header.html")
+      .then(r=>r.text())
+      .then(h=>document.head.insertAdjacentHTML("beforeend",h))
+      .catch(e=>console.error("Header include failed:",e));
+  </script>
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Real Dangers of Vibe Coding (And Why You’ll Probably Need a Cleanup Specialist)</title>
+  <title>The Real Dangers of Vibe Coding (And Why You’ll Probably Need a Cleanup Specialist)</title>
+  <meta name="description" content="Meet Chris, the vibe coder. Discover the risks of AI-powered coding: bugs, security issues, API costs, and why cleanup specialists are now essential." />
+  <link rel="canonical" href="https://billvivinotechnology.com/posts/2025-09-22-the-real-dangers-of-vibe-coding.html" />
+  <meta property="og:image" content="https://billvivinotechnology.com/assets/logo.png" />
+  <meta name="robots" content="index, follow" />
+</head>
 
-    <meta name="description" content="Meet Chris, the vibe coder. Discover the risks of AI-powered coding—bugs, security issues, API costs—and why cleanup specialists are now essential." />
+<body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KNB6ZKLD"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="The Real Dangers of Vibe Coding (And Why You’ll Probably Need a Cleanup Specialist)" />
-    <meta property="og:description" content="Meet Chris, the vibe coder. Discover the risks of AI-powered coding—bugs, security issues, API costs—and why cleanup specialists are now essential." />
-    <meta property="og:url" content="https://billvivinotechnology.com/posts/2025-09-22-the-real-dangers-of-vibe-coding.html" />
-    <meta property="og:image" content="https://billvivinotechnology.com/assets/logo.png" />
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="The Real Dangers of Vibe Coding (And Why You’ll Probably Need a Cleanup Specialist)" />
-    <meta name="twitter:description" content="Meet Chris, the vibe coder. Discover the risks of AI-powered coding—bugs, security issues, API costs—and why cleanup specialists are now essential." />
-    <meta name="twitter:image" content="https://billvivinotechnology.com/assets/logo.png" />
-
-    <!-- Global styles + Bootstrap -->
-    <link rel="stylesheet" href="../styles.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-
-    <style>
-      /* Uniform card-image height across the site */
-      .card-img-top.img-fluid {
-        width: 100%;
-        height: 400px;
-        object-fit: cover;
-      }
-      /* Extra breathing room under testimonials */
-      .carousel .blockquote-footer {
-        margin-top: 0.5rem;
-      }
-    </style>
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "The Real Dangers of Vibe Coding (And Why You’ll Probably Need a Cleanup Specialist)",
-  "author": {
-    "@type": "Person",
-    "name": "Bill Vivino"
-  },
-  "datePublished": "2025-09-22",
-  "image": "https://billvivinotechnology.com/assets/logo.png",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Bill Vivino Technology, LLC",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://billvivinotechnology.com/assets/logo.png"
-    }
-  },
-  "mainEntityOfPage": "https://billvivinotechnology.com/posts/2025-09-22-the-real-dangers-of-vibe-coding.html"
-}
-</script>
-  </head>
-  <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-KNB6ZKLD"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
-    <!-- End GTM (noscript) -->
-
-    <!-- Site navigation (identical across posts) -->
-    <nav class="navbar navbar-expand-lg bg-light border-bottom shadow-sm">
-      <div class="container-fluid">
-        <a class="navbar-brand d-flex align-items-center" href="../index.html">
-          <img
-            src="/assets/logo.png"
-            alt="Logo"
-            style="height: 50px; width: auto; margin-right: 8px"
-          />
-          Bill Vivino Technology, LLC
-        </a>
-
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="../index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../portfolio.html">Portfolio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../pricing.html">Pricing</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../contact.html">Contact</a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                href="https://www.upwork.com/freelancers/billvivino?viewMode=1"
-                >Upwork Profile</a
-              >
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                More
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="/assets/Bill_Vivino_-_Detailed_Experience.pdf"
-                    >Resume</a
-                  >
-                </li>
-                <li><a class="dropdown-item" href="../blog.html">Blog</a></li>
-                <li>
-                  <a class="dropdown-item" href="../privacy.html"
-                    >Privacy Policy</a
-                  >
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-
-        <a class="btn btn-primary" href="../contact.html">Contact Us Now</a>
-        <div class="navbar-text">
-          <a href="tel:+19733582341">(973) 358-2341</a>
-        </div>
+  <!-- NAV -->
+  <nav class="navbar navbar-expand-lg bg-light border-bottom shadow-sm">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" href="../index.html">
+        <img src="/assets/logo.png" alt="Logo" style="height:50px;width:auto;margin-right:8px" />
+        Bill Vivino Technology, LLC
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="../portfolio.html">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="../pricing.html">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="../contact.html">Contact</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">More</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/assets/Bill_Vivino_-_Detailed_Experience.pdf">Resume</a></li>
+              <li><a class="dropdown-item" href="../blog.html">Blog</a></li>
+              <li><a class="dropdown-item" href="../privacy.html">Privacy Policy</a></li>
+            </ul>
+          </li>
+        </ul>
       </div>
-    </nav>
-
-    <!-- Main article container -->
-    <div class="container py-4">
-      <article>
-        <h1>The Real Dangers of Vibe Coding (And Why You’ll Probably Need a Cleanup Specialist)</h1>
-        <p class="text-muted">What happens when AI-powered “vibe coding” goes wrong—and how to clean it up.</p>
-
-        <h3>Meet Chris, the Vibe Coder</h3>
-        <p>Chris isn’t a “real” developer. He’s an IT guy, a web guy, someone with a ton of ideas but never the right coder to bring them to life. Deadlines slip, freelancers ghost, prototypes sit half-finished.</p>
-        <p>Then vibe coding tools arrive: Cursor, Lovable, Bolt, Replit, Windsurf, v0 by Vercel, GitHub Copilot, Base44, Tempo Labs, Aider. Suddenly, Chris can spin up apps himself. No waiting. No excuses. Just prompts and instant progress.</p>
-        <p>At first, it’s magical. In a week, Chris builds more than he did in years. He finally feels in control.</p>
-        <p>But then…the cracks show.</p>
-
-        <h3>The Reality Behind the Vibe</h3>
-        <h4>Bug Whack-a-Mole</h4>
-        <p>Fix one error, break two others. Functions overwrite each other without warning.</p>
-
-        <h4>Security Nightmares</h4>
-        <p>Alerts pop up, patches break databases, backups fail, and restoring files becomes a gamble.</p>
-
-        <h4>API Credit Drain</h4>
-        <p>Token usage explodes, surprise bills hit hard, and open endpoints invite strangers to burn through Chris’s APIs.</p>
-
-        <h4>Production Anxiety</h4>
-        <p>Will this thing ever actually launch? Or will it stay stuck in “sandbox” forever?</p>
-
-        <p>Chris doesn’t realize it, but his project is riddled with hidden flaws: unoptimized code, fragile dependencies, exposed secrets. The “magic” is only surface-deep.</p>
-
-        <h3>Enter the Cleanup Specialist</h3>
-        <p>This is where a Vibe Coding Cleanup Specialist comes in.</p>
-        <p>Think of it like hiring a contractor after you’ve built a DIY house. The walls might look fine, but the wiring is sparking and the plumbing leaks. You need someone to make it safe, solid, and livable.</p>
-        <p>A cleanup specialist takes what you’ve already built with AI tools and:</p>
-        <ul>
-          <li>Refactors the fragile code so it doesn’t collapse.</li>
-          <li>Locks down security holes before they become breaches.</li>
-          <li>Optimizes API usage so you don’t bleed credits or tokens.</li>
-          <li>Adds guardrails so your next “cool feature” doesn’t overwrite yesterday’s win.</li>
-          <li>Actually gets the thing into production — with backups, CI/CD, and monitoring.</li>
-        </ul>
-
-        <h3>The Bigger Picture</h3>
-        <p>Chris isn’t alone.</p>
-        <ul>
-          <li>Enterprises are finding their teams vibe-coding prototypes that compliance won’t let them deploy.</li>
-          <li>Startups burn investor dollars debugging AI-written messes.</li>
-          <li>Solo builders wake up to projects that won’t compile, scale, or stay online.</li>
-        </ul>
-        <p>That’s why Forbes, TechCrunch, Futurism, Gizmodo, and others are buzzing about the rise of vibe coding cleanup developers. It’s become the hottest new job in tech: real engineers cleaning up after AI.</p>
-
-        <h3>Why Bill Vivino Technology</h3>
-        <p>This is where Bill Vivino Technology steps in.<br />
-        Bill has spent years shipping production-grade systems for NASA, IFS-Filter, 1OR, and more. He knows mobile, web, cloud, AI — and he knows how to turn half-finished vibe-coded experiments into real, stable, secure applications.</p>
-        <p><strong>Why trust Bill?</strong></p>
-        <ul>
-          <li>4.0 GPA from Rutgers</li>
-          <li>Full-stack execution: iOS, Android, Web, APIs, Cloud</li>
-          <li>Security & compliance mindset (SSO, HIPAA, ISO 27001)</li>
-          <li>Delivery history with big names (NASA, IFS, 1OR, NDC)</li>
-          <li>5-star Upwork rating</li>
-          <li>And most importantly: he ships production systems, not just demos</li>
-        </ul>
-
-        <h3>Don’t Let Your Vibe Die</h3>
-        <p>If you’re riding the vibe coding wave, that’s awesome. Build, experiment, push your ideas forward. But don’t let those ideas stall out because of messy code, broken backups, or runaway costs.</p>
-        <p>That’s when you call in the specialist.</p>
-        <p>👉 <a href="#">See the Vibe Coding Cleanup Service →</a></p>
-
-        <p><a href="../blog.html">&larr; View all articles</a></p>
-      </article>
+      <a class="btn btn-primary" href="../contact.html">Contact Us Now</a>
+      <div class="navbar-text ms-3"><a href="tel:+19733582341">(973) 358-2341</a></div>
     </div>
+  </nav>
 
-    <!-- Bootstrap JS (Popper included) -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-      crossorigin="anonymous"
-    ></script>
-    <!-- Shared Footer Include -->
-<script>
-  fetch("../partials/footer.html")
-    .then(res => res.text())
-    .then(html => document.body.insertAdjacentHTML("beforeend", html))
-    .catch(err => console.error("Footer include failed:", err));
-</script>
+  <div class="blog-cta text-center bg-light py-3 border-bottom">
+    <a href="../contact.html" class="btn btn-primary">Drop Me a Message</a>
+  </div>
 
-  </body>
+  <header class="container mt-5 text-center">
+    <h1 class="fw-bold">The Real Dangers of Vibe Coding (And Why You’ll Probably Need a Cleanup Specialist)</h1>
+    <time datetime="2025-09-22" class="text-muted d-block mb-4">September 22, 2025</time>
+  </header>
+
+  <main class="container post-body pb-5" style="max-width:800px;">
+    <article>
+      <p class="lead">What happens when AI powered vibe coding goes wrong and how to clean it up. The short version: speed without guardrails creates fragile code, security holes, and runaway costs. The fix is a cleanup specialist who hardens what you already built so it can actually ship.</p>
+
+      <h2>Meet Chris, the vibe coder</h2>
+      <p>Chris is not a traditional developer. He is an IT and web guy with tons of ideas but no steady engineering bench. Freelancers ghost, prototypes stall, and launches slip.</p>
+      <p>Then AI tooling shows up: Cursor, Lovable, Bolt, Replit, Windsurf, v0 by Vercel, GitHub Copilot, Base44, Tempo Labs, Aider. Suddenly he can build solo with prompts and make real progress.</p>
+      <p>It feels magical at first. In a week Chris ships more than he did in years. Then the cracks appear.</p>
+
+      <h2>The reality behind the vibe</h2>
+      <h3>Bug whack a mole</h3>
+      <p>Fix one error and two more pop up. Functions overwrite each other with no warnings.</p>
+
+      <h3>Security nightmares</h3>
+      <p>Alerts start firing, patches break databases, backups fail, and restores are a gamble.</p>
+
+      <h3>API credit drain</h3>
+      <p>Token usage spikes, surprise bills hit, and open endpoints let strangers burn through credits.</p>
+
+      <h3>Production anxiety</h3>
+      <p>Will this ever launch to real users or stay stuck in the sandbox forever.</p>
+
+      <p>Under the surface the project hides unoptimized code, fragile dependencies, and exposed secrets. The magic is skin deep.</p>
+<img src="/assets/images/vibe-coding-thumb.jpg" 
+     alt="AI coding chaos illustration" 
+     class="blog-img-right">
+
+      <h2>Enter the cleanup specialist</h2>
+      <p>Think of it like hiring a contractor after a DIY home build. The walls look fine, but the wiring sparks and the plumbing leaks. You need someone to make it safe, solid, and livable.</p>
+      <ul class="custom-checklist">
+        <li>Refactor fragile code so it is stable.</li>
+        <li>Close security holes before they become breaches.</li>
+        <li>Optimize API usage so credits and tokens do not bleed out.</li>
+        <li>Add guardrails so new features do not overwrite old wins.</li>
+        <li>Ship with backups, CI/CD, and monitoring in place.</li>
+      </ul>
+
+      <h2>The bigger picture</h2>
+      <ul>
+        <li>Enterprises see vibe coded prototypes that compliance will not approve.</li>
+        <li>Startups burn investor dollars debugging AI written messes.</li>
+        <li>Solo builders wake up to projects that will not compile, scale, or stay online.</li>
+      </ul>
+      <p>That is why the market is buzzing about cleanup developers: real engineers who clean up after AI.</p>
+
+      <h2>Why Bill Vivino Technology</h2>
+      <p>Bill ships production grade systems for teams like NASA, IFS Filter, and 1OR. He knows mobile, web, cloud, and AI and turns half finished experiments into stable, secure applications.</p>
+      <ul>
+        <li>4.0 GPA from Rutgers</li>
+        <li>Full stack execution across iOS, Android, Web, APIs, and Cloud</li>
+        <li>Security and compliance mindset with SSO and common standards</li>
+        <li>Delivery history with known names</li>
+        <li>Five star Upwork rating</li>
+        <li>Most important: ships production systems, not demos</li>
+      </ul>
+
+      <div class="text-center my-4">
+        <a href="../contact.html" class="btn btn-lg btn-primary">Talk to a Cleanup Specialist</a>
+      </div>
+
+      <p><a href="../blog.html">&larr; Back to all posts</a></p>
+    </article>
+  </main>
+
+  <div class="container text-center border-top py-4">
+    <p>Liked this post <a href="../contact.html" class="btn btn-outline-primary">Work With Me</a></p>
+    <p><a href="../blog.html">&larr; Back to all posts</a></p>
+  </div>
+
+  <div id="footer"></div>
+  <script>
+    fetch("../partials/footer.html")
+      .then(r=>r.text())
+      .then(h=>{document.getElementById("footer").innerHTML=h})
+      .catch(e=>console.error("Footer load error:",e));
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+  <!-- JSON-LD generators copied from newlayout: BlogPosting + Organization + BreadcrumbList -->
+  <script>
+    (function(){
+      const title=document.querySelector("h1")?.textContent||document.title;
+      const desc=document.querySelector("meta[name='description']")?.content||"";
+      const dateISO=document.querySelector("time")?.getAttribute("datetime")||new Date().toISOString().slice(0,10);
+      const canon=document.querySelector("link[rel='canonical']")?.href||location.href;
+      const img=document.querySelector('meta[property="og:image"]')?.content||"https://billvivinotechnology.com/assets/logo.png";
+
+      const data=[
+        {
+          "@context":"https://schema.org","@type":"BlogPosting",
+          "headline":title,"description":desc,"datePublished":dateISO,"dateModified":dateISO,
+          "mainEntityOfPage":canon,"image":[img],
+          "author":{"@type":"Person","name":"Bill Vivino"},
+          "publisher":{"@type":"Organization","name":"Bill Vivino Technology, LLC",
+            "logo":{"@type":"ImageObject","url":"https://billvivinotechnology.com/assets/logo.png"}}
+        },
+        {
+          "@context":"https://schema.org","@type":"Organization",
+          "name":"Bill Vivino Technology, LLC","url":"https://billvivinotechnology.com/",
+          "logo":"https://billvivinotechnology.com/assets/logo.png"
+        },
+        {
+          "@context":"https://schema.org","@type":"BreadcrumbList",
+          "itemListElement":[
+            {"@type":"ListItem","position":1,"name":"Home","item":"https://billvivinotechnology.com/"},
+            {"@type":"ListItem","position":2,"name":"Blog","item":"https://billvivinotechnology.com/blog.html"},
+            {"@type":"ListItem","position":3,"name":title,"item":canon}
+          ]
+        }
+      ];
+      data.forEach(o=>{const s=document.createElement("script");s.type="application/ld+json";s.text=JSON.stringify(o);document.head.appendChild(s);});
+    })();
+  </script>
+
+  <style>
+    .post-body p{line-height:1.7;margin-bottom:1.2rem;}
+    .post-body h2{margin-top:2rem;margin-bottom:1rem;font-weight:600;}
+    .post-body h3{margin-top:1.5rem;margin-bottom:0.75rem;font-weight:600;}
+    .blog-img-right{float:right;margin:0 0 20px 20px;max-width:300px;border-radius:8px;}
+    .custom-checklist{list-style:none;padding-left:0;}
+    .custom-checklist li::before{content:"✔";margin-right:8px;}
+    details summary{cursor:pointer;font-weight:600;margin:0.5rem 0;}
+    @media(max-width:768px){.blog-img-right{float:none;margin:20px 0;max-width:100%;}}
+  </style>
+</body>
 </html>
