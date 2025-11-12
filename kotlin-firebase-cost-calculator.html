@@ -9,49 +9,8 @@
       name="description"
       content="Estimate your Android app build with Kotlin + Firebase. Use our 2025 calculator to price your MVP."
     />
-    <!-- Open Graph -->
-    <meta property="og:type" content="landing_page" />
-    <meta property="og:title" content="Kotlin + Firebase App Cost Calculator (2025)" />
-    <meta property="og:description" content="Estimate your Android app build with Kotlin + Firebase. Use our 2025 calculator to price your MVP." />
-    <meta property="og:url" content="https://billvivinotechnology.com/kotlin-firebase-cost-calculator.html" />
-    <meta property="og:image" content="https://billvivinotechnology.com/assets/logo.png" />
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Kotlin + Firebase App Cost Calculator (2025)" />
-    <meta name="twitter:description" content="Estimate your Android app build with Kotlin + Firebase. Use our 2025 calculator to price your MVP." />
-    <meta name="twitter:image" content="https://billvivinotechnology.com/assets/logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="canonical"
-      href="https://billvivinotechnology.com/kotlin-firebase-cost-calculator.html"
-    />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png" />
-    <link rel="manifest" href="/assets/icons/site.webmanifest" />
-    <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon" />
-    <!-- Google Tag Manager -->
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-KNB6ZKLD");
-    </script>
-    <!-- End Google Tag Manager -->
-    <!-- Bootstrap (same version used on main site) -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-      crossorigin="anonymous"
-    />
+      <!-- Load partials -->
+<script src="partials/partials-loader.js" defer></script>
     <style>
       body {
         background: #fdfdfd;
@@ -123,22 +82,9 @@
     </script>
   </head>
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript>
-      <iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-KNB6ZKLD"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe>
-    </noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
-    <nav class="navbar navbar-light bg-light border-bottom">
-      <div class="container">
-        <a class="navbar-brand" href="/">← Back to main site</a>
-      </div>
-    </nav>
+    <!-- Load partials -->
+<div id="body-start"></div>
+    <div id="navbar"></div>
 
     <header class="text-center mt-4">
       <h1 class="display-5 fw-bold">
@@ -255,11 +201,6 @@
       </section>
     </main>
 
-    <footer class="text-center text-muted mt-5 mb-3">
-      © <span id="year"></span> Bill Vivino Technology, LLC · Estimates exclude
-      taxes & third-party fees.
-    </footer>
-
     <script>
       const basePerScreen = 800; // USD
       const featureCosts = {
@@ -291,5 +232,8 @@
       calculate();
       document.getElementById("year").innerText = new Date().getFullYear();
     </script>
+    <!-- Load partials -->
+<div id="footer"></div>
+
   </body>
 </html>
