@@ -1,69 +1,195 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Load partials -->
-    <script src="/partials/partials-loader.js" defer></script>
+<head>
+  <!-- Google Tag Manager -->
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != "dataLayer" ? "&l=" + l : "";
+      j.async = true;
+      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", "GTM-KNB6ZKLD");
+  </script>
+  <!-- End Google Tag Manager -->
 
-    <meta charset="UTF-8" />
-    <title>Building NASA’s WeatherSats AR App | Bill Vivino Technology</title>
-    <meta
-      name="description"
-      content="A behind‑the‑scenes look at how Bill Vivino Technology stabilised and shipped NASA’s WeatherSats AR experience across iOS and Android."
-    />
-  </head>
+  <meta charset="UTF-8" />
+  <title>Building NASA’s WeatherSats AR App | Bill Vivino Technology</title>
+  <meta
+    name="description"
+    content="A behind‑the‑scenes look at how Bill Vivino Technology stabilised and shipped NASA’s WeatherSats AR experience across iOS and Android."
+  />
 
-  <body>
-    <!-- Load partials -->
-    <div id="body-start"></div>
-    <div id="navbar"></div>
-    <!-- Article -->
-    <div class="container py-4">
-      <h1 class="mb-1">Building NASA’s WeatherSats AR App</h1>
-      <small class="text-muted">April&nbsp;20,&nbsp;2025</small>
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Building NASA’s WeatherSats AR App" />
+  <meta property="og:description" content="Learn how Unity, AR Foundation, and expert debugging brought NASA’s WeatherSats augmented‑reality project to life." />
+  <meta property="og:url" content="https://billvivinotechnology.com/posts/2025-04-20-nasa-weathersats-ar.html" />
+  <meta property="og:image" content="https://billvivinotechnology.com/assets/logo.png" />
 
-      <h3 class="mt-4">Project Background</h3>
-      <p>
-        In 2022 I joined NASA’s <em>WeatherSats AR</em> project when the app was
-        roughly halfway complete. The goal: give visitors an immersive way to
-        explore Earth‑observing satellites through augmented reality.
-      </p>
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Building NASA’s WeatherSats AR App" />
+  <meta name="twitter:description" content="Take a deep dive into the Unity and AR Foundation techniques behind NASA’s AR satellite explorer." />
+  <meta name="twitter:image" content="https://billvivinotechnology.com/assets/logo.png" />
+  <meta
+    name="description"
+    content="How I stabilized, refined, and shipped NASA’s WeatherSats AR application using Unity and C#."
+  />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      <h3>My Role</h3>
-      <p>
-        My first responsibility was to ensure the satellite AR models rendered
-        and animated correctly across both iOS and Android. I also implemented
-        several UI updates—improving touch gestures, information panels, and
-        overall usability.
-      </p>
+  <link rel="stylesheet" href="../styles.css" />
 
-      <h3>Stabilising the Codebase</h3>
-      <p>
-        The build I inherited contained numerous bugs. I spent significant time
-        tracing issues— especially in the scene‑loader logic—and fixing defects
-        to make the app production‑ready. Memory leaks, incorrect prefab
-        references, and broken asset‑bundle links were all resolved.
-      </p>
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+    crossorigin="anonymous"
+  />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Building NASA’s WeatherSats AR App",
+    "datePublished": "2025-04-20",
+    "author": {
+      "@type": "Person",
+      "name": "Bill Vivino"
+    },
+    "image": "https://billvivinotechnology.com/assets/logo.png",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Bill Vivino Technology, LLC",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://billvivinotechnology.com/assets/logo.png"
+      }
+    },
+    "mainEntityOfPage": "https://billvivinotechnology.com/posts/2025-04-20-nasa-weathersats-ar.html"
+  }
+  </script>
+</head>
 
-      <h3>Technology Stack</h3>
-      <p>
-        <strong>Unity 2021 LTS</strong> with C# scripts drives the entire
-        experience. Unity’s cross‑platform workflow let us target iOS and
-        Android from the same project, and the <em>AR Foundation</em> package
-        provided a single API layer over ARKit and ARCore.
-      </p>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript
+    ><iframe
+      src="https://www.googletagmanager.com/ns.html?id=GTM-KNB6ZKLD"
+      height="0"
+      width="0"
+      style="display:none;visibility:hidden"
+    ></iframe
+  ></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
-      <h3>What Came Next</h3>
-      <p>
-        Since that engagement I’ve taken on additional Unity contracts, working
-        on AR experiences and video‑game projects that required custom algorithm
-        work. I enjoy creating cross‑platform apps in Unity and look forward to
-        future challenges.
-      </p>
-
-      <p class="mt-4"><a href="../blog.html">&larr; Back to all posts</a></p>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-light border-bottom shadow-sm">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" href="../index.html">
+        <img
+          src="/assets/logo.png"
+          alt="App Icon"
+          style="height: 50px; width: auto; margin-right: 8px"
+        />
+        Bill Vivino Technology, LLC
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="../portfolio.html">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="../pricing.html">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="../contact.html">Contact</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.upwork.com/freelancers/billvivino?viewMode=1">Upwork Profile</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              More
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/assets/Bill_Vivino_-_Detailed_Experience.pdf">Resume</a></li>
+              <li><a class="dropdown-item" href="../blog.html">Blog</a></li>
+              <li><a class="dropdown-item" href="../privacy.html">Privacy Policy</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <a class="btn btn-primary" href="../contact.html">Contact Us Now</a>
+      <div class="navbar-text"><a href="tel:+19733582341">(973)358‑2341</a></div>
     </div>
+  </nav>
 
-    <!-- Load partials -->
-    <div id="footer"></div>
-  </body>
+  <!-- Article -->
+  <div class="container py-4">
+    <h1 class="mb-1">Building NASA’s WeatherSats AR App</h1>
+    <small class="text-muted">April&nbsp;20,&nbsp;2025</small>
+
+    <h3 class="mt-4">Project Background</h3>
+    <p>
+      In 2022 I joined NASA’s <em>WeatherSats AR</em> project when the app was roughly halfway complete.
+      The goal: give visitors an immersive way to explore Earth‑observing satellites through
+      augmented reality.
+    </p>
+
+    <h3>My Role</h3>
+    <p>
+      My first responsibility was to ensure the satellite AR models rendered and animated correctly
+      across both iOS and Android. I also implemented several UI updates—improving touch gestures,
+      information panels, and overall usability.
+    </p>
+
+    <h3>Stabilising the Codebase</h3>
+    <p>
+      The build I inherited contained numerous bugs. I spent significant time tracing issues—
+      especially in the scene‑loader logic—and fixing defects to make the app production‑ready.
+      Memory leaks, incorrect prefab references, and broken asset‑bundle links were all resolved.
+    </p>
+
+    <h3>Technology Stack</h3>
+    <p>
+      <strong>Unity 2021 LTS</strong> with C# scripts drives the entire experience. Unity’s
+      cross‑platform workflow let us target iOS and Android from the same project, and the
+      <em>AR Foundation</em> package provided a single API layer over ARKit and ARCore.
+    </p>
+
+    <h3>What Came Next</h3>
+    <p>
+      Since that engagement I’ve taken on additional Unity contracts, working on AR experiences and
+      video‑game projects that required custom algorithm work. I enjoy creating cross‑platform apps
+      in Unity and look forward to future challenges.
+    </p>
+
+    <p class="mt-4"><a href="../blog.html">&larr; Back to all posts</a></p>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"
+  ></script>
+</body>
 </html>

@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Load partials -->
-    <script src="/partials/partials-loader.js" defer></script>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-KNB6ZKLD");
+    </script>
+    <!-- End Google Tag Manager -->
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Social Media App Case Study iOS MVP in 12 Weeks</title>
-    <link
-      rel="canonical"
-      href="https://billvivinotechnology.com/posts/2025-06-30-social-media-app-case-study.html"
-    />
-    <meta
-      property="og:title"
-      content="Social Media App Case Study iOS MVP in 12 Weeks"
-    />
+    <link rel="canonical" href="https://billvivinotechnology.com/posts/2025-06-30-social-media-app-case-study.html" />
+    <meta property="og:title" content="Social Media App Case Study iOS MVP in 12 Weeks" />
     <meta property="og:type" content="article" />
-    <meta
-      property="og:description"
-      content="We built an iOS app for a niche creator network. Heres how we did it from scratch to App Store."
-    />
-    <meta
-      property="og:url"
-      content="https://billvivinotechnology.com/posts/2025-06-30-social-media-app-case-study.html"
-    />
-    <meta
-      property="og:image"
-      content="https://billvivinotechnology.com/assets/logo.png"
+    <meta property="og:description" content="We built an iOS app for a niche creator network. Heres how we did it from scratch to App Store." />
+    <meta property="og:url" content="https://billvivinotechnology.com/posts/2025-06-30-social-media-app-case-study.html" />
+    <meta property="og:image" content="https://billvivinotechnology.com/assets/logo.png" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Social Media App Case Study iOS MVP in 12 Weeks" />
+    <meta name="twitter:description" content="We built an iOS app for a niche creator network. Heres how we did it from scratch to App Store." />
+    <meta name="twitter:image" content="https://billvivinotechnology.com/assets/logo.png" />
+    <meta name="description" content="We built an iOS app for a niche creator network. Heres how we did it from scratch to App Store." />
+
+    <!-- Global styles + Bootstrap -->
+    <link rel="stylesheet" href="../styles.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
     />
 
     <style>
@@ -41,91 +52,158 @@
         margin-top: 0.5rem;
       }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Case Study: Firebase + SwiftUI Social App for Creators",
+      "datePublished": "2025-06-30",
+      "author": {
+        "@type": "Person",
+        "name": "Bill Vivino"
+      },
+      "image": "https://billvivinotechnology.com/assets/logo.png",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Bill Vivino Technology, LLC",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://billvivinotechnology.com/assets/logo.png"
+        }
+      },
+      "mainEntityOfPage": "https://billvivinotechnology.com/posts/2025-06-30-social-media-app-case-study.html"
+    }
+    </script>
   </head>
   <body>
-    <!-- Load partials -->
-    <div id="body-start"></div>
-    <div id="navbar"></div>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-KNB6ZKLD"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End GTM (noscript) -->
+
+    <!-- Site navigation (identical across posts) -->
+    <nav class="navbar navbar-expand-lg bg-light border-bottom shadow-sm">
+      <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center" href="../index.html">
+          <img
+            src="/assets/logo.png"
+            alt="Logo"
+            style="height: 50px; width: auto; margin-right: 8px"
+          />
+          Bill Vivino Technology, LLC
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../portfolio.html">Portfolio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../pricing.html">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../contact.html">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="https://www.upwork.com/freelancers/billvivino?viewMode=1"
+                >Upwork Profile</a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                More
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="/assets/Bill_Vivino_-_Detailed_Experience.pdf"
+                    >Resume</a
+                  >
+                </li>
+                <li><a class="dropdown-item" href="../blog.html">Blog</a></li>
+                <li>
+                  <a class="dropdown-item" href="../privacy.html"
+                    >Privacy Policy</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <a class="btn btn-primary" href="../contact.html">Contact Us Now</a>
+        <div class="navbar-text">
+          <a href="tel:+19733582341">(973) 358-2341</a>
+        </div>
+      </div>
+    </nav>
 
     <!-- Main article container -->
     <div class="container py-4">
-      <h1 class="mb-1">
-        Case Study: Scalable iOS Social Platform with Firebase + SwiftUI
-      </h1>
-      <small class="text-muted">June 30, 2025</small>
+<h1 class="mb-1">Case Study: Scalable iOS Social Platform with Firebase + SwiftUI</h1>
+<small class="text-muted">June 30, 2025</small>
 
-      <h2>Overview</h2>
-      <p>
-        A founder approached us to build a scalable, media-rich iOS social app
-        for creators to share short-form content (videos, images, GIFs) and
-        connect in curated interest groups. Our job was to stabilize their early
-        codebase, add robust media features, and deploy a scalable Firebase
-        backend with real-time functionality.
-      </p>
+<h2>Overview</h2>
+<p>A founder approached us to build a scalable, media-rich iOS social app for creators to share short-form content (videos, images, GIFs) and connect in curated interest groups. Our job was to stabilize their early codebase, add robust media features, and deploy a scalable Firebase backend with real-time functionality.</p>
 
-      <h2>What We Delivered</h2>
-      <ul>
-        <li>
-          <strong>Dynamic Feed System:</strong> Engineered real-time curated
-          feeds using Firebase Cloud Functions and Firestore queries that adapt
-          to user preferences and trending content.
-        </li>
-        <li>
-          <strong>Video + GIF Support:</strong> Enabled animated video clips
-          with caching via AVKit, Nuke, and a custom CachingPlayerItem class.
-        </li>
-        <li>
-          <strong>Notifications:</strong> Integrated Firebase Functions to push
-          real-time updates for content drops and interactions.
-        </li>
-        <li>
-          <strong>Toolkit Architecture:</strong> Built modular SwiftUI
-          components for profile, post creation, and feed rendering.
-        </li>
-        <li>
-          <strong>Backend Integration:</strong> Node.js Functions handled
-          batching, post-processing, and analytics.
-        </li>
-        <li>
-          <strong>Analytics Dashboard:</strong> Built a React dashboard to
-          monitor usage by day, week, and month with BigQuery data.
-        </li>
-      </ul>
+<h2>What We Delivered</h2>
+<ul>
+  <li><strong>Dynamic Feed System:</strong> Engineered real-time curated feeds using Firebase Cloud Functions and Firestore queries that adapt to user preferences and trending content.</li>
+  <li><strong>Video + GIF Support:</strong> Enabled animated video clips with caching via AVKit, Nuke, and a custom CachingPlayerItem class.</li>
+  <li><strong>Notifications:</strong> Integrated Firebase Functions to push real-time updates for content drops and interactions.</li>
+  <li><strong>Toolkit Architecture:</strong> Built modular SwiftUI components for profile, post creation, and feed rendering.</li>
+  <li><strong>Backend Integration:</strong> Node.js Functions handled batching, post-processing, and analytics.</li>
+  <li><strong>Analytics Dashboard:</strong> Built a React dashboard to monitor usage by day, week, and month with BigQuery data.</li>
+</ul>
 
-      <h2>Technical Highlights</h2>
-      <ul>
-        <li>
-          <strong>Tech Stack:</strong> SwiftUI, Firebase (Auth, Firestore,
-          Functions), AVKit, Nuke, Node.js, React
-        </li>
-        <li>
-          <strong>ViewModel Rework:</strong> Refactored SwiftUI state logic to
-          remove lag and inconsistencies.
-        </li>
-        <li>
-          <strong>Error Logging:</strong> Added structured logging to support
-          easier debugging and crash reporting.
-        </li>
-        <li>
-          <strong>Performance Optimizations:</strong> Optimized reads/writes
-          with Firestore batching for lower costs.
-        </li>
-      </ul>
+<h2>Technical Highlights</h2>
+<ul>
+  <li><strong>Tech Stack:</strong> SwiftUI, Firebase (Auth, Firestore, Functions), AVKit, Nuke, Node.js, React</li>
+  <li><strong>ViewModel Rework:</strong> Refactored SwiftUI state logic to remove lag and inconsistencies.</li>
+  <li><strong>Error Logging:</strong> Added structured logging to support easier debugging and crash reporting.</li>
+  <li><strong>Performance Optimizations:</strong> Optimized reads/writes with Firestore batching for lower costs.</li>
+</ul>
 
-      <h2>Results</h2>
-      <ul>
-        <li>Launched to 3000+ early access users in the creator space</li>
-        <li>Stabilized media upload and playback for iOS</li>
-        <li>Reduced backend costs with efficient use of Firebase Functions</li>
-        <li>Improved engagement via real-time notifications and clean UI</li>
-      </ul>
+<h2>Results</h2>
+<ul>
+  <li>Launched to 3000+ early access users in the creator space</li>
+  <li>Stabilized media upload and playback for iOS</li>
+  <li>Reduced backend costs with efficient use of Firebase Functions</li>
+  <li>Improved engagement via real-time notifications and clean UI</li>
+</ul>
 
-      <h2>Looking to Build Something Similar?</h2>
-      <p>
-        If you're working on a media-driven MVP and want real-time performance,
-        clean UI, and a team that understands Firebase inside and out,
-        <a href="../contact.html">contact us</a>.
-      </p>
+<h2>Looking to Build Something Similar?</h2>
+<p>If you're working on a media-driven MVP and want real-time performance, clean UI, and a team that understands Firebase inside and out, <a href="../contact.html">contact us</a>.</p>
 
       <p class="mt-4">
         Have questions? <a href="../contact.html">Drop me a message</a>, and
@@ -135,7 +213,12 @@
         <a href="../blog.html">&larr; Back to all posts</a>
       </p>
     </div>
-    <!-- Load partials -->
-    <div id="footer"></div>
+
+    <!-- Bootstrap JS (Popper included) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
