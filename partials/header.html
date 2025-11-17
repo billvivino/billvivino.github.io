@@ -26,62 +26,64 @@
   rel="stylesheet"
 />
 <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+  rel="stylesheet"
+/>
 
 <!-- Dynamic Schema + Default Social Tags -->
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener("DOMContentLoaded", () => {
     const title =
       document.title ||
-      document.querySelector('title')?.innerText ||
-      'Bill Vivino Technology';
+      document.querySelector("title")?.innerText ||
+      "Bill Vivino Technology";
     const description =
       document
         .querySelector("meta[name='description']")
-        ?.getAttribute('content') || 'Bill Vivino Technology Blog';
+        ?.getAttribute("content") || "Bill Vivino Technology Blog";
     const url = window.location.href;
     const image =
       document
         .querySelector("meta[property='og:image']")
-        ?.getAttribute('content') ||
-      'https://billvivinotechnology.com/assets/logo.png';
+        ?.getAttribute("content") ||
+      "https://billvivinotechnology.com/assets/logo.png";
     const date =
-      document.querySelector('time')?.getAttribute('datetime') ||
+      document.querySelector("time")?.getAttribute("datetime") ||
       new Date().toISOString();
 
     // Ensure a canonical link exists
     if (!document.querySelector("link[rel='canonical']")) {
-      const link = document.createElement('link');
-      link.setAttribute('rel', 'canonical');
-      link.setAttribute('href', url.split('#')[0]);
+      const link = document.createElement("link");
+      link.setAttribute("rel", "canonical");
+      link.setAttribute("href", url.split("#")[0]);
       document.head.appendChild(link);
     }
 
     // Helper to ensure meta tags (avoids duplicates)
     const ensureMeta = (key, name, content) => {
-      const selector = key === 'property' ? `meta[property='${name}']` : `meta[name='${name}']`;
+      const selector =
+        key === "property"
+          ? `meta[property='${name}']`
+          : `meta[name='${name}']`;
       if (!document.querySelector(selector)) {
-        const m = document.createElement('meta');
-        if (key === 'property') m.setAttribute('property', name);
-        else m.setAttribute('name', name);
-        m.setAttribute('content', content);
+        const m = document.createElement("meta");
+        if (key === "property") m.setAttribute("property", name);
+        else m.setAttribute("name", name);
+        m.setAttribute("content", content);
         document.head.appendChild(m);
       }
     };
 
     // Open Graph + Twitter cards
-    ensureMeta('property', 'og:type', 'article');
-    ensureMeta('property', 'og:title', title);
-    ensureMeta('property', 'og:description', description);
-    ensureMeta('property', 'og:image', image);
-    ensureMeta('property', 'og:url', url);
-    ensureMeta('name', 'twitter:card', 'summary_large_image');
-    ensureMeta('name', 'twitter:title', title);
-    ensureMeta('name', 'twitter:description', description);
-    ensureMeta('name', 'twitter:image', image);
+    ensureMeta("property", "og:type", "article");
+    ensureMeta("property", "og:title", title);
+    ensureMeta("property", "og:description", description);
+    ensureMeta("property", "og:image", image);
+    ensureMeta("property", "og:url", url);
+    ensureMeta("name", "twitter:card", "summary_large_image");
+    ensureMeta("name", "twitter:title", title);
+    ensureMeta("name", "twitter:description", description);
+    ensureMeta("name", "twitter:image", image);
 
     // JSON-LD Schema.org
     const schema = {
@@ -95,7 +97,7 @@
       url: url,
       mainEntityOfPage: {
         "@type": "WebPage",
-        "@id": url
+        "@id": url,
       },
       author: { "@type": "Person", name: "Bill Vivino" },
       publisher: {
@@ -103,13 +105,13 @@
         name: "Bill Vivino Technology, LLC",
         logo: {
           "@type": "ImageObject",
-          url: "https://billvivinotechnology.com/assets/logo.png"
-        }
-      }
+          url: "https://billvivinotechnology.com/assets/logo.png",
+        },
+      },
     };
 
-    const ld = document.createElement('script');
-    ld.type = 'application/ld+json';
+    const ld = document.createElement("script");
+    ld.type = "application/ld+json";
     ld.text = JSON.stringify(schema);
     document.head.appendChild(ld);
   });
@@ -119,4 +121,3 @@
   src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
   defer
 ></script>
-

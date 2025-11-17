@@ -10,43 +10,41 @@ document.addEventListener("DOMContentLoaded", async () => {
       const html = await res.text();
 
       if (injectHead) {
-        // Temporarily insert into a dummy div so we can handle <script> tags properly
+        // Temporary container to parse HTML
         const temp = document.createElement("div");
         temp.innerHTML = html;
 
-        // Reinsert any <script> tags so they actually execute
+        // Reinsert script tags so they execute
         temp.querySelectorAll("script").forEach((oldScript) => {
           const newScript = document.createElement("script");
-          // Copy attributes (src, type, etc.)
           for (const attr of oldScript.attributes) {
             newScript.setAttribute(attr.name, attr.value);
           }
-          if (oldScript.textContent) newScript.textContent = oldScript.textContent;
+          if (oldScript.textContent)
+            newScript.textContent = oldScript.textContent;
           document.head.appendChild(newScript);
         });
 
-        // Insert non-script head elements normally
+        // Insert meta, link, style, title normally
         temp.querySelectorAll("meta, link, style, title").forEach((el) =>
           document.head.appendChild(el)
         );
-     } else {
-  const el = document.getElementById(id);
-  if (el) {
-    el.innerHTML = html;
+      } else {
+        const el = document.getElementById(id);
+        if (el) {
+          el.innerHTML = html;
 
-    // ✅ Execute any <script> tags inside this partial
-    el.querySelectorAll("script").forEach((oldScript) => {
-      const newScript = document.createElement("script");
-      // Copy attributes like src, type, etc.
-      for (const attr of oldScript.attributes) {
-        newScript.setAttribute(attr.name, attr.value);
+          // Execute <script> tags inside the partial
+          el.querySelectorAll("script").forEach((oldScript) => {
+            const newScript = document.createElement("script");
+            for (const attr of oldScript.attributes) {
+              newScript.setAttribute(attr.name, attr.value);
+            }
+            newScript.textContent = oldScript.textContent;
+            document.body.appendChild(newScript);
+          });
+        }
       }
-      newScript.textContent = oldScript.textContent;
-      document.body.appendChild(newScript);
-    });
-  }
-}
-
 
       log(`Loaded: ${path}`);
     } catch (e) {
@@ -54,17 +52,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-// Figure out how many folders deep we are and build the correct base path
-const depth = Math.max(0, window.location.pathname.split("/").filter(Boolean).length - 1);
-const basePath = "../".repeat(depth) + "partials/";
+  // SAFE depth calculation — never negative
+  const segments = window.location.pathname.split("/").filter(Boolean);
+  const depth = Math.max(0, segments.length - 1);
+  const basePath = "../".repeat(depth) + "partials/";
 
-await loadPartial("head-partial", `${basePath}header.html`, true);
-await loadPartial("body-start", `${basePath}body-start.html`);
-await loadPartial("navbar", `${basePath}navbar.html`);
-await loadPartial("footer", `${basePath}footer.html`);
-
- 
-
+  // Load the partials
+  await loadPartial("head-partial", `${basePath}header.html`, true);
+  await loadPartial("body-start", `${basePath}body-start.html`);
+  await loadPartial("navbar", `${basePath}navbar.html`);
+  await loadPartial("footer", `${basePath}footer.html`);
 
   // 🕐 Wait for Bootstrap to exist before initializing dropdowns
   const wait = setInterval(() => {
