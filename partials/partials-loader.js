@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
 // Figure out how many folders deep we are and build the correct base path
-const depth = window.location.pathname.split("/").filter(Boolean).length - 1;
+const depth = Math.max(0, window.location.pathname.split("/").filter(Boolean).length - 1);
 const basePath = "../".repeat(depth) + "partials/";
 
 await loadPartial("head-partial", `${basePath}header.html`, true);
