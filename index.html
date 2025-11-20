@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Load partials -->
+    <script src="/partials/partials-loader.js" defer></script>
 
     <!-- Google Tag Manager -->
     <script>
@@ -262,7 +260,8 @@
             </div>
           </div>
 
-          <!-- Row 2 -->
+          
+ <!-- Row 2 -->
           <div class="col-md-6 col-lg-4">
             <div class="mini-card">
               <img
@@ -369,76 +368,7 @@
         <a href="contact.html" class="btn btn-primary m-1">Contact Us</a>
       </div>
     </section>
-    <!-- ======= Client Testimonials ======= -->
-    <section class="testimonials py-5 bg-dark text-light">
-      <div class="container">
-        <div class="text-center mb-4">
-          <img
-            src="/assets/upwork-logo-white.png"
-            alt="Upwork logo"
-            style="height: 40px; margin-bottom: 10px"
-          />
-          <h2 class="fw-bold mb-2">What Clients Say</h2>
-          <p class="text-muted mb-0">
-            Verified Upwork reviews from real projects
-          </p>
-        </div>
-
-        <div class="row g-4 justify-content-center">
-          <div class="col-md-4">
-            <div
-              class="review-card p-4 h-100 text-center border-0 rounded-4 shadow-sm"
-            >
-              <p class="mb-3">“Amazing in communication.”</p>
-              <div class="stars mb-2">⭐⭐⭐⭐⭐</div>
-              <p class="small text-muted">
-                Client · iOS App (Swift & Firebase)
-              </p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div
-              class="review-card p-4 h-100 text-center border-0 rounded-4 shadow-sm"
-            >
-              <p class="mb-3">“Went above and beyond.”</p>
-              <div class="stars mb-2">⭐⭐⭐⭐⭐</div>
-              <p class="small text-muted">
-                Client · Firebase Integration Revamp
-              </p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div
-              class="review-card p-4 h-100 text-center border-0 rounded-4 shadow-sm"
-            >
-              <p class="mb-3">
-                “It was great working with Bill! Very pleasant and
-                knowledgeable.”
-              </p>
-              <div class="stars mb-2">⭐⭐⭐⭐⭐</div>
-              <p class="small text-muted">Client · Language Learning App</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="text-center mt-4">
-          <a
-            href="https://www.upwork.com/freelancers/billvivino"
-            target="_blank"
-            rel="noopener"
-            class="btn btn-success"
-          >
-            View All 30+ Verified Reviews
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-      crossorigin="anonymous"
-    ></script>
+  
 
     <!-- Modal Structure -->
     <div
@@ -509,7 +439,7 @@
         }
       });
     </script>
-    <!-- Load shared footer -->
+     <!-- Load partials -->
     <div id="footer"></div>
     <script>
       fetch("partials/footer.html")
