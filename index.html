@@ -159,23 +159,24 @@
             </div>
           </div>
 
-          <div class="col-md-6 col-lg-4">
+          <!-- Next Project 
+           <div class="col-md-6 col-lg-4">
             <div class="mini-card">
               <img
-                src="/assets/placeholder-project.png"
-                alt="Coming Soon"
+                src=""
+                alt=""
                 class="card-img-top"
               />
               <div class="mini-card-body">
-                <h5>Next Project</h5>
+                <h5></h5>
                 <p>
-                  A new AI-powered platform currently in development. Stay
-                  tuned.
+                  
                 </p>
-                <a href="#" class="btn-outline disabled">Coming soon</a>
+                <a href="#" class="btn-outline disabled"></a>
               </div>
             </div>
           </div>
+-->
         </div>
       </div>
     </section>
@@ -220,77 +221,6 @@
         <a href="contact.html" class="btn btn-primary m-1">Contact Us</a>
       </div>
     </section>
-  
-
-    <!-- Modal Structure -->
-    <div
-      class="modal fade"
-      id="appModal"
-      tabindex="-1"
-      aria-labelledby="appModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="appModalLabel">Leaving to App Store</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body text-center">
-            <p id="appModalMessage">You're about to visit an external link.</p>
-            <button id="proceedToAppStore" class="btn btn-primary">
-              Continue
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal Logic -->
-    <script>
-      let appStoreUrl = "";
-      function showAppModal(url) {
-        appStoreUrl = url;
-
-        // ✅ Push event for GTM
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          event: "app_link_click",
-          link_type: url.includes("apps.apple.com")
-            ? "iOS"
-            : url.includes("play.google.com")
-            ? "Android"
-            : "Web",
-          app_url: url,
-        });
-
-        const messageEl = document.getElementById("appModalMessage");
-        if (url.includes("apps.apple.com")) {
-          messageEl.innerText = "You're about to open the App Store.";
-        } else if (url.includes("play.google.com")) {
-          messageEl.innerText = "You're about to open the Play Store.";
-        } else {
-          messageEl.innerText = "You're about to open an external website.";
-        }
-
-        var modal = new bootstrap.Modal(document.getElementById("appModal"));
-        modal.show();
-      }
-
-      document.addEventListener("DOMContentLoaded", function () {
-        const proceedBtn = document.getElementById("proceedToAppStore");
-        if (proceedBtn) {
-          proceedBtn.addEventListener("click", function () {
-            window.location.href = appStoreUrl;
-          });
-        }
-      });
-    </script>
      <!-- Load partials -->
     <div id="footer"></div>
   </body>
