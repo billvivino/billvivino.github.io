@@ -1,216 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- Google Tag Manager -->
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-KNB6ZKLD");
-    </script>
-    <!-- End Google Tag Manager -->
+    <!-- Load partials -->
+    <script src="partials/partials-loader.js" defer></script>
+
     <title>App Development Portfolio Real Client Projects</title>
     <meta
       name="description"
       content="Explore past mobile and web apps built by Bill Vivino Technology. Real MVPs, real results for startups and teams."
     />
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="App Development Portfolio Real Client Projects" />
-    <meta property="og:description" content="Explore past mobile and web apps built by Bill Vivino Technology. Real MVPs, real results for startups and teams." />
-    <meta property="og:url" content="https://billvivinotechnology.com/portfolio.html" />
-    <meta property="og:image" content="https://billvivinotechnology.com/assets/logo.png" />
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="App Development Portfolio Real Client Projects" />
-    <meta name="twitter:description" content="Explore past mobile and web apps built by Bill Vivino Technology. Real MVPs, real results for startups and teams." />
-    <meta name="twitter:image" content="https://billvivinotechnology.com/assets/logo.png" />
-    <link rel="stylesheet" href="styles.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-      crossorigin="anonymous"
-    />
-    <style>
-      /* Keep all card images a uniform height while remaining responsive */
-      .card-img-top.img-fluid {
-        width: 100%;
-        height: 400px;
-        object-fit: cover; /* fills the area without distortion */
-      }
-
-      /* Add breathing room between testimonial text and footer */
-      .carousel .blockquote-footer {
-        margin-top: 0.5rem; /* adjust spacing as needed */
-      }
-    </style>
-    <link
-      rel="canonical"
-      href="https://billvivinotechnology.com/portfolio.html"
-    />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png" />
-    <link rel="manifest" href="/assets/icons/site.webmanifest" />
-    <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon" />
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Bill Vivino Technology, LLC",
-      "url": "https://billvivinotechnology.com/",
-      "logo": "https://billvivinotechnology.com/assets/logo.png",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+1-973-358-2341",
-        "contactType": "customer service",
-        "areaServed": "US",
-        "availableLanguage": ["English"]
-      },
-      "sameAs": [
-        "https://www.linkedin.com/in/billvivino/",
-        "https://www.upwork.com/freelancers/billvivino"
-      ]
-    }
-    </script>
   </head>
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-KNB6ZKLD"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
-    <!-- Site navigation -->
-    <nav class="navbar navbar-expand-lg bg-light border-bottom shadow-sm">
-      <div class="container-fluid">
-        <a class="navbar-brand d-flex align-items-center" href="#">
-          <img
-            src="/assets/logo.png"
-            alt="App Icon"
-            style="height: 50px; width: auto; margin-right: 8px"
-          />
-          Bill Vivino Technology, LLC
-        </a>
-
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html"
-                >Home</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="services.html">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="portfolio.html">Portfolio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="pricing.html">Pricing</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                href="https://www.upwork.com/freelancers/billvivino?viewMode=1"
-                >Upwork Profile</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                href="https://www.fiverr.com/billvivino?public_mode=true"
-                target="_blank"
-                rel="noopener"
-              >
-                Fiverr Profile
-              </a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                href="https://www.linkedin.com/in/billvivino/"
-                target="_blank"
-                rel="noopener"
-                >LinkedIn</a
-              >
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                More
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="/assets/Bill_Vivino_-_Detailed_Experience.pdf"
-                    >Resume</a
-                  >
-                </li>
-                <li><a class="dropdown-item" href="blog.html">Blog</a></li>
-                <li>
-                  <a class="dropdown-item" href="privacy.html"
-                    >Privacy Policy</a
-                  >
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="/swiftui-firebase-cost-calculator.html"
-                    >SwiftUI + Firebase Cost Calculator</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="kotlin-firebase-cost-calculator.html">
-                    Kotlin + Firebase Cost Calculator
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-
-        <a class="btn btn-primary" href="contact.html">Contact Us Now</a>
-        <div class="navbar-text">
-          <a href="tel:+19733582341">(973) 358-2341</a>
-        </div>
-      </div>
-    </nav>
+    <div id="body-start"></div>
+    <div id="navbar"></div>
 
     <div class="container mt-0">
       <div class="row">
@@ -218,10 +20,14 @@
           <section class="text-start text-lg-center my-4">
             <h1>Software Development Portfolio</h1>
             <p>
-              Browse web, mobile, and AR projects delivered by Bill Vivino Technology for innovative B2B clients across North Jersey, the NYC metro area, and throughout the United States.
+              Browse web, mobile, and AR projects delivered by Bill Vivino
+              Technology for innovative B2B clients across North Jersey, the NYC
+              metro area, and throughout the United States.
             </p>
           </section>
-          <h2 class="text-start text-lg-center mt-5">Featured Software Projects</h2>
+          <h2 class="text-start text-lg-center mt-5">
+            Featured Software Projects
+          </h2>
           <div
             class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center"
           >
@@ -426,177 +232,16 @@
               </div>
             </div>
           </div>
-          <h2 class="text-start text-lg-center">Ready to Start Your Project?</h2>
-          <a href="contact.html" class="btn btn-primary mb-4"> Contact Us </a>
-          <!-- ======= Client Testimonials ======= -->
-          <section class="py-4" style="background-color: #f8f9fa">
-            <div class="container">
-              <h2 class="text-center mb-4">Testimonials</h2>
-
-              <div
-                id="Testimonials"
-                class="carousel slide"
-                data-bs-ride="carousel"
-                aria-label="Testimonials carousel"
-              >
-                <div class="carousel-inner">
-                  <!-- REVIEW 1 -->
-                  <div class="carousel-item active">
-                    <blockquote class="blockquote text-center">
-                      <p class="mb-1">“Amazing in communication.” ⭐⭐⭐⭐⭐</p>
-                      <footer class="blockquote-footer">
-                        Client · iOS App (Swift & Firebase)
-                      </footer>
-                    </blockquote>
-                  </div>
-
-                  <!-- REVIEW 2 -->
-                  <div class="carousel-item">
-                    <blockquote class="blockquote text-center">
-                      <p class="mb-1">“Went above and beyond.” ⭐⭐⭐⭐⭐</p>
-                      <footer class="blockquote-footer">
-                        Client · Firebase Integration Revamp
-                      </footer>
-                    </blockquote>
-                  </div>
-
-                  <!-- REVIEW 3 -->
-                  <div class="carousel-item">
-                    <blockquote class="blockquote text-center">
-                      <p class="mb-1">
-                        “It was great working with Bill! He was very pleasant
-                        and knowledgeable.” ⭐⭐⭐⭐⭐
-                      </p>
-                      <footer class="blockquote-footer">
-                        Client · Language Learning App
-                      </footer>
-                    </blockquote>
-                  </div>
-                </div>
-
-                <!-- Carousel controls -->
-                <button
-                  class="carousel-control-prev"
-                  type="button"
-                  data-bs-target="#Testimonials"
-                  data-bs-slide="prev"
-                >
-                  <span
-                    class="carousel-control-prev-icon"
-                    aria-hidden="true"
-                  ></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button
-                  class="carousel-control-next"
-                  type="button"
-                  data-bs-target="#Testimonials"
-                  data-bs-slide="next"
-                >
-                  <span
-                    class="carousel-control-next-icon"
-                    aria-hidden="true"
-                  ></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-
-              <div class="text-center mt-3">
-                <!-- <img
-                  src="/assets/upwork_top_rated_badge.png"
-                  alt="Upwork Top Rated Plus"
-                  style="height: 48px"
-                /> -->
-                <p class="small mb-0">
-                  5.0 average across 30 client reviews ·
-                  <a
-                    href="https://www.upwork.com/freelancers/billvivino"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    See all reviews
-                  </a>
-                </p>
-              </div>
-            </div>
-          </section>
-          <!-- ======= /Client Testimonials ======= -->
+          <h2 class="text-start text-lg-center">
+            Ready to Start Your Project?
+          </h2>
+          <a href="contact.html" class="btn btn-primary mb-4">Contact Us</a>
         </div>
+        <!-- closes .text-center -->
       </div>
-      <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-        crossorigin="anonymous"
-      ></script>
+      <!-- closes .row -->
     </div>
-    <!-- Modal Structure -->
-    <div
-      class="modal fade"
-      id="appModal"
-      tabindex="-1"
-      aria-labelledby="appModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="appModalLabel">Leaving the Site</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body text-center">
-            <p id="appModalMessage">You're about to visit an external link.</p>
-            <button id="proceedToAppStore" class="btn btn-primary">
-              Continue
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal Logic -->
-    <script>
-      let appStoreUrl = "";
-      function showAppModal(url) {
-        appStoreUrl = url;
-
-        // ✅ Push event for GTM
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          event: "app_link_click",
-          link_type: url.includes("apps.apple.com")
-            ? "iOS"
-            : url.includes("play.google.com")
-            ? "Android"
-            : "Web",
-          app_url: url,
-        });
-
-        const messageEl = document.getElementById("appModalMessage");
-        if (url.includes("apps.apple.com")) {
-          messageEl.innerText = "You're about to open the App Store.";
-        } else if (url.includes("play.google.com")) {
-          messageEl.innerText = "You're about to open the Play Store.";
-        } else {
-          messageEl.innerText = "You're about to open an external website.";
-        }
-
-        var modal = new bootstrap.Modal(document.getElementById("appModal"));
-        modal.show();
-      }
-
-      document.addEventListener("DOMContentLoaded", function () {
-        const proceedBtn = document.getElementById("proceedToAppStore");
-        if (proceedBtn) {
-          proceedBtn.addEventListener("click", function () {
-            window.location.href = appStoreUrl;
-          });
-        }
-      });
-    </script>
+    <!-- closes .container -->
+    <div id="footer"></div>
   </body>
 </html>
