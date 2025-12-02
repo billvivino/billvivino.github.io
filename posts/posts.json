@@ -1,6 +1,13 @@
 [
  
   {
+    "title": "Will AI Replace Software Engineers?",
+    "date": "2025-12-02",
+    "excerpt": "Will AI replace software engineers? Learn the real truth for founders. Understand what AI can and cannot do, why human engineers are still essential, and how to safely use AI in software development.",
+    "url": "posts/2025-12-2-will-ai-replace-software-engineers.html",
+    "thumb": "assets/images/will-ai-replace-human-engineers.jpg"
+  },
+  {
     "title": "The Real Dangers of Vibe Coding (And Why You’ll Probably Need a Cleanup Specialist)",
     "date": "2025-09-22",
     "excerpt": "What happens when AI-powered vibe coding goes wrong—and how to clean it up. Meet Chris, the Vibe Coder turned cleanup specialist who helps founders rescue broken MVPs.",
@@ -55,13 +62,6 @@
     "excerpt": "So, how much does it actually cost to build an app? We break down timelines, tech stack choices, and hidden expenses founders overlook.",
     "url": "posts/2025-04-23-how-much-does-it-cost-to-make-an-app.html",
     "thumb": "assets/images/app-cost-thumb.png"
-  },
-  {
-    "title": "Brewing a Better Beer App Product Thinking Tips",
-    "date": "2025-04-21",
-    "excerpt": "We set out to create a place where craft-beer fans can share pours, swap notes, and keep track of what they're drinking—here's what we learned building it.",
-    "url": "posts/2025-04-21-brewing-a-better-beer-app.html",
-    "thumb": "assets/images/beer-app-thumb.png"
   },
   {
     "title": "Building NASA’s WeatherSats AR App | Bill Vivino Technology",
