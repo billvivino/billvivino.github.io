@@ -62,6 +62,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   await loadPartial("body-start", `${basePath}body-start.html`);
   await loadPartial("navbar", `${basePath}navbar.html`);
   await loadPartial("footer", `${basePath}footer.html`);
+  setActiveNavLink();
+
 
   // 🕐 Wait for Bootstrap to exist before initializing dropdowns
   const wait = setInterval(() => {
@@ -74,3 +76,28 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }, 200);
 });
+function setActiveNavLink() {
+  let path = window.location.pathname;
+
+  // Normalize "/" to "/index.html"
+  if (path === "/") {
+    path = "/index.html";
+  }
+
+  // Select nav links + dropdown items
+  const links = document.querySelectorAll("a.nav-link, a.dropdown-item");
+
+  links.forEach(link => {
+    const href = link.getAttribute("href");
+
+    // Highlight Blog for /posts/*
+    if (path.startsWith("/posts/") && href === "/blog.html") {
+      link.classList.add("active");
+      return;
+    }
+
+    if (href === path) {
+      link.classList.add("active");
+    }
+  });
+}

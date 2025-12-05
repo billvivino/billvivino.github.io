@@ -1,217 +1,403 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <script>
-    fetch("../partials/header.html")
-      .then(r=>r.text())
-      .then(h=>document.head.insertAdjacentHTML("beforeend",h))
-      .catch(e=>console.error("Header include failed:",e));
-  </script>
+  <head>
+ <!-- Load partials -->
+    <script src="/partials/partials-loader.js" defer></script>
 
-  <title>Why AI-Generated Code Usually Fails Security Audits</title>
-  <meta name="description" content="Learn why AI-generated code often fails security audits, how vibe coding creates hidden risk, and a practical checklist to ship secure software that passes." />
-  <link rel="canonical" href="https://billvivinotechnology.com/posts/why-ai-generated-code-fails-security-audits.html" />
-  <meta property="og:image" content="https://billvivinotechnology.com/assets/images/ai-vibe-coders.jpg" />
-  <meta name="robots" content="index, follow" />
-</head>
+    <title>Why AI-Generated Code Usually Fails Security Audits</title>
+    <meta
+      name="description"
+      content="Learn why AI-generated code often fails security audits, how vibe coding creates hidden risk, and a practical checklist to ship secure software that passes."
+    />
+    <link
+      rel="canonical"
+      href="https://billvivinotechnology.com/posts/why-ai-generated-code-fails-security-audits.html"
+    />
+    <meta
+      property="og:image"
+      content="https://billvivinotechnology.com/assets/images/ai-vibe-coders.jpg"
+    />
+    <meta name="robots" content="index, follow" />
+  </head>
 
-<body>
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KNB6ZKLD"
-            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <body>
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-KNB6ZKLD"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
 
-  <!-- NAV -->
-  <nav class="navbar navbar-expand-lg bg-light border-bottom shadow-sm">
-    <div class="container-fluid">
-      <a class="navbar-brand d-flex align-items-center" href="../index.html">
-        <img src="/assets/logo.png" alt="Logo" style="height:50px;width:auto;margin-right:8px" />
-        Bill Vivino Technology, LLC
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="../portfolio.html">Portfolio</a></li>
-          <li class="nav-item"><a class="nav-link" href="../pricing.html">Pricing</a></li>
-          <li class="nav-item"><a class="nav-link" href="../contact.html">Contact</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">More</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/assets/Bill_Vivino_-_Detailed_Experience.pdf">Resume</a></li>
-              <li><a class="dropdown-item" href="../blog.html">Blog</a></li>
-              <li><a class="dropdown-item" href="../privacy.html">Privacy Policy</a></li>
-            </ul>
+    <div id="body-start"></div>
+<div id="navbar"></div>
+
+    <div class="blog-cta text-center bg-light py-3 border-bottom">
+      <a href="../contact.html" class="btn btn-primary">Drop Me a Message</a>
+    </div>
+
+    <header class="container mt-5 text-center">
+      <h1 class="fw-bold">
+        Why AI-Generated Code Usually Fails Security Audits
+      </h1>
+      <time datetime="2025-10-23" class="text-muted d-block mb-4"
+        >October 23, 2025</time
+      >
+    </header>
+
+    <main class="container post-body pb-5" style="max-width: 800px">
+      <article>
+        <p class="lead">
+          Founders, product leads, and engineering managers who lean on vibe
+          coding or quick AI coding helpers to speed delivery often hit a wall
+          when the security review starts. The pain is familiar: missing input
+          validation, stale dependencies, weak secrets handling, and no
+          traceable threat model. At Bill Vivino Technology we blend AI
+          productivity with disciplined secure engineering so you can ship fast
+          and still pass audits on the first attempt.
+        </p>
+
+        <img
+          src="../assets/images/ai-vibe-coders.png"
+          alt="Developer relying on AI vibe coding while overlooking a failing security checklist"
+          class="blog-img-right"
+          width="300"
+          height="300"
+          loading="lazy"
+        />
+
+        <h2>The hook: AI helps you ship features, not security</h2>
+        <p>
+          Tools that promise to <em>write the app for you</em> can be amazing
+          for prototypes. The problem appears during audit week. Most
+          AI-generated snippets are optimized for functional correctness and
+          speed, not for the review questions your auditor will actually ask.
+          That creates audit gaps that stall releases and trigger costly rework.
+        </p>
+
+        <h2>Common failure patterns we see in audits</h2>
+        <ul class="custom-checklist">
+          <li>
+            <strong>Dependency risk</strong> - AI samples often pin old
+            libraries or pull in transitive packages with known CVEs and no
+            SBOM.
+          </li>
+          <li>
+            <strong>Auth and session flaws</strong> - Incomplete token
+            validation, missing rotation, or non-scoped tokens that break least
+            privilege.
+          </li>
+          <li>
+            <strong>Input and output handling</strong> - Naive sanitation that
+            fails on edge cases, creating injection paths across API, ORM, and
+            template layers.
+          </li>
+          <li>
+            <strong>Secrets management</strong> - Credentials in source, logs,
+            or CI variables without vaulting, rotation, or environment-scoped
+            access.
+          </li>
+          <li>
+            <strong>Logging without controls</strong> - Helpful for debugging,
+            harmful for compliance when PII is written without redaction or
+            retention rules.
+          </li>
+          <li>
+            <strong>Zero traceability</strong> - No threat model, no
+            architecture decision records, and no evidence that controls map to
+            a standard.
           </li>
         </ul>
-      </div>
-      <a class="btn btn-primary" href="../contact.html">Contact Us Now</a>
-      <div class="navbar-text ms-3"><a href="tel:+19733582341">(973) 358-2341</a></div>
+
+        <h2>Why vibe coding increases risk</h2>
+        <p>
+          Vibe coding trades process for momentum. You can definitely
+          <a href="../portfolio.html">get a demo live</a> fast with it. But
+          without guardrails your AI assistant cannot guarantee alignment with
+          frameworks like OWASP ASVS or NIST SSDF. When auditors ask
+          <em>Why does this control exist and where is it verified</em>, a code
+          dump is not enough.
+        </p>
+
+        <h2>Solution: AI with a security system behind it</h2>
+        <p>
+          We pair AI coding with a repeatable secure SDLC that passes enterprise
+          and startup audits in the NYC metro market. Our approach:
+        </p>
+        <ul class="custom-checklist">
+          <li>
+            <strong>Design first</strong> - Lightweight threat modeling and
+            data-flow diagrams before code generation.
+          </li>
+          <li>
+            <strong>Policy-as-code</strong> - Repo templates with mandatory
+            checks, secrets scanning, IaC drift detection, and SBOM generation.
+          </li>
+          <li>
+            <strong>Standards mapping</strong> - Controls mapped to
+            <a
+              href="https://owasp.org/www-project-application-security-verification-standard/"
+              rel="noopener"
+              target="_blank"
+              >OWASP ASVS</a
+            >
+            with evidence artifacts.
+          </li>
+          <li>
+            <strong>Continuous verification</strong> - SAST, DAST, dependency
+            review, and container scan gates in CI with fail-closed rules.
+          </li>
+          <li>
+            <strong>Human review</strong> - Senior engineers validate AI output
+            and document risks, compensating controls, and exceptions.
+          </li>
+        </ul>
+
+        <h2>Proof from the field</h2>
+        <p>
+          Teams come to us after internal audits or pen tests flag issues like
+          hardcoded secrets or insecure auth flows. We harden the stack, write
+          missing tests, and produce clean audit evidence. See examples in our
+          <a href="../portfolio.html">portfolio</a>, then
+          <a href="../contact.html">contact us</a> for specifics under NDA.
+        </p>
+
+        <img
+          src="../assets/images/ai-security-fails.png"
+          alt="Security audit checklist highlighting failed controls in AI-generated code"
+          class="blog-img-right"
+          width="300"
+          height="300"
+          loading="lazy"
+        />
+
+        <h2>Checklist: ship AI-assisted code that passes audits</h2>
+        <ol>
+          <li>
+            Define a one-page threat model and data classification for the
+            feature.
+          </li>
+          <li>
+            Generate code with AI, but require PRs to reference controls and
+            tests.
+          </li>
+          <li>Add SBOM, license scan, and dependency review to CI.</li>
+          <li>
+            Enforce secret scanning and vault integration for all environments.
+          </li>
+          <li>Run SAST and DAST for every merge to main and release branch.</li>
+          <li>
+            Log with redaction, trace IDs, and retention policy alignment.
+          </li>
+          <li>
+            Document compensating controls and store evidence in the repo.
+          </li>
+        </ol>
+
+        <h2>People also ask</h2>
+        <h3>Why AI-generated code usually fails security audits interview</h3>
+        <p>
+          Interviewers want a structured answer: lack of standards mapping,
+          insufficient input validation, weak secrets handling, and missing
+          evidence. Tie your response to controls and how to close gaps with CI
+          policies and code review.
+        </p>
+        <h3>Do AI-generated code outages really happen</h3>
+        <p>
+          Yes. Outages occur when generated code hides fragile assumptions.
+          Typical triggers include unbounded retries, unexpected input shapes,
+          or race conditions created by naive async patterns. Proper testing and
+          SRE guardrails reduce this risk.
+        </p>
+
+        <!-- FAQ Section -->
+        <section id="faqs" class="mt-5">
+          <h2>Frequently Asked Questions</h2>
+          <details>
+            <summary>
+              Can AI code a website that passes a security audit
+            </summary>
+            <p>
+              AI can help produce components quickly, but passing an audit
+              requires a process: secure design, vetted dependencies, tests, CI
+              scan gates, and human review. We combine AI productivity with a
+              hardened SDLC so your site clears review.
+            </p>
+          </details>
+          <details>
+            <summary>What standards should we map to for web apps</summary>
+            <p>
+              Most teams use OWASP ASVS for app controls and add NIST SSDF
+              practices for development lifecycle. Map each control to code,
+              tests, CI checks, and evidence so auditors can verify without
+              guesswork.
+            </p>
+          </details>
+          <details>
+            <summary>How fast can we remediate AI coding risks</summary>
+            <p>
+              Typical remediation takes one to three sprints depending on scope.
+              We prioritize dependency risk, secrets, and auth first, then round
+              out logging, tests, and documentation so you can pass the next
+              review.
+            </p>
+          </details>
+        </section>
+
+        <h2>Key Takeaways</h2>
+        <p>
+          AI coding boosts speed, but vibe coding without guardrails increases
+          audit risk. Pair generation with secure design, standards mapping, CI
+          gates, and senior review. The result is software that ships fast and
+          passes the first time.
+        </p>
+
+        <div class="text-center my-5">
+          <a href="../contact.html" class="btn btn-lg btn-primary"
+            >Start Your Project</a
+          >
+        </div>
+      </article>
+    </main>
+
+    <div class="container text-center border-top py-4">
+      <p>
+        Liked this post?
+        <a href="../contact.html" class="btn btn-outline-primary"
+          >Work With Me</a
+        >
+      </p>
+      <p><a href="../blog.html">&larr; Back to all posts</a></p>
     </div>
-  </nav>
 
-  <div class="blog-cta text-center bg-light py-3 border-bottom">
-    <a href="../contact.html" class="btn btn-primary">Drop Me a Message</a>
-  </div>
+    <div id="footer"></div>
 
-  <header class="container mt-5 text-center">
-    <h1 class="fw-bold">Why AI-Generated Code Usually Fails Security Audits</h1>
-    <time datetime="2025-10-23" class="text-muted d-block mb-4">October 23, 2025</time>
-  </header>
 
-  <main class="container post-body pb-5" style="max-width:800px;">
-    <article>
-      <p class="lead">Founders, product leads, and engineering managers who lean on vibe coding or quick AI coding helpers to speed delivery often hit a wall when the security review starts. The pain is familiar: missing input validation, stale dependencies, weak secrets handling, and no traceable threat model. At Bill Vivino Technology we blend AI productivity with disciplined secure engineering so you can ship fast and still pass audits on the first attempt.</p>
+    <!-- JSON-LD: BlogPosting + Organization + BreadcrumbList + FAQPage -->
+    <script>
+      (function () {
+        const title =
+          document.querySelector("h1")?.textContent || document.title;
+        const desc =
+          document.querySelector("meta[name='description']")?.content || "";
+        const dateISO =
+          document.querySelector("time")?.getAttribute("datetime") ||
+          new Date().toISOString().slice(0, 10);
+        const canon =
+          document.querySelector("link[rel='canonical']")?.href ||
+          location.href;
+        const img =
+          document.querySelector('meta[property="og:image"]')?.content || "";
+        const faqs = [...document.querySelectorAll("#faqs details")].map(
+          (d, i) => ({
+            "@type": "Question",
+            name: d.querySelector("summary")?.textContent || `FAQ ${i + 1}`,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: d.querySelector("p")?.innerHTML || "",
+            },
+          })
+        );
 
-      <img src="../assets/images/ai-vibe-coders.png" alt="Developer relying on AI vibe coding while overlooking a failing security checklist"
-           class="blog-img-right" width="300" height="300" loading="lazy" />
+        const data = [
+          {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: title,
+            description: desc,
+            datePublished: dateISO,
+            dateModified: dateISO,
+            mainEntityOfPage: canon,
+            image: [img],
+            author: { "@type": "Person", name: "Bill Vivino" },
+            publisher: {
+              "@type": "Organization",
+              name: "Bill Vivino Technology, LLC",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://billvivinotechnology.com/assets/logo.png",
+              },
+            },
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "Bill Vivino Technology, LLC",
+            url: "https://billvivinotechnology.com/",
+            logo: "https://billvivinotechnology.com/assets/logo.png",
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://billvivinotechnology.com/",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Blog",
+                item: "https://billvivinotechnology.com/blog.html",
+              },
+              { "@type": "ListItem", position: 3, name: title, item: canon },
+            ],
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs,
+          },
+        ];
+        data.forEach((o) => {
+          const s = document.createElement("script");
+          s.type = "application/ld+json";
+          s.text = JSON.stringify(o);
+          document.head.appendChild(s);
+        });
+      })();
+    </script>
 
-      <h2>The hook: AI helps you ship features, not security</h2>
-      <p>Tools that promise to <em>write the app for you</em> can be amazing for prototypes. The problem appears during audit week. Most AI-generated snippets are optimized for functional correctness and speed, not for the review questions your auditor will actually ask. That creates audit gaps that stall releases and trigger costly rework.</p>
-
-      <h2>Common failure patterns we see in audits</h2>
-      <ul class="custom-checklist">
-        <li><strong>Dependency risk</strong> - AI samples often pin old libraries or pull in transitive packages with known CVEs and no SBOM.</li>
-        <li><strong>Auth and session flaws</strong> - Incomplete token validation, missing rotation, or non-scoped tokens that break least privilege.</li>
-        <li><strong>Input and output handling</strong> - Naive sanitation that fails on edge cases, creating injection paths across API, ORM, and template layers.</li>
-        <li><strong>Secrets management</strong> - Credentials in source, logs, or CI variables without vaulting, rotation, or environment-scoped access.</li>
-        <li><strong>Logging without controls</strong> - Helpful for debugging, harmful for compliance when PII is written without redaction or retention rules.</li>
-        <li><strong>Zero traceability</strong> - No threat model, no architecture decision records, and no evidence that controls map to a standard.</li>
-      </ul>
-
-      <h2>Why vibe coding increases risk</h2>
-      <p>Vibe coding trades process for momentum. You can definitely <a href="../portfolio.html">get a demo live</a> fast with it. But without guardrails your AI assistant cannot guarantee alignment with frameworks like OWASP ASVS or NIST SSDF. When auditors ask <em>Why does this control exist and where is it verified</em>, a code dump is not enough.</p>
-
-      <h2>Solution: AI with a security system behind it</h2>
-      <p>We pair AI coding with a repeatable secure SDLC that passes enterprise and startup audits in the NYC metro market. Our approach:</p>
-      <ul class="custom-checklist">
-        <li><strong>Design first</strong> - Lightweight threat modeling and data-flow diagrams before code generation.</li>
-        <li><strong>Policy-as-code</strong> - Repo templates with mandatory checks, secrets scanning, IaC drift detection, and SBOM generation.</li>
-        <li><strong>Standards mapping</strong> - Controls mapped to <a href="https://owasp.org/www-project-application-security-verification-standard/" rel="noopener" target="_blank">OWASP ASVS</a> with evidence artifacts.</li>
-        <li><strong>Continuous verification</strong> - SAST, DAST, dependency review, and container scan gates in CI with fail-closed rules.</li>
-        <li><strong>Human review</strong> - Senior engineers validate AI output and document risks, compensating controls, and exceptions.</li>
-      </ul>
-
-      <h2>Proof from the field</h2>
-      <p>Teams come to us after internal audits or pen tests flag issues like hardcoded secrets or insecure auth flows. We harden the stack, write missing tests, and produce clean audit evidence. See examples in our <a href="../portfolio.html">portfolio</a>, then <a href="../contact.html">contact us</a> for specifics under NDA.</p>
-
-      <img src="../assets/images/ai-security-fails.png" alt="Security audit checklist highlighting failed controls in AI-generated code"
-           class="blog-img-right" width="300" height="300" loading="lazy" />
-
-      <h2>Checklist: ship AI-assisted code that passes audits</h2>
-      <ol>
-        <li>Define a one-page threat model and data classification for the feature.</li>
-        <li>Generate code with AI, but require PRs to reference controls and tests.</li>
-        <li>Add SBOM, license scan, and dependency review to CI.</li>
-        <li>Enforce secret scanning and vault integration for all environments.</li>
-        <li>Run SAST and DAST for every merge to main and release branch.</li>
-        <li>Log with redaction, trace IDs, and retention policy alignment.</li>
-        <li>Document compensating controls and store evidence in the repo.</li>
-      </ol>
-
-      <h2>People also ask</h2>
-      <h3>Why AI-generated code usually fails security audits interview</h3>
-      <p>Interviewers want a structured answer: lack of standards mapping, insufficient input validation, weak secrets handling, and missing evidence. Tie your response to controls and how to close gaps with CI policies and code review.</p>
-      <h3>Do AI-generated code outages really happen</h3>
-      <p>Yes. Outages occur when generated code hides fragile assumptions. Typical triggers include unbounded retries, unexpected input shapes, or race conditions created by naive async patterns. Proper testing and SRE guardrails reduce this risk.</p>
-
-      <!-- FAQ Section -->
-      <section id="faqs" class="mt-5">
-        <h2>Frequently Asked Questions</h2>
-        <details>
-          <summary>Can AI code a website that passes a security audit</summary>
-          <p>AI can help produce components quickly, but passing an audit requires a process: secure design, vetted dependencies, tests, CI scan gates, and human review. We combine AI productivity with a hardened SDLC so your site clears review.</p>
-        </details>
-        <details>
-          <summary>What standards should we map to for web apps</summary>
-          <p>Most teams use OWASP ASVS for app controls and add NIST SSDF practices for development lifecycle. Map each control to code, tests, CI checks, and evidence so auditors can verify without guesswork.</p>
-        </details>
-        <details>
-          <summary>How fast can we remediate AI coding risks</summary>
-          <p>Typical remediation takes one to three sprints depending on scope. We prioritize dependency risk, secrets, and auth first, then round out logging, tests, and documentation so you can pass the next review.</p>
-        </details>
-      </section>
-
-      <h2>Key Takeaways</h2>
-      <p>AI coding boosts speed, but vibe coding without guardrails increases audit risk. Pair generation with secure design, standards mapping, CI gates, and senior review. The result is software that ships fast and passes the first time.</p>
-
-      <div class="text-center my-5">
-        <a href="../contact.html" class="btn btn-lg btn-primary">Start Your Project</a>
-      </div>
-    </article>
-  </main>
-
-  <div class="container text-center border-top py-4">
-    <p>Liked this post? <a href="../contact.html" class="btn btn-outline-primary">Work With Me</a></p>
-    <p><a href="../blog.html">&larr; Back to all posts</a></p>
-  </div>
-
-  <div id="footer"></div>
-  <script>
-    fetch("../partials/footer.html")
-      .then(r=>r.text())
-      .then(h=>{document.getElementById("footer").innerHTML=h})
-      .catch(e=>console.error("Footer load error:",e));
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-
-  <!-- JSON-LD: BlogPosting + Organization + BreadcrumbList + FAQPage -->
-  <script>
-    (function(){
-      const title=document.querySelector("h1")?.textContent||document.title;
-      const desc=document.querySelector("meta[name='description']")?.content||"";
-      const dateISO=document.querySelector("time")?.getAttribute("datetime")||new Date().toISOString().slice(0,10);
-      const canon=document.querySelector("link[rel='canonical']")?.href||location.href;
-      const img=document.querySelector('meta[property="og:image"]')?.content||"";
-      const faqs=[...document.querySelectorAll("#faqs details")].map((d,i)=>({
-        "@type":"Question","name":d.querySelector("summary")?.textContent||`FAQ ${i+1}`,
-        "acceptedAnswer":{"@type":"Answer","text":d.querySelector("p")?.innerHTML||""}
-      }));
-
-      const data=[
-        {
-          "@context":"https://schema.org","@type":"BlogPosting",
-          "headline":title,"description":desc,"datePublished":dateISO,"dateModified":dateISO,
-          "mainEntityOfPage":canon,"image":[img],
-          "author":{"@type":"Person","name":"Bill Vivino"},
-          "publisher":{"@type":"Organization","name":"Bill Vivino Technology, LLC",
-            "logo":{"@type":"ImageObject","url":"https://billvivinotechnology.com/assets/logo.png"}}
-        },
-        {
-          "@context":"https://schema.org","@type":"Organization",
-          "name":"Bill Vivino Technology, LLC","url":"https://billvivinotechnology.com/",
-          "logo":"https://billvivinotechnology.com/assets/logo.png"
-        },
-        {
-          "@context":"https://schema.org","@type":"BreadcrumbList",
-          "itemListElement":[
-            {"@type":"ListItem","position":1,"name":"Home","item":"https://billvivinotechnology.com/"},
-            {"@type":"ListItem","position":2,"name":"Blog","item":"https://billvivinotechnology.com/blog.html"},
-            {"@type":"ListItem","position":3,"name":title,"item":canon}
-          ]
-        },
-        {
-          "@context":"https://schema.org","@type":"FAQPage",
-          "mainEntity":faqs
+    <style>
+      .post-body p {
+        line-height: 1.7;
+        margin-bottom: 1.2rem;
+      }
+      .post-body h2 {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+      .blog-img-right {
+        float: right;
+        margin: 0 0 20px 20px;
+        max-width: 300px;
+        border-radius: 8px;
+      }
+      .custom-checklist {
+        list-style: none;
+        padding-left: 0;
+      }
+      .custom-checklist li::before {
+        content: "✔";
+        color: #0d6efd;
+        margin-right: 8px;
+      }
+      details summary {
+        cursor: pointer;
+        font-weight: 600;
+        margin: 0.5rem 0;
+      }
+      @media (max-width: 768px) {
+        .blog-img-right {
+          float: none;
+          margin: 20px 0;
+          max-width: 100%;
         }
-      ];
-      data.forEach(o=>{
-        const s=document.createElement("script");
-        s.type="application/ld+json";s.text=JSON.stringify(o);
-        document.head.appendChild(s);
-      });
-    })();
-  </script>
-
-  <style>
-    .post-body p{line-height:1.7;margin-bottom:1.2rem;}
-    .post-body h2{margin-top:2rem;margin-bottom:1rem;font-weight:600;}
-    .blog-img-right{float:right;margin:0 0 20px 20px;max-width:300px;border-radius:8px;}
-    .custom-checklist{list-style:none;padding-left:0;}
-    .custom-checklist li::before{content:"✔";color:#0d6efd;margin-right:8px;}
-    details summary{cursor:pointer;font-weight:600;margin:0.5rem 0;}
-    @media(max-width:768px){.blog-img-right{float:none;margin:20px 0;max-width:100%;}}
-  </style>
-</body>
+      }
+    </style>
+  </body>
 </html>
