@@ -1,113 +1,60 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <!-- Load partials -->
-    <script src="partials/partials-loader.js" defer></script>
-    <title>Startup Dev Tips & Case Studies Bill Vivino Blog</title>
-    <link rel="canonical" href="https://billvivinotechnology.com/blog.html" />
-    <meta
-      name="description"
-      content="Insights, dev lessons, and client stories from a hands-on founder building apps for startups."
-    />
-  </head>
+---
+layout: default
+title: "Bill Vivino Technology Blog — Dev Tips & Case Studies"
+description: "Insights, software lessons, and real project breakdowns from Bill Vivino Technology — covering iOS, Android, React Native, Firebase, AI, and startup execution."
+---
 
-  <body>
-    <!-- Load partials -->
-    <div id="body-start"></div>
-    <div id="navbar"></div>
+<section id="blog-posts" class="py-5 bg-light">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h1 class="fw-bold">Latest Insights & Case Studies</h1>
+      <p class="text-muted">
+        Dev lessons, founder stories, and project write-ups from Bill Vivino
+        Technology.
+      </p>
+    </div>
 
-    <section id="blog-posts" class="py-5 bg-light">
-      <div class="container">
-        <div class="text-center mb-4">
-          <h1 class="fw-bold">Latest Insights & Case Studies</h1>
-          <p class="text-muted">
-            Dev lessons, founder stories, and project write-ups from Bill Vivino
-            Technology.
+    <!-- Search filter -->
+    <div class="mb-4 text-center">
+      <input
+        type="text"
+        id="blogSearch"
+        class="form-control"
+        placeholder="Search blog posts..."
+        style="max-width: 400px; margin: auto"
+      />
+    </div>
+
+    <!-- Blog Grid -->
+    <div class="row g-4">
+      {% assign sorted = site.posts | sort: "date" | reverse %}
+      {% for post in sorted %}
+      <div class="col-md-6 col-lg-4 blog-card">
+        <div class="h-100 p-3 bg-white shadow-sm rounded border">
+          {% if post.og_image %}
+            <img src="{{ post.og_image }}" alt="{{ post.title }}" class="img-fluid rounded mb-3" style="aspect-ratio:16/9;object-fit:cover;" loading="lazy">
+          {% endif %}
+          <h5 class="fw-bold mb-2">{{ post.title }}</h5>
+          <p class="text-muted small mb-2">
+            {{ post.date | date: "%B %d, %Y" }}
           </p>
+          <p>{{ post.description }}</p>
+          <a href="{{ post.url }}" class="stretched-link text-primary fw-semibold">Read More →</a>
         </div>
-
-        <!-- Search filter -->
-        <div class="mb-4 text-center">
-          <input
-            type="text"
-            id="blogSearch"
-            class="form-control"
-            placeholder="Search blog posts..."
-            style="max-width: 400px; margin: auto"
-            onkeyup="filterPosts()"
-          />
-        </div>
-
-        <!-- Blog Grid -->
-        <div id="blogGrid" class="row g-4"></div>
       </div>
-    </section>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 
-    <script>
-      async function loadBlogPosts() {
-        try {
-          const res = await fetch("/posts/posts.json");
-          const posts = await res.json();
-
-          posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-          const grid = document.getElementById("blogGrid");
-          grid.innerHTML = "";
-
-          posts.forEach((post) => {
-            const col = document.createElement("div");
-            col.className = "col-md-6 col-lg-4 blog-card";
-            col.innerHTML = `
-              <div class="h-100 p-3 bg-white shadow-sm rounded border">
-                ${
-                  post.thumb
-                    ? `<img src="/${post.thumb}" alt="${post.title}" class="img-fluid rounded mb-3" style="aspect-ratio:16/9;object-fit:cover;" loading="lazy">`
-                    : ""
-                }
-                <h5 class="fw-bold mb-2">${post.title}</h5>
-                <p class="text-muted small mb-2">
-                  ${new Date(post.date).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </p>
-                <p>${post.excerpt}</p>
-                <a href="${
-                  post.url
-                }" class="stretched-link text-primary fw-semibold">Read More →</a>
-              </div>
-            `;
-            grid.appendChild(col);
-          });
-        } catch (err) {
-          console.error("Error loading blog posts:", err);
-        }
-      }
-
-      // Simple live search
-      function filterPosts() {
-        const input = document.getElementById("blogSearch").value.toLowerCase();
-        document.querySelectorAll(".blog-card").forEach((card) => {
-          const text = card.textContent.toLowerCase();
-          card.style.display = text.includes(input) ? "" : "none";
-        });
-      }
-
-      loadBlogPosts();
-    </script>
-
-    <style>
-      .blog-card img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-      }
-      #blogSearch:focus {
-        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-        border-color: #0d6efd;
-      }
-    </style>
-    <!-- Load partials -->
-    <div id="footer"></div>
-  </body>
-</html>
+<style>
+  .blog-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  #blogSearch:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    border-color: #0d6efd;
+  }
+</style>

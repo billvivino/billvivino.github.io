@@ -1,240 +1,224 @@
-<!DOCTYPE html>
-<html>
-  <head>
-   <!-- Load partials -->
-<script src="partials/partials-loader.js" defer></script>
-    <title>Contact Bill Vivino Schedule a Free Dev Call</title>
-    <meta
-      name="description"
-      content="Lets talk about your project. Schedule a free intro call and get expert input on next steps."
-    />
-  </head>
+---
+layout: default
+title: "Contact Bill Vivino — Schedule a Free Dev Call"
+description: "Share your project goals, timeline, and budget. Get expert guidance and a fast proposal from a senior software developer."
+---
 
-  <body>
-    <!-- Load partials -->
-<div id="body-start"></div>
-    <div id="navbar"></div
-    
-    <!-- HERO INTRO -->
-    <section class="text-start text-lg-center my-4">
-      <h1 class="text-start text-lg-center ms-3 ms-lg-0">Post Your App Development Project</h1>
-      <p class="ms-3 ms-lg-0">
-        Share your project goals, timeline, and budget — we’ll send back a scoped proposal within one business day. We work with clients in North Jersey, the NYC metro area, and across the United States.
-      </p>
-    </section>
+<!-- HERO INTRO -->
+<section class="text-start text-lg-center my-4">
+  <h1 class="text-start text-lg-center ms-3 ms-lg-0">
+    Post Your App Development Project
+  </h1>
+  <p class="ms-3 ms-lg-0">
+    Share your project goals, timeline, and budget — we’ll send back a scoped
+    proposal within one business day. We work with clients in North Jersey, the
+    NYC metro area, and across the United States.
+  </p>
+</section>
 
-    <!-- CONTACT FORM -->
-    <section class="container" style="max-width: 600px">
-      <h2 class="visually-hidden">Quote Request Form</h2>
-      <form
-        id="contactForm"
-        action="https://formspree.io/f/mqapjzyq"
-        method="POST"
-        class="needs-validation"
+<!-- CONTACT FORM -->
+<section class="container" style="max-width: 600px">
+  <h2 class="visually-hidden">Quote Request Form</h2>
+  <form
+    id="contactForm"
+    action="https://formspree.io/f/mqapjzyq"
+    method="POST"
+    class="needs-validation"
+  >
+    <!-- honeypot -->
+    <input type="text" name="_gotcha" style="display: none" />
+    <input type="hidden" id="ts" name="ts" value="" />
+
+    <div class="mb-3">
+      <label for="name" class="form-label">Full Name (First &amp; Last)</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        required
+        placeholder="First &amp; Last Name"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email Address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        name="_replyto"
+        required
+        placeholder="you@example.com"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="phone" class="form-label">Phone Number</label>
+      <input
+        type="tel"
+        class="form-control"
+        id="phone"
+        name="phone"
+        required
+        placeholder="(973) 555‑1234"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="budget" class="form-label">Approximate Budget</label>
+      <select id="budget" name="budget" class="form-select" required>
+        <option value="" disabled selected>Select a range</option>
+        <option>$5 k – 10 k prototype</option>
+        <option>$10 k – 25 k MVP</option>
+        <option>$25 k – 50 k Full app</option>
+        <option>$50 k+</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="type" class="form-label">Project Type</label>
+      <select id="type" name="type" class="form-select" required>
+        <option value="" disabled selected>Choose…</option>
+        <option>iOS SwiftUI</option>
+        <option>Android Kotlin</option>
+        <option>Native Cross-Platform (SwiftUI/Kotlin-Jetpack)</option>
+        <option>React Native Cross-Platform</option>
+        <option>Backend / Firebase</option>
+        <option>AR / VR / 3D / Game (Unity)</option>
+        <option>Web App (React, Next.js, etc.)</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="message" class="form-label">Project Description</label>
+      <textarea
+        class="form-control"
+        id="message"
+        name="message"
+        rows="5"
+        minlength="50"
+        required
+        placeholder="Tell us your goal, timeline, and must‑have features (minimum 50 characters)…"
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="timeline" class="form-label"
+        >Desired Timeline / Deadline</label
       >
-        <!-- honeypot -->
-        <input type="text" name="_gotcha" style="display: none" />
-        <input type="hidden" id="ts" name="ts" value="" />
+      <input
+        type="text"
+        class="form-control"
+        id="timeline"
+        name="timeline"
+        required
+        placeholder="e.g., MVP in 3 months"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary w-100">
+      Submit My Project Brief
+    </button>
+  </form>
+  <p class="mt-3 text-center">
+    Prefer phone? Call&nbsp;<a href="tel:+19733582341">(973) 358‑2341</a>
+  </p>
+</section>
 
-        <div class="mb-3">
-          <label for="name" class="form-label">Full Name (First &amp; Last)</label>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            name="name"
-            required
-            placeholder="First &amp; Last Name"
-          />
-        </div>
+<!-- (Removed duplicate or legacy intro paragraph as per new intro above) -->
 
-        <div class="mb-3">
-          <label for="email" class="form-label">Email Address</label>
-          <input
-            type="email"
-            class="form-control"
-            id="email"
-            name="_replyto"
-            required
-            placeholder="you@example.com"
-          />
-        </div>
-
-        <div class="mb-3">
-          <label for="phone" class="form-label">Phone Number</label>
-          <input
-            type="tel"
-            class="form-control"
-            id="phone"
-            name="phone"
-            required
-            placeholder="(973) 555‑1234"
-          />
-        </div>
-
-        <div class="mb-3">
-          <label for="budget" class="form-label">Approximate Budget</label>
-          <select id="budget" name="budget" class="form-select" required>
-            <option value="" disabled selected>Select a range</option>
-            <option>$5 k – 10 k prototype</option>
-            <option>$10 k – 25 k MVP</option>
-            <option>$25 k – 50 k Full app</option>
-            <option>$50 k+</option>
-          </select>
-        </div>
-
-        <div class="mb-3">
-          <label for="type" class="form-label">Project Type</label>
-          <select id="type" name="type" class="form-select" required>
-            <option value="" disabled selected>Choose…</option>
-            <option>iOS SwiftUI</option>
-            <option>Android Kotlin</option>
-            <option>Native Cross-Platform (SwiftUI/Kotlin-Jetpack)</option>
-            <option>React Native Cross-Platform</option>
-            <option>Backend / Firebase</option>
-            <option>AR / VR / 3D / Game (Unity)</option>
-            <option>Web App (React, Next.js, etc.)</option>
-            <option>Other</option>
-          </select>
-        </div>
-
-        <div class="mb-3">
-          <label for="message" class="form-label">Project Description</label>
-          <textarea
-            class="form-control"
-            id="message"
-            name="message"
-            rows="5"
-            minlength="50"
-            required
-            placeholder="Tell us your goal, timeline, and must‑have features (minimum 50 characters)…"
-          ></textarea>
-        </div>
-        <div class="mb-3">
-          <label for="timeline" class="form-label"
-            >Desired Timeline / Deadline</label
-          >
-          <input
-            type="text"
-            class="form-control"
-            id="timeline"
-            name="timeline"
-            required
-            placeholder="e.g., MVP in 3 months"
-          />
-        </div>
-        <button type="submit" class="btn btn-primary w-100">
-          Submit My Project Brief
-        </button>
-      </form>
-      <p class="mt-3 text-center">
-        Prefer phone? Call&nbsp;<a href="tel:+19733582341">(973) 358‑2341</a>
+<!-- PRICE‑RANGE FAQ -->
+<section class="container my-5">
+  <h3 class="h5 fw-bold mb-3 text-start text-lg-center">Project Budget FAQ</h3>
+  <div class="card">
+    <div class="card-body">
+      <p class="mb-2">
+        <strong>What does a typical MVP cost?</strong><br />
+        Most minimum‑viable products we build fall between
+        <strong>$15 k – $40 k</strong>, depending on scope and platform (iOS,
+        Android, Web, or cross‑platform).
       </p>
-    </section>
+      <p class="mb-2">
+        <strong>How are payments structured?</strong><br />
+        We typically work on a
+        <em>time‑and‑materials basis with a weekly cap</em>&nbsp;—&nbsp;you’re
+        invoiced every week and can pause or adjust scope at any milestone
+        review.
+      </p>
+      <p class="mb-0">
+        <strong>Need something smaller?</strong><br />
+        Prototype engagements start around <strong>$5 k</strong>. Tell us your
+        goals and we’ll recommend the most cost‑effective path.
+      </p>
+    </div>
+  </div>
+</section>
 
-    <!-- (Removed duplicate or legacy intro paragraph as per new intro above) -->
+<script>
+  // Ensure all required fields are filled
+  document.addEventListener("DOMContentLoaded", function () {
+    var form = document.querySelector("form[action^='https://formspree.io']");
+    if (!form) return;
 
-    <!-- PRICE‑RANGE FAQ -->
-    <section class="container my-5">
-      <h3 class="h5 fw-bold mb-3 text-start text-lg-center">Project Budget FAQ</h3>
-      <div class="card">
-        <div class="card-body">
-          <p class="mb-2">
-            <strong>What does a typical MVP cost?</strong><br />
-            Most minimum‑viable products we build fall between
-            <strong>$15 k – $40 k</strong>, depending on scope and platform
-            (iOS, Android, Web, or cross‑platform).
-          </p>
-          <p class="mb-2">
-            <strong>How are payments structured?</strong><br />
-            We typically work on a
-            <em>time‑and‑materials basis with a weekly cap</em
-            >&nbsp;—&nbsp;you’re invoiced every week and can pause or adjust
-            scope at any milestone review.
-          </p>
-          <p class="mb-0">
-            <strong>Need something smaller?</strong><br />
-            Prototype engagements start around <strong>$5 k</strong>. Tell us
-            your goals and we’ll recommend the most cost‑effective path.
-          </p>
-        </div>
-      </div>
-    </section>
-   
-    <script>
-      // Ensure all required fields are filled
-      document.addEventListener("DOMContentLoaded", function () {
-        var form = document.querySelector(
-          "form[action^='https://formspree.io']"
+    form.addEventListener("submit", function (e) {
+      var nameEl = document.getElementById("name");
+      var emailEl = document.getElementById("email");
+      var phoneEl = document.getElementById("phone");
+      var budgetEl = document.getElementById("budget");
+      var typeEl = document.getElementById("type");
+      var timelineEl = document.getElementById("timeline");
+
+      if (
+        !nameEl.value.trim() ||
+        !emailEl.value.trim() ||
+        !phoneEl.value.trim() ||
+        !budgetEl.value ||
+        !typeEl.value ||
+        !timelineEl.value.trim()
+      ) {
+        e.preventDefault();
+        alert(
+          "Please fill in Name, Email, Phone, Budget, Project Type, and Timeline before submitting."
         );
-        if (!form) return;
+        return false;
+      }
+    });
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form[action^='https://formspree.io']");
+    if (!form) return;
 
-        form.addEventListener("submit", function (e) {
-          var nameEl   = document.getElementById("name");
-          var emailEl  = document.getElementById("email");
-          var phoneEl  = document.getElementById("phone");
-          var budgetEl = document.getElementById("budget");
-          var typeEl   = document.getElementById("type");
-          var timelineEl = document.getElementById("timeline");
+    // set timestamp value when page loads
+    const tsField = document.getElementById("ts");
+    if (tsField) tsField.value = Date.now().toString();
 
-          if (
-            !nameEl.value.trim() ||
-            !emailEl.value.trim() ||
-            !phoneEl.value.trim() ||
-            !budgetEl.value ||
-            !typeEl.value ||
-            !timelineEl.value.trim()
-          ) {
-            e.preventDefault();
-            alert(
-              "Please fill in Name, Email, Phone, Budget, Project Type, and Timeline before submitting."
-            );
-            return false;
-          }
-        });
-      });
-    </script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const form = document.querySelector(
-          "form[action^='https://formspree.io']"
+    form.addEventListener("submit", function (e) {
+      const msgEl = document.getElementById("message");
+      if (!msgEl) return;
+      const msg = msgEl.value.trim();
+
+      /* 1 — enforce 30‑second dwell time */
+      const dwell = Date.now() - parseInt(tsField.value || "0", 10);
+      if (dwell < 20000) {
+        e.preventDefault();
+        alert(
+          "Please spend at least 20 seconds on the form before submitting."
         );
-        if (!form) return;
+        return false;
+      }
 
-        // set timestamp value when page loads
-        const tsField = document.getElementById("ts");
-        if (tsField) tsField.value = Date.now().toString();
-
-        form.addEventListener("submit", function (e) {
-          const msgEl = document.getElementById("message");
-          if (!msgEl) return;
-          const msg = msgEl.value.trim();
-
-          /* 1 — enforce 30‑second dwell time */
-          const dwell = Date.now() - parseInt(tsField.value || "0", 10);
-          if (dwell < 20000) {
-            e.preventDefault();
-            alert(
-              "Please spend at least 20 seconds on the form before submitting."
-            );
-            return false;
-          }
-
-          /* 2 — reject low‑detail or repetitive text */
-          const uniqueWords = [...new Set(msg.split(/\s+/))].length;
-          const repeatedChars = /([a-zA-Z])\1{4,}/.test(msg); // 5+ identical chars
-          if (uniqueWords < 20 || repeatedChars) {
-            e.preventDefault();
-            alert(
-              "Please provide at least 50 meaningful characters about your project."
-            );
-            return false;
-          }
-        });
-      });
-    </script>
-    <!-- Load partials -->
-<div id="footer"></div>
-
-  </body>
-</html>
+      /* 2 — reject low‑detail or repetitive text */
+      const uniqueWords = [...new Set(msg.split(/\s+/))].length;
+      const repeatedChars = /([a-zA-Z])\1{4,}/.test(msg); // 5+ identical chars
+      if (uniqueWords < 20 || repeatedChars) {
+        e.preventDefault();
+        alert(
+          "Please provide at least 50 meaningful characters about your project."
+        );
+        return false;
+      }
+    });
+  });
+</script>

@@ -1,9 +1,10 @@
 name: Generate XML sitemap
 
-# Run every time you push to the main branch
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   build:
@@ -12,18 +13,53 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Generate XML Sitemap
+      - name: Generate sitemap.xml
         run: |
+          BASE_URL="https://billvivinotechnology.com"
+
           echo '<?xml version="1.0" encoding="UTF-8"?>' > sitemap.xml
-          echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' >> sitemap.xml
-          for file in $(find . -type f -name "*.html"); do
-            if [[ "$file" == "./index.html" ]]; then
-              loc="https://billvivinotechnology.com/"
-            else
-              loc="https://billvivinotechnology.com${file#.}"
+          echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">' >> sitemap.xml
+
+          # Loop through all HTML files EXCEPT hidden, misc, _site, .github, vendor, and draft files
+          for file in $(find . -type f -name "*.html" \
+            -not -path "./_site/*" \
+            -not -path "./.github/*" \
+            -not -path "./misc/*" \
+            -not -path "./vendor/*" \
+            -not -path "*/drafts/*"); do
+
+            # Skip pages with robots:noindex
+            if grep -q 'robots: "noindex' "$file"; then
+              echo "Skipping noindex page: $file"
+              continue
             fi
-            echo "  <url><loc>${loc}</loc><lastmod>$(date +%F)</lastmod></url>" >> sitemap.xml
+
+            # Resolve URL
+            if [[ "$file" == "./index.html" ]]; then
+              loc="$BASE_URL/"
+            else
+              loc="$BASE_URL${file#.}"
+            fi
+
+            # Determine last modified date using Git history
+            lastmod=$(git log -1 --format="%ad" --date=short -- "$file" 2>/dev/null || date +%F)
+
+            # Extract OG image for image sitemap metadata
+            image_url=$(grep -oP 'property="og:image" content="\K[^"]+' "$file" | head -n1)
+
+            echo "  <url>" >> sitemap.xml
+            echo "    <loc>$loc</loc>" >> sitemap.xml
+            echo "    <lastmod>$lastmod</lastmod>" >> sitemap.xml
+
+            if [[ -n "$image_url" ]]; then
+              echo "    <image:image>" >> sitemap.xml
+              echo "      <image:loc>$image_url</image:loc>" >> sitemap.xml
+              echo "    </image:image>" >> sitemap.xml
+            fi
+
+            echo "  </url>" >> sitemap.xml
           done
+
           echo '</urlset>' >> sitemap.xml
 
       - name: Commit XML sitemap
@@ -34,6 +70,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Update XML sitemap"
+            git commit -m "Update sitemap.xml"
             git push
           fi

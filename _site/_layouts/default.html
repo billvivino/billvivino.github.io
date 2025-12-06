@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include header.html %}
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Bill Vivino Technology, LLC",
+      "url": "https://billvivinotechnology.com/",
+      "logo": "https://billvivinotechnology.com/assets/logo.png",
+      "sameAs": [
+        "https://www.linkedin.com/in/billvivino/",
+        "https://www.upwork.com/freelancers/billvivino",
+        "https://www.fiverr.com/billvivino"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "bill@billvivinotechnology.com",
+        "telephone": "+1-973-358-2341",
+        "areaServed": "US"
+      }
+    }
+    </script>
+  </head>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-KNB6ZKLD"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    {% include navbar.html %}
+
+    {{ content }}
+
+    {% include footer.html %}
+  </body>
+</html>

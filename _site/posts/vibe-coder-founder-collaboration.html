@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- /partials/header.html -->
+<!-- Shared Header Include for Bill Vivino Blog Posts -->
+
+<!-- Google Tag Manager -->
+<script>
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s),
+      dl = l != "dataLayer" ? "&l=" + l : "";
+    j.async = true;
+    j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, "script", "dataLayer", "GTM-KNB6ZKLD");
+</script>
+<!-- End Google Tag Manager -->
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Static SEO Tags (Jekyll-driven) -->
+<title>How I Include Vibe‑Coder Founders in Development</title>
+<meta name="description" content="How non‑technical founders use AI tools like Cursor, Replit, and Windsurf to pair‑program inside their real production codebase." />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="How I Include Vibe‑Coder Founders in Development" />
+<meta property="og:description" content="How non‑technical founders use AI tools like Cursor, Replit, and Windsurf to pair‑program inside their real production codebase." />
+<meta
+  property="og:image"
+  content="/assets/images/vibe-founder-collaboration-thumb.png"
+/>
+<meta property="og:url" content="http://localhost:4000/posts/vibe-coder-founder-collaboration.html" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="How I Include Vibe‑Coder Founders in Development" />
+<meta name="twitter:description" content="How non‑technical founders use AI tools like Cursor, Replit, and Windsurf to pair‑program inside their real production codebase." />
+<meta
+  name="twitter:image"
+  content="/assets/images/vibe-founder-collaboration-thumb.png"
+/>
+
+<!-- Canonical URL -->
+<link rel="canonical" href="http://localhost:4000/posts/vibe-coder-founder-collaboration.html" />
+
+<!-- Global Styles -->
+<link rel="stylesheet" href="/styles.css" />
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+/>
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+  rel="stylesheet"
+/>
+
+<!-- Bootstrap JS bundle (required for dropdowns, modals, etc.) -->
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  defer
+></script>
+
+
+    <!-- Blog Post Specific SEO -->
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2025-07-02T00:00:00-04:00" />
+
+    
+      <meta property="og:image" content="/assets/images/vibe-founder-collaboration-thumb.png" />
+      <meta name="twitter:image" content="/assets/images/vibe-founder-collaboration-thumb.png" />
+    
+
+    <!-- JSON-LD Structured Data for BlogPosting -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "How I Include Vibe‑Coder Founders in Development",
+      "description": "How non‑technical founders use AI tools like Cursor, Replit, and Windsurf to pair‑program inside their real production codebase.",
+      "image": ["http://localhost:4000/assets/images/vibe-founder-collaboration-thumb.png"],
+      "url": "http://localhost:4000/posts/vibe-coder-founder-collaboration.html",
+      "datePublished": "2025-07-02T00:00:00-04:00",
+      "dateModified": "2025-07-02T00:00:00-04:00",
+      "author": {
+        "@type": "Person",
+        "name": "Bill Vivino"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Bill Vivino Technology, LLC",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "http://localhost:4000/assets/logo.png"
+        }
+      }
+    }
+    </script>
+  </head>
+
+  <body>
+    <!-- GTM noscript -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-KNB6ZKLD"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe>
+    </noscript>
+
+    <nav class="navbar navbar-expand-lg border-bottom shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="/index.html">
+      <img
+        src="/assets/logo.png"
+        alt="App Icon"
+        style="height: 50px; width: auto; margin-right: 8px"
+      />
+      Bill Vivino Technology, LLC
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/index.html">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/services.html">Services</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/portfolio.html">Portfolio</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/pricing.html">Pricing</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/contact.html">Contact</a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="https://www.upwork.com/freelancers/billvivino?viewMode=1"
+            target="_blank"
+            >Upwork Profile</a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="https://www.fiverr.com/billvivino?public_mode=true"
+            target="_blank"
+            >Fiverr Profile</a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="https://www.linkedin.com/in/billvivino/"
+            target="_blank"
+            >LinkedIn</a
+          >
+        </li>
+
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+          >
+            More
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a
+                class="dropdown-item"
+                href="/assets/Bill_Vivino_-_Detailed_Experience.pdf"
+                >Resume</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="/blog.html">Blog</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/privacy.html">Privacy Policy</a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="/swiftui-firebase-cost-calculator.html"
+                >SwiftUI + Firebase Cost Calculator</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="/kotlin-firebase-cost-calculator.html"
+                >Kotlin + Firebase Cost Calculator</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <a class="btn btn-primary" href="/contact.html">Contact Us Now</a>
+    <div class="navbar-text">
+      <a href="tel:+19733582341">(973)358-2341</a>
+    </div>
+  </div>
+</nav>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  let path = window.location.pathname;
+
+  // Normalize: treat "/" as "/index.html"
+  if (path === "/") {
+    path = "/index.html";
+  }
+
+  // Select ALL navbar links AND dropdown items
+  const links = document.querySelectorAll("a.nav-link, a.dropdown-item");
+
+  links.forEach(link => {
+    const href = link.getAttribute("href");
+
+    // Highlight Blog for /posts/*
+    if (path.startsWith("/posts/") && href === "/blog.html") {
+      link.classList.add("active");
+      return;
+    }
+
+    // Direct match for top-level pages
+    if (href === path) {
+      link.classList.add("active");
+    }
+  });
+});
+</script>
+
+
+    <main class="container my-5" style="max-width: 900px;">
+      <h1 class="fw-bold">How I Include Vibe‑Coder Founders in Development</h1>
+
+      <p class="text-muted">
+        July 02, 2025
+      </p>
+
+      <article class="mt-4">
+        <style>
+  /* Uniform card-image height across the site */
+  .card-img-top.img-fluid {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
+  /* Extra breathing room under testimonials */
+  .carousel .blockquote-footer {
+    margin-top: 0.5rem;
+  }
+</style>
+
+<!-- Main article container -->
+<div class="container py-4">
+  <article>
+    <h1>
+      How I Include My Non-Technical, Vibe Coder Clients as Devs in Their
+      Projects (and Save Them Time and Money)
+    </h1>
+
+    <p>
+      In today’s world of AI-assisted development, the line between
+      developer and visionary is blurring—and I’ve seen firsthand how
+      non-technical founders can step into a more empowered role, working
+      alongside AI agents to actually ship code.
+    </p>
+
+    <p>
+      For years, I’ve worked with founders who bring powerful product ideas
+      but not a line of code. They hire me to bring those ideas to life. But
+      recently, something shifted. With tools like Cursor, Replit, and
+      Windsurf, I’ve started embedding my clients
+      <em>into the development process</em> in a surprisingly effective
+      way—and it’s changing how we work together.
+    </p>
+
+    <p>
+      Many of my recent projects now include founder collaboration directly
+      inside the development workflow. For example, some of my clients use
+      Cursor, Replit, or Windsurf to co-edit codebases alongside me. They
+      explore ideas with their agent, test changes, and verify outcomes —
+      while I provide the review layer that ensures production-readiness.
+    </p>
+
+    <h2>🧑‍💻 The Rise of the Vibe Coder Founder</h2>
+
+    <p>The "vibe coder" founder is someone who:</p>
+    <ul>
+      <li>Doesn’t write code from scratch</li>
+      <li>Knows their product deeply</li>
+      <li>Can explain user flows and priorities clearly</li>
+      <li>
+        Uses AI tools to participate in development alongside an expert
+      </li>
+    </ul>
+
+    <p>Instead of being siloed from the engineering process, they now:</p>
+    <ul>
+      <li>Prompt Cursor or Windsurf with code tasks</li>
+      <li>Review and commit AI-generated suggestions</li>
+      <li>Send me their diffs or collaborate on GitHub</li>
+    </ul>
+
+    <h2>⚖️ A New Collaboration Flow</h2>
+
+    <p>Here's the model I use:</p>
+    <ol>
+      <li>
+        <strong
+          >I own the repo and work in short, functional commits</strong
+        >
+        <ul>
+          <li>
+            Think: "fix iOS audio bug" or "implement auth error fallback"
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong
+          >Client uses Replit or Windsurf to view the latest working
+          code</strong
+        >
+        <ul>
+          <li>They can run the app in-browser or locally</li>
+        </ul>
+      </li>
+      <li>
+        <strong
+          >They submit micro-changes with help from the AI assistant</strong
+        >
+        <ul>
+          <li>Example: update the copy, tweak a UI label, adjust colors</li>
+        </ul>
+      </li>
+      <li>
+        <strong>I review and integrate their changes</strong>
+        <ul>
+          <li>This keeps the codebase consistent and avoids regressions</li>
+        </ul>
+      </li>
+    </ol>
+
+    <p>This has been wildly effective for:</p>
+    <ul>
+      <li>Validating ideas quickly</li>
+      <li>Empowering non-technical founders to iterate</li>
+      <li>Keeping costs low by reducing back-and-forth</li>
+    </ul>
+
+    <h2>🌟 Why It Works</h2>
+
+    <ul>
+      <li><strong>AI acts as a pair programmer for the founder</strong></li>
+      <li>
+        <strong>I'm the quality gate</strong> who ensures commits are safe
+        and useful
+      </li>
+      <li>
+        <strong>They learn fast</strong>, and over time their AI usage
+        becomes smarter
+      </li>
+      <li>
+        <strong>We share context</strong> on Slack or iMessage, but the real
+        sync is in the repo
+      </li>
+    </ul>
+
+    <h2>⚡ Real Examples</h2>
+
+    <ul>
+      <li>
+        A climate tech founder tweaked their onboarding flow with ChatGPT +
+        Replit and I polished it for production
+      </li>
+      <li>
+        An indie app founder rebuilt a screen layout with Windsurf, then I
+        connected it to the Firebase backend
+      </li>
+      <li>
+        A first-time founder built their pricing calculator UI entirely in
+        Cursor, and I handled state + animation
+      </li>
+    </ul>
+
+    <h2>🚀 Get Started</h2>
+
+    <p>
+      Want to co-build with me and AI?<br />
+      If you have:
+    </p>
+    <ul>
+      <li>A clear idea</li>
+      <li>The ability to learn with AI tools like Cursor or Replit</li>
+      <li>A desire to stay close to your product</li>
+    </ul>
+
+    <p>I’ll help you go from concept to launch.</p>
+
+    <p><strong>Let’s build. Together.</strong></p>
+
+    <p>
+      Visit
+      <a
+        href="https://billvivinotechnology.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        >billvivinotechnology.com</a
+      >
+      or reach out via
+      <a
+        href="https://billvivinotechnology.com/contact.html"
+        target="_blank"
+        rel="noopener noreferrer"
+        >my contact page</a
+      >.
+    </p>
+
+    <hr />
+
+    <p>
+      <em
+        >PS: If you're a founder who wants to understand code but not drown
+        in it, this might be your new superpower.</em
+      >
+    </p>
+  </article>
+</div>
+
+      </article>
+
+      <div class="mt-5">
+        <a href="/blog.html" class="btn btn-outline-primary">← Back to Blog</a>
+      </div>
+    </main>
+
+    <!-- ======= Client Testimonials ======= -->
+<section class="testimonials py-5 bg-dark text-light">
+  <div class="container">
+    <div class="text-center mb-4">
+      <img
+        src="/assets/images/bill-logo-no-text.jpg"
+        alt="Upwork logo"
+        style="height: 80px; margin-bottom: 10px"
+      />
+      <h2 class="fw-bold mb-2">What Clients Say</h2>
+      <p class="text-muted mb-0">Verified reviews from real projects</p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-4">
+        <div
+          class="review-card p-4 h-100 text-center border-0 rounded-4 shadow-sm"
+        >
+          <p class="mb-3">“Amazing in communication.”</p>
+          <div class="stars mb-2">⭐⭐⭐⭐⭐</div>
+          <p class="small text-muted">Client · iOS App (Swift & Firebase)</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div
+          class="review-card p-4 h-100 text-center border-0 rounded-4 shadow-sm"
+        >
+          <p class="mb-3">“Went above and beyond.”</p>
+          <div class="stars mb-2">⭐⭐⭐⭐⭐</div>
+          <p class="small text-muted">Client · Firebase Integration Revamp</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div
+          class="review-card p-4 h-100 text-center border-0 rounded-4 shadow-sm"
+        >
+          <p class="mb-3">
+            “It was great working with Bill! Very pleasant and knowledgeable.”
+          </p>
+          <div class="stars mb-2">⭐⭐⭐⭐⭐</div>
+          <p class="small text-muted">Client · Language Learning App</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <a
+        href="https://www.upwork.com/freelancers/billvivino"
+        target="_blank"
+        rel="noopener"
+        class="btn btn-success"
+      >
+        View All 30+ Verified Reviews
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ======= Footer ======= -->
+<footer class="site-footer mt-5">
+  <div class="container py-5">
+    <div class="row align-items-start">
+      <!-- Column 1: Company Info -->
+      <div class="col-md-4 text-center text-md-start mb-4 mb-md-0">
+        <img
+          src="/assets/logo.png"
+          alt="Bill Vivino Technology logo"
+          style="height: 50px; width: auto; margin-bottom: 8px"
+        />
+        <p class="mb-1 fw-bold">Bill Vivino Technology, LLC</p>
+        <p class="small mb-2">
+          Custom Software Development · North Jersey & NYC Metro
+        </p>
+        <p class="small mb-0">
+          <a href="tel:+19733582341" class="footer-link">(973) 358-2341</a
+          ><br />
+          <a href="mailto:bill@billvivinotechnology.com" class="footer-link">
+            bill@billvivinotechnology.com
+          </a>
+        </p>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div class="col-md-4 text-center mb-4 mb-md-0">
+        <h6 class="text-uppercase mb-3">Quick Links</h6>
+        <div>
+          <a href="/index.html" class="footer-link d-block">Home</a>
+          <a href="/services.html" class="footer-link d-block">Services</a>
+          <a href="/portfolio.html" class="footer-link d-block">Portfolio</a>
+          <a href="/pricing.html" class="footer-link d-block">Pricing</a>
+          <a href="/contact.html" class="footer-link d-block">Contact</a>
+          <a
+            href="https://billvivinotechnology.com/sitemap.xml"
+            class="footer-link d-block"
+            target="_blank"
+            rel="noopener"
+          >
+            Sitemap
+          </a>
+        </div>
+      </div>
+
+      <!-- Column 3: Map Embed -->
+      <div class="col-md-4 text-center text-md-end">
+        <h6 class="text-uppercase mb-3">Find Us</h6>
+        <div
+          class="ratio ratio-1x1"
+          style="max-width: 100%; border-radius: 8px; overflow: hidden"
+        >
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d385861.0437278586!2d-74.49830245!3d40.92584395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x83df44ed4d347b8d%3A0x96f055ba2c38d529!2sBill%20Vivino%20Technology%20LLC!5e0!3m2!1sen!2sus!4v1760457495102!5m2!1sen!2sus"
+            width="100%"
+            height="250"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          >
+          </iframe>
+        </div>
+      </div>
+    </div>
+
+    <hr class="my-4" />
+
+    <!-- Bottom row -->
+    <div class="text-center small text-muted">
+      © <span id="year"></span> Bill Vivino Technology, LLC · All Rights
+      Reserved
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</footer>
+
+  </body>
+</html>

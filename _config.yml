@@ -1,0 +1,20 @@
+title: "Bill Vivino Technology"
+url: "https://billvivinotechnology.com"
+markdown: kramdown
+highlighter: rouge
+permalink: /posts/:title:output_ext
+
+# plugins:
+#   - jekyll-sitemap
+
+include:
+  - _includes
+  - _layouts
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"

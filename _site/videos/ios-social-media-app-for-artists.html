@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <!-- Load partials -->
+<script src="/partials/partials-loader.js" defer></script>
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "name": "iOS Social Media App for Artists - Case Study",
+        "description": "How we delivered a social-media platform in SwiftUI + Firebase with chat, media sharing, and a scalable backend.",
+        "thumbnailUrl": "https://billvivinotechnology.com/assets/NDC%20Case%20Study.png",
+        "uploadDate": "2025-04-20T00:00:00Z",
+        "duration": "PT2M10S",
+        "contentUrl": "https://billvivinotechnology.com/assets/New%20Digital%20Commune%20[share].mp4",
+        "embedUrl": "https://billvivinotechnology.com/videos/ios-social-media-app-for-artists.html",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Bill Vivino Technology",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://billvivinotechnology.com/assets/logo.png"
+          }
+        },
+        "interactionStatistic": {
+          "@type": "InteractionCounter",
+          "interactionType": { "@type": "WatchAction" },
+          "userInteractionCount": 100
+        }
+      }
+    </script>
+
+    <!-- Site‑wide custom styles -->
+    <link rel="stylesheet" href="/styles.css" />
+    <meta charset="utf-8" />
+    <title>
+      iOS App for Artists Social App Dev Walkthrough
+    </title>
+    <meta
+      name="description"
+      content="Case study: how we built a niche creator network app for iOS."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+
+    
+  <body class="bg-light">
+    <!-- Load partials -->
+<div id="body-start"></div>
+    <div id="navbar"></div>
+
+    
+    <main class="container py-5">
+      <h1 class="text-center mb-4">
+        iOS Social Media App for Artists - Case Study
+      </h1>
+
+      <div class="ratio ratio-16x9 mb-4">
+        <video controls poster="/assets/NDC Case Study.png">
+          <source
+            src="/assets/New Digital Commune [share].mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <p class="lead">
+        We helped a client launch a scalable SwiftUI social-media app backed by
+        Firebase, complete with real-time chat and video feeds.
+      </p>
+
+      <div class="text-center">
+        <a href="/contact.html" class="btn btn-primary">Discuss Your Project</a>
+      </div>
+    </main>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const videos = document.querySelectorAll("video");
+
+        videos.forEach((video) => {
+          video.addEventListener("play", function () {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              event: "video_play",
+              videoUrl: video.currentSrc,
+            });
+          });
+
+          video.addEventListener("pause", function () {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              event: "video_pause",
+              videoUrl: video.currentSrc,
+            });
+          });
+        });
+      });
+    </script>
+    <!-- Load partials -->
+<div id="footer"></div>
+
+  </body>
+</html>

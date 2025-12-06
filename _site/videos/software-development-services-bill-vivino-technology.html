@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+     <!-- Load partials -->
+<script src="/partials/partials-loader.js" defer></script>
+
+    <!-- Structured data for the video -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "name": "Bill Vivino - Software Developer",
+        "description": "Promo video introducing custom software development services by Bill Vivino.",
+        "thumbnailUrl": "https://billvivinotechnology.com/assets/Dreams%20Into%20Reality%20simple%20compose%202.png",
+        "uploadDate": "2024-12-10T00:00:00+00:00",
+        "duration": "PT1M30S",
+        "contentUrl": "https://billvivinotechnology.com/assets/Bill%20Vivino%20-%20Software%20Developer%20Promo%20[share].mov",
+        "embedUrl": "https://billvivinotechnology.com/videos/software-development-services-bill-vivino-technology.html",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Bill Vivino Technology",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://billvivinotechnology.com/assets/logo.png"
+          }
+        },
+        "interactionStatistic": {
+          "@type": "InteractionCounter",
+          "interactionType": { "@type": "WatchAction" },
+          "userInteractionCount": 100
+        }
+      }
+    </script>
+
+    <!-- Site‑wide custom styles -->
+    <link rel="stylesheet" href="/styles.css" />
+    <meta charset="utf-8" />
+    <title>Software Development Services Custom App Builds</title>
+
+    <!-- Basic SEO -->
+    <meta
+      name="description"
+      content="From scratch-built iOS apps to backend APIs, we deliver clean, scalable code for real products."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body class="bg-light">
+     <!-- Load partials -->
+<div id="body-start"></div>
+    <div id="navbar"></div>
+    <main class="container py-5">
+      <h1 class="text-center mb-4">Software Development Services Promo</h1>
+
+      <div class="ratio ratio-16x9 mb-4">
+        <video
+          controls
+          poster="/assets/Dreams Into Reality simple compose 2.png"
+        >
+          <source
+            src="/assets/Bill Vivino - Software Developer Promo [share].mov"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <p class="lead text-center">
+        A 90‑second overview of how we transform ideas into production‑ready
+        software for startups and enterprises—covering iOS, Android, Web,
+        Unity AR and cloud back‑ends.
+      </p>
+
+      <div class="text-center">
+        <a href="/contact.html" class="btn btn-primary">Discuss Your Project</a>
+      </div>
+    </main>
+   
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const videos = document.querySelectorAll("video");
+
+        videos.forEach((video) => {
+          video.addEventListener("play", function () {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              event: "video_play",
+              videoUrl: video.currentSrc,
+            });
+          });
+
+          video.addEventListener("pause", function () {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              event: "video_pause",
+              videoUrl: video.currentSrc,
+            });
+          });
+        });
+      });
+    </script>
+    <!-- Load partials -->
+<div id="footer"></div>
+  </body>
+</html>

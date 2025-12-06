@@ -1,189 +1,140 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Load partials -->
-    <script src="partials/partials-loader.js" defer></script>
-    <title>Custom App Development North Jersey & NYC Startups</title>
-    <meta
-      name="description"
-      content="We build scalable mobile and web apps for startups. US-based development, no fluff, no bloated teams."
-    />
+---
+layout: default
+title: "Full‑Stack App Development Services"
+description: "Mobile apps, web platforms, APIs, AI automation, and full‑stack development for startups and teams."
+---
 
-    <link rel="stylesheet" href="styles.css" />
-    <style>
-      /* Center the card on desktop but keep paragraph text left‑aligned.
-         On mobile (≤767.98 px) it simply fills the width with normal padding. */
-      .center-card {
-        max-width: 860px; /*  roughly 2/3 laptop width */
-        margin-left: auto;
-        margin-right: auto;
-        padding: 1.5rem 2rem;
-      }
-      .center-card p {
-        text-align: left;
-        margin-top: 0;
-        margin-bottom: 0.75rem; /* reduce default ~1rem spacing */
-      }
-      /* Square thumbnail treatment for gallery images */
-      .video-thumb img,
-      .card .card-img-top {
-        width: 100%;
-        aspect-ratio: 10 / 7;
-        object-fit: cover;
-      }
-      .center-card h1 {
-        text-align: left;
-      }
-      @media (max-width: 767.98px) {
-        .center-card {
-          max-width: 100%;
-          padding-left: 1rem;
-          padding-right: 1rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Load partials -->
-    <div id="body-start"></div>
-    <div id="navbar"></div>
+<section class="text-white text-center py-5">
+  <div class="container">
+    <h1 class="display-5 fw-bold">
+      Full-Stack App Development for Startups & Teams
+    </h1>
+    <p class="lead">
+      Build scalable mobile, web, and AI software with US-based expertise.
+    </p>
+    <div class="text-center mt-4">
+      <img
+        src="/assets/bv_services_image.png"
+        alt="Custom Software Services Overview"
+        class="img-fluid rounded"
+        style="max-width: 100%; height: auto"
+      />
+    </div>
+    <a href="contact.html" class="btn btn-primary btn-lg mt-3"
+      >Start Your Project</a
+    >
+  </div>
+</section>
 
-    <section class="text-white text-center py-5">
-      <div class="container">
-        <h1 class="display-5 fw-bold">
-          Full-Stack App Development for Startups & Teams
-        </h1>
-        <p class="lead">
-          Build scalable mobile, web, and AI software with US-based expertise.
+<section class="py-5 bg-light">
+  <div class="container text-center">
+    <h2 class="mb-4">What We Build</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <img
+          src="/assets/images/mobile_apps.png"
+          alt="Mobile Apps"
+          class="img-fluid rounded mb-2"
+        />
+        <h5 class="mt-2">Mobile Apps</h5>
+        <p>SwiftUI, Kotlin, and cross-platform React Native builds.</p>
+      </div>
+      <div class="col-md-4">
+        <img
+          src="/assets/images/web_apis.png"
+          alt="Web and APIs"
+          class="img-fluid rounded mb-2"
+        />
+        <h5 class="mt-2">Web + APIs</h5>
+        <p>
+          Cloud-native systems, Firebase, Node.js, and full-stack platforms.
         </p>
-        <div class="text-center mt-4">
-          <img
-            src="/assets/bv_services_image.png"
-            alt="Custom Software Services Overview"
-            class="img-fluid rounded"
-            style="max-width: 100%; height: auto"
-          />
-        </div>
-        <a href="contact.html" class="btn btn-primary btn-lg mt-3"
-          >Start Your Project</a
-        >
       </div>
-    </section>
-
-    <section class="py-5 bg-light">
-      <div class="container text-center">
-        <h2 class="mb-4">What We Build</h2>
-        <div class="row g-4">
-          <div class="col-md-4">
-            <img
-              src="/assets/images/mobile_apps.png"
-              alt="Mobile Apps"
-              class="img-fluid rounded mb-2"
-            />
-            <h5 class="mt-2">Mobile Apps</h5>
-            <p>SwiftUI, Kotlin, and cross-platform React Native builds.</p>
-          </div>
-          <div class="col-md-4">
-            <img
-              src="/assets/images/web_apis.png"
-              alt="Web and APIs"
-              class="img-fluid rounded mb-2"
-            />
-            <h5 class="mt-2">Web + APIs</h5>
-            <p>
-              Cloud-native systems, Firebase, Node.js, and full-stack platforms.
-            </p>
-          </div>
-          <div class="col-md-4">
-            <img
-              src="/assets/images/ai_automation.png"
-              alt="AI and Automation"
-              class="img-fluid rounded mb-2"
-            />
-            <h5 class="mt-2">AI & Automation</h5>
-            <p>GPT features, ML integration, back-office logic.</p>
-          </div>
-        </div>
+      <div class="col-md-4">
+        <img
+          src="/assets/images/ai_automation.png"
+          alt="AI and Automation"
+          class="img-fluid rounded mb-2"
+        />
+        <h5 class="mt-2">AI & Automation</h5>
+        <p>GPT features, ML integration, back-office logic.</p>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section class="py-5">
-      <div class="container text-center">
-        <h2 class="mb-4">How It Works</h2>
-        <div class="row justify-content-center">
-          <div class="col-md-3">
-            <h5>1. Discovery</h5>
-            <p>We understand your goals, timeline, and audience.</p>
-          </div>
-          <div class="col-md-3">
-            <h5>2. Architecture & Design</h5>
-            <p>Wireframes, tech stack, and sprint planning.</p>
-          </div>
-          <div class="col-md-3">
-            <h5>3. Development</h5>
-            <p>Iterative releases with real demos every sprint.</p>
-          </div>
-          <div class="col-md-3">
-            <h5>4. Launch & Support</h5>
-            <p>We guide you through app store, web launch, or handoff.</p>
-          </div>
-        </div>
+<section class="py-5">
+  <div class="container text-center">
+    <h2 class="mb-4">How It Works</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-3">
+        <h5>1. Discovery</h5>
+        <p>We understand your goals, timeline, and audience.</p>
       </div>
-    </section>
-
-    <section class="py-5">
-      <div class="container text-center">
-        <h2 class="mb-4">Our Technology</h2>
-        <div
-          class="d-flex flex-wrap justify-content-center align-items-center gap-4"
-        >
-          <img
-            src="https://developer.apple.com/assets/elements/icons/swiftui/swiftui-96x96_2x.png"
-            alt="SwiftUI"
-            height="40"
-          />
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Kotlin_icon_%282016-2021%29.svg"
-            alt="Kotlin"
-            height="40"
-          />
-          <img
-            src="https://firebase.google.com/downloads/brand-guidelines/PNG/logo-vertical.png"
-            alt="Firebase"
-            height="40"
-          />
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
-            alt="React Native"
-            height="40"
-          />
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg"
-            alt="Node.js"
-            height="40"
-          />
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Unity_2021.svg"
-            alt="Unity"
-            height="40"
-          />
-        </div>
+      <div class="col-md-3">
+        <h5>2. Architecture & Design</h5>
+        <p>Wireframes, tech stack, and sprint planning.</p>
       </div>
-    </section>
-
-    <section class="text-muted text-center py-5">
-      <div class="container">
-        <h2>Let’s build something exceptional</h2>
-        <p class="lead">
-          We work with startups, product leads, and founders across the US.
-        </p>
-        <a href="contact.html" class="btn btn-primary btn-lg mt-3"
-          >Book a Free Consultation</a
-        >
+      <div class="col-md-3">
+        <h5>3. Development</h5>
+        <p>Iterative releases with real demos every sprint.</p>
       </div>
-    </section>
+      <div class="col-md-3">
+        <h5>4. Launch & Support</h5>
+        <p>We guide you through app store, web launch, or handoff.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Load partials -->
-    <div id="footer"></div>
-  </body>
-</html>
+<section class="py-5">
+  <div class="container text-center">
+    <h2 class="mb-4">Our Technology</h2>
+    <div
+      class="d-flex flex-wrap justify-content-center align-items-center gap-4"
+    >
+      <img
+        src="https://developer.apple.com/assets/elements/icons/swiftui/swiftui-96x96_2x.png"
+        alt="SwiftUI"
+        height="40"
+      />
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Kotlin_icon_%282016-2021%29.svg"
+        alt="Kotlin"
+        height="40"
+      />
+      <img
+        src="https://firebase.google.com/downloads/brand-guidelines/PNG/logo-vertical.png"
+        alt="Firebase"
+        height="40"
+      />
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+        alt="React Native"
+        height="40"
+      />
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg"
+        alt="Node.js"
+        height="40"
+      />
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Unity_2021.svg"
+        alt="Unity"
+        height="40"
+      />
+    </div>
+  </div>
+</section>
+
+<section class="text-muted text-center py-5">
+  <div class="container">
+    <h2>Let’s build something exceptional</h2>
+    <p class="lead">
+      We work with startups, product leads, and founders across the US.
+    </p>
+    <a href="contact.html" class="btn btn-primary btn-lg mt-3"
+      >Book a Free Consultation</a
+    >
+  </div>
+</section>

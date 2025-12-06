@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- /partials/header.html -->
+<!-- Shared Header Include for Bill Vivino Blog Posts -->
+
+<!-- Google Tag Manager -->
+<script>
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s),
+      dl = l != "dataLayer" ? "&l=" + l : "";
+    j.async = true;
+    j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, "script", "dataLayer", "GTM-KNB6ZKLD");
+</script>
+<!-- End Google Tag Manager -->
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Static SEO Tags (Jekyll-driven) -->
+<title>Brewing a Better Beer‑Lovers App: A Behind‑the‑Scenes Tour</title>
+<meta name="description" content="What a failed beer app taught us about UX, feedback loops, and fast iteration for startups." />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Brewing a Better Beer‑Lovers App: A Behind‑the‑Scenes Tour" />
+<meta property="og:description" content="What a failed beer app taught us about UX, feedback loops, and fast iteration for startups." />
+<meta
+  property="og:image"
+  content="/assets/images/beer-app-thumb.png"
+/>
+<meta property="og:url" content="http://localhost:4000/posts/brewing-a-better-beer-app.html" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Brewing a Better Beer‑Lovers App: A Behind‑the‑Scenes Tour" />
+<meta name="twitter:description" content="What a failed beer app taught us about UX, feedback loops, and fast iteration for startups." />
+<meta
+  name="twitter:image"
+  content="/assets/images/beer-app-thumb.png"
+/>
+
+<!-- Canonical URL -->
+<link rel="canonical" href="http://localhost:4000/posts/brewing-a-better-beer-app.html" />
+
+<!-- Global Styles -->
+<link rel="stylesheet" href="/styles.css" />
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+/>
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+  rel="stylesheet"
+/>
+
+<!-- Bootstrap JS bundle (required for dropdowns, modals, etc.) -->
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  defer
+></script>
+
+
+    <!-- Blog Post Specific SEO -->
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2025-04-21T00:00:00-04:00" />
+
+    
+      <meta property="og:image" content="/assets/images/beer-app-thumb.png" />
+      <meta name="twitter:image" content="/assets/images/beer-app-thumb.png" />
+    
+
+    <!-- JSON-LD Structured Data for BlogPosting -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Brewing a Better Beer‑Lovers App: A Behind‑the‑Scenes Tour",
+      "description": "What a failed beer app taught us about UX, feedback loops, and fast iteration for startups.",
+      "image": ["http://localhost:4000/assets/images/beer-app-thumb.png"],
+      "url": "http://localhost:4000/posts/brewing-a-better-beer-app.html",
+      "datePublished": "2025-04-21T00:00:00-04:00",
+      "dateModified": "2025-04-21T00:00:00-04:00",
+      "author": {
+        "@type": "Person",
+        "name": "Bill Vivino"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Bill Vivino Technology, LLC",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "http://localhost:4000/assets/logo.png"
+        }
+      }
+    }
+    </script>
+  </head>
+
+  <body>
+    <!-- GTM noscript -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-KNB6ZKLD"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe>
+    </noscript>
+
+    <nav class="navbar navbar-expand-lg border-bottom shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="/index.html">
+      <img
+        src="/assets/logo.png"
+        alt="App Icon"
+        style="height: 50px; width: auto; margin-right: 8px"
+      />
+      Bill Vivino Technology, LLC
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/index.html">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/services.html">Services</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/portfolio.html">Portfolio</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/pricing.html">Pricing</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/contact.html">Contact</a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="https://www.upwork.com/freelancers/billvivino?viewMode=1"
+            target="_blank"
+            >Upwork Profile</a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="https://www.fiverr.com/billvivino?public_mode=true"
+            target="_blank"
+            >Fiverr Profile</a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="https://www.linkedin.com/in/billvivino/"
+            target="_blank"
+            >LinkedIn</a
+          >
+        </li>
+
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+          >
+            More
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a
+                class="dropdown-item"
+                href="/assets/Bill_Vivino_-_Detailed_Experience.pdf"
+                >Resume</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="/blog.html">Blog</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/privacy.html">Privacy Policy</a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="/swiftui-firebase-cost-calculator.html"
+                >SwiftUI + Firebase Cost Calculator</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="/kotlin-firebase-cost-calculator.html"
+                >Kotlin + Firebase Cost Calculator</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <a class="btn btn-primary" href="/contact.html">Contact Us Now</a>
+    <div class="navbar-text">
+      <a href="tel:+19733582341">(973)358-2341</a>
+    </div>
+  </div>
+</nav>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  let path = window.location.pathname;
+
+  // Normalize: treat "/" as "/index.html"
+  if (path === "/") {
+    path = "/index.html";
+  }
+
+  // Select ALL navbar links AND dropdown items
+  const links = document.querySelectorAll("a.nav-link, a.dropdown-item");
+
+  links.forEach(link => {
+    const href = link.getAttribute("href");
+
+    // Highlight Blog for /posts/*
+    if (path.startsWith("/posts/") && href === "/blog.html") {
+      link.classList.add("active");
+      return;
+    }
+
+    // Direct match for top-level pages
+    if (href === path) {
+      link.classList.add("active");
+    }
+  });
+});
+</script>
+
+
+    <main class="container my-5" style="max-width: 900px;">
+      <h1 class="fw-bold">Brewing a Better Beer‑Lovers App: A Behind‑the‑Scenes Tour</h1>
+
+      <p class="text-muted">
+        April 21, 2025
+      </p>
+
+      <article class="mt-4">
+        <style>
+  /* Keep all card images a uniform height while remaining responsive */
+  .card-img-top.img-fluid {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
+  /* Add breathing room between testimonial text and footer */
+  .carousel .blockquote-footer {
+    margin-top: 0.5rem;
+  }
+</style>
+
+<!-- Main article container -->
+<div class="container py-4">
+  <h1 class="mb-1">
+    Brewing a Better Beer‑Lovers App: A Behind‑the‑Scenes Tour
+  </h1>
+  <small class="text-muted">April&nbsp;21,&nbsp;2025</small>
+
+  <p class="mt-4">
+    If you’ve followed our journey, you know we set out to create a place
+    where craft‑beer fans can share pours, swap notes, and keep track of
+    their personal bottle collections. Over the past few months we’ve
+    shipped dozens of updates—big and small—that push us closer to that
+    vision. Here’s a peek at the highlights, told in plain English (no code
+    required!).
+  </p>
+
+  <h3>1. A Feed That Feels Alive</h3>
+  <p>
+    The home feed is the heart of the app, so we focused first on making
+    posting and reacting effortless—and fun:
+  </p>
+  <ul>
+    <li><strong>One‑tap photo &amp; tasting‑note posts</strong></li>
+    <li>
+      <strong>Animated emoji “pours”</strong> with a crisp
+      <em>pssst!</em> can‑opening sound
+    </li>
+    <li>
+      Lightning‑fast search and tag suggestions, so your stout or saison is
+      easy to find for everyone else
+    </li>
+  </ul>
+
+  <h3>2. Your Personal “Cellar”</h3>
+  <p>
+    Collectors begged for an easy way to remember what’s aging in the back
+    of the fridge, so we built a dedicated Cellar tab:
+  </p>
+  <ul>
+    <li>
+      <strong>Add beers in seconds</strong>—just snap a label or choose from
+      popular breweries
+    </li>
+    <li>
+      <strong>Smart sorting</strong> by style, date added, or “drink‑by”
+      reminders
+    </li>
+    <li>
+      A slick bottle‑rack graphic with realistic shadows that make labels
+      pop
+    </li>
+  </ul>
+
+  <h3>3. Smoother Onboarding</h3>
+  <p>
+    A few early testers couldn’t reach the Sign‑Up button on smaller
+    phones—yikes! We rebuilt that screen so it scrolls naturally on any
+    device and trimmed the number of steps from four to two.
+  </p>
+
+  <h3>4. Night‑Friendly Dark Mode</h3>
+  <p>
+    Many beer‑hunters browse in dim bars, so dark mode matters. Testers told
+    us blue links on black were unreadable. We reworked the color palette
+    for sharper contrast and tweaked banner highlights so everything stays
+    legible, even with Night Shift or low brightness.
+  </p>
+
+  <h3>5. Notifications That Land in the Right Place</h3>
+  <p>
+    Nothing breaks the vibe faster than tapping “Bill commented on your
+    post” and ending up somewhere random. We rewired our notification system
+    so every tap now dives straight to the conversation that sparked it.
+  </p>
+
+  <h3>6. In‑App Messaging, Refreshed</h3>
+  <p>
+    Early versions cached old chats and refused to show new ones unless you
+    force‑quit—annoying! We added swipe‑to‑refresh, smarter caching, and the
+    groundwork for push alerts so replies appear the moment they’re sent.
+  </p>
+
+  <h3>7. Under‑the‑Hood Tune‑Ups</h3>
+  <ul>
+    <li>
+      <strong>Faster load times</strong> after reorganizing our database
+    </li>
+    <li>
+      <strong>Profile‑picture magic</strong>—change your avatar once and it
+      updates everywhere, thanks to a new background task
+    </li>
+    <li>
+      <strong>Reliability checks</strong> on repeat: weeks of multi‑device
+      testing to ensure every update sticks
+    </li>
+  </ul>
+
+  <h3>8. What’s Next?</h3>
+  <p>
+    We’re polishing a tipping feature so you can buy a digital round for the
+    beer experts who share killer finds. Expect smoother push notifications,
+    curated “pub” feeds, and even more cellar tools soon.
+  </p>
+
+  <p>
+    Craft beer is best enjoyed with friends, and building this app is no
+    different. Huge thanks to everyone who posted tasting notes, squashed
+    bugs, or simply reminded us the contrast was off at 2&nbsp;a.m. Your
+    feedback keeps the taps flowing—cheers! 🍻
+  </p>
+
+  <p class="mt-4">
+    <a href="../blog.html">&larr; Back to all posts</a>
+  </p>
+</div>
+
+      </article>
+
+      <div class="mt-5">
+        <a href="/blog.html" class="btn btn-outline-primary">← Back to Blog</a>
+      </div>
+    </main>
+
+    <!-- ======= Client Testimonials ======= -->
+<section class="testimonials py-5 bg-dark text-light">
+  <div class="container">
+    <div class="text-center mb-4">
+      <img
+        src="/assets/images/bill-logo-no-text.jpg"
+        alt="Upwork logo"
+        style="height: 80px; margin-bottom: 10px"
+      />
+      <h2 class="fw-bold mb-2">What Clients Say</h2>
+      <p class="text-muted mb-0">Verified reviews from real projects</p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-4">
+        <div
+          class="review-card p-4 h-100 text-center border-0 rounded-4 shadow-sm"
+        >
+          <p class="mb-3">“Amazing in communication.”</p>
+          <div class="stars mb-2">⭐⭐⭐⭐⭐</div>
+          <p class="small text-muted">Client · iOS App (Swift & Firebase)</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div
+          class="review-card p-4 h-100 text-center border-0 rounded-4 shadow-sm"
+        >
+          <p class="mb-3">“Went above and beyond.”</p>
+          <div class="stars mb-2">⭐⭐⭐⭐⭐</div>
+          <p class="small text-muted">Client · Firebase Integration Revamp</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div
+          class="review-card p-4 h-100 text-center border-0 rounded-4 shadow-sm"
+        >
+          <p class="mb-3">
+            “It was great working with Bill! Very pleasant and knowledgeable.”
+          </p>
+          <div class="stars mb-2">⭐⭐⭐⭐⭐</div>
+          <p class="small text-muted">Client · Language Learning App</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <a
+        href="https://www.upwork.com/freelancers/billvivino"
+        target="_blank"
+        rel="noopener"
+        class="btn btn-success"
+      >
+        View All 30+ Verified Reviews
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ======= Footer ======= -->
+<footer class="site-footer mt-5">
+  <div class="container py-5">
+    <div class="row align-items-start">
+      <!-- Column 1: Company Info -->
+      <div class="col-md-4 text-center text-md-start mb-4 mb-md-0">
+        <img
+          src="/assets/logo.png"
+          alt="Bill Vivino Technology logo"
+          style="height: 50px; width: auto; margin-bottom: 8px"
+        />
+        <p class="mb-1 fw-bold">Bill Vivino Technology, LLC</p>
+        <p class="small mb-2">
+          Custom Software Development · North Jersey & NYC Metro
+        </p>
+        <p class="small mb-0">
+          <a href="tel:+19733582341" class="footer-link">(973) 358-2341</a
+          ><br />
+          <a href="mailto:bill@billvivinotechnology.com" class="footer-link">
+            bill@billvivinotechnology.com
+          </a>
+        </p>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div class="col-md-4 text-center mb-4 mb-md-0">
+        <h6 class="text-uppercase mb-3">Quick Links</h6>
+        <div>
+          <a href="/index.html" class="footer-link d-block">Home</a>
+          <a href="/services.html" class="footer-link d-block">Services</a>
+          <a href="/portfolio.html" class="footer-link d-block">Portfolio</a>
+          <a href="/pricing.html" class="footer-link d-block">Pricing</a>
+          <a href="/contact.html" class="footer-link d-block">Contact</a>
+          <a
+            href="https://billvivinotechnology.com/sitemap.xml"
+            class="footer-link d-block"
+            target="_blank"
+            rel="noopener"
+          >
+            Sitemap
+          </a>
+        </div>
+      </div>
+
+      <!-- Column 3: Map Embed -->
+      <div class="col-md-4 text-center text-md-end">
+        <h6 class="text-uppercase mb-3">Find Us</h6>
+        <div
+          class="ratio ratio-1x1"
+          style="max-width: 100%; border-radius: 8px; overflow: hidden"
+        >
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d385861.0437278586!2d-74.49830245!3d40.92584395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x83df44ed4d347b8d%3A0x96f055ba2c38d529!2sBill%20Vivino%20Technology%20LLC!5e0!3m2!1sen!2sus!4v1760457495102!5m2!1sen!2sus"
+            width="100%"
+            height="250"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          >
+          </iframe>
+        </div>
+      </div>
+    </div>
+
+    <hr class="my-4" />
+
+    <!-- Bottom row -->
+    <div class="text-center small text-muted">
+      © <span id="year"></span> Bill Vivino Technology, LLC · All Rights
+      Reserved
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</footer>
+
+  </body>
+</html>
