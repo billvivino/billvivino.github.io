@@ -4,6 +4,10 @@ title: "App Development Pricing — Hourly Consulting & Packages"
 description: "Transparent pricing for software development. Book senior-level hourly consulting at $150/hr with no long‑term commitment."
 ---
 
+<script 
+  src="https://www.paypal.com/sdk/js?client-id=BAAPELyHS7SrInuwUIdVNF3ZgCoZsv6QrSREvC5f2UkLVxaPQIJyfRqnE0PnwYSRMRkErhTkZxh2-rmHQo&components=hosted-buttons&enable-funding=venmo&currency=USD">
+</script>
+
 <div class="container text-center">
   <!-- ‑‑‑‑‑‑‑‑ ①  HERO  ‑‑‑‑‑‑‑‑ -->
   <section class="text-start text-lg-center my-4">
@@ -26,15 +30,15 @@ description: "Transparent pricing for software development. Book senior-level ho
             Get complete priority access to a senior developer for targeted
             technical help, architecture, or code reviews.
           </p>
-          <p class="display-6 fw-bold">$150/hr</p>
-          <a
-            href="https://www.paypal.com/ncp/payment/E76VRSMWDU8ML"
-            class="btn btn-primary mt-2"
-            target="_blank"
-            rel="noopener"
-          >
-            Pay $150/hr
-          </a>
+          <p class="display-6 fw-bold">$250/hr</p>
+
+          <div id="paypal-container-EZAJKLB3668QE"></div>
+
+          <script>
+            paypal.HostedButtons({
+              hostedButtonId: "EZAJKLB3668QE"
+            }).render("#paypal-container-EZAJKLB3668QE");
+          </script>
         </div>
       </div>
     </div>
