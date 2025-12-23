@@ -30,7 +30,7 @@
 
 <script>
   let appStoreUrl = "";
-  function showAppModal(url) {
+  window.showAppModal = function (url) {
     appStoreUrl = url;
 
     // Push event for GTM if needed
