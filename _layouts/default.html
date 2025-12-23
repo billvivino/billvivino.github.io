@@ -27,6 +27,42 @@
   </head>
 
   <body>
+
+    <!-- Global App / External Link Modal -->
+    <div
+      class="modal fade"
+      id="appModal"
+      tabindex="-1"
+      aria-labelledby="appModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="appModalLabel">
+              Leaving to App Store
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body text-center">
+            <p id="appModalMessage">
+              You're about to visit an external link.
+            </p>
+            <button id="proceedToAppStore" class="btn btn-primary">
+              Continue
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% include body-start.html %}
+
     <!-- Google Tag Manager (noscript) -->
     <noscript>
       <iframe

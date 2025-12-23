@@ -90,6 +90,73 @@
   </head>
 
   <body>
+
+    <!-- Global App / External Link Modal -->
+    <div
+      class="modal fade"
+      id="appModal"
+      tabindex="-1"
+      aria-labelledby="appModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="appModalLabel">
+              Leaving to App Store
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body text-center">
+            <p id="appModalMessage">
+              You're about to visit an external link.
+            </p>
+            <button id="proceedToAppStore" class="btn btn-primary">
+              Continue
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+  let appStoreUrl = "";
+
+  window.showAppModal = function (url) {
+    appStoreUrl = url;
+
+    // GTM
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "app_link_click",
+      app_url: url,
+    });
+
+    const messageEl = document.getElementById("appModalMessage");
+    if (url.includes("apps.apple.com")) {
+      messageEl.innerText = "You're about to open the App Store.";
+    } else if (url.includes("play.google.com")) {
+      messageEl.innerText = "You're about to open the Play Store.";
+    } else {
+      messageEl.innerText = "You're about to open an external website.";
+    }
+
+    const modalEl = document.getElementById("appModal");
+    const modal = new bootstrap.Modal(modalEl);
+    modal.show();
+
+    document.getElementById("proceedToAppStore").onclick = () => {
+      window.location.href = appStoreUrl;
+    };
+  };
+</script>
+
+
     <!-- Google Tag Manager (noscript) -->
     <noscript>
       <iframe
@@ -298,11 +365,12 @@ document.addEventListener("DOMContentLoaded", () => {
               <p>
                 A tour of the Weather Satellites, built in Unity.
               </p>
-              <a
-                href="https://www.nasa.gov/stem-content/weathersats-ar-app/"
+              <button
                 class="btn-outline"
-                >NASA WeatherSats AR - iOS/Android</a
+                onclick="showAppModal('https://www.nasa.gov/stem-content/weathersats-ar-app/')"
               >
+                NASA WeatherSats AR - iOS/Android
+              </button>
             </div>
           </div>
         </div>
@@ -318,11 +386,12 @@ document.addEventListener("DOMContentLoaded", () => {
               <p>
                 Send a multiple choice question to your friends.
               </p>
-              <a
-                href="https://testflight.apple.com/join/XZu7wHyJ"
+              <button
                 class="btn-outline"
-                >Soul and Form - iOS - TestFlight</a
+                onclick="showAppModal('https://testflight.apple.com/join/XZu7wHyJ')"
               >
+                Soul and Form - iOS - TestFlight
+              </button>
             </div>
           </div>
         </div>
@@ -400,12 +469,12 @@ document.addEventListener("DOMContentLoaded", () => {
               <p>
                 A simple soccer game built from a tutorial.
               </p>
-              <a
-                href="/Soccer/index.html"
-                content-encoding="gzip"
+              <button
                 class="btn-outline"
-                >Soccer - Built in Unity</a
+                onclick="showAppModal('/Soccer/index.html')"
               >
+                Soccer - Built in Unity
+              </button>
             </div>
           </div>
         </div>
