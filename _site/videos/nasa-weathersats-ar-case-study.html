@@ -38,6 +38,18 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <style>
+    /* Keep case study video fully visible on one page */
+    .video-fit {
+      max-height: 75vh;
+    }
+
+    .video-fit video {
+      max-height: 75vh;
+      width: 100%;
+      object-fit: contain;
+    }
+  </style>
   </head>
 
   <body class="bg-light">
@@ -47,7 +59,7 @@
     <main class="container py-5">
       <h1 class="h3 mb-4 text-center">NASA WeatherSats AR — Case Study</h1>
 
-      <div class="ratio ratio-16x9">
+      <div class="ratio ratio-16x9 video-fit">
         <video controls poster="/assets/WeatherSats AR Case Study Cover.png">
           <source src="/assets/weathersats-ar.mp4" type="video/mp4" />
           Your browser does not support the video tag.
