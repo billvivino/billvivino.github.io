@@ -41,9 +41,20 @@
       content="Case study: how we built a niche creator network app for iOS."
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
 
-    
+    <style>
+      /* Keep the video fully visible on one page */
+      .video-fit {
+        max-height: 75vh;
+      }
+
+      .video-fit video {
+        max-height: 75vh;
+        width: 100%;
+        object-fit: contain;
+      }
+    </style>
+  
   <body class="bg-light">
 
     
@@ -52,7 +63,7 @@
         iOS Social Media App for Artists - Case Study
       </h1>
 
-      <div class="ratio ratio-16x9 mb-4">
+      <div class="ratio ratio-16x9 mb-4 video-fit">
         <video controls poster="/assets/NDC Case Study.png">
           <source
             src="/assets/new-digital-commune.mp4"
@@ -68,7 +79,7 @@
       </p>
 
       <div class="text-center">
-        <a href="/contact.html" class="btn btn-primary">Discuss Your Project</a>
+        <a href="/contact.html" class="btn-outline">Discuss Your Project</a>
       </div>
     </main>
     <script>

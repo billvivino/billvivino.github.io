@@ -41,12 +41,24 @@
       content="From scratch-built iOS apps to backend APIs, we deliver clean, scalable code for real products."
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  /* Keep promo video fully visible on one page */
+  .video-fit {
+    max-height: 75vh;
+  }
+
+  .video-fit video {
+    max-height: 75vh;
+    width: 100%;
+    object-fit: contain;
+  }
+</style>
   </head>
   <body class="bg-light">
     <main class="container py-5">
       <h1 class="text-center mb-4">Software Development Services Promo</h1>
 
-      <div class="ratio ratio-16x9 mb-4">
+      <div class="ratio ratio-16x9 mb-4 video-fit">
         <video
           controls
           poster="/assets/Dreams Into Reality simple compose 2.png"
@@ -66,7 +78,7 @@
       </p>
 
       <div class="text-center">
-        <a href="/contact.html" class="btn btn-primary">Discuss Your Project</a>
+        <a href="/contact.html" class="btn-outline">Discuss Your Project</a>
       </div>
     </main>
    
