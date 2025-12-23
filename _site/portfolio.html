@@ -262,25 +262,23 @@ document.addEventListener("DOMContentLoaded", () => {
         </p>
       </section>
       <h2 class="text-start text-lg-center mt-5">Featured Software Projects</h2>
-      <div
-        class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center"
-      >
-        <div class="col-lg-6 col-sm-12">
-          <div class="card">
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-6 col-lg-4">
+          <div class="mini-card">
             <img
               src="/assets/ModaVision.jpeg"
-              class="card-img-top img-fluid w-100"
+              class="card-img-top"
               alt="ModaVision App Logo"
             />
-            <div class="card-body">
-              <h5 class="card-title">ModaVision</h5>
-              <p class="card-text">Find Your Fit. Everytime.</p>
-              <p class="card-text">
+            <div class="mini-card-body">
+              <h5>ModaVision</h5>
+              <p>Find Your Fit. Everytime.</p>
+              <p>
                 A virtual fitting room app built from scratch using SwiftUI
                 components and Firebase.
               </p>
               <button
-                class="btn btn-primary"
+                class="btn-outline"
                 onclick="showAppModal('https://apps.apple.com/us/app/modavision/id6473058672')"
               >
                 ModaVision App - iOS
@@ -288,41 +286,61 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           </div>
         </div>
-        <div class="col-lg-6 col-sm-12">
-          <div class="card text-white bg-black">
+        <div class="col-md-6 col-lg-4">
+          <div class="mini-card">
             <img
               src="/assets/WeatherSats-AppIcon-512x512@1x update 12-21-22.png"
-              class="card-img-top img-fluid w-100"
+              class="card-img-top"
               alt="NASA WeatherSats AR"
             />
-            <div class="card-body">
-              <h5 class="card-title">NASA WeatherSats AR.</h5>
-              <p class="card-text">
+            <div class="mini-card-body">
+              <h5>NASA WeatherSats AR.</h5>
+              <p>
                 A tour of the Weather Satellites, built in Unity.
               </p>
               <a
                 href="https://www.nasa.gov/stem-content/weathersats-ar-app/"
-                class="btn btn-primary"
+                class="btn-outline"
                 >NASA WeatherSats AR - iOS/Android</a
               >
             </div>
           </div>
         </div>
-        <div class="col-lg-6 col-sm-12">
-          <div class="card">
+        <div class="col-md-6 col-lg-4">
+          <div class="mini-card">
+            <img
+              src="/assets/soulandform-logo.png"
+              class="card-img-top"
+              alt="Soul and Form"
+            />
+            <div class="mini-card-body">
+              <h5>Soul and Form</h5>
+              <p>
+                Send a multiple choice question to your friends.
+              </p>
+              <a
+                href="https://testflight.apple.com/join/XZu7wHyJ"
+                class="btn-outline"
+                >Soul and Form - iOS - TestFlight</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="mini-card">
             <img
               src="/assets/logo.png"
-              class="card-img-top img-fluid w-100"
+              class="card-img-top"
               alt="Stupid Simple Macro Tracker"
             />
-            <div class="card-body">
-              <h5 class="card-title">Stupid Simple Macro Tracker</h5>
-              <p class="card-text">
+            <div class="mini-card-body">
+              <h5>Stupid Simple Macro Tracker</h5>
+              <p>
                 I contributed to this app as part of the 8.5 and 8.6 version
                 updates.
               </p>
               <button
-                class="btn btn-primary"
+                class="btn-outline"
                 onclick="showAppModal('https://apps.apple.com/us/app/stupid-simple-macro-tracker/id1210995590')"
               >
                 Stupid Simple Macro Tracker - iOS
@@ -330,18 +348,18 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           </div>
         </div>
-        <div class="col-lg-6 col-sm-12">
-          <div class="card">
+        <div class="col-md-6 col-lg-4">
+          <div class="mini-card">
             <img
               src="/assets/soulandform-logo.png"
-              class="card-img-top img-fluid w-100"
+              class="card-img-top"
               alt="New Digital Commune App"
             />
-            <div class="card-body">
-              <h5 class="card-title">New Digital Commune</h5>
-              <p class="card-text">Mobile App For Creatives.</p>
+            <div class="mini-card-body">
+              <h5>New Digital Commune</h5>
+              <p>Mobile App For Creatives.</p>
               <button
-                class="btn btn-primary"
+                class="btn-outline"
                 onclick="showAppModal('https://www.newdigitalcommune.com')"
               >
                 New Digital Commune - Built for iOS
@@ -349,20 +367,20 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           </div>
         </div>
-        <div class="col-lg-6 col-sm-12">
-          <div class="card">
+        <div class="col-md-6 col-lg-4">
+          <div class="mini-card">
             <img
               src="/assets/arrows-cover.png"
-              class="card-img-top img-fluid w-100"
+              class="card-img-top"
               alt="Arrows Video Game Unity"
             />
-            <div class="card-body">
-              <h5 class="card-title">Arrows Video Game.</h5>
-              <p class="card-text">
+            <div class="mini-card-body">
+              <h5>Arrows Video Game.</h5>
+              <p>
                 A simple video game built based on a client's description.
               </p>
               <button
-                class="btn btn-primary"
+                class="btn-outline"
                 onclick="showAppModal('https://play.unity.com/mg/other/webgl-builds-154388')"
               >
                 Arrows - Built in Unity
@@ -370,42 +388,42 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           </div>
         </div>
-        <div class="col-lg-6 col-sm-12">
-          <div class="card">
+        <div class="col-md-6 col-lg-4">
+          <div class="mini-card">
             <img
               src="/assets/soccer-cover.png"
-              class="card-img-top img-fluid w-100"
+              class="card-img-top"
               alt="Soccer Video Game Unity"
             />
-            <div class="card-body">
-              <h5 class="card-title">A Soccer Game.</h5>
-              <p class="card-text">
+            <div class="mini-card-body">
+              <h5>A Soccer Game.</h5>
+              <p>
                 A simple soccer game built from a tutorial.
               </p>
               <a
                 href="/Soccer/index.html"
                 content-encoding="gzip"
-                class="btn btn-primary"
+                class="btn-outline"
                 >Soccer - Built in Unity</a
               >
             </div>
           </div>
         </div>
-        <div class="col-lg-6 col-sm-12">
-          <div class="card">
+        <div class="col-md-6 col-lg-4">
+          <div class="mini-card">
             <img
               src="/assets/EurekaCanvasLogo.png"
-              class="card-img-top img-fluid w-100"
+              class="card-img-top"
               alt="Eureka Canvas App Logo"
             />
-            <div class="card-body">
-              <h5 class="card-title">Eureka Canvas.</h5>
-              <p class="card-text">
+            <div class="mini-card-body">
+              <h5>Eureka Canvas.</h5>
+              <p>
                 A SwiftUI/iOS sports coaching app built from scratch using
                 SwiftUI components and the StoreKit API.
               </p>
               <button
-                class="btn btn-primary"
+                class="btn-outline"
                 onclick="showAppModal('https://apps.apple.com/us/app/eureka-canvas-sports-edition/id1643624044')"
               >
                 Eureka Canvas - Built for iOS
@@ -414,27 +432,27 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         </div>
         <!--
-            <div class="col-lg-6 col-sm-12">
-              <div class="card">
+            <div class="col-md-6 col-lg-4">
+              <div class="mini-card">
                 <img
                   src="/assets/Splash-Screen-plus-beer-icon.png"
-                  class="card-img-top img-fluid w-100"
+                  class="card-img-top"
                   alt="Craft - the Social Beer App Logo"
                 />
-                <div class="card-body">
-                  <h5 class="card-title">CRAFT - the Social Beer App.</h5>
-                  <p class="card-text">
+                <div class="mini-card-body">
+                  <h5>CRAFT - the Social Beer App.</h5>
+                  <p>
                     A social media app for craft beer lovers, built from scratch
                     using SwiftUI, Kotlin, and Firebase.
                   </p>
                   <button
-                    class="btn btn-primary m-1"
+                    class="btn-outline m-1"
                     onclick="showAppModal('https://apps.apple.com/us/app/craft-the-social-beer-app/id6444923219')"
                   >
                     CRAFT - the Social Beer App - iOS
                   </button>
                   <button
-                    class="btn btn-primary m-1"
+                    class="btn-outline m-1"
                     onclick="showAppModal('https://play.google.com/apps/testing/com.vivinobrothers.craft_thesocialbeerapp')"
                   >
                     CRAFT - the Social Beer App - Android
@@ -443,21 +461,21 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
             </div>
             -->
-        <div class="col-lg-6 col-sm-12">
-          <div class="card">
+        <div class="col-md-6 col-lg-4">
+          <div class="mini-card">
             <img
               src="/assets/planetxr-1024.png"
-              class="card-img-top img-fluid w-100"
+              class="card-img-top"
               alt="PlanetXR App Logo"
             />
-            <div class="card-body">
-              <h5 class="card-title">Planet XR.</h5>
-              <p class="card-text">
+            <div class="mini-card-body">
+              <h5>Planet XR.</h5>
+              <p>
                 An iOS AR app built by a team of developers of which I am a
                 member.
               </p>
               <button
-                class="btn btn-primary"
+                class="btn-outline"
                 onclick="showAppModal('https://apps.apple.com/us/app/planet-xr-1-spatial-ar-world/id1605504634')"
               >
                 Planet XR - Built for iOS
