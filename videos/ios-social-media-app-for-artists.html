@@ -1,110 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
+---
+layout: default
+title: iOS Social Media App for Artists – Case Study
+video_name: iOS Social Media App for Artists – Case Study
+video_description: How we delivered a SwiftUI + Firebase social-media platform with chat, media sharing, and a scalable backend.
+video_url: /assets/new-digital-commune.mp4
+thumbnail: /assets/NDC Case Study.png
+upload_date: 2025-04-20T00:00:00Z
+duration: PT2M10S
+---
 
-    <!-- Structured data -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "VideoObject",
-        "name": "iOS Social Media App for Artists - Case Study",
-        "description": "How we delivered a social-media platform in SwiftUI + Firebase with chat, media sharing, and a scalable backend.",
-        "thumbnailUrl": "https://billvivinotechnology.com/assets/NDC%20Case%20Study.png",
-        "uploadDate": "2025-04-20T00:00:00Z",
-        "duration": "PT2M10S",
-        "contentUrl": "https://billvivinotechnology.com/assets/new-digital-commune.mp4",
-        "embedUrl": "https://billvivinotechnology.com/videos/ios-social-media-app-for-artists.html",
-        "publisher": {
-          "@type": "Organization",
-          "name": "Bill Vivino Technology",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://billvivinotechnology.com/assets/logo.png"
-          }
-        },
-        "interactionStatistic": {
-          "@type": "InteractionCounter",
-          "interactionType": { "@type": "WatchAction" },
-          "userInteractionCount": 100
-        }
-      }
-    </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "{{ page.video_name }}",
+  "description": "{{ page.video_description }}",
+  "thumbnailUrl": "{{ page.thumbnail | absolute_url }}",
+  "uploadDate": "{{ page.upload_date }}",
+  "duration": "{{ page.duration }}",
+  "contentUrl": "{{ page.video_url | absolute_url }}",
+  "embedUrl": "{{ page.url | absolute_url }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Bill Vivino Technology",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://billvivinotechnology.com/assets/logo.png"
+    }
+  }
+}
+</script>
 
-    <!-- Site‑wide custom styles -->
-    <link rel="stylesheet" href="/styles.css" />
-    <meta charset="utf-8" />
-    <title>
-      iOS App for Artists Social App Dev Walkthrough
-    </title>
-    <meta
-      name="description"
-      content="Case study: how we built a niche creator network app for iOS."
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  .video-fit {
+    max-height: 75vh;
+  }
 
-    <style>
-      /* Keep the video fully visible on one page */
-      .video-fit {
-        max-height: 75vh;
-      }
+  .video-fit video {
+    max-height: 75vh;
+    width: 100%;
+    object-fit: contain;
+  }
+</style>
 
-      .video-fit video {
-        max-height: 75vh;
-        width: 100%;
-        object-fit: contain;
-      }
-    </style>
-  
-  <body class="bg-light">
+<main class="container py-5">
+  <h1 class="text-center mb-4">
+    iOS Social Media App for Artists – Case Study
+  </h1>
 
-    
-    <main class="container py-5">
-      <h1 class="text-center mb-4">
-        iOS Social Media App for Artists - Case Study
-      </h1>
+  <div class="ratio ratio-16x9 mb-4 video-fit">
+    <video
+      controls
+      playsinline
+      preload="metadata"
+      poster="{{ page.thumbnail | relative_url }}"
+    >
+      <source
+        src="{{ page.video_url | relative_url }}"
+        type="video/mp4"
+      />
+      Your browser does not support the video tag.
+    </video>
+  </div>
 
-      <div class="ratio ratio-16x9 mb-4 video-fit">
-        <video controls poster="/assets/NDC Case Study.png">
-          <source
-            src="/assets/new-digital-commune.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-      </div>
+  <p class="lead">
+    We helped a client launch a scalable SwiftUI social‑media app backed by
+    Firebase, complete with real‑time chat and media sharing.
+  </p>
 
-      <p class="lead">
-        We helped a client launch a scalable SwiftUI social-media app backed by
-        Firebase, complete with real-time chat and video feeds.
-      </p>
-
-      <div class="text-center">
-        <a href="/contact.html" class="btn-outline">Discuss Your Project</a>
-      </div>
-    </main>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const videos = document.querySelectorAll("video");
-
-        videos.forEach((video) => {
-          video.addEventListener("play", function () {
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-              event: "video_play",
-              videoUrl: video.currentSrc,
-            });
-          });
-
-          video.addEventListener("pause", function () {
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-              event: "video_pause",
-              videoUrl: video.currentSrc,
-            });
-          });
-        });
-      });
-    </script>
-
-  </body>
-</html>
+  <div class="text-center">
+    <a href="/contact.html" class="btn-outline">
+      Discuss Your Project
+    </a>
+  </div>
+</main>

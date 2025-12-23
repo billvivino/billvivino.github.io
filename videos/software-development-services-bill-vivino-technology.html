@@ -1,48 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
+---
+layout: default
+title: Software Development Services – Promo
+video_name: Bill Vivino – Software Developer
+video_description: Promo video introducing custom software development services by Bill Vivino Technology.
+video_url: /assets/bill-vivino-software-developer-promo.mp4
+thumbnail: /assets/Dreams Into Reality simple compose 2.png
+upload_date: 2024-12-10T00:00:00+00:00
+duration: PT1M30S
+---
 
-    <!-- Structured data for the video -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "VideoObject",
-        "name": "Bill Vivino - Software Developer",
-        "description": "Promo video introducing custom software development services by Bill Vivino.",
-        "thumbnailUrl": "https://billvivinotechnology.com/assets/Dreams%20Into%20Reality%20simple%20compose%202.png",
-        "uploadDate": "2024-12-10T00:00:00+00:00",
-        "duration": "PT1M30S",
-        "contentUrl": "https://billvivinotechnology.com/assets/bill-vivino-software-developer-promo.mp4",
-        "embedUrl": "https://billvivinotechnology.com/videos/software-development-services-bill-vivino-technology.html",
-        "publisher": {
-          "@type": "Organization",
-          "name": "Bill Vivino Technology",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://billvivinotechnology.com/assets/logo.png"
-          }
-        },
-        "interactionStatistic": {
-          "@type": "InteractionCounter",
-          "interactionType": { "@type": "WatchAction" },
-          "userInteractionCount": 100
-        }
-      }
-    </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "{{ page.video_name }}",
+  "description": "{{ page.video_description }}",
+  "thumbnailUrl": "{{ page.thumbnail | absolute_url }}",
+  "uploadDate": "{{ page.upload_date }}",
+  "duration": "{{ page.duration }}",
+  "contentUrl": "{{ page.video_url | absolute_url }}",
+  "embedUrl": "{{ page.url | absolute_url }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Bill Vivino Technology",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://billvivinotechnology.com/assets/logo.png"
+    }
+  }
+}
+</script>
 
-    <!-- Site‑wide custom styles -->
-    <link rel="stylesheet" href="/styles.css" />
-    <meta charset="utf-8" />
-    <title>Software Development Services Custom App Builds</title>
-
-    <!-- Basic SEO -->
-    <meta
-      name="description"
-      content="From scratch-built iOS apps to backend APIs, we deliver clean, scalable code for real products."
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 <style>
-  /* Keep promo video fully visible on one page */
   .video-fit {
     max-height: 75vh;
   }
@@ -53,57 +42,32 @@
     object-fit: contain;
   }
 </style>
-  </head>
-  <body class="bg-light">
-    <main class="container py-5">
-      <h1 class="text-center mb-4">Software Development Services Promo</h1>
 
-      <div class="ratio ratio-16x9 mb-4 video-fit">
-        <video
-          controls
-          poster="/assets/Dreams Into Reality simple compose 2.png"
-        >
-          <source
-            src="/assets/bill-vivino-software-developer-promo.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-      </div>
+<main class="container py-5">
+  <h1 class="text-center mb-4">Software Development Services Promo</h1>
 
-      <p class="lead text-center">
-        A 90‑second overview of how we transform ideas into production‑ready
-        software for startups and enterprises—covering iOS, Android, Web,
-        Unity AR and cloud back‑ends.
-      </p>
+  <div class="ratio ratio-16x9 mb-4 video-fit">
+    <video
+      controls
+      playsinline
+      preload="metadata"
+      poster="{{ page.thumbnail | relative_url }}"
+    >
+      <source
+        src="{{ page.video_url | relative_url }}"
+        type="video/mp4"
+      />
+      Your browser does not support the video tag.
+    </video>
+  </div>
 
-      <div class="text-center">
-        <a href="/contact.html" class="btn-outline">Discuss Your Project</a>
-      </div>
-    </main>
-   
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const videos = document.querySelectorAll("video");
+  <p class="lead text-center">
+    A 90‑second overview of how we transform ideas into production‑ready
+    software for startups and enterprises—covering iOS, Android, Web,
+    Unity AR and cloud back‑ends.
+  </p>
 
-        videos.forEach((video) => {
-          video.addEventListener("play", function () {
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-              event: "video_play",
-              videoUrl: video.currentSrc,
-            });
-          });
-
-          video.addEventListener("pause", function () {
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-              event: "video_pause",
-              videoUrl: video.currentSrc,
-            });
-          });
-        });
-      });
-    </script>
-  </body>
-</html>
+  <div class="text-center">
+    <a href="/contact.html" class="btn-outline">Discuss Your Project</a>
+  </div>
+</main>
