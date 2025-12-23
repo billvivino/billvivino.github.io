@@ -1,97 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
+---
+layout: default
+title: NASA WeatherSats AR Case Study
+video_name: NASA WeatherSats AR Case Study
+video_description: Unity and AR Foundation powered mobile application showcasing Earth‑observing satellites in augmented reality.
+video_url: /assets/weathersats-ar.mp4
+thumbnail: /assets/WeatherSats AR Case Study Cover.png
+upload_date: 2025-04-19T00:00:00Z
+duration: PT1M30S
+---
 
-    <!-- VideoObject structured data -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "VideoObject",
-        "name": "NASA WeatherSats AR Case Study",
-        "description": "Unity and AR Foundation powered mobile application showcasing Earth-observing satellites in augmented reality. Developed by Bill Vivino Technology.",
-        "thumbnailUrl": "https://billvivinotechnology.com/assets/WeatherSats%20AR%20Case%20Study%20Cover.png",
-        "uploadDate": "2025-04-19T00:00:00Z",
-        "duration": "PT1M30S",
-        "contentUrl": "https://billvivinotechnology.com/assets/weathersats-ar.mp4",
-        "embedUrl": "https://billvivinotechnology.com/videos/nasa-weathersats-ar-case-study.html",
-        "publisher": {
-          "@type": "Organization",
-          "name": "Bill Vivino Technology",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://billvivinotechnology.com/assets/logo.png"
-          }
-        },
-        "interactionStatistic": {
-          "@type": "InteractionCounter",
-          "interactionType": { "@type": "WatchAction" },
-          "userInteractionCount": 100
-        }
-      }
-    </script>
-
-    <meta charset="utf-8" />
-    <title>WeatherSats AR Case Study | Bill Vivino Technology</title>
-    <meta
-      name="description"
-      content="Client case study video: NASA WeatherSats AR — a Unity-based mobile experience that lets users explore Earth-observing satellites in augmented reality."
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <style>
-    /* Keep case study video fully visible on one page */
-    .video-fit {
-      max-height: 75vh;
+<!-- VideoObject structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "{{ page.video_name }}",
+  "description": "{{ page.video_description }}",
+  "thumbnailUrl": "{{ page.thumbnail | absolute_url }}",
+  "uploadDate": "{{ page.upload_date }}",
+  "duration": "{{ page.duration }}",
+  "contentUrl": "{{ page.video_url | absolute_url }}",
+  "embedUrl": "{{ page.url | absolute_url }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Bill Vivino Technology",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://billvivinotechnology.com/assets/logo.png"
     }
+  }
+}
+</script>
 
-    .video-fit video {
-      max-height: 75vh;
-      width: 100%;
-      object-fit: contain;
-    }
-  </style>
-  </head>
+<style>
+  /* Keep case study video fully visible on one page */
+  .video-fit {
+    max-height: 75vh;
+  }
 
-  <body class="bg-light">
+  .video-fit video {
+    max-height: 75vh;
+    width: 100%;
+    object-fit: contain;
+  }
+</style>
 
-   
-    <!-- Main content -->
-    <main class="container py-5">
-      <h1 class="h3 mb-4 text-center">NASA WeatherSats AR — Case Study</h1>
+<main class="container py-5">
+  <h1 class="h3 mb-4 text-center">NASA WeatherSats AR — Case Study</h1>
 
-      <div class="ratio ratio-16x9 video-fit">
-        <video controls poster="/assets/WeatherSats AR Case Study Cover.png">
-          <source src="/assets/weathersats-ar.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </main>
+  <div class="ratio ratio-16x9 video-fit">
+    <video controls playsinline poster="{{ page.thumbnail | relative_url }}">
+      <source src="{{ page.video_url | relative_url }}" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</main>
 
-    
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const videos = document.querySelectorAll("video");
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const videos = document.querySelectorAll("video");
 
-        videos.forEach((video) => {
-          video.addEventListener("play", function () {
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-              event: "video_play",
-              videoUrl: video.currentSrc,
-            });
-          });
-
-          video.addEventListener("pause", function () {
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-              event: "video_pause",
-              videoUrl: video.currentSrc,
-            });
-          });
+    videos.forEach((video) => {
+      video.addEventListener("play", function () {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "video_play",
+          videoUrl: video.currentSrc,
         });
       });
-    </script>
-    
 
-  </body>
-</html>
+      video.addEventListener("pause", function () {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "video_pause",
+          videoUrl: video.currentSrc,
+        });
+      });
+    });
+  });
+</script>
