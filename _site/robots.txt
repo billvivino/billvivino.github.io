@@ -1,3 +1,0 @@
-Sitemap: https://billvivinotechnology.com/sitemap.xml
-User-agent: *
-Allow: /
