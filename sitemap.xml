@@ -7,7 +7,10 @@ permalink: /sitemap.xml
   {% assign base = site.url | append: site.baseurl %}
 
   {% for page in site.pages %}
-    {% if page.noindex != true and page.url != "/sitemap.xml" %}
+    {% if page.noindex != true
+       and page.url != "/sitemap.xml"
+       and page.url endswith ".html"
+       and page.url contains "/assets/" == false %}
       <url>
         <loc>{{ base }}{{ page.url }}</loc>
         {% if page.last_modified_at %}
