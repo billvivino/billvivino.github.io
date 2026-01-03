@@ -9,7 +9,6 @@ permalink: /sitemap.xml
   {% for page in site.pages %}
     {% if page.noindex != true
        and page.url != "/sitemap.xml"
-       and page.url contains ".html"
        and page.url contains "/assets/" == false %}
       <url>
         <loc>{{ base }}{{ page.url }}</loc>
