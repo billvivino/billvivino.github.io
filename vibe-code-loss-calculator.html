@@ -1,0 +1,523 @@
+---
+layout: default
+title: "Vibe Code Loss Calculator (2026)"
+description: "Estimate how much money your startup may have already lost due to vibe coding, rewrites, and lack of technical ownership. Built for founders, CTOs, and product teams."
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Vibe Code Loss Calculator",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web",
+      "description": "A calculator that estimates hidden engineering and opportunity costs caused by AI-first, vibe-coded development workflows.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Startup rewrite cost estimation",
+        "Technical ownership risk analysis",
+        "Vibe coding cost modeling",
+        "Engineering debt projection"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is vibe coding?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vibe coding is an AI-first development approach where code is generated rapidly without deep architectural planning, often leading to rewrites and technical debt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does vibe coding cost more over time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "While vibe coding feels fast initially, it often leads to rewrites, delays, and senior engineering cleanup that increase total project cost."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this calculator exact?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It provides directional estimates based on common startup patterns observed in real-world projects."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "name": "Vibe Code Loss Calculator",
+      "description": "Estimate the hidden cost of AI-driven development shortcuts.",
+      "dateModified": "2026-01-01"
+    }
+  ]
+}
+</script>
+
+<style>
+  body {
+    background: #fdfdfd;
+  }
+  .calculator-card {
+    max-width: 720px;
+    margin: 2rem auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    border-radius: 1rem;
+  }
+  .loss-range {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  .fine-print {
+    color: #666;
+    font-size: 0.9rem;
+  }
+  .severity-meter {
+    margin-top: 1rem;
+    background: #eee;
+    border-radius: 0.5rem;
+    height: 1.5rem;
+    overflow: hidden;
+    position: relative;
+  }
+  .severity-bar {
+    background: #ff5722;
+    height: 100%;
+    width: 0%;
+    transition: width 0.8s ease-out;
+    border-radius: 0.5rem 0 0 0.5rem;
+  }
+  .severity-label {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 600;
+    color: #fff;
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+    user-select: none;
+  }
+</style>
+
+<header class="text-center mt-4">
+  <h1 class="display-5 fw-bold">
+    Vibe Code Loss Calculator (2026)
+  </h1>
+  <p class="lead">
+    Estimate how much money your project may have already lost due to
+    “fast” AI-driven development.<br />
+    Built from real startup postmortems — not theory.
+  </p>
+</header>
+
+<main class="calculator-card bg-white p-4">
+
+  <!-- Calculator -->
+  <section class="calculator">
+    <h2>Estimate Your Hidden Cost</h2>
+    <p>
+      This calculator estimates *money already lost* — not future spend —
+      from rewrites, delays, and lack of technical ownership.
+    </p>
+
+    <div class="calc-group">
+      <label>Project stage</label>
+      <select id="stage">
+        <option value="idea">Idea / Demo</option>
+        <option value="mvp">MVP / Pilot</option>
+        <option value="live">Live users</option>
+        <option value="revenue">Revenue-producing</option>
+      </select>
+    </div>
+
+    <div class="calc-group">
+      <label>How was the app built?</label>
+      <select id="buildMethod">
+        <option value="vibe">Mostly AI / vibe coding</option>
+        <option value="mixed">AI + manual coding</option>
+        <option value="senior">Senior engineer from start</option>
+      </select>
+    </div>
+
+    <div class="calc-group">
+      <label>Number of developers involved</label>
+      <select id="devCount">
+        <option value="1">1</option>
+        <option value="2">2–3</option>
+        <option value="4">4+</option>
+      </select>
+    </div>
+
+    <div class="calc-group">
+      <label>How many times has the code been reworked?</label>
+      <select id="rewrites">
+        <option value="none">None</option>
+        <option value="refactor">Some refactors</option>
+        <option value="rewrite">Major rewrite</option>
+        <option value="rebuild">Full rebuild</option>
+      </select>
+    </div>
+
+    <div class="calc-group">
+      <label>Check all that apply:</label>
+      <div class="checkboxes">
+        <label><input type="checkbox" class="penalty" /> No automated tests</label>
+        <label><input type="checkbox" class="penalty" /> No clear data model</label>
+        <label><input type="checkbox" class="penalty" /> No single technical owner</label>
+        <label><input type="checkbox" class="penalty" /> Multiple people touching everything</label>
+      </div>
+    </div>
+
+    <button class="btn btn-primary w-100" onclick="calculateLoss()">
+      Calculate Loss
+    </button>
+
+    <div id="result" class="result mt-4" style="display:none;"></div>
+    <div id="severityMeter" class="severity-meter" style="display:none;">
+      <div class="severity-bar"></div>
+      <div class="severity-label"></div>
+    </div>
+    <div id="vortex" class="alert alert-warning mt-3" style="display:none;">
+      <strong>You’re in the vortex.</strong><br />
+      This pattern almost always leads to a rewrite unless technical ownership is clarified.
+      <p class="mt-2 mb-2">
+        You don’t fix this by coding faster — you fix it by clarifying ownership, scope, and constraints.
+      </p>
+      <a href="/contact.html" class="btn btn-warning btn-sm">
+        Show me how to get out of the vortex
+      </a>
+    </div>
+    <div id="rewriteTimeline" class="alert alert-info mt-3" style="display:none;"></div>
+    <div id="rewriteEffort" class="alert alert-secondary mt-3" style="display:none;"></div>
+  </section>
+
+  <hr />
+
+  <section class="mt-5">
+    <h2>Rewrite Probability Calculator</h2>
+    <p>
+      Estimate how likely your current trajectory is to require a major rewrite.
+    </p>
+
+    <button class="btn btn-outline-danger w-100" onclick="calculateRewriteRisk()">
+      Calculate Rewrite Risk
+    </button>
+
+    <div id="rewriteResult" class="mt-3" style="display:none;"></div>
+  </section>
+
+  <!-- Article Content -->
+  <section class="mt-5">
+    <h2>What Is the Vibe Code Loss Calculator?</h2>
+    <p>
+      This tool exists because many startups don’t fail due to lack of effort —
+      they fail due to *invisible technical debt* accumulated early.
+    </p>
+
+    <p>
+      AI-first development can feel productive, but without architectural ownership,
+      teams often discover the real cost later:
+      rewrites, stalled pilots, missed launches, and lost credibility.
+    </p>
+
+    <h3>Why “Fast” Code Becomes Expensive</h3>
+    <ul>
+      <li>Multiple developers touching the same logic</li>
+      <li>No clear data ownership</li>
+      <li>Features added without constraints</li>
+      <li>Rewrites disguised as “refactors”</li>
+    </ul>
+
+    <p>
+      By the time a senior engineer is brought in, the cost is already sunk.
+      This calculator models that reality.
+    </p>
+
+    <h3>Who This Is For</h3>
+    <ul>
+      <li>Founders evaluating rewrite risk</li>
+      <li>CTOs inheriting AI-generated codebases</li>
+      <li>Investors doing technical diligence</li>
+      <li>Teams feeling “stuck” despite progress</li>
+    </ul>
+
+    <h3>How to Use This Number</h3>
+    <p>
+      Treat this estimate as a signal — not a verdict.
+      If the number surprises you, it usually means the architecture hasn’t been
+      explicitly owned yet.
+    </p>
+
+    <p class="fine-print">
+      The fastest teams are not the ones who write code the quickest —
+      they’re the ones who avoid rewriting it.
+    </p>
+
+    <a href="/contact.html" class="btn btn-success mt-3">
+      Book a technical reality check
+    </a>
+  </section>
+
+  <section class="mt-5">
+    <h2>Why “Just One More Rewrite” Is a Lie</h2>
+    <p>
+      Rewrites often feel like corrective measures, a chance to fix what went wrong.
+      But more often than not, they repeat the same failures around ownership and accountability that caused the problem in the first place.
+    </p>
+    <p>
+      Founders frequently blame the tools or frameworks for architectural shortcomings,
+      when the real issue lies in unclear decision rights and lack of technical leadership.
+      Without clear ownership, the same patterns emerge again and again.
+    </p>
+    <p>
+      Each rewrite resets velocity back to zero, erasing hard-won progress and momentum.
+      What feels like a fresh start is often just revisiting the same challenges under a different name.
+    </p>
+    <p>
+      Senior engineers recognize this pattern early and push for clarity in ownership and scope before investing time in rewrites.
+      Ignoring these signals usually leads to repeated cycles of frustration and lost time.
+    </p>
+    <p>
+      Understanding this cycle is the first step toward breaking it — and building software that lasts.
+    </p>
+    <a href="/contact.html" class="btn btn-primary mt-3">
+      Talk to someone who’s seen this movie before
+    </a>
+  </section>
+</main>
+
+<script>
+function estimateRewriteEffort(stage) {
+  switch (stage) {
+    case "idea":
+      return "2–4 months (small MVP, limited surface area)";
+    case "mvp":
+      return "4–6 months (pilot-grade rewrite with real users)";
+    case "live":
+      return "6–12 months (live users, production hardening)";
+    case "revenue":
+      return "9–18+ months (revenue system with operational risk)";
+    default:
+      return "Unknown";
+  }
+}
+function calculateLoss() {
+  const stage = document.getElementById("stage").value;
+  const buildMethod = document.getElementById("buildMethod").value;
+  const devCount = document.getElementById("devCount").value;
+  const rewrites = document.getElementById("rewrites").value;
+  const penalties = document.querySelectorAll(".penalty:checked").length;
+
+  let baseLoss = 5000;
+
+  const stageMultiplier = { idea: 1, mvp: 2, live: 3, revenue: 4 };
+  const buildPenalty = { vibe: 2.5, mixed: 1.25, senior: 0 };
+  const rewritePenalty = { none: 0, refactor: 5000, rewrite: 15000, rebuild: 30000 };
+  const devPenalty = { 1: 1, 2: 1.5, 4: 2 };
+
+  let total =
+    baseLoss *
+    stageMultiplier[stage] *
+    buildPenalty[buildMethod] *
+    devPenalty[devCount];
+
+  total += rewritePenalty[rewrites];
+  total += penalties * 2500;
+
+  // Call checkVortex before showing result
+  const inVortex = checkVortex(buildMethod, rewrites, penalties);
+
+  // Update localStorage stats
+  let totalRuns = parseInt(localStorage.getItem('vibeCalcTotalRuns') || '0', 10);
+  let vortexHits = parseInt(localStorage.getItem('vibeCalcVortexHits') || '0', 10);
+  totalRuns++;
+  if (inVortex) {
+    vortexHits++;
+  }
+  localStorage.setItem('vibeCalcTotalRuns', totalRuns);
+  localStorage.setItem('vibeCalcVortexHits', vortexHits);
+  console.log(`Vortex stats (local): ${vortexHits} vortex hits / ${totalRuns} total runs`);
+
+  const low = Math.round(total * 0.75);
+  const high = Math.round(total * 1.25);
+
+  const resultEl = document.getElementById("result");
+  resultEl.style.display = "block";
+  resultEl.innerHTML = `
+    <h3>Estimated Hidden Cost</h3>
+    <p class="loss-range">$${low.toLocaleString()} – $${high.toLocaleString()}</p>
+    <p>
+      This reflects lost time, momentum, and senior cleanup —
+      not just dollars paid.
+    </p>
+  `;
+
+  // Hide rewrite timeline on each new calculation until updated by animation
+  const timelineEl = document.getElementById("rewriteTimeline");
+  timelineEl.style.display = "none";
+  timelineEl.innerHTML = "";
+
+  animateSeverityMeter(buildMethod, rewrites, penalties);
+}
+
+function checkVortex(buildMethod, rewrites, penalties) {
+  const inVortex =
+    buildMethod === "vibe" &&
+    (rewrites === "rewrite" || rewrites === "rebuild") &&
+    penalties >= 2;
+
+  const vortexEl = document.getElementById("vortex");
+  vortexEl.style.display = inVortex ? "block" : "none";
+  return inVortex;
+}
+
+function calculateRewriteRisk() {
+  const buildMethod = document.getElementById("buildMethod").value;
+  const rewrites = document.getElementById("rewrites").value;
+  const devCount = parseInt(document.getElementById("devCount").value, 10);
+  const penalties = document.querySelectorAll(".penalty:checked").length;
+
+  let score = 0;
+
+  if (buildMethod === "vibe") score += 3;
+  if (buildMethod === "mixed") score += 1;
+
+  if (rewrites === "refactor") score += 1;
+  if (rewrites === "rewrite") score += 3;
+  if (rewrites === "rebuild") score += 5;
+
+  if (devCount >= 2) score += 1;
+  if (devCount >= 4) score += 2;
+
+  score += penalties;
+
+  let risk, explanation;
+
+  if (score <= 3) {
+    risk = "Low";
+    explanation = "Architecture is likely recoverable without a full rewrite.";
+  } else if (score <= 7) {
+    risk = "Moderate";
+    explanation = "A partial rewrite is likely as requirements harden.";
+  } else {
+    risk = "High";
+    explanation = "A full rewrite is the statistically dominant outcome.";
+  }
+
+  const el = document.getElementById("rewriteResult");
+  el.style.display = "block";
+  el.innerHTML = `
+    <div class="alert alert-danger">
+      <strong>Rewrite Risk: ${risk}</strong><br />
+      ${explanation}
+    </div>
+  `;
+}
+
+function estimateRewriteTimeline(severityPercent) {
+  if (severityPercent <= 30) {
+    return "Unlikely within the next 12–18 months";
+  } else if (severityPercent <= 50) {
+    return "Likely within 6–12 months";
+  } else if (severityPercent <= 70) {
+    return "Likely within 3–6 months";
+  } else if (severityPercent <= 85) {
+    return "Likely within 1–3 months";
+  } else {
+    return "Now–3 months (rewrite pressure already influencing decisions)";
+  }
+}
+
+function animateSeverityMeter(buildMethod, rewrites, penalties) {
+  const meter = document.getElementById('severityMeter');
+  const bar = meter.querySelector('.severity-bar');
+  const label = meter.querySelector('.severity-label');
+  const timelineEl = document.getElementById("rewriteTimeline");
+
+  // Calculate severity percentage
+  let severity = 20;
+  if (buildMethod === 'vibe') severity += 20;
+  if (rewrites === 'refactor') severity += 15;
+  if (rewrites === 'rewrite') severity += 30;
+  if (rewrites === 'rebuild') severity += 40;
+  severity += penalties * 10;
+  if (severity > 100) severity = 100;
+
+  meter.style.display = 'block';
+  bar.style.width = '0%';
+  label.textContent = 'Severity: 0%';
+
+  const duration = 800; // ms
+  const start = performance.now();
+
+  function animate(time) {
+    const elapsed = time - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const currentWidth = progress * severity;
+    bar.style.width = currentWidth + '%';
+    const rounded = Math.round(currentWidth);
+    label.textContent =
+      rounded >= 85
+        ? `Severity: ${rounded}% (Critical)`
+        : `Severity: ${rounded}%`;
+    if (progress < 1) {
+      requestAnimationFrame(animate);
+    } else {
+      // Animation complete - show timeline estimate
+      const timeline = estimateRewriteTimeline(severity);
+      timelineEl.innerHTML = `
+        <strong>Estimated Timeline to Rewrite:</strong><br/>
+        ${timeline}<br/>
+        <span class="fine-print">
+          Based on observed startup patterns when ownership and scope are not corrected.
+        </span>
+      `;
+      timelineEl.style.display = "block";
+      // Populate and show rewrite effort estimate, conditionally
+      const effortEl = document.getElementById("rewriteEffort");
+      const stage = document.getElementById("stage").value;
+      // Retrieve buildMethod again in case it changed
+      const buildMethodCurrent = document.getElementById("buildMethod").value;
+      effortEl.style.display = "block";
+      if (severity < 30 && buildMethodCurrent === 'senior') {
+        effortEl.innerHTML = `
+          <strong>Estimated Senior Rewrite Effort:</strong><br/>
+          None — senior ownership prevented rewrite<br/>
+          <span class="fine-print">
+            Incremental cleanup and hardening may still occur, but a full rewrite is not indicated.
+          </span>
+        `;
+      } else {
+        const effort = estimateRewriteEffort(stage);
+        effortEl.innerHTML = `
+          <strong>Estimated Senior Rewrite Effort (Once Started):</strong><br/>
+          ${effort}<br/>
+          <span class="fine-print">
+            Assumes a senior engineer with full ownership, scope control, and production responsibility.
+          </span>
+        `;
+      }
+    }
+  }
+  requestAnimationFrame(animate);
+}
+
+// Hidden console message for those who look 👀
+console.log(
+  "%cVibe Code Detector:",
+  "font-weight:bold;color:#ff5722;",
+  "If you’re reading this, you already know why this page exists."
+);
+</script>
