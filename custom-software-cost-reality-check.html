@@ -1,0 +1,394 @@
+---
+layout: default
+title: "Custom Software Cost Reality Check Calculator"
+description: "Get a realistic cost range for building custom software. This quick calculator estimates budget and timeline based on scope, complexity, integrations, and risk."
+---
+
+<style>
+  .mini-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+    height: 100%;
+  }
+  .mini-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  }
+  .mini-card-body {
+    padding: 1.25rem;
+  }
+  .btn-outline {
+    display: inline-block;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid #0d6efd;
+    color: #0d6efd;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .btn-outline:hover {
+    background-color: #0d6efd;
+    color: #ffffff;
+  }
+  .pill {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    margin-right: 0.35rem;
+    margin-bottom: 0.35rem;
+    background: #f3f4f6;
+  }
+  .muted {
+    color: #6b7280;
+  }
+  .result-number {
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+  .small-note {
+    font-size: 0.9rem;
+  }
+  .form-label {
+    font-weight: 600;
+  }
+  .divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 1rem 0;
+  }
+</style>
+
+<div class="container my-4">
+  <div class="text-center mb-4">
+    <h1>Custom Software Cost Reality Check</h1>
+    <p class="muted mb-0">
+      A fast, honest estimator for budget and timeline. This is not a quote. It
+      is a sanity check that highlights risk and scope pressure.
+    </p>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-lg-7">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-3">Inputs</h2>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Platform</label>
+              <select class="form-select" id="platform">
+                <option value="ios_android">iOS + Android (native)</option>
+                <option value="cross">Cross-platform (React Native)</option>
+                <option value="web">Web app</option>
+                <option value="api_only">Backend/API only</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Stage</label>
+              <select class="form-select" id="stage">
+                <option value="mvp">MVP</option>
+                <option value="v1">V1</option>
+                <option value="scale">Scale</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Complexity</label>
+              <select class="form-select" id="complexity">
+                <option value="simple">Simple</option>
+                <option value="medium" selected>Medium</option>
+                <option value="complex">Complex</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Design readiness</label>
+              <select class="form-select" id="designReady">
+                <option value="yes" selected>Design ready</option>
+                <option value="partial">Partial</option>
+                <option value="no">None</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Integrations</label>
+              <select class="form-select" id="integrations">
+                <option value="0">0</option>
+                <option value="1_2" selected>1–2</option>
+                <option value="3_5">3–5</option>
+                <option value="6plus">6+</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Auth complexity</label>
+              <select class="form-select" id="auth">
+                <option value="simple" selected>Simple</option>
+                <option value="roles">Roles</option>
+                <option value="enterprise">Enterprise</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Compliance</label>
+              <select class="form-select" id="compliance">
+                <option value="none" selected>None</option>
+                <option value="soc2">SOC 2</option>
+                <option value="hipaa">HIPAA</option>
+                <option value="pci">PCI</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Timeline</label>
+              <select class="form-select" id="timeline">
+                <option value="relaxed">Flexible</option>
+                <option value="normal" selected>Normal</option>
+                <option value="aggressive">Aggressive</option>
+              </select>
+            </div>
+
+            <div class="col-md-12">
+              <label class="form-label">
+                Existing codebase
+                <span
+                  class="ms-1"
+                  style="cursor: help; color: #6b7280;"
+                  title="Existing systems often increase cost and timeline due to discovery, constraints, and refactor risk. This is normal, not a penalty."
+                >
+                  ⓘ
+                </span>
+              </label>
+              <select class="form-select" id="codebase">
+                <option value="new" selected>New build</option>
+                <option value="existing_ok">Existing (healthy)</option>
+                <option value="existing_messy">Existing (messy)</option>
+              </select>
+              <div class="form-check mt-2">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="compareToggle"
+                />
+                <label class="form-check-label muted" for="compareToggle">
+                  Compare against a new build
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <button id="calcBtn" class="btn btn-primary w-100">
+            Calculate cost range
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-5">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-2">Reality check</h2>
+          <div id="emptyState" class="muted small-note">
+            Click calculate to see results.
+          </div>
+
+          <div id="results" class="d-none">
+            <div class="mb-3">
+              <div class="muted">Estimated budget</div>
+              <div class="result-number" id="budgetRange">$0–$0</div>
+            </div>
+
+            <div class="mb-3">
+              <div class="muted">Timeline</div>
+              <div class="result-number" id="timelineRange">0–0 weeks</div>
+            </div>
+
+            <div id="comparisonBlock" class="d-none mt-3">
+              <div class="divider"></div>
+              <div class="muted mb-1">Comparison (greenfield MVP)</div>
+              <div class="small-note">
+                <strong>Budget:</strong>
+                <span id="compareBudget">$0–$0</span><br />
+                <strong>Timeline:</strong>
+                <span id="compareTimeline">0–0 weeks</span>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="muted">Risk flags</div>
+              <div id="riskPills"></div>
+            </div>
+
+            <a href="/contact.html" class="btn-outline mt-2">
+              Talk through your estimate
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function fmtMoney(n) {
+    return "$" + Math.round(n).toLocaleString();
+  }
+
+  function calc() {
+    const platform = document.getElementById("platform").value;
+    const stage = document.getElementById("stage").value;
+    const complexity = document.getElementById("complexity").value;
+    const designReady = document.getElementById("designReady").value;
+    const integrations = document.getElementById("integrations").value;
+    const auth = document.getElementById("auth").value;
+    const compliance = document.getElementById("compliance").value;
+    const timeline = document.getElementById("timeline").value;
+    const codebase = document.getElementById("codebase").value;
+
+    const risks = [];
+
+    let hours = {
+      mvp: 260,
+      v1: 520,
+      scale: 900,
+    }[stage];
+
+    hours *= {
+      simple: 0.85,
+      medium: 1.0,
+      complex: 1.35,
+    }[complexity];
+
+    hours *= {
+      ios_android: 1.35,
+      cross: 1.05,
+      web: 0.95,
+      api_only: 0.8,
+    }[platform];
+
+    if (platform === "ios_android") risks.push("Dual-platform build");
+    if (platform === "cross") risks.push("Cross-platform tradeoffs");
+
+    hours *= {
+      yes: 1.0,
+      partial: 1.15,
+      no: 1.3,
+    }[designReady];
+
+    hours += {
+      0: 0,
+      "1_2": 60,
+      "3_5": 140,
+      "6plus": 260,
+    }[integrations];
+
+    if (integrations === "3_5" || integrations === "6plus")
+      risks.push("Integration-heavy");
+
+    hours += {
+      simple: 30,
+      roles: 90,
+      enterprise: 170,
+    }[auth];
+
+    if (auth !== "simple") risks.push("Complex auth model");
+
+    hours += {
+      none: 0,
+      soc2: 120,
+      hipaa: 220,
+      pci: 260,
+    }[compliance];
+
+    if (compliance !== "none") risks.push("Compliance scope");
+
+    let riskLow = 0.9;
+    let riskHigh = 1.25;
+
+    if (codebase === "existing_ok") {
+      hours += 60;
+      riskHigh = 1.2;
+      risks.push("Existing codebase");
+    } else if (codebase === "existing_messy") {
+      hours += 160;
+      riskHigh = 1.45;
+      risks.push("Messy legacy code");
+    }
+
+    if (timeline === "aggressive") {
+      riskHigh += 0.1;
+      risks.push("Timeline pressure");
+    } else if (timeline === "relaxed") {
+      riskHigh -= 0.05;
+    }
+
+    const blendedRate = 210;
+
+    const lowHours = hours * riskLow;
+    const highHours = hours * riskHigh;
+
+    return {
+      low: lowHours * blendedRate,
+      high: highHours * blendedRate,
+      weeksLow: Math.ceil(lowHours / 35),
+      weeksHigh: Math.ceil(highHours / 30),
+      risks,
+    };
+  }
+
+  document.getElementById("calcBtn").addEventListener("click", function () {
+    const r = calc();
+
+    const emptyState = document.getElementById("emptyState");
+    const results = document.getElementById("results");
+    const budgetRange = document.getElementById("budgetRange");
+    const timelineRange = document.getElementById("timelineRange");
+    const comparisonBlock = document.getElementById("comparisonBlock");
+    const riskPills = document.getElementById("riskPills");
+    riskPills.innerHTML = "";
+
+    emptyState.classList.add("d-none");
+    results.classList.remove("d-none");
+
+    budgetRange.innerText = fmtMoney(r.low) + "–" + fmtMoney(r.high);
+    timelineRange.innerText = r.weeksLow + "–" + r.weeksHigh + " weeks";
+
+    r.risks.forEach((label) => {
+      const pill = document.createElement("span");
+      pill.className = "pill";
+      pill.innerText = label;
+      riskPills.appendChild(pill);
+    });
+
+    const compareToggle = document.getElementById("compareToggle");
+
+    if (compareToggle && compareToggle.checked) {
+      const originalCodebase = document.getElementById("codebase").value;
+
+      // Temporarily compute as new build
+      document.getElementById("codebase").value = "new";
+      const base = calc();
+
+      document.getElementById("codebase").value = originalCodebase;
+
+      document.getElementById("compareBudget").innerText =
+        fmtMoney(base.low) + "–" + fmtMoney(base.high);
+
+      document.getElementById("compareTimeline").innerText =
+        base.weeksLow + "–" + base.weeksHigh + " weeks";
+
+      comparisonBlock.classList.remove("d-none");
+    } else {
+      comparisonBlock.classList.add("d-none");
+    }
+  });
+</script>

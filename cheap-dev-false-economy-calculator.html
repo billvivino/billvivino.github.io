@@ -1,0 +1,266 @@
+---
+layout: default
+title: "Cheap Dev False Economy Calculator"
+description: "Compare effective cost of low-rate developers versus senior engineers. This calculator estimates cost per unit of shipped work after rework and slowdowns."
+---
+
+<style>
+  .mini-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: 100%;
+  }
+  .mini-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  }
+  .mini-card-body {
+    padding: 1.25rem;
+  }
+  .btn-outline {
+    display: inline-block;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid #0d6efd;
+    color: #0d6efd;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .btn-outline:hover {
+    background-color: #0d6efd;
+    color: #ffffff;
+  }
+  .muted {
+    color: #6b7280;
+  }
+  .result-number {
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+  .pill {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    margin-right: 0.35rem;
+    margin-bottom: 0.35rem;
+    background: #f3f4f6;
+  }
+  .divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 1rem 0;
+  }
+  .form-label {
+    font-weight: 600;
+  }
+</style>
+
+<div class="container my-4">
+  <div class="text-center mb-4">
+    <h1>Cheap Dev False Economy Calculator</h1>
+    <p class="muted mb-0">
+      This compares effective cost per unit of shipped work. It models slower execution plus rework.
+    </p>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-lg-7">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-3">Inputs</h2>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Budget (USD)</label>
+              <input class="form-control" id="budget" type="number" value="6000" min="0" />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Lower-rate dev ($/hr)</label>
+              <input class="form-control" id="cheapRate" type="number" value="75" min="0" />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Senior dev ($/hr)</label>
+              <input class="form-control" id="seniorRate" type="number" value="250" min="0" />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">
+                Lower-rate dev speed (relative to senior)
+              </label>
+              <select class="form-select" id="speedRatio">
+                <option value="0.25">0.25x (very slow)</option>
+                <option value="0.4">0.4x</option>
+                <option value="0.6" selected>0.6x</option>
+                <option value="0.8">0.8x</option>
+                <option value="1.0">1.0x (equal speed)</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Rework rate</label>
+              <select class="form-select" id="rework">
+                <option value="0.10">10%</option>
+                <option value="0.20" selected>20%</option>
+                <option value="0.30">30%</option>
+                <option value="0.40">40%</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Context loss</label>
+              <select class="form-select" id="contextLoss">
+                <option value="0.05">Low (5%)</option>
+                <option value="0.10" selected>Medium (10%)</option>
+                <option value="0.20">High (20%)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <button id="calcBtn" class="btn btn-primary w-100">
+            Compare effective output
+          </button>
+
+          <p class="muted mt-3 mb-0" style="font-size: 0.9rem">
+            Model: fixed budget → hours purchased → effective shipped work after speed,
+            rework, and context loss.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-5">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-2">Results</h2>
+          <p class="muted mb-3">
+            This is a blunt model, but it explains why lower hourly rates can cost more.
+          </p>
+
+          <div id="results" class="d-none">
+            <div class="mb-3">
+              <div class="muted">Lower-rate dev hours purchased</div>
+              <div class="result-number" id="cheapHours">0 hrs</div>
+            </div>
+
+            <div class="mb-3">
+              <div class="muted">Senior dev hours purchased</div>
+              <div class="result-number" id="seniorHours">0 hrs</div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="mb-3">
+              <div class="muted">Effective shipped work</div>
+              <div class="result-number" id="unitsCompare">0 vs 0</div>
+            </div>
+
+            <div class="mb-3">
+              <div class="muted">Effective cost per unit</div>
+              <div class="result-number" id="cpuCompare">$0 vs $0</div>
+            </div>
+
+            <div class="mb-3">
+              <div class="muted">Takeaway</div>
+              <div id="takeawayPills"></div>
+            </div>
+
+            <div class="divider"></div>
+
+            <a href="/contact.html" class="btn-outline">
+              If this looks familiar, talk to me
+            </a>
+          </div>
+
+          <div id="emptyState" class="muted">
+            Click “Compare effective output” to see the result.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  function fmtMoney(n) {
+    return "$" + Math.round(n).toLocaleString();
+  }
+
+  function pill(container, text) {
+    const span = document.createElement("span");
+    span.className = "pill";
+    span.innerText = text;
+    container.appendChild(span);
+  }
+
+  function calc() {
+    const budget = Math.max(0, Number(budgetInput.value || 0));
+    const cheapRate = Math.max(0.01, Number(cheapRateInput.value || 1));
+    const seniorRate = Math.max(0.01, Number(seniorRateInput.value || 1));
+    const speedRatio = Number(speedRatioInput.value || 1);
+    const rework = Number(reworkInput.value || 0);
+    const contextLoss = Number(contextLossInput.value || 0);
+
+    const cheapHours = budget / cheapRate;
+    const seniorHours = budget / seniorRate;
+
+    const cheapEffective =
+      cheapHours * speedRatio * Math.max(0, 1 - rework - contextLoss);
+    const seniorEffective =
+      seniorHours * Math.max(0, 1 - 0.05);
+
+    return {
+      cheapHours,
+      seniorHours,
+      cheapEffective,
+      seniorEffective,
+      cheapCPU: budget / Math.max(cheapEffective, 0.01),
+      seniorCPU: budget / Math.max(seniorEffective, 0.01),
+      speedRatio,
+      rework,
+      contextLoss
+    };
+  }
+
+  const budgetInput = document.getElementById("budget");
+  const cheapRateInput = document.getElementById("cheapRate");
+  const seniorRateInput = document.getElementById("seniorRate");
+  const speedRatioInput = document.getElementById("speedRatio");
+  const reworkInput = document.getElementById("rework");
+  const contextLossInput = document.getElementById("contextLoss");
+
+  document.getElementById("calcBtn").addEventListener("click", function () {
+    const r = calc();
+
+    emptyState.classList.add("d-none");
+    results.classList.remove("d-none");
+
+    cheapHours.innerText = Math.round(r.cheapHours) + " hrs";
+    seniorHours.innerText = Math.round(r.seniorHours) + " hrs";
+    unitsCompare.innerText =
+      r.cheapEffective.toFixed(1) + " vs " + r.seniorEffective.toFixed(1);
+    cpuCompare.innerText =
+      fmtMoney(r.cheapCPU) + " vs " + fmtMoney(r.seniorCPU);
+
+    takeawayPills.innerHTML = "";
+
+    if (r.cheapCPU > r.seniorCPU) {
+      pill(takeawayPills, "Lower rate is costing more");
+      pill(takeawayPills, "Rework and context loss dominate");
+    } else {
+      pill(takeawayPills, "Lower rate may be fine for this scope");
+    }
+
+    if (r.speedRatio < 0.6) pill(takeawayPills, "Large speed gap");
+    if (r.rework >= 0.3) pill(takeawayPills, "High rework risk");
+    if (r.contextLoss >= 0.2) pill(takeawayPills, "Communication drag");
+  });
+</script>
