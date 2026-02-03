@@ -1,0 +1,371 @@
+---
+layout: default
+title: "Team Scaling Fallacy Calculator (Brook’s Law)"
+description: "Why adding engineers can slow delivery. Model onboarding time and coordination overhead to see effective output before and after hiring."
+---
+
+<style>
+  .mini-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: 100%;
+  }
+  .mini-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  }
+  .mini-card-body {
+    padding: 1.25rem;
+  }
+  .muted {
+    color: #6b7280;
+  }
+  .result-number {
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+  .pill {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    margin-right: 0.35rem;
+    margin-bottom: 0.35rem;
+    background: #f3f4f6;
+  }
+  .divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 1rem 0;
+  }
+  .form-label {
+    font-weight: 600;
+  }
+  .btn-outline {
+    display: inline-block;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid #0d6efd;
+    color: #0d6efd;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .btn-outline:hover {
+    background-color: #0d6efd;
+    color: #ffffff;
+  }
+  .help {
+    cursor: help;
+    color: #6b7280;
+    margin-left: 0.25rem;
+    font-weight: 600;
+  }
+  .small-note {
+    font-size: 0.9rem;
+  }
+</style>
+
+<div class="container my-4">
+  <div class="text-center mb-4">
+    <h1>Team Scaling Fallacy Calculator (Brook’s Law)</h1>
+    <p class="muted mb-0">
+      A blunt model that shows why adding engineers often slows delivery. It makes onboarding and coordination costs visible.
+    </p>
+  </div>
+
+  <div class="row g-4">
+    <!-- Inputs -->
+    <div class="col-lg-7">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-3">Inputs</h2>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label" for="currentTeam">Current team size</label>
+              <input class="form-control" id="currentTeam" type="number" min="1" max="50" value="5" />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="newHires">Planned additional hires</label>
+              <input class="form-control" id="newHires" type="number" min="0" max="30" value="2" />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="onboardingWeeks">Onboarding time (weeks)</label>
+              <input class="form-control" id="onboardingWeeks" type="number" min="1" max="52" value="6" />
+              <div class="muted small-note mt-1">How long before a new hire is meaningfully productive in this codebase.</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="coordinationPct">
+                Coordination overhead (percent)
+                <span
+                  class="help"
+                  title="Meetings, code reviews, planning, unblockers, handoffs, rework. This is time that does not directly ship features."
+                  >ⓘ</span
+                >
+              </label>
+              <input class="form-control" id="coordinationPct" type="number" min="0" max="70" value="20" />
+              <div class="muted small-note mt-1">Typical range is 10 to 35 for real teams.</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="seniorCore">Senior core size</label>
+              <input class="form-control" id="seniorCore" type="number" min="1" max="20" value="2" />
+              <div class="muted small-note mt-1">Who absorbs onboarding, reviews, and decision load.</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="seniorSupportHrs">Senior support per new hire (hrs/week)</label>
+              <input class="form-control" id="seniorSupportHrs" type="number" min="0" max="40" value="5" />
+              <div class="muted small-note mt-1">Conservative default. Increase if the system is messy.</div>
+            </div>
+
+            <div class="col-md-12">
+              <label class="form-label" for="projectState">Project state</label>
+              <select class="form-select" id="projectState">
+                <option value="steady" selected>Steady delivery (not on fire)</option>
+                <option value="late">Late or behind schedule</option>
+                <option value="fragile">Fragile codebase or high incident load</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <button id="calcBtn" class="btn btn-primary w-100">Calculate effective output</button>
+
+          <p class="muted small-note mt-3 mb-0">
+            This is a simple model. It does not assume bad hires. It assumes coordination rises with team size and that onboarding consumes senior time.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="col-lg-5">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-2">Results</h2>
+          <div id="emptyState" class="muted small-note">Click calculate to see results.</div>
+
+          <div id="results" class="d-none">
+            <div class="mb-3">
+              <div class="muted">Effective output before</div>
+              <div class="result-number" id="beforeOut">0.0</div>
+              <div class="muted small-note">Units are relative, not hours. Think of this as effective engineers.</div>
+            </div>
+
+            <div class="mb-3">
+              <div class="muted">Effective output after</div>
+              <div class="result-number" id="afterOut">0.0</div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="mb-3">
+              <div class="muted">Onboarding load absorbed by senior team</div>
+              <div class="result-number" style="font-size: 1.3rem" id="onboardingHours">0 hours</div>
+              <div class="muted small-note" id="onboardingNote"></div>
+            </div>
+
+            <div class="mb-3">
+              <div class="muted">Coordination drag increase</div>
+              <div class="result-number" style="font-size: 1.3rem" id="coordinationDelta">+0%</div>
+            </div>
+
+            <div class="mb-3">
+              <div class="muted">Why this happened</div>
+              <div id="riskPills"></div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="mb-3">
+              <div class="muted">Summary</div>
+              <div id="summary" class="small-note"></div>
+            </div>
+
+            <a href="/contact.html" class="btn-outline" id="ctaBtn">Talk through options</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="mini-card mt-4">
+    <div class="mini-card-body">
+      <h3 class="h6 mb-2">Why adding engineers can slow delivery (Brook’s Law)</h3>
+      <ul class="mb-3">
+        <li><strong>Onboarding steals senior time:</strong> seniors stop shipping to unblock, review, and transfer context.</li>
+        <li><strong>Communication paths explode:</strong> more people means more coordination, more meetings, and more waiting.</li>
+        <li><strong>Context switching increases defects:</strong> quality drops, rework rises, and velocity feels worse.</li>
+      </ul>
+      <p class="muted small-note mb-0">
+        This calculator makes those costs visible. It is a planning tool, not a promise.
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function clamp(n, min, max) {
+    return Math.min(max, Math.max(min, n));
+  }
+
+  function toNum(id, min, max, fallback) {
+    const v = Number(document.getElementById(id).value);
+    if (Number.isFinite(v)) return clamp(v, min, max);
+    return fallback;
+  }
+
+  function pill(container, text) {
+    const span = document.createElement("span");
+    span.className = "pill";
+    span.innerText = text;
+    container.appendChild(span);
+  }
+
+  function calc() {
+    const currentTeam = toNum("currentTeam", 1, 50, 5);
+    const newHires = toNum("newHires", 0, 30, 0);
+    const onboardingWeeks = toNum("onboardingWeeks", 1, 52, 6);
+    const coordinationPct = toNum("coordinationPct", 0, 70, 20) / 100;
+    const seniorCore = toNum("seniorCore", 1, 20, 2);
+    const seniorSupportHrs = toNum("seniorSupportHrs", 0, 40, 5);
+    const projectState = document.getElementById("projectState").value;
+
+    const totalTeam = currentTeam + newHires;
+
+    // Baseline effective output
+    // Existing team output is reduced by coordination overhead.
+    const before = currentTeam * (1 - coordinationPct);
+
+    // Coordination increases with team size.
+    // This is a heuristic that models more paths and more waiting.
+    let coordMultiplier = 1 + ((totalTeam / currentTeam) - 1) * 0.5;
+
+    // Project state increases coordination impact.
+    if (projectState === "late") coordMultiplier += 0.15;
+    if (projectState === "fragile") coordMultiplier += 0.25;
+
+    const effectiveCoordPct = clamp(coordinationPct * coordMultiplier, 0, 0.8);
+
+    // Onboarding cost is senior support time.
+    const onboardingHours = newHires * onboardingWeeks * seniorSupportHrs;
+
+    // Convert onboarding hours to effective output loss.
+    // Senior core is the group that absorbs this load.
+    // We model it as lost capacity from the senior core.
+    const seniorCapacityPerWeek = seniorCore * 40;
+    const onboardingWeeksSpan = onboardingWeeks; // simple
+    const onboardingHoursPerWeek = onboardingWeeksSpan > 0 ? (onboardingHours / onboardingWeeksSpan) : 0;
+    const seniorHitPct = seniorCapacityPerWeek > 0 ? clamp(onboardingHoursPerWeek / seniorCapacityPerWeek, 0, 1) : 1;
+
+    // New hires are not fully productive immediately.
+    // We model their near-term productivity as a ramp factor.
+    // Conservative: 35% productivity during onboarding window.
+    const rampProductivity = 0.35;
+
+    const postRaw =
+      (currentTeam * (1 - effectiveCoordPct)) +
+      (newHires * rampProductivity * (1 - effectiveCoordPct));
+
+    // Remove senior focus loss due to onboarding load
+    const seniorFocusLoss = seniorCore * seniorHitPct * (1 - effectiveCoordPct);
+
+    const after = Math.max(0, postRaw - seniorFocusLoss);
+
+    const coordDeltaPct = Math.round((effectiveCoordPct - coordinationPct) * 100);
+
+    const risks = [];
+
+    if (newHires >= Math.max(2, Math.ceil(currentTeam * 0.5))) risks.push("Too many hires at once");
+    if (onboardingWeeks >= 8) risks.push("Long onboarding window");
+    if (coordinationPct >= 0.25) risks.push("High baseline coordination");
+    if (seniorCore <= 2 && newHires >= 2) risks.push("Small senior core");
+    if (projectState === "late") risks.push("Late project amplifies drag");
+    if (projectState === "fragile") risks.push("Fragile system increases rework");
+    if (after < before) risks.push("Hiring can reduce output short term");
+
+    let summary = "";
+    const delta = after - before;
+
+    if (delta >= 0.5) {
+      summary =
+        "Output increases slightly, but expect a temporary dip if the senior core becomes the bottleneck. Protect senior focus and keep scope stable during onboarding.";
+    } else if (delta >= 0) {
+      summary =
+        "Output is roughly flat. This is common when onboarding and coordination cancel out the benefit of added headcount. A structural change may create more lift than more hiring.";
+    } else {
+      summary =
+        "Output drops. This is Brook’s Law in action. The fix is usually reducing coordination and onboarding load, stabilizing the system, and narrowing scope.";
+    }
+
+    return {
+      before,
+      after,
+      onboardingHours,
+      seniorHitPct,
+      coordDeltaPct,
+      risks,
+      inputs: { currentTeam, newHires, onboardingWeeks, coordinationPct, seniorCore, seniorSupportHrs, projectState },
+      summary
+    };
+  }
+
+  document.getElementById("calcBtn").addEventListener("click", function () {
+    const r = calc();
+
+    // Results UI
+    document.getElementById("emptyState").classList.add("d-none");
+    document.getElementById("results").classList.remove("d-none");
+
+    document.getElementById("beforeOut").innerText = r.before.toFixed(1);
+    document.getElementById("afterOut").innerText = r.after.toFixed(1);
+
+    document.getElementById("onboardingHours").innerText = Math.round(r.onboardingHours) + " hours";
+
+    const hitPct = Math.round(r.seniorHitPct * 100);
+    document.getElementById("onboardingNote").innerText =
+      "Estimated senior capacity absorbed during onboarding: " + hitPct + "%";
+
+    const sign = r.coordDeltaPct >= 0 ? "+" : "";
+    document.getElementById("coordinationDelta").innerText = sign + r.coordDeltaPct + "%";
+
+    const riskPills = document.getElementById("riskPills");
+    riskPills.innerHTML = "";
+    (r.risks.length ? r.risks : ["Normal scaling friction"]).forEach((label) => pill(riskPills, label));
+
+    document.getElementById("summary").innerText = r.summary;
+
+    // Optional GTM events (safe if dataLayer is missing)
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "calculator_calculate",
+      calculator: "team_scaling_fallacy",
+      current_team: r.inputs.currentTeam,
+      new_hires: r.inputs.newHires,
+      onboarding_weeks: r.inputs.onboardingWeeks,
+      coordination_pct: Math.round(r.inputs.coordinationPct * 100),
+      senior_core: r.inputs.seniorCore,
+      senior_support_hrs: r.inputs.seniorSupportHrs,
+      project_state: r.inputs.projectState,
+      before_output: Number(r.before.toFixed(2)),
+      after_output: Number(r.after.toFixed(2))
+    });
+  });
+
+  document.getElementById("ctaBtn").addEventListener("click", function () {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "calculator_cta_click",
+      calculator: "team_scaling_fallacy"
+    });
+  });
+</script>

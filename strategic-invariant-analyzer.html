@@ -1,0 +1,409 @@
+---
+layout: default
+title: "Strategic Invariant Analyzer"
+description: "Identify the one advantage your product must compound to build a defensible moat. A founder-friendly tool that connects strategy to engineering reality."
+---
+
+<style>
+  .mini-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: 100%;
+  }
+  .mini-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  }
+  .mini-card-body {
+    padding: 1.25rem;
+  }
+  .muted {
+    color: #6b7280;
+  }
+  .divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 1rem 0;
+  }
+  .form-label {
+    font-weight: 600;
+  }
+  .pill {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    margin-right: 0.35rem;
+    margin-bottom: 0.35rem;
+    background: #f3f4f6;
+  }
+  .result-number {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  .btn-outline {
+    display: inline-block;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid #0d6efd;
+    color: #0d6efd;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .btn-outline:hover {
+    background-color: #0d6efd;
+    color: #ffffff;
+  }
+  .small-note {
+    font-size: 0.9rem;
+  }
+</style>
+
+<div class="container my-4">
+  <div class="text-center mb-4">
+    <h1>Strategic Invariant Analyzer</h1>
+    <p class="muted mb-0">
+      This tool helps founders identify the one thing that must compound over time to create a moat.
+      It connects strategy to engineering reality.
+    </p>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-lg-7">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-2">Inputs</h2>
+          <p class="muted small-note mb-3">
+            Choose the answers that match your product today, not what you hope will be true later.
+          </p>
+
+          <div class="mb-3">
+            <label class="form-label">1) What gets better when one more user joins? (pick up to 2)</label>
+
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="better_search" />
+              <label class="form-check-label" for="better_search">Search results or recommendations improve</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="better_marketplace" />
+              <label class="form-check-label" for="better_marketplace">Marketplace liquidity improves (buyers and sellers)</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="better_network" />
+              <label class="form-check-label" for="better_network">Social connections and identity graph deepen</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="better_data" />
+              <label class="form-check-label" for="better_data">Proprietary data becomes richer and harder to copy</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="better_ops" />
+              <label class="form-check-label" for="better_ops">Operational efficiency improves at scale</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="better_trust" />
+              <label class="form-check-label" for="better_trust">Trust increases (reputation, compliance, reliability)</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="better_none" />
+              <label class="form-check-label" for="better_none">Nothing obvious gets better yet</label>
+            </div>
+
+            <div class="muted small-note mt-2">
+              If you pick “nothing obvious,” that is not a failure. It usually means you are competing on execution, not compounding advantage.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">2) Who owns the advantage?</label>
+            <select class="form-select" id="ownership">
+              <option value="own" selected>We own it (internal, portable, retained)</option>
+              <option value="shared">Shared with a platform or vendor</option>
+              <option value="external">Mostly external (vendors, APIs, partners)</option>
+              <option value="unclear">Unclear</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">3) Can a competitor copy this without users switching?</label>
+            <select class="form-select" id="copyability">
+              <option value="hard" selected>No, switching cost is high</option>
+              <option value="partial">Partially</option>
+              <option value="easy">Yes, easily</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">4) Does the advantage improve automatically with usage?</label>
+            <select class="form-select" id="automatic">
+              <option value="auto" selected>Yes, it compounds with use</option>
+              <option value="effort">Somewhat, but requires constant effort</option>
+              <option value="none">No, it does not improve</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">5) What breaks if the invariant weakens?</label>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="break_quality" checked />
+              <label class="form-check-label" for="break_quality">Product quality</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="break_econ" />
+              <label class="form-check-label" for="break_econ">Unit economics</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="break_trust" checked />
+              <label class="form-check-label" for="break_trust">User trust</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="break_growth" />
+              <label class="form-check-label" for="break_growth">Growth rate</label>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <button id="calcBtn" class="btn btn-primary w-100">Analyze strategic invariant</button>
+
+          <p class="muted small-note mt-3 mb-0">
+            This tool does not predict success. It reveals whether your MVP reinforces a compounding advantage or competes only on execution.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-5">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-2">Results</h2>
+          <div id="emptyState" class="muted small-note">Click analyze to see results.</div>
+
+          <div id="results" class="d-none">
+            <div class="mb-3">
+              <div class="muted">Strategic invariant</div>
+              <div class="result-number" id="invariantTitle">Unclear</div>
+              <div class="muted small-note" id="invariantDesc"></div>
+            </div>
+
+            <div class="mb-3">
+              <div class="muted">Moat strength</div>
+              <div class="result-number" id="moatStrength">Emerging</div>
+              <div class="muted small-note" id="strengthDesc"></div>
+            </div>
+
+            <div class="mb-3">
+              <div class="muted">Signals</div>
+              <div id="riskPills"></div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="mb-3">
+              <div class="muted">Engineering implications</div>
+              <div class="small-note" id="implications"></div>
+            </div>
+
+            <div class="divider"></div>
+
+            <a href="/mvp-boundary-scoping-tool.html" class="btn-outline">Use the MVP Boundary Tool next</a>
+            <a href="/custom-software-cost-reality-check.html" class="btn-outline mt-2">Run the Cost Reality Check</a>
+            <a href="/contact.html" class="btn btn-success w-100 mt-3">Talk through your strategy</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mini-card mt-4">
+        <div class="mini-card-body">
+          <h3 class="h6 mb-2">How to interpret this</h3>
+          <p class="muted small-note mb-0">
+            A moat is not a feature. It is something that gets stronger as the product is used. If nothing compounds, you are competing on execution and distribution.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function pill(container, text) {
+    const span = document.createElement("span");
+    span.className = "pill";
+    span.innerText = text;
+    container.appendChild(span);
+  }
+
+  function countChecked(ids) {
+    return ids.reduce((sum, id) => sum + (document.getElementById(id).checked ? 1 : 0), 0);
+  }
+
+  function selectedCompounding() {
+    const options = [
+      { id: "better_search", key: "search" },
+      { id: "better_marketplace", key: "marketplace" },
+      { id: "better_network", key: "network" },
+      { id: "better_data", key: "data" },
+      { id: "better_ops", key: "ops" },
+      { id: "better_trust", key: "trust" },
+      { id: "better_none", key: "none" }
+    ];
+
+    const chosen = options.filter(o => document.getElementById(o.id).checked).map(o => o.key);
+
+    // Cap at 2, enforce the tool rule without being strict.
+    if (chosen.length > 2) {
+      return { chosen: chosen.slice(0, 2), tooMany: true };
+    }
+    return { chosen, tooMany: false };
+  }
+
+  function analyze() {
+    const { chosen, tooMany } = selectedCompounding();
+    const ownership = document.getElementById("ownership").value;
+    const copyability = document.getElementById("copyability").value;
+    const automatic = document.getElementById("automatic").value;
+
+    const breaks = countChecked(["break_quality", "break_econ", "break_trust", "break_growth"]);
+
+    // Determine invariant category
+    let invariant = "Unclear";
+    let invariantDesc = "No single compounding advantage is clearly reinforced yet.";
+    let implications = [];
+
+    const hasNone = chosen.includes("none") || chosen.length === 0;
+
+    if (!hasNone) {
+      if (chosen.includes("network")) {
+        invariant = "Social graph and identity";
+        invariantDesc = "The product becomes more valuable as relationships and connections deepen.";
+        implications = [
+          "Identity, permissions, and relationship modeling become core. Auth is not a commodity.",
+          "You need durable data models for connections and visibility rules.",
+          "You should design for trust and safety early. Abuse and moderation become product issues."
+        ];
+      } else if (chosen.includes("marketplace")) {
+        invariant = "Marketplace liquidity";
+        invariantDesc = "The product improves as supply and demand density increases.";
+        implications = [
+          "Search and matching are core features, not optional add ons.",
+          "You must instrument conversion funnels and manage cold start explicitly.",
+          "Quality and trust systems matter early. Spam and low quality listings can kill liquidity."
+        ];
+      } else if (chosen.includes("search")) {
+        invariant = "Feedback loop on search and relevance";
+        invariantDesc = "The product improves as it learns intent and improves ranking and discovery.";
+        implications = [
+          "You must retain and model interaction data carefully (clicks, queries, outcomes).",
+          "Data pipelines and quality become the moat. Do not outsource the core learning loop.",
+          "You need a clean taxonomy and consistent metadata or relevance will degrade."
+        ];
+      } else if (chosen.includes("data")) {
+        invariant = "Proprietary data advantage";
+        invariantDesc = "The product becomes harder to copy as unique data accumulates and improves decisions.";
+        implications = [
+          "Data ownership is the moat. Vendor lock in can weaken it if the data is trapped.",
+          "Design schemas and event tracking early. Retrofits cost more than doing it right once.",
+          "Retention, privacy, and access control become core constraints."
+        ];
+      } else if (chosen.includes("trust")) {
+        invariant = "Trust and reliability";
+        invariantDesc = "The product becomes stronger as reliability and reputation compound over time.";
+        implications = [
+          "Observability and incident response are product features, not internal chores.",
+          "You must be careful with permissions, data integrity, and auditability.",
+          "SLA expectations appear earlier than founders expect."
+        ];
+      } else if (chosen.includes("ops")) {
+        invariant = "Operational efficiency at scale";
+        invariantDesc = "Margins and speed improve as processes, automation, and scale economics compound.";
+        implications = [
+          "Systems need repeatability. Manual steps become a tax quickly.",
+          "You should invest in tooling and monitoring earlier than feels necessary.",
+          "Expect the first scaling wall to be process, not engineering."
+        ];
+      }
+    }
+
+    // Score moat strength
+    let score = 0;
+
+    if (!hasNone) score += 2;
+    if (automatic === "auto") score += 2;
+    if (copyability === "hard") score += 2;
+    if (ownership === "own") score += 2;
+
+    if (automatic === "none") score -= 1;
+    if (copyability === "easy") score -= 1;
+    if (ownership === "external") score -= 1;
+    if (breaks >= 3) score += 1; // serious dependence indicates an actual invariant exists
+
+    let strength = "Emerging";
+    let strengthDesc = "You have some compounding signals, but they are fragile. Engineering choices can either reinforce or dilute them.";
+
+    if (hasNone) {
+      strength = "None yet";
+      strengthDesc = "That is normal early. You are likely competing on execution and distribution until a compounding loop forms.";
+    } else if (score >= 7) {
+      strength = "Strong";
+      strengthDesc = "This advantage compounds with use, is hard to copy, and appears to be owned. Protect it with architecture and data ownership.";
+    } else if (score >= 5) {
+      strength = "Emerging";
+      strengthDesc = "There is a real invariant here, but it can be weakened by outsourcing core data, unclear ownership, or weak retention.";
+    } else {
+      strength = "Weak";
+      strengthDesc = "The invariant is present but not protected. A competitor may copy the feature set and out distribute you.";
+    }
+
+    const pills = [];
+    if (tooMany) pills.push("Too many compounding claims");
+    if (hasNone) pills.push("No clear compounding loop");
+    if (ownership !== "own") pills.push("Moat not fully owned");
+    if (copyability !== "hard") pills.push("Low switching cost");
+    if (automatic !== "auto") pills.push("Requires constant effort");
+    if (breaks >= 3) pills.push("High consequence if it weakens");
+
+    return { invariant, invariantDesc, strength, strengthDesc, pills, implications };
+  }
+
+  document.getElementById("calcBtn").addEventListener("click", function () {
+    const r = analyze();
+
+    document.getElementById("emptyState").classList.add("d-none");
+    document.getElementById("results").classList.remove("d-none");
+
+    document.getElementById("invariantTitle").innerText = r.invariant;
+    document.getElementById("invariantDesc").innerText = r.invariantDesc;
+
+    document.getElementById("moatStrength").innerText = r.strength;
+    document.getElementById("strengthDesc").innerText = r.strengthDesc;
+
+    const riskPills = document.getElementById("riskPills");
+    riskPills.innerHTML = "";
+    (r.pills.length ? r.pills : ["Compounding loop detected"]).forEach(p => pill(riskPills, p));
+
+    const implications = document.getElementById("implications");
+    implications.innerHTML = "";
+    if (r.implications && r.implications.length) {
+      const ul = document.createElement("ul");
+      r.implications.forEach(line => {
+        const li = document.createElement("li");
+        li.innerText = line;
+        ul.appendChild(li);
+      });
+      implications.appendChild(ul);
+    } else {
+      implications.innerHTML = "<div class='muted small-note'>If nothing compounds yet, focus on clarity: define a narrow user cohort, set MVP boundaries, and measure one loop that could get stronger with use.</div>";
+    }
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "calculator_calculate",
+      calculator: "strategic_invariant_analyzer",
+      invariant: r.invariant,
+      moat_strength: r.strength
+    });
+  });
+</script>
