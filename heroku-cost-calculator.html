@@ -1,0 +1,229 @@
+---
+layout: default
+title: "Heroku Cost Reality Calculator"
+description: "Estimate real Heroku costs and tradeoffs for MVPs and production apps. Understand dynos, databases, add-ons, and when Heroku stops being the right choice."
+---
+
+<style>
+  .mini-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    height: 100%;
+  }
+  .mini-card-body {
+    padding: 1.25rem;
+  }
+  .muted { color: #6b7280; }
+  .divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 1rem 0;
+  }
+  .pill {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    background: #f3f4f6;
+    margin-right: 0.35rem;
+    margin-bottom: 0.35rem;
+  }
+  .result-number {
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+  .form-label { font-weight: 600; }
+  .btn-outline {
+    display: inline-block;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid #0d6efd;
+    color: #0d6efd;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .btn-outline:hover { background-color: #0d6efd; color: #ffffff; }
+</style>
+
+<div class="container my-4">
+  <div class="text-center mb-4">
+    <h1>Heroku Cost Reality Calculator</h1>
+    <p class="muted mb-0">
+      A blunt estimator for what Heroku actually costs as apps move past hobby scale.
+      This models dynos, databases, add-ons, and operational friction.
+    </p>
+  </div>
+
+  <div class="row g-4">
+    <!-- Inputs -->
+    <div class="col-lg-7">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-3">Inputs</h2>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Web dynos</label>
+              <input id="webDynos" type="number" class="form-control" value="2" min="1" />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Worker dynos</label>
+              <input id="workerDynos" type="number" class="form-control" value="1" min="0" />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Dyno size</label>
+              <select id="dynoSize" class="form-select">
+                <option value="25">Standard (1X)</option>
+                <option value="50">Standard (2X)</option>
+                <option value="250">Performance (M)</option>
+                <option value="500">Performance (L)</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Postgres tier</label>
+              <select id="dbCost" class="form-select">
+                <option value="0">Hobby / Dev</option>
+                <option value="50">Basic</option>
+                <option value="200">Standard</option>
+                <option value="500">Premium</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Add-ons (monthly total)</label>
+              <input id="addons" type="number" class="form-control" value="100" min="0" />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Environments</label>
+              <select id="envs" class="form-select">
+                <option value="1">Production only</option>
+                <option value="2" selected>Prod + Staging</option>
+                <option value="3">Prod + Staging + QA</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <button id="calcBtn" class="btn btn-primary w-100">
+            Calculate monthly cost
+          </button>
+
+          <p class="muted mt-3 mb-0 small-note">
+            This model assumes always-on dynos and typical add-ons.
+            It intentionally does not include support plans or enterprise contracts.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="col-lg-5">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-2">Results</h2>
+          <div id="emptyState" class="muted small-note">
+            Click calculate to see results.
+          </div>
+
+          <div id="results" class="d-none">
+            <div class="mb-3">
+              <div class="muted">Estimated monthly cost</div>
+              <div class="result-number" id="monthlyCost">$0</div>
+            </div>
+
+            <div class="mb-3">
+              <div class="muted">Primary cost drivers</div>
+              <div id="costDrivers"></div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="mb-3">
+              <div class="muted">Reality check</div>
+              <div id="summary" class="small-note"></div>
+            </div>
+
+            <div class="divider"></div>
+
+            <a href="/custom-software-cost-reality-check.html" class="btn-outline">
+              Run the Cost Reality Check
+            </a>
+            <a href="/team-scaling-fallacy-calculator-brooks-law.html" class="btn-outline mt-2">
+              Team Scaling Fallacy Calculator
+            </a>
+            <a href="/contact.html" class="btn btn-success w-100 mt-3">
+              Talk through backend options
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function fmt(n) {
+    return "$" + Math.round(n).toLocaleString();
+  }
+
+  function pill(container, text) {
+    const span = document.createElement("span");
+    span.className = "pill";
+    span.innerText = text;
+    container.appendChild(span);
+  }
+
+  document.getElementById("calcBtn").addEventListener("click", function () {
+    const web = Number(document.getElementById("webDynos").value);
+    const worker = Number(document.getElementById("workerDynos").value);
+    const dynoSize = Number(document.getElementById("dynoSize").value);
+    const db = Number(document.getElementById("dbCost").value);
+    const addons = Number(document.getElementById("addons").value);
+    const envs = Number(document.getElementById("envs").value);
+
+    const dynoCost = (web + worker) * dynoSize * envs;
+    const total = dynoCost + db + addons;
+
+    document.getElementById("emptyState").classList.add("d-none");
+    document.getElementById("results").classList.remove("d-none");
+
+    document.getElementById("monthlyCost").innerText = fmt(total);
+
+    const drivers = document.getElementById("costDrivers");
+    drivers.innerHTML = "";
+
+    if (dynoCost > total * 0.5) pill(drivers, "Always-on dynos dominate cost");
+    if (envs > 1) pill(drivers, "Multiple environments multiply spend");
+    if (db >= 200) pill(drivers, "Database tier escalation");
+    if (addons >= 150) pill(drivers, "Add-ons creeping upward");
+
+    let summary = "";
+
+    if (total < 300) {
+      summary =
+        "Heroku is cost-effective at this scale. The tradeoff is limited flexibility and rising marginal cost as usage grows.";
+    } else if (total < 800) {
+      summary =
+        "This is the zone where teams start questioning Heroku. Costs rise linearly while flexibility remains constrained.";
+    } else {
+      summary =
+        "At this level, Heroku is usually a convenience premium. Teams often evaluate AWS, Fly.io, or container-based setups.";
+    }
+
+    document.getElementById("summary").innerText = summary;
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "calculator_calculate",
+      calculator: "heroku_cost_reality",
+      monthly_cost: Math.round(total)
+    });
+  });
+</script>

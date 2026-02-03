@@ -1,0 +1,167 @@
+---
+layout: default
+title: "Supabase Cost Reality Calculator"
+description: "Estimate real Supabase costs as usage grows. Understand when Supabase is cheaper than Firebase, when costs shift to compute and storage, and where teams get surprised."
+---
+
+<style>
+  .mini-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+  .mini-card-body { padding: 1.25rem; }
+  .muted { color: #6b7280; }
+  .divider { height: 1px; background: #e5e7eb; margin: 1rem 0; }
+  .pill {
+    display:inline-block; padding:0.25rem 0.6rem;
+    border-radius:999px; font-size:0.85rem;
+    background:#f3f4f6; margin:0.25rem;
+  }
+  .result-number { font-size:1.4rem; font-weight:700; }
+  .form-label { font-weight:600; }
+  .btn-outline {
+    border:1px solid #0d6efd; color:#0d6efd;
+    border-radius:6px; padding:0.5rem 0.9rem;
+    text-decoration:none; font-size:0.9rem;
+  }
+  .btn-outline:hover { background:#0d6efd; color:#fff; }
+</style>
+
+<div class="container my-4">
+  <div class="text-center mb-4">
+    <h1>Supabase Cost Reality Calculator</h1>
+    <p class="muted">
+      A practical estimator for how Supabase costs evolve. This highlights when Supabase is cheaper than Firebase,
+      and when costs quietly shift to compute and storage.
+    </p>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-lg-7">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-3">Inputs</h2>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Daily active users</label>
+              <input id="dau" type="number" class="form-control" value="5000" />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Auth users (monthly)</label>
+              <input id="auth" type="number" class="form-control" value="20000" />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Database size (GB)</label>
+              <input id="db" type="number" class="form-control" value="20" />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Realtime usage</label>
+              <select id="realtime" class="form-select">
+                <option value="0">None</option>
+                <option value="1">Light</option>
+                <option value="2" selected>Moderate</option>
+                <option value="3">Heavy</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Storage (GB)</label>
+              <input id="storage" type="number" class="form-control" value="100" />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Edge function usage</label>
+              <select id="edge" class="form-select">
+                <option value="0">Minimal</option>
+                <option value="1" selected>Moderate</option>
+                <option value="2">Heavy</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+          <button id="calcBtn" class="btn btn-primary w-100">Estimate Supabase cost</button>
+
+          <p class="muted small-note mt-3">
+            This does not mirror Supabase pricing tables. It models where cost pressure actually appears.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-5">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-2">Results</h2>
+          <div id="emptyState" class="muted">Click calculate to see results.</div>
+
+          <div id="results" class="d-none">
+            <div class="mb-3">
+              <div class="muted">Estimated monthly cost band</div>
+              <div class="result-number" id="cost">$0</div>
+            </div>
+
+            <div class="mb-3">
+              <div class="muted">Where cost is coming from</div>
+              <div id="drivers"></div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="mb-3">
+              <div class="muted">Reality check</div>
+              <div id="summary" class="small-note"></div>
+            </div>
+
+            <div class="divider"></div>
+
+            <a href="/firebase-vs-supabase-vs-aws.html" class="btn-outline">
+              Compare backends
+            </a>
+            <a href="/custom-software-cost-reality-check.html" class="btn-outline mt-2">
+              Cost Reality Check
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function pill(el, t){const s=document.createElement("span");s.className="pill";s.innerText=t;el.appendChild(s);}
+  document.getElementById("calcBtn").onclick=()=>{
+    const dau=+dau.value, auth=+auth.value, db=+db.value, storage=+storage.value;
+    const rt=+realtime.value, edgeUse=+edge.value;
+
+    let base=25;
+    base+=db*1.5;
+    base+=storage*0.3;
+    base+=rt*40;
+    base+=edgeUse*60;
+
+    let band=base<100?"$50–$100":base<300?"$150–$300":base<700?"$400–$700":"$800+";
+
+    emptyState.classList.add("d-none");
+    results.classList.remove("d-none");
+    cost.innerText=band;
+
+    drivers.innerHTML="";
+    if(db>50) pill(drivers,"Database size dominates");
+    if(storage>200) pill(drivers,"Storage cost growth");
+    if(rt>=2) pill(drivers,"Realtime connections");
+    if(edgeUse>=1) pill(drivers,"Edge compute");
+
+    summary.innerText=
+      base<200
+        ?"Supabase is cost effective here. This is the zone where it often beats Firebase."
+        :base<600
+        ?"This is the transition zone. Costs shift from reads to compute and storage."
+        :"At this level, Supabase convenience often gives way to cost and performance tradeoffs.";
+  };
+</script>
