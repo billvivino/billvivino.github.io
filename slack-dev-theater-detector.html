@@ -1,0 +1,272 @@
+---
+layout: default
+title: "Slack Dev Theater Detector"
+description: "Diagnose when development teams look busy but ship slowly. This tool identifies discussion-first execution patterns and recommends structural fixes."
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Slack Dev Theater Detector",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Web",
+  "description": "Interactive diagnostic tool that helps teams identify when excessive discussion, alignment rituals, and Slack coordination are slowing execution instead of enabling it.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+<style>
+  .mini-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+  .mini-card-body { padding: 1.25rem; }
+  .muted { color: #6b7280; }
+  .divider { height: 1px; background: #e5e7eb; margin: 1rem 0; }
+  .pill {
+    display:inline-block;
+    padding:0.25rem 0.6rem;
+    border-radius:999px;
+    font-size:0.85rem;
+    background:#f3f4f6;
+    margin:0.25rem;
+  }
+  .result-number {
+    font-size:1.4rem;
+    font-weight:700;
+  }
+  .form-label { font-weight:600; }
+  .btn-outline {
+    border:1px solid #0d6efd;
+    color:#0d6efd;
+    border-radius:6px;
+    padding:0.5rem 0.9rem;
+    text-decoration:none;
+    font-size:0.9rem;
+    display:inline-block;
+  }
+  .btn-outline:hover { background:#0d6efd; color:#fff; }
+</style>
+
+<div class="container my-4">
+  <div class="text-center mb-4">
+    <h1>Slack Dev Theater Detector</h1>
+    <p class="muted mb-0">
+      When work feels busy but progress feels slow.
+      This tool diagnoses discussion-first development and recommends structural fixes.
+    </p>
+  </div>
+
+  <div class="mini-card mb-4">
+    <div class="mini-card-body">
+      <h2 class="h5 mb-2">The failure mode</h2>
+      <p class="mb-0">
+        Teams feel constantly engaged. Slack is active. Threads are thoughtful.
+        Decisions are debated. Alignment meetings are frequent.
+        And yet, features land slowly or not at all.
+      </p>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-lg-7">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-3">Inputs</h2>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Slack channels per feature</label>
+              <select id="channels" class="form-select">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3+</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Average thread length</label>
+              <select id="threads" class="form-select">
+                <option value="short">Short</option>
+                <option value="medium">Medium</option>
+                <option value="long">Long</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Decisions documented</label>
+              <select id="docs" class="form-select">
+                <option value="high">Most decisions</option>
+                <option value="medium">Some decisions</option>
+                <option value="low">Rarely</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Work shipped without debate</label>
+              <select id="shipping" class="form-select">
+                <option value="high">Often</option>
+                <option value="medium">Sometimes</option>
+                <option value="low">Rarely</option>
+              </select>
+            </div>
+
+            <div class="col-md-12">
+              <label class="form-label">Alignment meetings per week</label>
+              <select id="meetings" class="form-select">
+                <option value="0">0–1</option>
+                <option value="2">2–3</option>
+                <option value="4">4+</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <button id="calcBtn" class="btn btn-primary w-100">
+            Diagnose team execution mode
+          </button>
+
+          <p class="muted mt-3 mb-0 small-note">
+            This tool does not judge effort or intelligence.
+            It diagnoses structure.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-5">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-2">Diagnosis</h2>
+          <div id="emptyState" class="muted">
+            Run the detector to see results.
+          </div>
+
+          <div id="results" class="d-none">
+            <div class="mb-3">
+              <div class="muted">Execution mode</div>
+              <div class="result-number" id="mode">–</div>
+            </div>
+
+            <div class="mb-3">
+              <div class="muted">Theater score</div>
+              <div class="result-number" id="score">0</div>
+            </div>
+
+            <div class="mb-3">
+              <div class="muted">Perception vs reality</div>
+              <div id="diagnosisText" class="small-note"></div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="mb-3">
+              <div class="muted">Recommended structural change</div>
+              <div id="recommendation" class="small-note"></div>
+            </div>
+
+            <div class="divider"></div>
+
+            <a class="btn-outline" href="/toolbox.html">
+              Back to Toolbox
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mini-card mt-4">
+    <div class="mini-card-body">
+      <h2 class="h5 mb-2">What Slack Dev Theater looks like in practice</h2>
+      <ul class="mb-0">
+        <li>Every change requires discussion</li>
+        <li>No one is empowered to decide</li>
+        <li>Alignment replaces ownership</li>
+        <li>Work feels collaborative but stalls</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mini-card mt-4">
+    <div class="mini-card-body">
+      <h2 class="h5 mb-2">Related tools</h2>
+      <div class="d-grid gap-2">
+        <a class="btn-outline" href="/team-scaling-fallacy-calculator-brooks-law.html">
+          Team Scaling Fallacy Calculator
+        </a>
+        <a class="btn-outline" href="/cheap-dev-false-economy-calculator.html">
+          Cheap Dev False Economy Calculator
+        </a>
+        <a class="btn-outline" href="/vibe-code-loss-calculator.html">
+          Vibe Code Loss Calculator
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-4">
+    <a href="/contact.html" class="btn btn-primary">
+      Want help fixing this? Contact me
+    </a>
+    <p class="muted mt-2 mb-0">
+      Most teams do not need more alignment. They need clearer ownership.
+    </p>
+  </div>
+</div>
+
+<script>
+  document.getElementById("calcBtn").addEventListener("click", function () {
+    const scoreMap = {
+      channels: { "1": 0, "2": 2, "3": 4 },
+      threads: { short: 0, medium: 2, long: 4 },
+      docs: { high: 0, medium: 2, low: 4 },
+      shipping: { high: 0, medium: 2, low: 4 },
+      meetings: { "0": 0, "2": 2, "4": 4 }
+    };
+
+    const score =
+      scoreMap.channels[channels.value] +
+      scoreMap.threads[threads.value] +
+      scoreMap.docs[docs.value] +
+      scoreMap.shipping[shipping.value] +
+      scoreMap.meetings[meetings.value];
+
+    emptyState.classList.add("d-none");
+    results.classList.remove("d-none");
+
+    scoreEl = document.getElementById("score");
+    modeEl = document.getElementById("mode");
+    diagEl = document.getElementById("diagnosisText");
+    recEl = document.getElementById("recommendation");
+
+    scoreEl.innerText = score + " / 20";
+
+    if (score <= 6) {
+      modeEl.innerText = "Execution-first";
+      diagEl.innerText =
+        "Decisions are owned, documented, and shipped without excessive discussion.";
+      recEl.innerText =
+        "Protect this by limiting channels and empowering individuals to decide.";
+    } else if (score <= 12) {
+      modeEl.innerText = "Balanced but fragile";
+      diagEl.innerText =
+        "Discussion helps, but execution may slow as the team grows.";
+      recEl.innerText =
+        "Clarify ownership and document decisions to prevent theater.";
+    } else {
+      modeEl.innerText = "Discussion-first (Dev Theater)";
+      diagEl.innerText =
+        "The team appears busy, but coordination overhead is dominating progress.";
+      recEl.innerText =
+        "Reduce alignment rituals, assign decision owners, and bias toward shipping.";
+    }
+  });
+</script>
