@@ -1,0 +1,168 @@
+---
+layout: default
+title: "Monolith vs Microservices for Early Teams"
+description: "A practical decision guide for early teams choosing monolith vs microservices. Learn when microservices help, when they hurt, and what to do instead."
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Monolith vs Microservices Decision Guide",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Web",
+  "description": "Interactive decision guide that helps early-stage teams determine when to use a monolith versus microservices, highlighting coordination costs, deployment complexity, and scaling tradeoffs.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+<style>
+  .mini-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+  .mini-card-body { padding: 1.25rem; }
+  .muted { color: #6b7280; }
+  .divider { height: 1px; background: #e5e7eb; margin: 1rem 0; }
+  .pill {
+    display:inline-block;
+    padding:0.25rem 0.6rem;
+    border-radius:999px;
+    font-size:0.85rem;
+    background:#f3f4f6;
+    margin:0.25rem;
+  }
+  .btn-outline {
+    border:1px solid #0d6efd;
+    color:#0d6efd;
+    border-radius:6px;
+    padding:0.5rem 0.9rem;
+    text-decoration:none;
+    font-size:0.9rem;
+    display:inline-block;
+  }
+  .btn-outline:hover { background:#0d6efd; color:#fff; }
+</style>
+
+<div class="container my-4">
+  <div class="text-center mb-4">
+    <h1>Monolith vs Microservices for Early Teams</h1>
+    <p class="muted mb-0">
+      This is a practical guide for founders and small teams. It is not ideology.
+      It explains when microservices help, when they hurt, and what to do instead.
+    </p>
+  </div>
+
+  <div class="mini-card mb-4">
+    <div class="mini-card-body">
+      <h2 class="h5 mb-2">The blunt answer</h2>
+      <p class="mb-0">
+        Early teams usually want microservices because they feel scalable.
+        What they get instead is coordination overhead, deployment complexity, and slower iteration.
+        If your team is small, a well structured monolith is usually the fastest path to product maturity.
+      </p>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-lg-6">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-2">Choose a monolith when</h2>
+          <p class="muted">This is the default choice for most MVPs and early products.</p>
+          <div>
+            <span class="pill">You are still finding product market fit</span>
+            <span class="pill">Requirements change weekly</span>
+            <span class="pill">You need speed and learning</span>
+            <span class="pill">You have fewer than 8 engineers</span>
+            <span class="pill">One database is enough</span>
+            <span class="pill">One deployment is enough</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <h3 class="h6 mb-2">What a good monolith looks like</h3>
+          <ul class="mb-0">
+            <li>Clear modules and boundaries</li>
+            <li>Well defined domain ownership</li>
+            <li>One deployment pipeline</li>
+            <li>One database with clean schema ownership</li>
+            <li>Strong testing around core flows</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-2">Choose microservices when</h2>
+          <p class="muted">Microservices are justified, but only when you are buying something specific.</p>
+          <div>
+            <span class="pill">You have stable domains and interfaces</span>
+            <span class="pill">You have multiple teams with clear ownership</span>
+            <span class="pill">You need independent deployment</span>
+            <span class="pill">You have real scaling bottlenecks</span>
+            <span class="pill">You can operate distributed systems</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <h3 class="h6 mb-2">What you must be ready for</h3>
+          <ul class="mb-0">
+            <li>Service boundaries become product decisions</li>
+            <li>Observability becomes mandatory</li>
+            <li>Deployment and rollout complexity increases</li>
+            <li>Data consistency becomes a recurring problem</li>
+            <li>Debugging becomes slower</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mini-card mt-4">
+    <div class="mini-card-body">
+      <h2 class="h5 mb-2">Why microservices slow early teams down</h2>
+      <p class="muted mb-2">This is Brook’s Law applied to architecture.</p>
+      <ul class="mb-0">
+        <li><strong>Coordination explodes:</strong> boundaries create new meetings and new handoffs.</li>
+        <li><strong>Interfaces freeze too early:</strong> you lock decisions before you understand the domain.</li>
+        <li><strong>Debugging cost rises:</strong> one bug becomes multiple logs and multiple deployments.</li>
+        <li><strong>Data becomes harder:</strong> joins turn into event choreography and eventual consistency.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mini-card mt-4">
+    <div class="mini-card-body">
+      <h2 class="h5 mb-2">The better default for early teams</h2>
+      <p class="mb-0">
+        Start with a modular monolith. Treat it like microservices inside a single deployable unit.
+        When domain boundaries become stable and teams need independent deployment, then extract services.
+      </p>
+    </div>
+  </div>
+
+  <div class="mini-card mt-4">
+    <div class="mini-card-body">
+      <h2 class="h5 mb-2">Related tools</h2>
+      <div class="d-grid gap-2">
+        <a class="btn-outline" href="/toolbox.html">Software Decision Toolbox</a>
+        <a class="btn-outline" href="/team-scaling-fallacy-calculator-brooks-law.html">Team Scaling Fallacy Calculator</a>
+        <a class="btn-outline" href="/custom-software-cost-reality-check.html">Custom Software Cost Reality Check</a>
+        <a class="btn-outline" href="/mvp-boundary-scoping-tool.html">MVP Boundary Scoping Tool</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-4">
+    <a href="/contact.html" class="btn btn-primary">Want a second opinion? Contact me</a>
+    <p class="muted mt-2 mb-0">Most teams debate microservices after delivery slows down. We can diagnose why.</p>
+  </div>
+</div>

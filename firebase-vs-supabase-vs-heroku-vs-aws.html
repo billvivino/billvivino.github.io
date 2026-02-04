@@ -1,0 +1,270 @@
+---
+layout: default
+title: "Firebase vs Supabase vs Heroku vs AWS"
+description: "A practical comparison of Firebase, Supabase, Heroku, and AWS. Understand cost drivers, operational overhead, lock-in, and when each choice stops being worth it."
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Firebase vs Supabase vs Heroku vs AWS",
+  "description": "A practical comparison of Firebase, Supabase, Heroku, and AWS that explains cost drivers, operational overhead, lock-in risk, and when each backend choice stops being worth it.",
+  "author": {
+    "@type": "Person",
+    "name": "Bill Vivino"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Bill Vivino Technology, LLC",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://billvivinotechnology.com/assets/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://billvivinotechnology.com/firebase-vs-supabase-vs-heroku-vs-aws.html"
+  }
+}
+</script>
+
+<style>
+  .mini-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+  .mini-card-body { padding: 1.25rem; }
+  .muted { color: #6b7280; }
+  .divider { height: 1px; background: #e5e7eb; margin: 1rem 0; }
+  .pill {
+    display:inline-block;
+    padding:0.25rem 0.6rem;
+    border-radius:999px;
+    font-size:0.85rem;
+    background:#f3f4f6;
+    margin:0.25rem;
+  }
+  .btn-outline {
+    border:1px solid #0d6efd;
+    color:#0d6efd;
+    border-radius:6px;
+    padding:0.5rem 0.9rem;
+    text-decoration:none;
+    font-size:0.9rem;
+    display:inline-block;
+  }
+  .btn-outline:hover { background:#0d6efd; color:#fff; }
+  .table td, .table th { vertical-align: top; }
+</style>
+
+<div class="container my-4">
+  <div class="text-center mb-4">
+    <h1>Firebase vs Supabase vs Heroku vs AWS</h1>
+    <p class="muted mb-0">
+      There is no free backend. There are tradeoffs you choose early.
+      This page explains when each choice makes sense and when it starts hurting.
+    </p>
+  </div>
+
+  <div class="mini-card mb-4">
+    <div class="mini-card-body">
+      <h2 class="h5 mb-2">The quick decision shortcuts</h2>
+      <ul class="mb-0">
+        <li><strong>Firebase:</strong> fastest to ship, cost surprises come from reads, listeners, and bandwidth.</li>
+        <li><strong>Supabase:</strong> feels cheaper early, surprises shift to compute, storage, and realtime scale.</li>
+        <li><strong>Heroku:</strong> convenience premium, costs multiply with always-on dynos and environments.</li>
+        <li><strong>AWS:</strong> highest flexibility, you pay for control and operational overhead from day one.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mini-card mb-4">
+    <div class="mini-card-body">
+      <h2 class="h5 mb-3">Side by side comparison</h2>
+
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Dimension</th>
+              <th>Firebase</th>
+              <th>Supabase</th>
+              <th>Heroku</th>
+              <th>AWS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Speed to MVP</strong></td>
+              <td>Very high</td>
+              <td>High</td>
+              <td>High</td>
+              <td>Medium</td>
+            </tr>
+            <tr>
+              <td><strong>Cost predictability</strong></td>
+              <td>Medium to low</td>
+              <td>Medium</td>
+              <td>Medium</td>
+              <td>Low to medium</td>
+            </tr>
+            <tr>
+              <td><strong>Operational overhead</strong></td>
+              <td>Low</td>
+              <td>Medium</td>
+              <td>Low to medium</td>
+              <td>High</td>
+            </tr>
+            <tr>
+              <td><strong>Lock-in risk</strong></td>
+              <td>Medium to high</td>
+              <td>Medium</td>
+              <td>Low to medium</td>
+              <td>Medium</td>
+            </tr>
+            <tr>
+              <td><strong>Best for</strong></td>
+              <td>Fast iteration and small teams</td>
+              <td>SQL teams that want speed with more control</td>
+              <td>Teams paying a convenience premium</td>
+              <td>Compliance, control, and enterprise constraints</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="muted mb-0 small-note">
+        These are directional. Your data model, permissions, and realtime patterns often matter more than vendor branding.
+      </p>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-lg-6">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-2">When Firebase makes sense</h2>
+          <div>
+            <span class="pill">MVP speed matters</span>
+            <span class="pill">Small team</span>
+            <span class="pill">Simple permissions</span>
+            <span class="pill">Realtime is light</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <h3 class="h6 mb-2">When Firebase starts hurting</h3>
+          <ul class="mb-0">
+            <li>Read amplification and listeners</li>
+            <li>Complex permissions and fan-out data</li>
+            <li>Bandwidth and storage growth</li>
+            <li>Analytics, reporting, and joins</li>
+          </ul>
+
+          <div class="divider"></div>
+          <a class="btn-outline" href="/kotlin-firebase-cost-calculator.html">Kotlin + Firebase Cost Calculator</a>
+          <a class="btn-outline mt-2" href="/swiftui-firebase-cost-calculator.html">SwiftUI + Firebase Cost Calculator</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-2">When Supabase makes sense</h2>
+          <div>
+            <span class="pill">SQL is a feature</span>
+            <span class="pill">You want more control</span>
+            <span class="pill">You still want to ship fast</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <h3 class="h6 mb-2">When Supabase starts hurting</h3>
+          <ul class="mb-0">
+            <li>Compute and function usage creeps upward</li>
+            <li>Storage and bandwidth become real costs</li>
+            <li>Realtime at scale needs care</li>
+            <li>Operational complexity rises with growth</li>
+          </ul>
+
+          <div class="divider"></div>
+          <a class="btn-outline" href="/supabase-cost-calculator.html">Supabase Cost Reality Calculator</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-2">When Heroku makes sense</h2>
+          <div>
+            <span class="pill">You want convenience now</span>
+            <span class="pill">Always-on workloads</span>
+            <span class="pill">Small ops team</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <h3 class="h6 mb-2">When Heroku starts hurting</h3>
+          <ul class="mb-0">
+            <li>Dynos and environments multiply spend</li>
+            <li>Add-ons become the real bill</li>
+            <li>Scaling and observability constraints</li>
+            <li>Eventually you want more control</li>
+          </ul>
+
+          <div class="divider"></div>
+          <a class="btn-outline" href="/heroku-cost-calculator.html">Heroku Cost Reality Calculator</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-2">When AWS makes sense</h2>
+          <div>
+            <span class="pill">Compliance</span>
+            <span class="pill">Data control</span>
+            <span class="pill">Complex domains</span>
+            <span class="pill">Multiple teams</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <h3 class="h6 mb-2">When AWS hurts early teams</h3>
+          <ul class="mb-0">
+            <li>You pay a cost floor for flexibility</li>
+            <li>Operational overhead becomes real work</li>
+            <li>Iteration slows without strong engineering process</li>
+            <li>Service sprawl appears quickly</li>
+          </ul>
+
+          <div class="divider"></div>
+          <a class="btn-outline" href="/aws-backend-cost-reality.html">AWS Backend Cost Reality Check</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mini-card mt-4">
+    <div class="mini-card-body">
+      <h2 class="h5 mb-2">Related tools</h2>
+      <div class="d-grid gap-2">
+        <a class="btn-outline" href="/toolbox.html">Software Decision Toolbox</a>
+        <a class="btn-outline" href="/strategic-invariant-analyzer.html">Strategic Invariant Analyzer</a>
+        <a class="btn-outline" href="/custom-software-cost-reality-check.html">Custom Software Cost Reality Check</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-4">
+    <a href="/contact.html" class="btn btn-primary">Want a second opinion? Contact me</a>
+    <p class="muted mt-2 mb-0">
+      Backend choices are rarely wrong in isolation. They become wrong when the product, data shape, and team constraints change.
+    </p>
+  </div>
+</div>
