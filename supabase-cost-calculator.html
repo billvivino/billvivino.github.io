@@ -134,34 +134,64 @@ description: "Estimate real Supabase costs as usage grows. Understand when Supab
 </div>
 
 <script>
-  function pill(el, t){const s=document.createElement("span");s.className="pill";s.innerText=t;el.appendChild(s);}
-  document.getElementById("calcBtn").onclick=()=>{
-    const dau=+dau.value, auth=+auth.value, db=+db.value, storage=+storage.value;
-    const rt=+realtime.value, edgeUse=+edge.value;
+  function pill(container, text) {
+    const span = document.createElement("span");
+    span.className = "pill";
+    span.innerText = text;
+    container.appendChild(span);
+  }
 
-    let base=25;
-    base+=db*1.5;
-    base+=storage*0.3;
-    base+=rt*40;
-    base+=edgeUse*60;
+  document.getElementById("calcBtn").addEventListener("click", function () {
+    const dauEl = document.getElementById("dau");
+    const authEl = document.getElementById("auth");
+    const dbEl = document.getElementById("db");
+    const storageEl = document.getElementById("storage");
+    const realtimeEl = document.getElementById("realtime");
+    const edgeEl = document.getElementById("edge");
 
-    let band=base<100?"$50–$100":base<300?"$150–$300":base<700?"$400–$700":"$800+";
+    const emptyStateEl = document.getElementById("emptyState");
+    const resultsEl = document.getElementById("results");
+    const costEl = document.getElementById("cost");
+    const driversEl = document.getElementById("drivers");
+    const summaryEl = document.getElementById("summary");
 
-    emptyState.classList.add("d-none");
-    results.classList.remove("d-none");
-    cost.innerText=band;
+    const dau = Number(dauEl.value) || 0;
+    const authUsers = Number(authEl.value) || 0;
+    const db = Number(dbEl.value) || 0;
+    const storage = Number(storageEl.value) || 0;
+    const realtime = Number(realtimeEl.value) || 0;
+    const edgeUse = Number(edgeEl.value) || 0;
 
-    drivers.innerHTML="";
-    if(db>50) pill(drivers,"Database size dominates");
-    if(storage>200) pill(drivers,"Storage cost growth");
-    if(rt>=2) pill(drivers,"Realtime connections");
-    if(edgeUse>=1) pill(drivers,"Edge compute");
+    let base = 25;
+    base += db * 1.5;
+    base += storage * 0.3;
+    base += realtime * 40;
+    base += edgeUse * 60;
 
-    summary.innerText=
-      base<200
-        ?"Supabase is cost effective here. This is the zone where it often beats Firebase."
-        :base<600
-        ?"This is the transition zone. Costs shift from reads to compute and storage."
-        :"At this level, Supabase convenience often gives way to cost and performance tradeoffs.";
-  };
+    let band =
+      base < 100
+        ? "$50–$100"
+        : base < 300
+        ? "$150–$300"
+        : base < 700
+        ? "$400–$700"
+        : "$800+";
+
+    emptyStateEl.classList.add("d-none");
+    resultsEl.classList.remove("d-none");
+    costEl.innerText = band;
+
+    driversEl.innerHTML = "";
+    if (db > 50) pill(driversEl, "Database size dominates");
+    if (storage > 200) pill(driversEl, "Storage cost growth");
+    if (realtime >= 2) pill(driversEl, "Realtime connections");
+    if (edgeUse >= 1) pill(driversEl, "Edge compute");
+
+    summaryEl.innerText =
+      base < 200
+        ? "Supabase is cost effective here. This is the zone where it often beats Firebase."
+        : base < 600
+        ? "This is the transition zone. Costs shift from reads to compute and storage."
+        : "At this level, Supabase convenience often gives way to cost and performance tradeoffs.";
+  });
 </script>
