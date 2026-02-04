@@ -1,0 +1,223 @@
+---
+layout: default
+title: "Database Model Decision Guide: Relational vs Document vs Hybrid"
+description: "A practical decision guide for choosing a relational, document, or hybrid database model. Understand data shape, consistency needs, and long-term consequences."
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Database Model Decision Guide: Relational vs Document vs Hybrid",
+  "description": "A practical decision guide that helps teams choose between relational, document, or hybrid database models based on data shape, consistency needs, and long-term consequences.",
+  "author": {
+    "@type": "Person",
+    "name": "Bill Vivino"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Bill Vivino Technology, LLC",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://billvivinotechnology.com/assets/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://billvivinotechnology.com/database-model-decision.html"
+  }
+}
+</script>
+
+<style>
+  .mini-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+  .mini-card-body { padding: 1.25rem; }
+  .muted { color: #6b7280; }
+  .divider { height: 1px; background: #e5e7eb; margin: 1rem 0; }
+  .pill {
+    display:inline-block;
+    padding:0.25rem 0.6rem;
+    border-radius:999px;
+    font-size:0.85rem;
+    background:#f3f4f6;
+    margin:0.25rem;
+  }
+  .btn-outline {
+    border:1px solid #0d6efd;
+    color:#0d6efd;
+    border-radius:6px;
+    padding:0.5rem 0.9rem;
+    text-decoration:none;
+    font-size:0.9rem;
+    display:inline-block;
+  }
+  .btn-outline:hover { background:#0d6efd; color:#fff; }
+</style>
+
+<div class="container my-4">
+  <div class="text-center mb-4">
+    <h1>Database Model Decision Guide</h1>
+    <p class="muted mb-0">
+      Choosing between relational, document, or hybrid databases is not about preference.
+      It is about how your data behaves and what breaks when assumptions change.
+    </p>
+  </div>
+
+  <div class="mini-card mb-4">
+    <div class="mini-card-body">
+      <h2 class="h5 mb-2">The mistake most teams make</h2>
+      <p class="mb-0">
+        Teams often choose a database model based on speed, tutorials, or what feels modern.
+        The real cost of this decision shows up later as query complexity, permission hacks,
+        analytics pain, and expensive migrations.
+      </p>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-lg-4">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-2">Relational databases</h2>
+          <p class="muted">Examples: Postgres, MySQL</p>
+          <div>
+            <span class="pill">Strong consistency</span>
+            <span class="pill">Joins and reporting</span>
+            <span class="pill">Clear data ownership</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <h3 class="h6 mb-2">Choose relational when</h3>
+          <ul class="mb-0">
+            <li>Data relationships matter</li>
+            <li>You need reporting or analytics</li>
+            <li>Permissions are row or object level</li>
+            <li>Data integrity is critical</li>
+          </ul>
+
+          <div class="divider"></div>
+
+          <h3 class="h6 mb-2">What hurts later</h3>
+          <ul class="mb-0">
+            <li>Upfront schema design takes effort</li>
+            <li>Bad schemas slow iteration</li>
+            <li>Over-normalization adds friction</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-2">Document databases</h2>
+          <p class="muted">Examples: Firestore, MongoDB</p>
+          <div>
+            <span class="pill">Flexible schema</span>
+            <span class="pill">Fast iteration</span>
+            <span class="pill">Denormalized data</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <h3 class="h6 mb-2">Choose document when</h3>
+          <ul class="mb-0">
+            <li>Data is mostly independent</li>
+            <li>Reads are simple and predictable</li>
+            <li>Realtime access is core</li>
+            <li>You optimize for speed early</li>
+          </ul>
+
+          <div class="divider"></div>
+
+          <h3 class="h6 mb-2">What hurts later</h3>
+          <ul class="mb-0">
+            <li>Query and aggregation complexity</li>
+            <li>Permission logic moves into code</li>
+            <li>Analytics and reporting become hard</li>
+            <li>Costs rise with read amplification</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-2">Hybrid models</h2>
+          <p class="muted">Relational core plus document edges</p>
+          <div>
+            <span class="pill">Best of both</span>
+            <span class="pill">More complexity</span>
+            <span class="pill">Intentional design</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <h3 class="h6 mb-2">Choose hybrid when</h3>
+          <ul class="mb-0">
+            <li>You have stable core entities</li>
+            <li>Some data needs flexibility</li>
+            <li>Teams understand boundaries</li>
+            <li>You can enforce discipline</li>
+          </ul>
+
+          <div class="divider"></div>
+
+          <h3 class="h6 mb-2">What hurts later</h3>
+          <ul class="mb-0">
+            <li>Synchronization complexity</li>
+            <li>Harder mental model</li>
+            <li>More operational overhead</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mini-card mt-4">
+    <div class="mini-card-body">
+      <h2 class="h5 mb-2">The hidden cost of choosing wrong</h2>
+      <ul class="mb-0">
+        <li>Ad hoc joins in application code</li>
+        <li>Permission bugs that are hard to reason about</li>
+        <li>Analytics pipelines bolted on later</li>
+        <li>Migrations that stall product progress</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mini-card mt-4">
+    <div class="mini-card-body">
+      <h2 class="h5 mb-2">The better framing</h2>
+      <p class="mb-0">
+        Ask how your data behaves under change, not which database feels easier today.
+        Most teams benefit from a relational core with clearly defined boundaries.
+      </p>
+    </div>
+  </div>
+
+  <div class="mini-card mt-4">
+    <div class="mini-card-body">
+      <h2 class="h5 mb-2">Related tools</h2>
+      <div class="d-grid gap-2">
+        <a class="btn-outline" href="/toolbox.html">Software Decision Toolbox</a>
+        <a class="btn-outline" href="/firebase-vs-supabase-vs-heroku-vs-aws.html">Backend comparison</a>
+        <a class="btn-outline" href="/custom-software-cost-reality-check.html">Custom Software Cost Reality Check</a>
+        <a class="btn-outline" href="/strategic-invariant-analyzer.html">Strategic Invariant Analyzer</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-4">
+    <a href="/contact.html" class="btn btn-primary">Need a second opinion? Contact me</a>
+    <p class="muted mt-2 mb-0">
+      Database decisions rarely fail immediately. They fail quietly as products grow.
+    </p>
+  </div>
+</div>
