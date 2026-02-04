@@ -1,0 +1,264 @@
+---
+layout: default
+title: "Over-Abstracted Architecture Detector"
+description: "Diagnose when software architecture looks clean but slows delivery. This tool identifies premature abstraction and recommends structural simplification."
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Over-Abstracted Architecture Detector",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Web",
+  "description": "Interactive diagnostic tool that helps teams identify when premature abstraction, service layering, and indirection are slowing delivery instead of enabling scale.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+<style>
+  .mini-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+  .mini-card-body { padding: 1.25rem; }
+  .muted { color: #6b7280; }
+  .divider { height: 1px; background: #e5e7eb; margin: 1rem 0; }
+  .pill {
+    display:inline-block;
+    padding:0.25rem 0.6rem;
+    border-radius:999px;
+    font-size:0.85rem;
+    background:#f3f4f6;
+    margin:0.25rem;
+  }
+  .result-number {
+    font-size:1.4rem;
+    font-weight:700;
+  }
+  .form-label { font-weight:600; }
+  .btn-outline {
+    border:1px solid #0d6efd;
+    color:#0d6efd;
+    border-radius:6px;
+    padding:0.5rem 0.9rem;
+    text-decoration:none;
+    font-size:0.9rem;
+    display:inline-block;
+  }
+  .btn-outline:hover { background:#0d6efd; color:#fff; }
+</style>
+
+<div class="container my-4">
+  <div class="text-center mb-4">
+    <h1>Over-Abstracted Architecture Detector</h1>
+    <p class="muted mb-0">
+      When the system looks elegant on diagrams but feels painful to change.
+      This tool diagnoses premature abstraction and architectural over-engineering.
+    </p>
+  </div>
+
+  <div class="mini-card mb-4">
+    <div class="mini-card-body">
+      <h2 class="h5 mb-2">The failure mode</h2>
+      <p class="mb-0">
+        The architecture feels clean. Boundaries are crisp. Layers are respected.
+        And yet every meaningful change touches multiple services, interfaces,
+        or abstractions. Progress slows even though the codebase looks mature.
+      </p>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-lg-7">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-3">Inputs</h2>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Services per active developer</label>
+              <select id="services" class="form-select">
+                <option value="low">1–2</option>
+                <option value="medium">3–4</option>
+                <option value="high">5+</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Cross-service changes per feature</label>
+              <select id="cross" class="form-select">
+                <option value="low">Rare</option>
+                <option value="medium">Sometimes</option>
+                <option value="high">Almost always</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Abstraction layers before business logic</label>
+              <select id="layers" class="form-select">
+                <option value="low">0–1</option>
+                <option value="medium">2–3</option>
+                <option value="high">4+</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Time to understand a simple change</label>
+              <select id="understanding" class="form-select">
+                <option value="low">Minutes</option>
+                <option value="medium">Hours</option>
+                <option value="high">Days</option>
+              </select>
+            </div>
+
+            <div class="col-md-12">
+              <label class="form-label">Are abstractions stable over time?</label>
+              <select id="stability" class="form-select">
+                <option value="high">Mostly stable</option>
+                <option value="medium">Evolving</option>
+                <option value="low">Frequently rewritten</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <button id="calcBtn" class="btn btn-primary w-100">
+            Diagnose architecture health
+          </button>
+
+          <p class="muted mt-3 mb-0 small-note">
+            This tool diagnoses structure, not intelligence or effort.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-5">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-2">Diagnosis</h2>
+          <div id="emptyState" class="muted">
+            Run the detector to see results.
+          </div>
+
+          <div id="results" class="d-none">
+            <div class="mb-3">
+              <div class="muted">Architecture mode</div>
+              <div class="result-number" id="mode">–</div>
+            </div>
+
+            <div class="mb-3">
+              <div class="muted">Abstraction debt score</div>
+              <div class="result-number" id="score">0</div>
+            </div>
+
+            <div class="mb-3">
+              <div class="muted">What is actually happening</div>
+              <div id="diagnosisText" class="small-note"></div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="mb-3">
+              <div class="muted">Recommended structural change</div>
+              <div id="recommendation" class="small-note"></div>
+            </div>
+
+            <div class="divider"></div>
+
+            <a class="btn-outline" href="/toolbox.html">
+              Back to Toolbox
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mini-card mt-4">
+    <div class="mini-card-body">
+      <h2 class="h5 mb-2">Common misdiagnosis</h2>
+      <ul class="mb-0">
+        <li>“We just need better documentation”</li>
+        <li>“We need more experienced developers”</li>
+        <li>“The system is complex by nature”</li>
+        <li>“This will pay off later”</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mini-card mt-4">
+    <div class="mini-card-body">
+      <h2 class="h5 mb-2">Related tools</h2>
+      <div class="d-grid gap-2">
+        <a class="btn-outline" href="/monolith-vs-microservices.html">
+          Monolith vs Microservices for Early Teams
+        </a>
+        <a class="btn-outline" href="/team-scaling-fallacy-calculator-brooks-law.html">
+          Team Scaling Fallacy Calculator
+        </a>
+        <a class="btn-outline" href="/slack-dev-theater-detector.html">
+          Slack Dev Theater Detector
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-4">
+    <a href="/contact.html" class="btn btn-primary">
+      Want help simplifying this? Contact me
+    </a>
+    <p class="muted mt-2 mb-0">
+      Architecture should make change easier, not more impressive.
+    </p>
+  </div>
+</div>
+
+<script>
+  document.getElementById("calcBtn").addEventListener("click", function () {
+    const map = { low: 0, medium: 2, high: 4 };
+
+    const score =
+      map[services.value] +
+      map[cross.value] +
+      map[layers.value] +
+      map[understanding.value] +
+      map[stability.value];
+
+    emptyState.classList.add("d-none");
+    results.classList.remove("d-none");
+
+    document.getElementById("score").innerText = score + " / 20";
+
+    const mode = document.getElementById("mode");
+    const diag = document.getElementById("diagnosisText");
+    const rec = document.getElementById("recommendation");
+
+    if (score <= 6) {
+      mode.innerText = "Appropriately structured";
+      diag.innerText =
+        "Abstractions align with real domain boundaries and do not slow delivery.";
+      rec.innerText =
+        "Preserve this by resisting premature extraction and unnecessary layering.";
+    } else if (score <= 12) {
+      mode.innerText = "Borderline abstraction";
+      diag.innerText =
+        "Some abstraction is helping, but friction is emerging as the system evolves.";
+      rec.innerText =
+        "Simplify interfaces and collapse layers where boundaries are unstable.";
+    } else {
+      mode.innerText = "Over-abstracted";
+      diag.innerText =
+        "Abstraction has outpaced understanding. Indirection is now slowing execution.";
+      rec.innerText =
+        "Reduce layers, merge services, and re-center around concrete workflows.";
+    }
+  });
+</script>
