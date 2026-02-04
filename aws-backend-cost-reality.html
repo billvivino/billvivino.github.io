@@ -1,0 +1,212 @@
+---
+layout: default
+title: "AWS Backend Cost Reality Check"
+description: "A practical reality check for AWS backend costs. Understand the true cost floor, operational overhead, and when AWS is justified versus premature."
+---
+
+<style>
+  .mini-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+  .mini-card-body { padding: 1.25rem; }
+  .muted { color: #6b7280; }
+  .divider { height: 1px; background: #e5e7eb; margin: 1rem 0; }
+  .pill {
+    display:inline-block;
+    padding:0.25rem 0.6rem;
+    border-radius:999px;
+    font-size:0.85rem;
+    background:#f3f4f6;
+    margin:0.25rem;
+  }
+  .result-number {
+    font-size:1.4rem;
+    font-weight:700;
+  }
+  .form-label { font-weight:600; }
+  .btn-outline {
+    border:1px solid #0d6efd;
+    color:#0d6efd;
+    border-radius:6px;
+    padding:0.5rem 0.9rem;
+    text-decoration:none;
+    font-size:0.9rem;
+  }
+  .btn-outline:hover { background:#0d6efd; color:#fff; }
+</style>
+
+<div class="container my-4">
+  <div class="text-center mb-4">
+    <h1>AWS Backend Cost Reality Check</h1>
+    <p class="muted mb-0">
+      AWS is powerful, flexible, and industry standard.
+      This page explains why it is rarely cheap, what the real cost floor looks like,
+      and when AWS is the right choice versus premature.
+    </p>
+  </div>
+
+  <div class="row g-4">
+    <!-- Inputs -->
+    <div class="col-lg-7">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-3">Project profile</h2>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Core services in use</label>
+              <select id="services" class="form-select">
+                <option value="basic">Lambda + API Gateway + S3</option>
+                <option value="standard" selected>RDS + ECS or EKS</option>
+                <option value="advanced">Multiple services + data pipelines</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Monthly traffic</label>
+              <select id="traffic" class="form-select">
+                <option value="low">Low (early stage)</option>
+                <option value="medium" selected>Medium (growing product)</option>
+                <option value="high">High (production scale)</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Environments</label>
+              <select id="envs" class="form-select">
+                <option value="1">Production only</option>
+                <option value="2" selected>Prod + Staging</option>
+                <option value="3">Prod + Staging + QA</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Compliance requirements</label>
+              <select id="compliance" class="form-select">
+                <option value="none" selected>None</option>
+                <option value="moderate">Basic security / audits</option>
+                <option value="heavy">SOC 2, HIPAA, regulated</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <button id="calcBtn" class="btn btn-primary w-100">
+            Evaluate AWS cost reality
+          </button>
+
+          <p class="muted small-note mt-3 mb-0">
+            This is not a line-item AWS pricing calculator.
+            It models the cost floor and operational burden most teams experience.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="col-lg-5">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-2">Reality check</h2>
+          <div id="emptyState" class="muted">Click evaluate to see results.</div>
+
+          <div id="results" class="d-none">
+            <div class="mb-3">
+              <div class="muted">Estimated monthly cost floor</div>
+              <div class="result-number" id="costFloor">$0</div>
+            </div>
+
+            <div class="mb-3">
+              <div class="muted">What is driving cost</div>
+              <div id="drivers"></div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="mb-3">
+              <div class="muted">Operational reality</div>
+              <div id="summary" class="small-note"></div>
+            </div>
+
+            <div class="divider"></div>
+
+            <a href="/firebase-vs-supabase-vs-heroku-vs-aws.html" class="btn-outline">
+              Compare backend options
+            </a>
+            <a href="/custom-software-cost-reality-check.html" class="btn-outline mt-2">
+              Cost Reality Check
+            </a>
+            <a href="/contact.html" class="btn btn-success w-100 mt-3">
+              Talk through architecture choices
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function pill(el, t) {
+    const s = document.createElement("span");
+    s.className = "pill";
+    s.innerText = t;
+    el.appendChild(s);
+  }
+
+  document.getElementById("calcBtn").addEventListener("click", function () {
+    const services = document.getElementById("services").value;
+    const traffic = document.getElementById("traffic").value;
+    const envs = Number(document.getElementById("envs").value);
+    const compliance = document.getElementById("compliance").value;
+
+    let base = 250;
+
+    if (services === "standard") base += 300;
+    if (services === "advanced") base += 700;
+
+    if (traffic === "medium") base += 200;
+    if (traffic === "high") base += 600;
+
+    if (envs > 1) base += (envs - 1) * 200;
+    if (compliance === "moderate") base += 300;
+    if (compliance === "heavy") base += 700;
+
+    document.getElementById("emptyState").classList.add("d-none");
+    document.getElementById("results").classList.remove("d-none");
+
+    document.getElementById("costFloor").innerText =
+      base < 500 ? "$400–$700" :
+      base < 1200 ? "$800–$1,500" :
+      "$2,000+";
+
+    const drivers = document.getElementById("drivers");
+    drivers.innerHTML = "";
+
+    pill(drivers, "Infrastructure always on");
+    pill(drivers, "Multiple environments");
+    pill(drivers, "Observability and logging");
+    pill(drivers, "Operational complexity");
+
+    if (compliance !== "none") pill(drivers, "Compliance overhead");
+    if (services === "advanced") pill(drivers, "Service sprawl");
+
+    let summary = "";
+
+    if (base < 800) {
+      summary =
+        "AWS is workable here, but you are paying a minimum for flexibility and control. Expect non-trivial setup and ongoing operational cost.";
+    } else if (base < 1500) {
+      summary =
+        "This is the common AWS zone for serious products. Costs rise due to environments, monitoring, and human ops rather than raw compute.";
+    } else {
+      summary =
+        "At this level, AWS is justified for control, compliance, or scale. The tradeoff is ongoing operational burden and slower iteration.";
+    }
+
+    document.getElementById("summary").innerText = summary;
+  });
+</script>
