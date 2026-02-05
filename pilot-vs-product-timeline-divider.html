@@ -1,0 +1,164 @@
+---
+layout: default
+title: "Pilot vs Product Timeline Divider"
+description: "Force clarity between pilot and production. Compare pilot timeline, production hardening timeline, and operational maturity timeline."
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Pilot vs Product Timeline Divider",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Web",
+  "description": "Interactive planning tool that separates pilot delivery from production hardening and operational maturity timelines so teams stop accidentally building all three at once.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+
+<style>
+  .mini-card { background:#fff; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,0.08); }
+  .mini-card-body { padding:1.25rem; }
+  .muted { color:#6b7280; }
+  .divider { height:1px; background:#e5e7eb; margin:1rem 0; }
+  .pill { display:inline-block; padding:0.25rem 0.6rem; border-radius:999px; font-size:0.85rem; background:#f3f4f6; margin:0.25rem; }
+  .result-number { font-size:1.4rem; font-weight:700; }
+  .form-label { font-weight:600; }
+  .btn-outline { border:1px solid #0d6efd; color:#0d6efd; border-radius:6px; padding:0.5rem 0.9rem; text-decoration:none; font-size:0.9rem; display:inline-block; }
+  .btn-outline:hover { background:#0d6efd; color:#fff; }
+</style>
+
+<div class="container my-4">
+  <div class="text-center mb-4">
+    <h1>Pilot vs Product Timeline Divider</h1>
+    <p class="muted mb-0">
+      Most founders think they are building one thing when they are actually building three.
+      This tool separates pilot delivery from production hardening and operational maturity.
+    </p>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-lg-7">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-3">Inputs</h2>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">User impact of failure</label>
+              <select id="impact" class="form-select">
+                <option value="0">Low</option>
+                <option value="2" selected>Medium</option>
+                <option value="4">High</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Data sensitivity</label>
+              <select id="data" class="form-select">
+                <option value="0">Low</option>
+                <option value="2" selected>Medium</option>
+                <option value="4">High</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Integration count</label>
+              <select id="integrations" class="form-select">
+                <option value="0">0–1</option>
+                <option value="2" selected>2–3</option>
+                <option value="4">4+</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Availability expectation</label>
+              <select id="uptime" class="form-select">
+                <option value="0">Best effort</option>
+                <option value="2" selected>Reasonable</option>
+                <option value="4">High</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+          <button id="calcBtn" class="btn btn-primary w-100">Divide the timeline</button>
+
+          <p class="muted mt-3 mb-0 small-note">
+            The output is a planning divider, not a promise. It forces you to pick the lane you are actually building.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-5">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-2">Timelines</h2>
+          <div id="emptyState" class="muted">Run the divider to see results.</div>
+
+          <div id="results" class="d-none">
+            <div class="mb-3">
+              <div class="muted">Pilot timeline</div>
+              <div class="result-number" id="pilot">–</div>
+            </div>
+
+            <div class="mb-3">
+              <div class="muted">Production hardening</div>
+              <div class="result-number" id="hardening">–</div>
+            </div>
+
+            <div class="mb-3">
+              <div class="muted">Operational maturity</div>
+              <div class="result-number" id="ops">–</div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="mb-3">
+              <div class="muted">What founders think vs reality</div>
+              <div id="diag" class="small-note"></div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="d-grid gap-2">
+              <a class="btn-outline" href="/custom-software-cost-reality-check.html">Cost Reality Check</a>
+              <a class="btn-outline" href="/mvp-boundary-scoping-tool.html">MVP Boundary Scoping</a>
+              <a class="btn-outline" href="/toolbox.html">Toolbox</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  document.getElementById("calcBtn").addEventListener("click", function () {
+    const score =
+      Number(impact.value) +
+      Number(data.value) +
+      Number(integrations.value) +
+      Number(uptime.value);
+
+    emptyState.classList.add("d-none");
+    results.classList.remove("d-none");
+
+    // Simple bands. This is a divider tool.
+    const pilotWeeks = score <= 4 ? "2–4 weeks" : score <= 10 ? "4–8 weeks" : "8–12 weeks";
+    const hardWeeks = score <= 4 ? "2–6 weeks" : score <= 10 ? "6–12 weeks" : "12–20 weeks";
+    const opsWeeks = score <= 4 ? "4–10 weeks" : score <= 10 ? "10–20 weeks" : "20–40 weeks";
+
+    pilot.innerText = pilotWeeks;
+    hardening.innerText = hardWeeks;
+    ops.innerText = opsWeeks;
+
+    diag.innerText =
+      "Most teams plan for the pilot and accidentally build production hardening and ops maturity at the same time. This is why timelines explode. Decide which phase you are actually funding.";
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event:"calculator_calculate", calculator:"pilot_vs_product", score:score });
+  });
+</script>

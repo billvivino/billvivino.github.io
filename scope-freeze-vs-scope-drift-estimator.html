@@ -1,0 +1,171 @@
+---
+layout: default
+title: "Scope Freeze vs Scope Drift Estimator"
+description: "Model how small ongoing requirement changes affect delivery time. Diagnose scope drift and recommend a structure for shipping."
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Scope Freeze vs Scope Drift Estimator",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Web",
+  "description": "Interactive diagnostic tool that estimates delivery impact from requirement churn and scope drift, and recommends structures to protect execution.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+
+<style>
+  .mini-card { background:#fff; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,0.08); }
+  .mini-card-body { padding:1.25rem; }
+  .muted { color:#6b7280; }
+  .divider { height:1px; background:#e5e7eb; margin:1rem 0; }
+  .pill { display:inline-block; padding:0.25rem 0.6rem; border-radius:999px; font-size:0.85rem; background:#f3f4f6; margin:0.25rem; }
+  .result-number { font-size:1.4rem; font-weight:700; }
+  .form-label { font-weight:600; }
+  .btn-outline { border:1px solid #0d6efd; color:#0d6efd; border-radius:6px; padding:0.5rem 0.9rem; text-decoration:none; font-size:0.9rem; display:inline-block; }
+  .btn-outline:hover { background:#0d6efd; color:#fff; }
+</style>
+
+<div class="container my-4">
+  <div class="text-center mb-4">
+    <h1>Scope Freeze vs Scope Drift Estimator</h1>
+    <p class="muted mb-0">Small ongoing changes can multiply delivery time. This tool makes the drift visible.</p>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-lg-7">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-3">Inputs</h2>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">How often do requirements change?</label>
+              <select id="freq" class="form-select">
+                <option value="0">Rarely</option>
+                <option value="2" selected>Weekly</option>
+                <option value="4">Daily</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Acceptance criteria written?</label>
+              <select id="ac" class="form-select">
+                <option value="0">Usually</option>
+                <option value="2" selected>Sometimes</option>
+                <option value="4">Rarely</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Who can introduce new scope?</label>
+              <select id="scopeGate" class="form-select">
+                <option value="0" selected>Single owner</option>
+                <option value="2">Few people</option>
+                <option value="4">Many stakeholders</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Nice to haves are</label>
+              <select id="nice" class="form-select">
+                <option value="0" selected>Logged for later</option>
+                <option value="2">Mixed</option>
+                <option value="4">Implemented immediately</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+          <button id="calcBtn" class="btn btn-primary w-100">Estimate scope drift impact</button>
+
+          <p class="muted mt-3 mb-0 small-note">
+            This does not estimate exact dates. It estimates whether your process will protect delivery.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-5">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-2">Results</h2>
+          <div id="emptyState" class="muted">Run the estimator to see results.</div>
+
+          <div id="results" class="d-none">
+            <div class="mb-3">
+              <div class="muted">Mode</div>
+              <div class="result-number" id="mode">–</div>
+            </div>
+
+            <div class="mb-3">
+              <div class="muted">Theater score</div>
+              <div class="result-number" id="score">0 / 16</div>
+            </div>
+
+            <div class="mb-3">
+              <div class="muted">What is happening</div>
+              <div id="diagnosis" class="small-note"></div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="mb-3">
+              <div class="muted">Recommended structural change</div>
+              <div id="recommendation" class="small-note"></div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="mb-3">
+              <div class="muted">Related tools</div>
+              <div class="d-grid gap-2">
+                <a class="btn-outline" href="/slack-dev-theater-detector.html">Slack Dev Theater Detector</a>
+                <a class="btn-outline" href="/vibe-code-loss-calculator.html">Vibe Code Loss Calculator</a>
+                <a class="btn-outline" href="/mvp-boundary-scoping-tool.html">MVP Boundary Scoping Tool</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  document.getElementById("calcBtn").addEventListener("click", function () {
+    const s =
+      Number(document.getElementById("freq").value) +
+      Number(document.getElementById("ac").value) +
+      Number(document.getElementById("scopeGate").value) +
+      Number(document.getElementById("nice").value);
+
+    document.getElementById("emptyState").classList.add("d-none");
+    document.getElementById("results").classList.remove("d-none");
+    document.getElementById("score").innerText = s + " / 16";
+
+    const modeEl = document.getElementById("mode");
+    const diagEl = document.getElementById("diagnosis");
+    const recEl = document.getElementById("recommendation");
+
+    if (s <= 4) {
+      modeEl.innerText = "Scope freeze protected";
+      diagEl.innerText = "Changes exist, but they are gated and documented. Delivery is protected.";
+      recEl.innerText = "Keep a single scope owner and log nice-to-haves. Ship in timeboxes with exit criteria.";
+    } else if (s <= 9) {
+      modeEl.innerText = "Scope drift emerging";
+      diagEl.innerText = "The team is absorbing change while building. This often looks collaborative, but adds hidden delay.";
+      recEl.innerText = "Write acceptance criteria, introduce a scope gate, and defer nice-to-haves to a backlog.";
+    } else {
+      modeEl.innerText = "Scope drift dominant";
+      diagEl.innerText = "Work expands faster than it ships. Delivery becomes unpredictable and morale usually drops.";
+      recEl.innerText = "Freeze scope for a defined timebox, enforce a single decision owner, and ship one slice end-to-end.";
+    }
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event:"calculator_calculate", calculator:"scope_drift", score:s });
+  });
+</script>
