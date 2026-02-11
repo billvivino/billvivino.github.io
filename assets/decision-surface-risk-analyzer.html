@@ -1,0 +1,183 @@
+---
+layout: default
+title: "Decision Surface Risk Analyzer"
+description: "Evaluate the architectural and operational impact of high-leverage features like uploads, permissions, payments, real-time, and multi-tenancy."
+---
+
+<style>
+  .mini-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    margin-bottom: 1.5rem;
+  }
+  .mini-card-body { padding: 1.25rem; }
+  .muted { color: #6b7280; }
+  .divider { height:1px; background:#e5e7eb; margin:1rem 0; }
+  .pill {
+    display:inline-block;
+    padding:0.25rem 0.6rem;
+    border-radius:999px;
+    font-size:0.85rem;
+    background:#f3f4f6;
+    margin:0.25rem;
+  }
+  .result-number { font-size:1.4rem; font-weight:700; }
+  .form-label { font-weight:600; }
+</style>
+
+<div class="container my-4">
+  <div class="text-center mb-4">
+    <h1>Decision Surface Risk Analyzer</h1>
+    <p class="muted">
+      Every feature is a decision surface. This tool evaluates how your feature set affects
+      architecture, cost, compliance, and team complexity.
+    </p>
+  </div>
+
+  <div class="row g-4">
+    <!-- Inputs -->
+    <div class="col-lg-7">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-3">Select Enabled Surfaces</h2>
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="upload" id="upload">
+            <label class="form-check-label">User Uploads / Generated Content</label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="roles" id="roles">
+            <label class="form-check-label">Role-Based Permissions</label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="realtime" id="realtime">
+            <label class="form-check-label">Real-Time Sync / Live Updates</label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="payments" id="payments">
+            <label class="form-check-label">Payments / Subscriptions</label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="notifications" id="notifications">
+            <label class="form-check-label">Push / In-App Notifications</label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="search" id="search">
+            <label class="form-check-label">Search Functionality</label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="audit" id="audit">
+            <label class="form-check-label">Audit Logs / Compliance Tracking</label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="multiTenant" id="multiTenant">
+            <label class="form-check-label">Multi-Tenant Architecture</label>
+          </div>
+
+          <div class="divider"></div>
+
+          <button id="analyzeBtn" class="btn btn-primary w-100">
+            Analyze Risk Profile
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="col-lg-5">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-2">Risk Profile</h2>
+
+          <div id="emptyState" class="muted">
+            Select your features and click Analyze.
+          </div>
+
+          <div id="results" class="d-none">
+            <div class="mb-3">
+              <div class="muted">Architectural Pressure Score</div>
+              <div class="result-number" id="pressureScore">0</div>
+            </div>
+
+            <div class="mb-3">
+              <div class="muted">Operational Complexity</div>
+              <div id="complexityLevel" class="result-number"></div>
+            </div>
+
+            <div class="mb-3">
+              <div class="muted">Cost Multiplier</div>
+              <div id="costMultiplier" class="result-number"></div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="mb-3">
+              <div class="muted">System Implications</div>
+              <div id="implications"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const weights = {
+    upload: 2,
+    roles: 3,
+    realtime: 3,
+    payments: 4,
+    notifications: 2,
+    search: 2,
+    audit: 4,
+    multiTenant: 5
+  };
+
+  document.getElementById("analyzeBtn").addEventListener("click", function () {
+    let score = 0;
+    let selected = [];
+
+    Object.keys(weights).forEach(key => {
+      const el = document.getElementById(key);
+      if (el && el.checked) {
+        score += weights[key];
+        selected.push(key);
+      }
+    });
+
+    document.getElementById("emptyState").classList.add("d-none");
+    document.getElementById("results").classList.remove("d-none");
+    document.getElementById("pressureScore").innerText = score;
+
+    let complexity = "Low";
+    let multiplier = "1x – 1.5x";
+    let implications = "";
+
+    if (score <= 5) {
+      complexity = "Early MVP Scope";
+      multiplier = "1x – 1.5x";
+      implications = "You are likely still in MVP territory. Architectural flexibility remains high.";
+    } else if (score <= 10) {
+      complexity = "Product Transition";
+      multiplier = "1.5x – 2.5x";
+      implications = "You are entering product-grade architecture. Team coordination and infra cost increase.";
+    } else {
+      complexity = "Enterprise Complexity";
+      multiplier = "2.5x – 4x+";
+      implications = "You are building a production system with compliance and operational burdens. Governance and invariants matter.";
+    }
+
+    document.getElementById("complexityLevel").innerText = complexity;
+    document.getElementById("costMultiplier").innerText = multiplier;
+    document.getElementById("implications").innerText = implications;
+  });
+</script>
