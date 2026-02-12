@@ -1,0 +1,265 @@
+---
+layout: default
+title: "Document Database Stress Test"
+description: "Evaluate whether your system is approaching structural limits for MongoDB, Firestore, or other document databases."
+---
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Document Database Stress Test",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web",
+      "description": "Interactive tool that evaluates structural pressure and architectural risk when using document databases such as MongoDB or Firestore at scale.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Database structural risk scoring",
+        "Transaction complexity evaluation",
+        "Compliance pressure modeling",
+        "Relational vs document stress analysis"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "name": "Document Database Stress Test",
+      "description": "Evaluate whether your system is approaching structural limits for MongoDB, Firestore, or other document databases.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Bill Vivino Technology",
+        "url": "https://billvivinotechnology.com"
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://billvivinotechnology.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Software Decision Toolbox",
+      "item": "https://billvivinotechnology.com/toolbox.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Document Database Stress Test",
+      "item": "https://billvivinotechnology.com/document-database-stress-test.html"
+    }
+  ]
+}
+</script>
+
+<style>
+  .mini-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    margin-bottom: 1.5rem;
+  }
+  .mini-card-body { padding: 1.25rem; }
+  .muted { color:#6b7280; }
+  .divider { height:1px; background:#e5e7eb; margin:1rem 0; }
+  .result-number { font-size:1.4rem; font-weight:700; }
+  .form-label { font-weight:600; }
+  .pill {
+    display:inline-block;
+    padding:0.25rem 0.6rem;
+    border-radius:999px;
+    font-size:0.85rem;
+    background:#f3f4f6;
+    margin:0.25rem;
+  }
+</style>
+
+<div class="container my-4">
+  <div class="text-center mb-4">
+    <h1>Document Database Stress Test</h1>
+    <p class="muted">
+      Document databases accelerate early iteration. This tool evaluates whether
+      structural pressure is building beneath your system.
+    </p>
+  </div>
+
+  <div class="row g-4">
+
+    <!-- Inputs -->
+    <div class="col-lg-7">
+      <div class="mini-card">
+        <div class="mini-card-body">
+
+          <h2 class="h5 mb-3">System Characteristics</h2>
+
+          <div class="mb-3">
+            <label class="form-label">Average Relationships per Entity</label>
+            <select id="relationships" class="form-select">
+              <option value="1">1–2 (Low)</option>
+              <option value="2">3–5 (Moderate)</option>
+              <option value="3">6+ (High)</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Cross-Collection Atomic Transactions Required?</label>
+            <select id="transactions" class="form-select">
+              <option value="0">No</option>
+              <option value="2">Occasionally</option>
+              <option value="4">Frequently</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Permissions Span Multiple Collections?</label>
+            <select id="permissions" class="form-select">
+              <option value="0">No</option>
+              <option value="2">Somewhat</option>
+              <option value="3">Yes</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Data Duplication Required?</label>
+            <select id="duplication" class="form-select">
+              <option value="0">Minimal</option>
+              <option value="2">Moderate</option>
+              <option value="3">Heavy</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Compliance / Audit Requirements</label>
+            <select id="compliance" class="form-select">
+              <option value="0">None</option>
+              <option value="2">Internal Reporting</option>
+              <option value="4">Regulated (HIPAA / SOC2 / Financial)</option>
+            </select>
+          </div>
+
+          <div class="divider"></div>
+
+          <button id="analyzeBtn" class="btn btn-primary w-100">
+            Evaluate Structural Pressure
+          </button>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="col-lg-5">
+      <div class="mini-card">
+        <div class="mini-card-body">
+
+          <h2 class="h5 mb-2">Structural Risk Profile</h2>
+
+          <div id="emptyState" class="muted">
+            Select inputs and run the stress test.
+          </div>
+
+          <div id="results" class="d-none">
+
+            <div class="mb-3">
+              <div class="muted">Stress Score</div>
+              <div class="result-number" id="score">0</div>
+            </div>
+
+            <div class="mb-3">
+              <div class="muted">Risk Tier</div>
+              <div id="tier" class="result-number"></div>
+            </div>
+
+            <div class="mb-3">
+              <div class="muted">Interpretation</div>
+              <div id="interpretation" class="small-note"></div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div id="recommendations"></div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="mini-card mt-4">
+    <div class="mini-card-body">
+      <h3 class="h6 mb-2">Related Tools</h3>
+      <div class="d-grid gap-2">
+        <a class="btn-outline" href="/toolbox.html">
+          Software Decision Toolbox
+        </a>
+        <a class="btn-outline mt-2" href="/database-model-decision.html">
+          Relational vs Document vs Hybrid Database Decision Tool
+        </a>
+        <a class="btn-outline mt-2" href="/decision-surface-risk-analyzer.html">
+          Decision Surface Risk Analyzer
+        </a>
+        <a class="btn-outline mt-2" href="/when-document-databases-hurt-at-scale.html">
+          When Document Databases Hurt at Scale
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  document.getElementById("analyzeBtn").addEventListener("click", function() {
+
+    const score =
+      parseInt(document.getElementById("relationships").value) +
+      parseInt(document.getElementById("transactions").value) +
+      parseInt(document.getElementById("permissions").value) +
+      parseInt(document.getElementById("duplication").value) +
+      parseInt(document.getElementById("compliance").value);
+
+    document.getElementById("emptyState").classList.add("d-none");
+    document.getElementById("results").classList.remove("d-none");
+    document.getElementById("score").innerText = score;
+
+    let tier = "";
+    let interpretation = "";
+    let rec = "";
+
+    if (score <= 4) {
+      tier = "Low Structural Stress";
+      interpretation = "Document modeling is appropriate for your current system.";
+      rec = "<span class='pill'>Continue with document</span>";
+    }
+    else if (score <= 9) {
+      tier = "Rising Structural Pressure";
+      interpretation = "Consider partial relational modeling or hybrid structure.";
+      rec = "<span class='pill'>Evaluate hybrid</span>";
+    }
+    else {
+      tier = "High Structural Risk";
+      interpretation = "You are entering relational territory. Long-term complexity may escalate.";
+      rec = "<span class='pill'>Consider relational migration</span>";
+    }
+
+    document.getElementById("tier").innerText = tier;
+    document.getElementById("interpretation").innerText = interpretation;
+    document.getElementById("recommendations").innerHTML = rec;
+
+  });
+</script>
