@@ -120,7 +120,8 @@ breadcrumbs:
             <div class="col-md-6">
               <label class="form-label">Stage</label>
               <select class="form-select" id="stage">
-                <option value="mvp">MVP</option>
+                <option value="prototype">Prototype</option>
+                <option value="mvp" selected>MVP</option>
                 <option value="v1">V1</option>
                 <option value="scale">Scale</option>
               </select>
@@ -284,6 +285,7 @@ breadcrumbs:
     const risks = [];
 
     let hours = {
+      prototype: 40,   // ~ $8k base before multipliers
       mvp: 260,
       v1: 520,
       scale: 900,
@@ -340,6 +342,11 @@ breadcrumbs:
 
     let riskLow = 0.9;
     let riskHigh = 1.25;
+
+    if (stage === "prototype") {
+      riskLow = 0.95;
+      riskHigh = 1.1;
+    }
 
     if (codebase === "existing_ok") {
       hours += 60;
