@@ -1,11 +1,19 @@
 <nav class="navbar navbar-expand-lg border-bottom shadow-sm">
   <div class="container-fluid">
     <a class="navbar-brand d-flex align-items-center" href="/index.html">
-      <img
-        src="/assets/logo.png"
-        alt="App Icon"
-        style="height: 50px; width: auto; margin-right: 8px"
-      />
+      <picture>
+        <source srcset="/assets/optimized/logo.avif" type="image/avif">
+        <source srcset="/assets/optimized/logo.webp" type="image/webp">
+        <img
+          src="/assets/optimized/logo.webp"
+          alt="App Icon"
+          width="200"
+          height="60"
+          loading="eager"
+          fetchpriority="high"
+          style="height: 50px; width: auto; margin-right: 8px"
+        />
+      </picture>
       Bill Vivino Technology, LLC
     </a>
 
