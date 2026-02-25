@@ -61,7 +61,17 @@ og_image: "/assets/images/slack-dev-theater.png"
 <div class="container py-4">
   <article class="post-body">
     <h1>Slack Dev Theater: When Smart Teams Talk Themselves Into Stagnation</h1>
-    <img src="/assets/images/slack-dev-theater.png" alt="Slack Dev Theater illustration" class="blog-img-right" width="300" loading="lazy" />
+    <picture class="blog-img-right">
+      <source srcset="/assets/optimized/slack-dev-theater.avif" type="image/avif">
+      <source srcset="/assets/optimized/slack-dev-theater.webp" type="image/webp">
+      <img
+        src="/assets/images/slack-dev-theater.png"
+        alt="Slack Dev Theater illustration"
+        width="300"
+        height="300"
+        loading="lazy"
+        decoding="async">
+    </picture>
 
     <p><em>How a well-intentioned founder relationship quietly turned into a pattern — and why I built a detector for it.</em></p>
 
