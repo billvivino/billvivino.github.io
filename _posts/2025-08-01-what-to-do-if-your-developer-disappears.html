@@ -27,6 +27,20 @@ og_image: "/assets/images/developer-disappears-thumb.png"
     max-width: 300px;
     border-radius: 8px;
   }
+  .custom-checklist {
+    list-style: none;
+    padding-left: 0;
+  }
+  .custom-checklist li::before {
+    content: "✔";
+    color: #0d6efd;
+    margin-right: 8px;
+  }
+  details summary {
+    cursor: pointer;
+    font-weight: 600;
+    margin: 0.5rem 0;
+  }
   @media (max-width: 768px) {
     .blog-img-right {
       float: none;

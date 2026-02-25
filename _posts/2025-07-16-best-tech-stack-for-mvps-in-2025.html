@@ -17,12 +17,65 @@ og_image: "/assets/images/mvp-tech-stack-thumb.png"
   .carousel .blockquote-footer {
     margin-top: 0.5rem;
   }
+  .post-body p {
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+  }
+  .post-body h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  .post-body h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+  .blog-img-right {
+    float: right;
+    margin: 0 0 20px 20px;
+    max-width: 300px;
+    border-radius: 8px;
+  }
+  .custom-checklist {
+    list-style: none;
+    padding-left: 0;
+  }
+  .custom-checklist li::before {
+    content: "✔";
+    color: #0d6efd;
+    margin-right: 8px;
+  }
+  details summary {
+    cursor: pointer;
+    font-weight: 600;
+    margin: 0.5rem 0;
+  }
+  @media (max-width: 768px) {
+    .blog-img-right {
+      float: none;
+      margin: 20px 0;
+      max-width: 100%;
+    }
+  }
 </style>
 
 <!-- Main article container -->
 <div class="container py-4">
   <article>
     <h1>The MVP Tech Stack: How to Build Fast, Iterate Faster</h1>
+    <picture class="blog-img-right">
+      <source srcset="/assets/optimized/mvp-tech-stack-thumb.avif" type="image/avif" />
+      <source srcset="/assets/optimized/mvp-tech-stack-thumb.webp" type="image/webp" />
+      <img
+        src="/assets/images/mvp-tech-stack-thumb.png"
+        alt="Best tech stack for MVPs in 2025"
+        width="300"
+        height="300"
+        loading="lazy"
+        decoding="async"
+      />
+    </picture>
 
     <p>
       When you're launching a new product, speed matters. You want to get

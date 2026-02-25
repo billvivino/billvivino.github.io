@@ -13,9 +13,27 @@ og_image: "/assets/images/vibe-founder-collaboration-thumb.png"
     height: 400px;
     object-fit: cover;
   }
+
   /* Extra breathing room under testimonials */
   .carousel .blockquote-footer {
     margin-top: 0.5rem;
+  }
+
+  /* Blog inline image (upper-right) */
+  .blog-img-right {
+    max-width: 45%;
+    float: right;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
+
+  @media (max-width: 768px) {
+    .blog-img-right {
+      max-width: 100%;
+      float: none;
+      margin: 20px 0;
+    }
   }
 </style>
 
@@ -26,6 +44,19 @@ og_image: "/assets/images/vibe-founder-collaboration-thumb.png"
       How I Include My Non-Technical, Vibe Coder Clients as Devs in Their
       Projects (and Save Them Time and Money)
     </h1>
+
+    <picture class="blog-img-right">
+      <source srcset="/assets/optimized/vibe-founder-collaboration-thumb.avif" type="image/avif" />
+      <source srcset="/assets/optimized/vibe-founder-collaboration-thumb.webp" type="image/webp" />
+      <img
+        src="/assets/images/vibe-founder-collaboration-thumb.png"
+        alt="Founder collaborating with AI tools in development workflow"
+        width="300"
+        height="300"
+        loading="lazy"
+        decoding="async"
+      />
+    </picture>
 
     <p>
       In today’s world of AI-assisted development, the line between
