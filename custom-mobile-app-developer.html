@@ -8,47 +8,31 @@ canonical: "https://billvivinotechnology.com/"
 ---
 
 <style>
-  .mini-card {
-    background: #ffffff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    height: 100%;
-  }
-  .mini-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
-  }
-  .mini-card img {
+  .card-img-top.img-fluid {
     width: 100%;
-    height: 240px;
+    height: 400px;
     object-fit: cover;
   }
-  .mini-card-body {
-    padding: 1.25rem;
+
+  .carousel .blockquote-footer {
+    margin-top: 0.5rem;
   }
-  .mini-card-body h5 {
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
-  .mini-card-body p {
-    font-size: 0.95rem;
-    color: #555;
-    margin-bottom: 1rem;
-  }
-  .btn-outline {
-    display: inline-block;
-    padding: 0.5rem 0.9rem;
-    border: 1px solid #0d6efd;
-    color: #0d6efd;
-    border-radius: 6px;
-    text-decoration: none;
-    font-size: 0.9rem;
-  }
-  .btn-outline:hover {
-    background-color: #0d6efd;
+
+  .play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem;
     color: #ffffff;
+    opacity: 0.85;
+    pointer-events: none;
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+  }
+
+  .video-thumb {
+    position: relative;
+    display: block;
   }
 </style>
 
