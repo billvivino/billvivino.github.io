@@ -117,11 +117,18 @@ og_image: "/assets/images/vibe-coding-thumb.jpg"
       Under the surface the project hides unoptimized code, fragile
       dependencies, and exposed secrets. The magic is skin deep.
     </p>
-    <img
-      src="/assets/images/vibe-coding-thumb.jpg"
-      alt="AI coding chaos illustration"
-      class="blog-img-right"
-    />
+    <picture class="blog-img-right">
+      <source srcset="/assets/optimized/vibe-coding-thumb.avif" type="image/avif" />
+      <source srcset="/assets/optimized/vibe-coding-thumb.webp" type="image/webp" />
+      <img
+        src="/assets/images/vibe-coding-thumb.jpg"
+        alt="AI coding chaos illustration"
+        width="300"
+        height="300"
+        loading="lazy"
+        decoding="async"
+      />
+    </picture>
 
     <h2>Enter the cleanup specialist</h2>
     <p>
