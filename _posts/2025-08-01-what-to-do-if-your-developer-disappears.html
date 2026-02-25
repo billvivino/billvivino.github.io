@@ -56,11 +56,18 @@ og_image: "/assets/images/developer-disappears-thumb.png"
       your assets, and restart with confidence.
     </p>
 
-    <img
-      src="/assets/images/developer-disappears-thumb.png"
-      alt="Developer disappears recovery checklist"
-      class="blog-img-right"
-    />
+    <picture class="blog-img-right">
+      <source srcset="/assets/optimized/developer-disappears-thumb.avif" type="image/avif" />
+      <source srcset="/assets/optimized/developer-disappears-thumb.webp" type="image/webp" />
+      <img
+        src="/assets/images/developer-disappears-thumb.png"
+        alt="Developer disappears recovery checklist"
+        width="300"
+        height="300"
+        loading="lazy"
+        decoding="async"
+      />
+    </picture>
 
     <p>
       Your app was almost done. Then the developer stopped responding. No
