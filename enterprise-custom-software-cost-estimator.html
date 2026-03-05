@@ -1,0 +1,182 @@
+---
+layout: default
+title: "Enterprise Custom Software Cost Estimator (2026)"
+description: "Estimate realistic costs for mid-market and enterprise custom software projects — including cloud migrations, AI integrations, ERP customizations, team size, duration, and complexity. Free tool by Bill Vivino Technology."
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Enterprise Custom Software Cost Estimator",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Web",
+  "description": "Interactive calculator for estimating enterprise and mid-market custom software development costs in 2026, including AI integrations, cloud migrations, team size, duration, and complexity.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": {
+    "@type": "Person",
+    "name": "Bill Vivino"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Bill Vivino Technology, LLC"
+  }
+}
+</script>
+
+<style>
+  .mini-card { background:#fff; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,0.08); }
+  .mini-card-body { padding:1.25rem; }
+  .muted { color:#6b7280; }
+  .divider { height:1px; background:#e5e7eb; margin:1rem 0; }
+  .pill { display:inline-block; padding:0.25rem 0.6rem; border-radius:999px; font-size:0.85rem; background:#f3f4f6; margin:0.25rem; }
+  .result-number { font-size:1.8rem; font-weight:700; color:#1e40af; }
+  .form-label { font-weight:600; margin-bottom:0.5rem; display:block; }
+  .btn-outline { border:1px solid #0d6efd; color:#0d6efd; border-radius:6px; padding:0.5rem 0.9rem; text-decoration:none; font-size:0.9rem; display:inline-block; }
+  .btn-outline:hover { background:#0d6efd; color:#fff; }
+  .calculator-container { max-width:700px; margin:2rem auto; }
+  .input-group { margin-bottom:1rem; }
+  .result-box { background:#f0f9ff; border:1px solid #bfdbfe; border-radius:8px; padding:1.5rem; margin-top:1.5rem; }
+</style>
+
+<div class="container my-4">
+  <div class="text-center mb-4">
+    <h1>Enterprise Custom Software Cost Estimator (2026)</h1>
+    <p class="muted mb-0">Estimate realistic costs for mid-market and enterprise projects — cloud migrations, AI integrations, ERP customizations, team size, duration, and complexity.</p>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-lg-7">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-3">Project Inputs</h2>
+
+          <div class="input-group">
+            <label class="form-label">Project Type</label>
+            <select id="projectType" class="form-select">
+              <option value="enterprise">Enterprise (large-scale, high compliance)</option>
+              <option value="midmarket">Mid-Market (200–1,000 employees)</option>
+              <option value="mvp">MVP / Startup</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label class="form-label">Team Size (developers/engineers)</label>
+            <input type="number" id="teamSize" class="form-control" value="5" min="1" required>
+          </div>
+
+          <div class="input-group">
+            <label class="form-label">Duration (months)</label>
+            <input type="number" id="durationMonths" class="form-control" value="6" min="1" required>
+          </div>
+
+          <div class="input-group">
+            <label class="form-label">Complexity Level</label>
+            <select id="complexity" class="form-select">
+              <option value="high">High (mission-critical, compliance-heavy)</option>
+              <option value="medium">Medium (standard enterprise features)</option>
+              <option value="low">Low (internal tool, basic scope)</option>
+            </select>
+          </div>
+
+          <div class="form-check mb-2">
+            <input type="checkbox" id="aiIntegration" class="form-check-input">
+            <label class="form-check-label">Include AI/ML Integration (+$25k est.)</label>
+          </div>
+
+          <div class="form-check mb-3">
+            <input type="checkbox" id="cloudMigration" class="form-check-input">
+            <label class="form-check-label">Include Cloud Migration/Refactoring (+$35k est.)</label>
+          </div>
+
+          <button id="calcBtn" class="btn btn-primary w-100">Calculate Estimated Cost</button>
+
+          <p class="muted mt-3 mb-0 small">
+            This is a directional estimate only — real costs vary by scope, team location, security needs, and integrations. Book a call for a precise quote.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-5">
+      <div class="mini-card">
+        <div class="mini-card-body">
+          <h2 class="h5 mb-2">Estimated Cost</h2>
+
+          <div id="emptyState" class="muted">Fill in the inputs and click Calculate.</div>
+
+          <div id="resultBox" class="result-box d-none">
+            <div class="mb-3">
+              <div class="muted">Total Estimated Cost</div>
+              <div class="result-number" id="totalCost">$0</div>
+            </div>
+
+            <div class="mb-3">
+              <div class="muted">Includes 20% contingency buffer for enterprise risk</div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="mb-3">
+              <div class="muted">Next Step</div>
+              <a href="/contact.html" class="btn-outline">Book Free Scoping Call →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById("calcBtn").addEventListener("click", function () {
+    // Get inputs
+    const projectType = document.getElementById("projectType").value;
+    const teamSize = parseInt(document.getElementById("teamSize").value) || 5;
+    const durationMonths = parseInt(document.getElementById("durationMonths").value) || 6;
+    const complexity = document.getElementById("complexity").value;
+    const aiIntegration = document.getElementById("aiIntegration").checked;
+    const cloudMigration = document.getElementById("cloudMigration").checked;
+
+    // Constants
+    const hourlyRate = 250;
+    const hoursPerMonth = 160;
+    const baseRatePerMember = hourlyRate * hoursPerMonth; // $40,000
+
+    const complexityMultipliers = { low: 1.0, medium: 1.5, high: 2.0 };
+    const complexityFactor = complexityMultipliers[complexity] || 1.5;
+
+    const projectBaseCosts = { mvp: 15000, midmarket: 75000, enterprise: 150000 };
+    const baseCost = projectBaseCosts[projectType] || 75000;
+
+    // Core calculation
+    const teamCost = teamSize * baseRatePerMember * durationMonths;
+    const adjustedTeamCost = teamCost * complexityFactor;
+
+    const aiAddon = aiIntegration ? 25000 : 0;
+    const cloudAddon = cloudMigration ? 35000 : 0;
+
+    const subtotal = baseCost + adjustedTeamCost + aiAddon + cloudAddon;
+    const buffer = Math.round(subtotal * 0.20 / 1000) * 1000;
+    const totalCost = Math.round((subtotal + buffer) / 1000) * 1000;
+
+    // Display result
+    document.getElementById("emptyState").classList.add("d-none");
+    document.getElementById("resultBox").classList.remove("d-none");
+    document.getElementById("totalCost").innerText = `$${totalCost.toLocaleString()}`;
+
+    // Optional GA4 tracking (if you have it set up)
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "calculator_calculate",
+      calculator: "enterprise_custom_software_cost",
+      project_type: projectType,
+      team_size: teamSize,
+      duration_months: durationMonths,
+      complexity: complexity,
+      ai_integration: aiIntegration,
+      cloud_migration: cloudMigration,
+      estimated_cost: totalCost
+    });
+  });
+</script>
