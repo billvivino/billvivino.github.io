@@ -24,13 +24,15 @@
 <meta name="description" content="{{ page.description | escape }}" />
 
 <!-- Open Graph -->
-<meta property="og:type" content="{{ page.og_type | default: 'website' }}" />
+<meta property="og:type" content="{{ page.og_type | default: 'article' }}" />
 <meta property="og:title" content="{{ page.title | escape }}" />
 <meta property="og:description" content="{{ page.description | escape }}" />
 <meta
   property="og:image"
   content="{{ page.og_image | default: '/assets/logo.png' | absolute_url }}"
 />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
 <meta property="og:url" content="{{ page.url | absolute_url }}" />
 
 <!-- Twitter -->
@@ -39,6 +41,10 @@
 <meta name="twitter:description" content="{{ page.description | escape }}" />
 <meta
   name="twitter:image"
+  content="{{ page.og_image | default: '/assets/logo.png' | absolute_url }}"
+/>
+<meta
+  name="twitter:image:src"
   content="{{ page.og_image | default: '/assets/logo.png' | absolute_url }}"
 />
 
