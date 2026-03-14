@@ -2,6 +2,25 @@
 <html lang="en">
   <head>
     {% include header.html %}
+    <!-- Social / SEO Meta -->
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+
+    <meta property="og:title" content="{{ page.title | default: site.title }}">
+    <meta property="og:description" content="{{ page.description | default: site.description }}">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:type" content="article">
+
+    {% if page.og_image %}
+    <meta property="og:image" content="{{ page.og_image | absolute_url }}">
+    <meta name="twitter:image" content="{{ page.og_image | absolute_url }}">
+    {% else %}
+    <meta property="og:image" content="{{ '/assets/logo.png' | absolute_url }}">
+    <meta name="twitter:image" content="{{ '/assets/logo.png' | absolute_url }}">
+    {% endif %}
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ page.title | default: site.title }}">
+    <meta name="twitter:description" content="{{ page.description | default: site.description }}">
     <!-- Organization Schema -->
     <script type="application/ld+json">
     {
