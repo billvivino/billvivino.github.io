@@ -29,7 +29,7 @@
 <meta property="og:description" content="{{ page.description | escape }}" />
 <meta
   property="og:image"
-  content="{{ page.og_image | default: '/assets/logo.png' }}"
+  content="{{ page.og_image | default: '/assets/logo.png' | absolute_url }}"
 />
 <meta property="og:url" content="{{ page.url | absolute_url }}" />
 
@@ -39,7 +39,7 @@
 <meta name="twitter:description" content="{{ page.description | escape }}" />
 <meta
   name="twitter:image"
-  content="{{ page.og_image | default: '/assets/logo.png' }}"
+  content="{{ page.og_image | default: '/assets/logo.png' | absolute_url }}"
 />
 
 <!-- Canonical URL -->
