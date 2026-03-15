@@ -27,10 +27,17 @@
 <meta property="og:type" content="{{ page.og_type | default: 'article' }}" />
 <meta property="og:title" content="{{ page.title | escape }}" />
 <meta property="og:description" content="{{ page.description | escape }}" />
+{% if page.og_image %}
 <meta
   property="og:image"
-  content="{{ page.og_image | default: '/assets/logo.png' | absolute_url }}"
+  content="{{ page.og_image | absolute_url }}"
 />
+{% else %}
+<meta
+  property="og:image"
+  content="https://og-image.vercel.app/{{ page.title | uri_escape }}.png?theme=light&md=1&fontSize=120px"
+/>
+{% endif %}
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="{{ page.url | absolute_url }}" />
@@ -39,14 +46,28 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="{{ page.title | escape }}" />
 <meta name="twitter:description" content="{{ page.description | escape }}" />
+{% if page.og_image %}
 <meta
   name="twitter:image"
-  content="{{ page.og_image | default: '/assets/logo.png' | absolute_url }}"
+  content="{{ page.og_image | absolute_url }}"
 />
+{% else %}
+<meta
+  name="twitter:image"
+  content="https://og-image.vercel.app/{{ page.title | uri_escape }}.png?theme=light&md=1&fontSize=120px"
+/>
+{% endif %}
+{% if page.og_image %}
 <meta
   name="twitter:image:src"
-  content="{{ page.og_image | default: '/assets/logo.png' | absolute_url }}"
+  content="{{ page.og_image | absolute_url }}"
 />
+{% else %}
+<meta
+  name="twitter:image:src"
+  content="https://og-image.vercel.app/{{ page.title | uri_escape }}.png?theme=light&md=1&fontSize=120px"
+/>
+{% endif %}
 
 <!-- Canonical URL -->
 <link rel="canonical" href="{{ page.url | absolute_url }}" />
