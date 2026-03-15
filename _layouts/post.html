@@ -8,8 +8,18 @@ layout: default
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ page.url | absolute_url }}"
+  },
   "headline": "{{ page.title | escape }}",
   "description": "{{ page.description | escape }}",
+  {% if page.categories %}
+  "articleSection": "{{ page.categories | join: ', ' }}",
+  {% endif %}
+  {% if page.tags %}
+  "keywords": "{{ page.tags | join: ', ' }}",
+  {% endif %}
   {% if page.og_image %}
   "image": ["{{ page.og_image | absolute_url }}"],
   {% endif %}
