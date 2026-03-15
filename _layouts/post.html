@@ -10,7 +10,9 @@ layout: default
   "@type": "BlogPosting",
   "headline": "{{ page.title | escape }}",
   "description": "{{ page.description | escape }}",
+  {% if page.og_image %}
   "image": ["{{ page.og_image | absolute_url }}"],
+  {% endif %}
   "url": "{{ page.url | absolute_url }}",
   "datePublished": "{{ page.date | date_to_xmlschema }}",
   "dateModified": "{{ page.date | date_to_xmlschema }}",
@@ -50,5 +52,3 @@ layout: default
     <a href="/blog.html" class="btn btn-outline-primary">← Back to Blog</a>
   </div>
 </main>
-
-{% include footer.html %}
