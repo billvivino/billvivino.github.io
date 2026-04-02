@@ -33,19 +33,16 @@ og_image: "/assets/images/software-almost-working.png"
   }
 
   .blog-img-right {
-    max-width: 30%;
     float: right;
-    margin-left: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    display: block;
+    margin: 0 0 16px 16px;
+    max-width: 300px;
   }
 
   .blog-img-right img {
     width: 100%;
-    max-width: 300px;
-    border-radius: 8px;
     height: auto;
+    border-radius: 8px;
+    display: block;
   }
 
   @media (max-width: 768px) {
@@ -68,17 +65,22 @@ og_image: "/assets/images/software-almost-working.png"
       </em>
     </p>
 
-    <picture class="blog-img-right">
-      <source srcset="/assets/optimized/software-almost-working.avif" type="image/avif">
-      <source srcset="/assets/optimized/software-almost-working.webp" type="image/webp">
-      <img src="/assets/images/software-almost-working.png" alt="Almost working app iceberg" width="300" loading="lazy" decoding="async" />
-    </picture>
-
     <div class="tldr-box">
       <strong>TLDR:</strong> If your app “mostly works” but can’t be released,
       you’re not close to done — you’re at the point where the system finally
       starts revealing itself. That phase is where the real work begins.
     </div>
+
+
+    <picture class="blog-img-right">
+      <source srcset="/assets/optimized/software-almost-working.avif" type="image/avif">
+      <source srcset="/assets/optimized/software-almost-working.webp" type="image/webp">
+      <img src="/assets/images/software-almost-working.png"
+           alt="Almost working app iceberg"
+           loading="lazy"
+           decoding="async" />
+    </picture>
+
 
     <h2>The “Almost Working” Stage</h2>
 
