@@ -31,6 +31,27 @@ og_image: "/assets/images/software-money-trap.png"
     border-radius: 6px;
     margin: 20px 0;
   }
+
+  .blog-img-right {
+    float: right;
+    margin: 0 0 16px 16px;
+    max-width: 300px;
+  }
+
+  .blog-img-right img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .blog-img-right {
+      float: none;
+      max-width: 100%;
+      margin: 20px 0;
+    }
+  }
 </style>
 
 <div class="container py-4">
@@ -50,6 +71,15 @@ og_image: "/assets/images/software-money-trap.png"
       things forward, and show you what’s actually there. You decide how far to
       take it.
     </div>
+
+    <picture class="blog-img-right">
+      <source srcset="/assets/optimized/software-money-trap.avif" type="image/avif">
+      <source srcset="/assets/optimized/software-money-trap.webp" type="image/webp">
+      <img src="/assets/images/software-money-trap.png"
+           alt="Software money trap"
+           loading="lazy"
+           decoding="async" />
+    </picture>
 
     <h2>The Question Clients Always Ask</h2>
 
