@@ -1,0 +1,298 @@
+---
+layout: post
+title: "When Can You Actually Estimate Software Work?"
+description: "A system review gives direction, not certainty. Real estimates only emerge once you begin working through the system."
+date: 2026-04-06
+og_image: "/assets/images/when-can-you-estimate.png"
+---
+
+<style>
+  .post-body p {
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+  }
+
+  .post-body h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .post-body h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+
+  .tldr-box {
+    background: #fff7d6;
+    border-left: 4px solid #f4c542;
+    padding: 16px 20px;
+    border-radius: 6px;
+    margin: 20px 0;
+  }
+
+  .blog-img-right {
+    max-width: 30%;
+    float: right;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .blog-img-right img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 8px;
+    height: auto;
+  }
+
+  @media (max-width: 768px) {
+    .blog-img-right {
+      max-width: 100%;
+      float: none;
+      margin: 20px 0;
+    }
+  }
+</style>
+
+<div class="container py-4">
+  <article class="post-body">
+    <h1>When Can You Actually Estimate Software Work?</h1>
+
+    <p>
+      <em>
+        A system review gives you direction. It does not give you certainty.
+      </em>
+    </p>
+
+    <div class="tldr-box">
+      <strong>TLDR:</strong> You can’t accurately estimate what you haven’t
+      uncovered yet. Reviews show where to look. Only working through the system
+      reveals what it actually takes to fix.
+    </div>
+
+    <picture class="blog-img-right">
+      <source
+        srcset="/assets/optimized/when-can-you-estimate.avif"
+        type="image/avif"
+      />
+      <source
+        srcset="/assets/optimized/when-can-you-estimate.webp"
+        type="image/webp"
+      />
+      <img
+        src="/assets/images/when-can-you-estimate.png"
+        alt="Software estimation vs reality"
+        width="300"
+        loading="lazy"
+        decoding="async"
+      />
+    </picture>
+
+    <h2>The Question Everyone Asks</h2>
+
+    <p>After a system review, the next question is almost always:</p>
+
+    <p><em>“Okay — so how long will it take to fix?”</em></p>
+
+    <p>It sounds like a reasonable question.</p>
+
+    <p>
+      It’s also based on a misunderstanding of what a review actually provides.
+    </p>
+
+    <h2>What a Review Actually Gives You</h2>
+
+    <p>A system review can tell you:</p>
+
+    <ul>
+      <li>where the problem is likely coming from</li>
+      <li>what parts of the system are interacting incorrectly</li>
+      <li>what the major constraints are</li>
+      <li>what direction the solution will take</li>
+    </ul>
+
+    <p>That’s valuable.</p>
+
+    <p>But it’s not the same as knowing how long it will take to fix.</p>
+
+    <h2>The Gap No One Talks About</h2>
+
+    <p>After a review, it feels like:</p>
+
+    <p>
+      <em
+        >“We understand the problem — so we should be able to estimate it.”</em
+      >
+    </p>
+
+    <p>But there’s a missing step.</p>
+
+    <p>
+      Understanding where a problem originates is not the same as understanding:
+    </p>
+
+    <ul>
+      <li>how far it extends</li>
+      <li>how many systems it touches</li>
+      <li>what breaks when you change it</li>
+      <li>how stable the fix will be</li>
+    </ul>
+
+    <h2>Why Reviews Don’t Create Certainty</h2>
+
+    <p>A review is a map.</p>
+
+    <p>It shows you where to go.</p>
+
+    <p>It does not show you what you’ll encounter when you get there.</p>
+
+    <h2>So What Actually Creates Certainty?</h2>
+
+    <p>Not more review.</p>
+
+    <p>Not more theorizing.</p>
+
+    <p>Work does.</p>
+
+    <h2>The First Real Work Is What Matters</h2>
+
+    <p>Once you start:</p>
+
+    <ul>
+      <li>running full flows</li>
+      <li>observing real behavior</li>
+      <li>testing under real conditions</li>
+      <li>making changes and seeing the impact</li>
+    </ul>
+
+    <p>You begin to answer the real questions:</p>
+
+    <ul>
+      <li>does the fix hold?</li>
+      <li>what else breaks?</li>
+      <li>how deep does this go?</li>
+    </ul>
+
+    <p>That’s when estimates start becoming real.</p>
+
+    <h2>What About Large “Investigation Phases”?</h2>
+
+    <p>Some teams propose large upfront investigations:</p>
+
+    <ul>
+      <li>20 hours</li>
+      <li>40 hours</li>
+      <li>sometimes more</li>
+    </ul>
+
+    <p>This can help organize the system.</p>
+
+    <p>But it still has a limit.</p>
+
+    <p>At some point, analysis stops improving certainty.</p>
+
+    <p>Only interaction with the system itself does.</p>
+
+    <h2>The Real Progression</h2>
+
+    <p>Software work doesn’t go:</p>
+
+    <p><em>Review → Estimate → Fix → Done</em></p>
+
+    <p>It actually goes:</p>
+
+    <p>
+      <em
+        >Review → Direction → Initial Work → Feedback → Clarity → Continued
+        Work</em
+      >
+    </p>
+
+    <h2>When Do You Actually Get a Real Estimate?</h2>
+
+    <p>You start to get meaningful estimates when:</p>
+
+    <ul>
+      <li>the system behavior has been observed directly</li>
+      <li>key flows have been stabilized</li>
+      <li>major unknowns have been surfaced</li>
+      <li>the problem stops expanding</li>
+    </ul>
+
+    <p>In other words:</p>
+
+    <p><strong>after you begin working through it</strong></p>
+
+    <h2>The Business Tension</h2>
+
+    <p>Businesses want:</p>
+
+    <ul>
+      <li>predictability</li>
+      <li>timelines</li>
+      <li>cost control</li>
+    </ul>
+
+    <p>That’s completely valid.</p>
+
+    <p>
+      But software — especially existing systems — often begins in uncertainty.
+    </p>
+
+    <h2>The Real Solution</h2>
+
+    <p>You don’t eliminate uncertainty upfront.</p>
+
+    <p>You manage it correctly.</p>
+
+    <p>That means:</p>
+
+    <ul>
+      <li>working in focused blocks</li>
+      <li>making progress visible</li>
+      <li>increasing clarity over time</li>
+      <li>making decisions as the system reveals itself</li>
+    </ul>
+
+    <h2>What You’re Actually Buying</h2>
+
+    <p>At this stage, you’re not buying:</p>
+
+    <ul>
+      <li>a fixed outcome</li>
+      <li>a guaranteed timeline</li>
+    </ul>
+
+    <p>You’re buying:</p>
+
+    <p>
+      <strong>a faster path to understanding and stabilizing the system</strong>
+    </p>
+
+    <h2>Final Thought</h2>
+
+    <p>A review tells you where the problem is.</p>
+
+    <p>
+      Only working through the system tells you what it actually takes to fix
+      it.
+    </p>
+
+    <h2>One-line version</h2>
+
+    <p>
+      <strong>
+        You can’t estimate what you haven’t uncovered yet. You uncover it by
+        working through the system.
+      </strong>
+    </p>
+
+    <h2>Next Step</h2>
+
+    <p>
+      If this resonates, read how I work → <a href="/how-i-work">How I Work</a>
+    </p>
+  </article>
+</div>
