@@ -417,3 +417,13 @@ And software?
 
 **It’s a commitment.**
 
+---
+
+<p class="mt-4">
+  Ready to discuss your app idea and budget in more detail?
+  <a href="../contact.html">Drop me a message</a>, and let’s talk about
+  your goals!
+</p>
+<p class="mt-4">
+  <a href="../blog.html">&larr; Back to all posts</a>
+</p>

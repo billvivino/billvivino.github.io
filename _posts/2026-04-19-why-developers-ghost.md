@@ -6,7 +6,66 @@ date: 2026-04-19
 og_image: "/assets/images/why-developers-ghost.png"
 ---
 
-# Why Developers Ghost
+<style>
+  .post-body p {
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+  }
+
+  .post-body h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .tldr-box {
+    background: #fff7d6;
+    border-left: 4px solid #f4c542;
+    padding: 16px 20px;
+    border-radius: 6px;
+    margin: 20px 0;
+  }
+
+  .blog-img-right {
+    max-width: 30%;
+    float: right;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .blog-img-right img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 8px;
+    height: auto;
+  }
+
+  @media (max-width: 768px) {
+    .blog-img-right {
+      max-width: 100%;
+      float: none;
+      margin: 20px 0;
+    }
+  }
+</style>
+
+<div class="tldr-box">
+  <strong>TL;DR</strong><br />
+  Ghosting isn’t random. It’s usually the final stage of a system the developer no longer feels able to control. Here’s what actually causes it—and how to see it coming.
+</div>
+
+<picture class="blog-img-right">
+  <source srcset="/assets/optimized/why-developers-ghost.avif" type="image/avif" />
+  <source srcset="/assets/optimized/why-developers-ghost.webp" type="image/webp" />
+  <img
+    src="/assets/images/why-developers-ghost.png"
+    alt="Illustration representing a software developer fading away from an overwhelming project"
+    width="300"
+    loading="lazy"
+    decoding="async"
+  />
+</picture>
 
 Ghosting in software projects is usually described as a professionalism problem. 
 
@@ -283,3 +342,13 @@ Because communication does not break down when people stop talking.
 
 And once that happens, ghosting is often just a matter of time.
 
+---
+
+<p class="mt-4">
+  Ready to discuss your app idea and budget in more detail?
+  <a href="../contact.html">Drop me a message</a>, and let’s talk about
+  your goals!
+</p>
+<p class="mt-4">
+  <a href="../blog.html">&larr; Back to all posts</a>
+</p>
