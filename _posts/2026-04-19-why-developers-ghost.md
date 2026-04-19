@@ -1,7 +1,7 @@
 ---
 layout: post
-title: 
-description: 
+title: "Why Developers Ghost"
+description: "Ghosting isn’t random. It’s usually the final stage of a system the developer no longer feels able to control. Here’s what actually causes it—and how to see it coming."
 date: 2026-04-19
 og_image: "/assets/images/why-developers-ghost.png"
 ---
