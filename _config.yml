@@ -1,5 +1,10 @@
 title: "Bill Vivino Technology"
+organization:
+  name: "Bill Vivino Technology, LLC"
+description: "Custom software development, mobile apps, web platforms, AI automation, and senior engineering help for startups and teams."
 url: "https://billvivinotechnology.com"
+email: "info@billvivinotechnology.com"
+phone: "+1-973-358-2341"
 markdown: kramdown
 highlighter: rouge
 permalink: /posts/:title:output_ext
@@ -12,15 +17,13 @@ include:
   - _layouts
 
 defaults:
-  -
-    scope:
+  - scope:
       path: ""
       type: "posts"
     values:
       layout: "post"
 
-  -
-    scope:
+  - scope:
       path: ""
       type: "pages"
     values: {}
