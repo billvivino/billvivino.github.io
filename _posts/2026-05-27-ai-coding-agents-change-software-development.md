@@ -3,7 +3,7 @@ layout: post
 title: "AI Coding Agents Are Changing Software Development"
 description: "I used agentic coding tools on real software work. They help, but their real value is delegation, not replacing developer judgment."
 date: 2026-05-27
-og_image: "/assets/images/everyone-has-a-junior-developer-now.png"
+og_image: "/assets/images/ai-coding-agents-change-software-development.png"
 ---
 
 <style>
@@ -45,11 +45,11 @@ og_image: "/assets/images/everyone-has-a-junior-developer-now.png"
 </div>
 
 <picture class="blog-img-right">
-  <source srcset="/assets/optimized/everyone-has-a-junior-developer-now.avif" type="image/avif" />
-  <source srcset="/assets/optimized/everyone-has-a-junior-developer-now.webp" type="image/webp" />
+  <source srcset="/assets/optimized/ai-coding-agents-change-software-development.avif" type="image/avif" />
+  <source srcset="/assets/optimized/ai-coding-agents-change-software-development.webp" type="image/webp" />
   <img
-    src="/assets/images/everyone-has-a-junior-developer-now.png"
-    alt="Illustration of a software developer supervising AI-generated code"
+    src="/assets/images/ai-coding-agents-change-software-development.png"
+    alt="Illustration of a software developer directing AI coding agents through code review and build verification"
     width="300"
     loading="lazy"
     decoding="async"
