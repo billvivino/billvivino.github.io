@@ -1,12 +1,11 @@
 ---
-
 layout: post
 title: "The Real Risk Is Not Whether the Software Can Be Built"
 date: 2026-06-05
 description: "Many software projects do not fail because the code cannot be written. They fail because the organization never adopts the workflow."
 categories: software consulting enterprise software product adoption
 og_image: "/assets/images/building-the-software-isnt-the-hard-part.png"
---------------------------------------------------------------------
+---
 
 A lot of software projects are evaluated around the wrong question.
 
