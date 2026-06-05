@@ -7,6 +7,43 @@ categories: software consulting enterprise software product adoption
 og_image: "/assets/images/building-the-software-isnt-the-hard-part.png"
 ---
 
+<style>
+  .blog-img-right {
+    max-width: 30%;
+    float: right;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .blog-img-right img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 8px;
+    height: auto;
+  }
+
+  @media (max-width: 768px) {
+    .blog-img-right {
+      max-width: 100%;
+      float: none;
+      margin: 20px 0;
+    }
+  }
+</style>
+
+<picture class="blog-img-right">
+  <source srcset="/assets/optimized/building-the-software-isnt-the-hard-part.avif" type="image/avif" />
+  <source srcset="/assets/optimized/building-the-software-isnt-the-hard-part.webp" type="image/webp" />
+  <img
+    src="/assets/images/building-the-software-isnt-the-hard-part.png"
+    alt="Illustration representing software that can be built but still depends on organizational adoption"
+    width="300"
+    loading="lazy"
+    decoding="async"
+  />
+</picture>
+
 A lot of software projects are evaluated around the wrong question.
 
 Can it be built?
