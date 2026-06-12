@@ -127,6 +127,28 @@ description: "Free 2026 Firebase cost calculator for Kotlin/Android apps. Accura
   </p>
 </div>
 
+<div
+  style="
+    max-width: 900px;
+    margin: 1.5rem auto;
+    padding: 1rem;
+    background: #ecfdf5;
+    border: 1px solid #bbf7d0;
+    border-radius: 8px;
+    text-align: center;
+  "
+>
+  <p style="margin-bottom: 0.75rem; font-weight: 700">
+    Need the generic 2026 Firebase usage calculator or scenario planner?
+  </p>
+  <a class="btn btn-primary mt-1" href="/firebase-calculator/">
+    Open Firebase Cost Calculator
+  </a>
+  <a class="btn btn-outline-primary mt-1" href="/firebase-cost-scenario-planner/">
+    Compare Firebase Cost Scenarios
+  </a>
+</div>
+
 <main class="calculator-card bg-white p-4">
   <form id="calcForm">
     <div class="mb-3">
@@ -328,5 +350,8 @@ description: "Free 2026 Firebase cost calculator for Kotlin/Android apps. Accura
   }
   // Initialize price on load
   calculate();
-  document.getElementById("year").innerText = new Date().getFullYear();
+  const yearEl = document.getElementById("year");
+  if (yearEl) {
+    yearEl.innerText = new Date().getFullYear();
+  }
 </script>

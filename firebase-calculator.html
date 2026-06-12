@@ -1,0 +1,387 @@
+---
+layout: default
+title: "Firebase Cost Calculator 2026"
+description: "Estimate monthly Firebase costs from Firestore, Realtime Database, and Cloud Functions usage, then compare scenarios with the Firebase Cost Scenario Planner."
+permalink: /firebase-calculator/
+canonical: "https://billvivinotechnology.com/firebase-calculator/"
+breadcrumbs:
+  - name: "Home"
+    url: "https://billvivinotechnology.com/"
+  - name: "Software Decision Toolbox"
+    url: "https://billvivinotechnology.com/toolbox.html"
+  - name: "Firebase Cost Calculator"
+    url: "https://billvivinotechnology.com/firebase-calculator/"
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Firebase Cost Calculator 2026",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Web",
+  "description": "Interactive Firebase cost calculator for estimating monthly Firestore, Realtime Database, and Cloud Functions usage costs.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+<style>
+  .firebase-calc-shell {
+    max-width: 1080px;
+  }
+  .calc-panel {
+    background: #ffffff;
+    border: 1px solid #dfe7f1;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
+    padding: 1.25rem;
+    height: 100%;
+  }
+  .muted {
+    color: #64748b;
+  }
+  .section-kicker {
+    color: #0f766e;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .calc-total {
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+  .calc-divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 1rem 0;
+  }
+  .line-total {
+    font-weight: 700;
+  }
+  .source-list a {
+    display: inline-block;
+    margin-right: 0.75rem;
+  }
+</style>
+
+<main class="container firebase-calc-shell my-4">
+  <section class="calc-panel mb-4">
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-8">
+        <div class="section-kicker mb-2">Raw usage estimate</div>
+        <h1 class="display-5 fw-bold mb-3">Firebase Cost Calculator 2026</h1>
+        <p class="lead mb-0">
+          Estimate a monthly Firebase bill from direct usage numbers for
+          Firestore, Realtime Database, and Cloud Functions.
+        </p>
+      </div>
+      <div class="col-lg-4">
+        <div class="d-grid gap-2">
+          <a class="btn btn-primary" href="/firebase-cost-scenario-planner/">
+            Open the scenario planner
+          </a>
+          <a class="btn btn-success" href="/contact.html">
+            Review my Firebase architecture
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="row g-4">
+    <div class="col-lg-7">
+      <div class="calc-panel">
+        <div class="section-kicker mb-1">Inputs</div>
+        <h2 class="h4 mb-3">Monthly usage assumptions</h2>
+
+        <div class="row g-3">
+          <div class="col-12">
+            <h3 class="h6 mb-0">Firestore</h3>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="readsDay">Reads/day</label>
+            <input id="readsDay" class="form-control" type="number" min="0" value="500000" />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="writesDay">Writes/day</label>
+            <input id="writesDay" class="form-control" type="number" min="0" value="50000" />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="deletesDay">Deletes/day</label>
+            <input id="deletesDay" class="form-control" type="number" min="0" value="5000" />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="firestoreStorage">Storage, GiB</label>
+            <input id="firestoreStorage" class="form-control" type="number" min="0" step="0.1" value="10" />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="firestoreEgress">Egress, GiB/month</label>
+            <input id="firestoreEgress" class="form-control" type="number" min="0" step="0.1" value="25" />
+          </div>
+
+          <div class="col-12">
+            <h3 class="h6 mt-2 mb-0">Realtime Database</h3>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="rtdbStorage">Storage, GB</label>
+            <input id="rtdbStorage" class="form-control" type="number" min="0" step="0.1" value="0" />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="rtdbDownload">Downloaded data, GB/month</label>
+            <input id="rtdbDownload" class="form-control" type="number" min="0" step="0.1" value="0" />
+          </div>
+
+          <div class="col-12">
+            <h3 class="h6 mt-2 mb-0">Cloud Functions</h3>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="functionCalls">Invocations/month</label>
+            <input id="functionCalls" class="form-control" type="number" min="0" value="1000000" />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="functionRuntime">Average runtime, ms</label>
+            <input id="functionRuntime" class="form-control" type="number" min="0" value="300" />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="functionMemory">Memory, MB</label>
+            <input id="functionMemory" class="form-control" type="number" min="128" value="256" />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="functionCpu">CPU, GHz planning value</label>
+            <input id="functionCpu" class="form-control" type="number" min="0" step="0.1" value="0.4" />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="functionEgress">Egress, GB/month</label>
+            <input id="functionEgress" class="form-control" type="number" min="0" step="0.1" value="2" />
+          </div>
+        </div>
+
+        <p class="muted small mt-3 mb-0">
+          This calculator uses common public pricing assumptions for planning.
+          Exact bills vary by region, database edition, function generation,
+          networking path, indexes, and free-tier eligibility.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-lg-5">
+      <div class="calc-panel">
+        <div class="section-kicker mb-1">Estimate</div>
+        <h2 class="h4 mb-3">Monthly cost</h2>
+        <div class="calc-total" id="totalCost">$0</div>
+        <p class="muted mb-3" id="costSummary">
+          Change any input to update the estimate.
+        </p>
+
+        <div class="calc-divider"></div>
+
+        <div class="table-responsive">
+          <table class="table table-sm align-middle">
+            <tbody id="costLines"></tbody>
+            <tfoot>
+              <tr>
+                <td class="line-total">Estimated total</td>
+                <td class="text-end line-total" id="totalCostFoot">$0</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <div class="calc-divider"></div>
+
+        <p class="mb-2">
+          A raw estimate tells you what the bill could be. The scenario planner
+          helps explain which architectural behavior creates that bill.
+        </p>
+        <a class="btn btn-primary w-100" href="/firebase-cost-scenario-planner/">
+          Compare scenarios
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="source-list muted small mt-4 mb-4">
+    Pricing references:
+    <a href="https://firebase.google.com/pricing">Firebase pricing</a>
+    <a href="https://firebase.google.com/docs/firestore/pricing">Firestore billing docs</a>
+    <a href="https://cloud.google.com/functions/pricing-1stgen">Cloud Functions pricing</a>
+  </section>
+</main>
+
+<script>
+  const firebasePricing = {
+    firestore: {
+      freeReadsPerDay: 50000,
+      freeWritesPerDay: 20000,
+      freeDeletesPerDay: 20000,
+      readPer100k: 0.03,
+      writePer100k: 0.09,
+      deletePer100k: 0.01,
+      freeStorageGib: 1,
+      storagePerGibMonth: 0.18,
+      freeEgressGibMonth: 10,
+      egressPerGib: 0.12,
+    },
+    rtdb: {
+      freeStorageGb: 1,
+      storagePerGbMonth: 5,
+      freeDownloadGbMonth: 10,
+      downloadPerGb: 1,
+    },
+    functions: {
+      freeInvocationsMonth: 2000000,
+      invocationPerMillion: 0.4,
+      freeGbSecondsMonth: 400000,
+      gbSecondPrice: 0.0000025,
+      freeGhzSecondsMonth: 200000,
+      ghzSecondPrice: 0.00001,
+      freeEgressGbMonth: 5,
+      egressPerGb: 0.12,
+    },
+  };
+
+  function amount(id) {
+    return Number(document.getElementById(id).value) || 0;
+  }
+
+  function over(value, free) {
+    return Math.max(value - free, 0);
+  }
+
+  function formatMoney(value) {
+    if (value < 1) {
+      return "$" + value.toFixed(2);
+    }
+    return "$" + Math.round(value).toLocaleString();
+  }
+
+  function calculateFirebaseCost() {
+    const days = 30;
+    const readsDay = amount("readsDay");
+    const writesDay = amount("writesDay");
+    const deletesDay = amount("deletesDay");
+    const firestoreStorage = amount("firestoreStorage");
+    const firestoreEgress = amount("firestoreEgress");
+    const rtdbStorage = amount("rtdbStorage");
+    const rtdbDownload = amount("rtdbDownload");
+    const functionCalls = amount("functionCalls");
+    const functionRuntimeSeconds = amount("functionRuntime") / 1000;
+    const functionMemoryGb = amount("functionMemory") / 1024;
+    const functionCpuGhz = amount("functionCpu");
+    const functionEgress = amount("functionEgress");
+
+    const lines = [
+      {
+        label: "Firestore reads",
+        cost:
+          (over(readsDay, firebasePricing.firestore.freeReadsPerDay) * days / 100000) *
+          firebasePricing.firestore.readPer100k,
+      },
+      {
+        label: "Firestore writes",
+        cost:
+          (over(writesDay, firebasePricing.firestore.freeWritesPerDay) * days / 100000) *
+          firebasePricing.firestore.writePer100k,
+      },
+      {
+        label: "Firestore deletes",
+        cost:
+          (over(deletesDay, firebasePricing.firestore.freeDeletesPerDay) * days / 100000) *
+          firebasePricing.firestore.deletePer100k,
+      },
+      {
+        label: "Firestore storage",
+        cost:
+          over(firestoreStorage, firebasePricing.firestore.freeStorageGib) *
+          firebasePricing.firestore.storagePerGibMonth,
+      },
+      {
+        label: "Firestore egress",
+        cost:
+          over(firestoreEgress, firebasePricing.firestore.freeEgressGibMonth) *
+          firebasePricing.firestore.egressPerGib,
+      },
+      {
+        label: "Realtime Database storage",
+        cost:
+          over(rtdbStorage, firebasePricing.rtdb.freeStorageGb) *
+          firebasePricing.rtdb.storagePerGbMonth,
+      },
+      {
+        label: "Realtime Database download",
+        cost:
+          over(rtdbDownload, firebasePricing.rtdb.freeDownloadGbMonth) *
+          firebasePricing.rtdb.downloadPerGb,
+      },
+      {
+        label: "Functions invocations",
+        cost:
+          (over(functionCalls, firebasePricing.functions.freeInvocationsMonth) / 1000000) *
+          firebasePricing.functions.invocationPerMillion,
+      },
+      {
+        label: "Functions memory time",
+        cost:
+          over(
+            functionCalls * functionMemoryGb * functionRuntimeSeconds,
+            firebasePricing.functions.freeGbSecondsMonth
+          ) * firebasePricing.functions.gbSecondPrice,
+      },
+      {
+        label: "Functions CPU time",
+        cost:
+          over(
+            functionCalls * functionCpuGhz * functionRuntimeSeconds,
+            firebasePricing.functions.freeGhzSecondsMonth
+          ) * firebasePricing.functions.ghzSecondPrice,
+      },
+      {
+        label: "Functions egress",
+        cost:
+          over(functionEgress, firebasePricing.functions.freeEgressGbMonth) *
+          firebasePricing.functions.egressPerGb,
+      },
+    ];
+
+    const total = lines.reduce(function (sum, item) {
+      return sum + item.cost;
+    }, 0);
+
+    const dominant = lines
+      .slice()
+      .sort(function (a, b) {
+        return b.cost - a.cost;
+      })[0];
+
+    document.getElementById("totalCost").textContent = formatMoney(total);
+    document.getElementById("totalCostFoot").textContent = formatMoney(total);
+    document.getElementById("costSummary").textContent =
+      dominant && dominant.cost > 0
+        ? dominant.label + " is the largest modeled line item."
+        : "This usage mostly stays inside the modeled no-cost quotas.";
+
+    document.getElementById("costLines").innerHTML = lines
+      .map(function (line) {
+        return (
+          "<tr><td>" +
+          line.label +
+          "</td><td class=\"text-end\">" +
+          formatMoney(line.cost) +
+          "</td></tr>"
+        );
+      })
+      .join("");
+  }
+
+  document.querySelectorAll("input").forEach(function (input) {
+    input.addEventListener("input", calculateFirebaseCost);
+  });
+
+  calculateFirebaseCost();
+</script>

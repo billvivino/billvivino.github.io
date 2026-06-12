@@ -1,0 +1,7 @@
+scenario,daily_active_users,architecture_pattern,firestore_reads_per_day,firestore_writes_per_day,firestore_deletes_per_day,firestore_storage_gib,firestore_egress_gib_month,realtime_database_storage_gb,realtime_database_download_gb_month,cloud_functions_invocations_month,average_function_runtime_ms,function_memory_mb,function_cpu_ghz,function_egress_gb_month,primary_risk
+"Small App / MVP",500,balanced,50000,5000,500,1,5,0,0,200000,300,256,0.4,1,"Low risk if screens avoid repeated collection reads"
+"Mid-Scale Product",20000,firestore-heavy,2500000,250000,20000,40,80,2,25,8000000,450,512,0.8,10,"Firestore reads and dashboard query patterns"
+"Enterprise / High-Volume",150000,realtime-heavy,50000000,5000000,500000,800,2000,50,1200,80000000,700,512,0.8,250,"Realtime bandwidth, Firestore read volume, and function fan-out"
+"Firestore-Heavy Architecture",35000,firestore-heavy,10000000,400000,50000,150,220,0,0,10000000,400,512,0.8,25,"Read amplification from screens, listeners, and duplicated queries"
+"Realtime Database-Heavy Architecture",25000,realtime-heavy,1000000,80000,10000,20,40,20,800,3000000,300,256,0.4,10,"Downloaded GB from live sync and presence-style state"
+"Cloud Functions-Heavy Architecture",35000,functions-heavy,5000000,900000,100000,100,120,0,0,50000000,500,256,0.4,240,"Function fan-out, duration, and outbound networking"
