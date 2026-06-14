@@ -1,0 +1,486 @@
+---
+layout: default
+title: "Self-Hosted Coding AI Portal Case Study"
+description: "A case study for a self-hosted coding AI portal built with a local open-weight model, BVT-specific retrieval, custom evaluation, and client-intake workflow."
+canonical: "https://billvivinotechnology.com/coding-ai-portal.html"
+og_image: "/assets/optimized/ai_automation_services.webp"
+---
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Self-Hosted Coding AI Portal Case Study",
+    "description": "A case study for a client-facing coding AI portal using a local open-weight model, custom retrieval, custom evaluation, and Mac-hosted backend infrastructure.",
+    "author": {
+      "@type": "Person",
+      "name": "Bill Vivino"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Bill Vivino Technology, LLC"
+    },
+    "url": "https://billvivinotechnology.com/coding-ai-portal.html"
+  }
+</script>
+
+<style>
+  .coding-ai-hero {
+    background: linear-gradient(135deg, #071a2d 0%, #103a5f 100%);
+  }
+  .coding-ai-hero .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .coding-ai-hero h1,
+  .coding-ai-hero p,
+  .coding-ai-hero strong {
+    color: #ffffff !important;
+  }
+  .coding-ai-kicker {
+    color: #84d8ff !important;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .coding-ai-panel {
+    background: #ffffff;
+    border: 1px solid #dbe4ee;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(15, 35, 58, 0.08);
+    height: 100%;
+  }
+  .coding-ai-dark-panel {
+    background: #081827;
+    border-radius: 8px;
+    color: #eaf6ff;
+  }
+  .coding-ai-dark-panel p,
+  .coding-ai-dark-panel strong {
+    color: #eaf6ff !important;
+  }
+  .coding-ai-chip {
+    background: #eaf6ff;
+    border: 1px solid #b8dcee;
+    border-radius: 999px;
+    color: #0a2540;
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0.2rem 0.25rem 0.2rem 0;
+    padding: 0.35rem 0.7rem;
+  }
+  .coding-ai-output {
+    background: #f6f9fc;
+    border: 1px solid #dbe4ee;
+    border-radius: 8px;
+    min-height: 180px;
+    padding: 1rem;
+    white-space: pre-wrap;
+  }
+  .coding-ai-status {
+    background: #eef6ff;
+    border: 1px solid #cbe6ff;
+    border-radius: 6px;
+    color: #0a4778;
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.25rem 0.55rem;
+    text-transform: uppercase;
+  }
+  .coding-ai-flow {
+    border-left: 4px solid #00b3ff;
+    padding-left: 1rem;
+  }
+  @media (max-width: 767px) {
+    .coding-ai-hero .display-5 {
+      font-size: 2rem;
+    }
+  }
+</style>
+
+<section class="coding-ai-hero py-5">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <p class="coding-ai-kicker mb-2">Self-Hosted Coding AI Case Study</p>
+        <h1 class="display-5 fw-bold">
+          Building a Coding AI Portal Without Pretending the Model Is the Product
+        </h1>
+        <p class="lead">
+          A local-first AI assistant for potential clients asking software
+          architecture, debugging, Firebase cost, MVP scope, and codebase-risk
+          questions.
+        </p>
+        <p>
+          The original work is not simply running an open model. It is the
+          product layer around it: BVT-specific retrieval, client-intake
+          workflow, evaluation, rate limits, safety rules, Mac-hosted backend
+          infrastructure, and human handoff.
+        </p>
+        <div class="mt-4">
+          <a href="#prototype" class="btn btn-primary me-2 mb-2">
+            View Prototype
+          </a>
+          <a href="#architecture" class="btn btn-outline-light mb-2">
+            See Architecture
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <picture>
+          <source
+            srcset="/assets/optimized/ai_automation_services.avif"
+            type="image/avif"
+          />
+          <source
+            srcset="/assets/optimized/ai_automation_services.webp"
+            type="image/webp"
+          />
+          <img
+            src="/assets/optimized/ai_automation_services.webp"
+            alt="AI software architecture"
+            class="img-fluid rounded"
+            width="1200"
+            height="800"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5 bg-light" id="prototype">
+  <div class="container">
+    <div class="text-center mb-4">
+      <span class="coding-ai-status">Prototype shell</span>
+      <h2 class="mt-3">Client Coding Question Intake</h2>
+      <p class="mx-auto" style="max-width: 840px;">
+        This page currently demonstrates the workflow. The production version
+        connects to a Mac-hosted backend running a local model behind a custom
+        API.
+      </p>
+    </div>
+
+    <div class="row g-4 align-items-stretch">
+      <div class="col-lg-6">
+        <div class="coding-ai-dark-panel p-4 h-100">
+          <strong>BVT Coding AI</strong>
+          <p class="mt-3 mb-2">
+            "My Firebase app works, but screens are slow and reads are climbing.
+            Is this an architecture problem?"
+          </p>
+          <p class="mb-3">
+            A useful assistant should not guess from vibes. It should ask about
+            listener usage, query shape, high-traffic screens, data duplication,
+            and production risk before recommending a rewrite.
+          </p>
+          <span class="coding-ai-chip">Architecture</span>
+          <span class="coding-ai-chip">Firebase Cost</span>
+          <span class="coding-ai-chip">Human Handoff</span>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="coding-ai-panel p-4">
+          <h3 class="h5 mb-3">Generate an Intake Brief</h3>
+          <div class="mb-3">
+            <label for="questionType" class="form-label">Question type</label>
+            <select id="questionType" class="form-select">
+              <option value="architecture">Architecture decision</option>
+              <option value="debugging">Debugging or performance</option>
+              <option value="scope">MVP scope</option>
+              <option value="review">Codebase risk review</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="stackInput" class="form-label">Tech stack</label>
+            <input
+              id="stackInput"
+              class="form-control"
+              type="text"
+              value="SwiftUI, Firebase, Node.js"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="questionInput" class="form-label">Client question</label>
+            <textarea
+              id="questionInput"
+              class="form-control"
+              rows="4"
+            >My app works, but it is getting hard to maintain and I am worried the backend cost will jump after launch.</textarea>
+          </div>
+          <button id="generateBrief" class="btn btn-primary w-100">
+            Ask Local AI
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-lg-10 mx-auto">
+        <div id="briefOutput" class="coding-ai-output">
+          Choose a question type and generate a brief.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5" id="architecture">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="coding-ai-status">Restarted direction</span>
+      <h2 class="mt-3">What Is Actually Original Here?</h2>
+      <p class="lead mx-auto" style="max-width: 900px;">
+        Running Ollama with someone else's model is useful infrastructure. The
+        original project is the consulting-specific AI product built around that
+        model.
+      </p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="coding-ai-panel p-4">
+          <h3 class="h5">BVT Knowledge Layer</h3>
+          <p>
+            Approved context from site pages, blog posts, tools, case studies,
+            service pages, and engineering philosophy.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="coding-ai-panel p-4">
+          <h3 class="h5">Client Triage Workflow</h3>
+          <p>
+            Questions are routed into architecture, debugging, Firebase cost,
+            MVP scope, code review, and launch-risk patterns.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="coding-ai-panel p-4">
+          <h3 class="h5">Evaluation And Handoff</h3>
+          <p>
+            Realistic client prompts measure usefulness, caution, refusal
+            behavior, and when the assistant should send someone to Bill.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="coding-ai-panel p-4 mt-4">
+      <h3 class="h4">Production Shape</h3>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="coding-ai-flow">
+            <h4 class="h6">Local-first V0</h4>
+            <p class="mb-0">
+              GitHub Pages hosts the portal. A FastAPI backend runs on a
+              dedicated MacBook, Mac mini, or Mac Studio. Ollama runs the local
+              model. Cloudflare Tunnel exposes the API.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="coding-ai-flow">
+            <h4 class="h6">Cloud-ready later</h4>
+            <p class="mb-0">
+              The API can later route heavy traffic or larger models to GPU
+              cloud compute without changing the public website experience.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <h2 class="text-center mb-4">Build Order</h2>
+
+        <div class="coding-ai-flow mb-4">
+          <h3 class="h5">1. Self-host an existing coding model</h3>
+          <p>
+            Start with a local open-weight model through Ollama. No training is
+            required for the first useful version.
+          </p>
+        </div>
+
+        <div class="coding-ai-flow mb-4">
+          <h3 class="h5">2. Add BVT retrieval and prompt rules</h3>
+          <p>
+            The assistant becomes useful by retrieving relevant BVT context and
+            answering in a practical client-intake style.
+          </p>
+        </div>
+
+        <div class="coding-ai-flow mb-4">
+          <h3 class="h5">3. Add evals before fine-tuning</h3>
+          <p>
+            Collect real client-style questions and score the answers before
+            deciding whether fine-tuning is worth the added complexity.
+          </p>
+        </div>
+
+        <div class="coding-ai-flow">
+          <h3 class="h5">4. Keep from-scratch training as a lab track</h3>
+          <p>
+            A tiny transformer trained from scratch can be documented as a
+            learning artifact. It should not be confused with the production
+            assistant.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="/contact.html" class="btn btn-primary btn-lg">
+        Discuss a Self-Hosted AI Portal
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const typeEl = document.getElementById("questionType");
+    const stackEl = document.getElementById("stackInput");
+    const questionEl = document.getElementById("questionInput");
+    const outputEl = document.getElementById("briefOutput");
+    const buttonEl = document.getElementById("generateBrief");
+
+    const guidance = {
+      architecture: {
+        read: "Architecture risk needs evidence before recommending a rewrite.",
+        next: "Map the data flow, ownership boundaries, scaling assumptions, and features already fighting the current model.",
+        handoff: "Escalate if the answer depends on production usage, database shape, or migration sequencing."
+      },
+      debugging: {
+        read: "Debugging risk is high when symptoms are described without telemetry.",
+        next: "Collect reproduction steps, logs, affected screens, recent deploys, and a minimal failing path.",
+        handoff: "Escalate if the bug involves payments, authentication, data loss, or production behavior."
+      },
+      scope: {
+        read: "MVP scope risk appears when too many decisions are required before the first useful release.",
+        next: "Separate must-have workflows from expensive nice-to-haves and define what can be validated manually.",
+        handoff: "Escalate if scope affects budget, launch order, fundraising milestones, or vendor commitments."
+      },
+      review: {
+        read: "Codebase risk depends on correctness, security, maintainability, deployment, and test coverage.",
+        next: "Review a representative slice: data access, error handling, auth, tests, and release path.",
+        handoff: "Escalate if the system touches user data, payments, credentials, or launch readiness."
+      }
+    };
+
+    function fallbackBrief(question, stack, selected) {
+      return (
+        "Intake brief\n\n" +
+        "Client question:\n" +
+        question +
+        "\n\nStack:\n" +
+        stack +
+        "\n\nInitial read:\n" +
+        selected.read +
+        "\n\nRecommended next question:\n" +
+        selected.next +
+        "\n\nHuman handoff rule:\n" +
+        selected.handoff +
+        "\n\nSystem note:\n" +
+        "The local backend was not reachable, so this is the static intake fallback."
+      );
+    }
+
+    async function generateBrief() {
+      const selected = guidance[typeEl.value];
+      const stack = stackEl.value.trim() || "Not specified";
+      const question = questionEl.value.trim() || "No question provided.";
+
+      buttonEl.disabled = true;
+      buttonEl.textContent = "Thinking...";
+      outputEl.textContent = "Sending question to local BVT Coding AI...";
+
+      try {
+        const apiBase = getApiBase();
+        const response = await fetch(`${apiBase}/v1/chat`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            question,
+            page_url: window.location.href,
+            visitor_context: {
+              question_type: typeEl.value,
+              stack
+            }
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error(`Backend returned ${response.status}`);
+        }
+
+        const data = await response.json();
+        const sources = (data.sources || [])
+          .map((source) => `- ${source.title}`)
+          .join("\n");
+
+        outputEl.textContent =
+          "Local model response\n\n" +
+          data.answer +
+          "\n\nModel:\n" +
+          data.model +
+          "\n\nHandoff recommended:\n" +
+          (data.handoff_recommended ? "Yes" : "No") +
+          "\n\nRetrieved context:\n" +
+          (sources || "No matching local context.");
+      } catch (error) {
+        outputEl.textContent = fallbackBrief(question, stack, selected);
+      } finally {
+        buttonEl.disabled = false;
+        buttonEl.textContent = "Ask Local AI";
+      }
+    }
+
+    buttonEl.addEventListener("click", generateBrief);
+      outputEl.textContent =
+      `Backend target: ${getApiBase()}/v1/chat\n\n` +
+      "Enter a question and click Ask Local AI.";
+
+    function getApiBase() {
+      const params = new URLSearchParams(window.location.search);
+      const apiParam = params.get("api");
+      if (apiParam) {
+        window.localStorage.setItem("bvtCodingAiApiBase", apiParam);
+        return apiParam.replace(/\/$/, "");
+      }
+
+      const savedApiBase = window.localStorage.getItem("bvtCodingAiApiBase");
+      if (savedApiBase) {
+        return savedApiBase.replace(/\/$/, "");
+      }
+
+      if (window.location.hostname.endsWith(".ngrok.app")) {
+        return window.location.origin;
+      }
+
+      if (
+        window.location.hostname === "127.0.0.1" ||
+        window.location.hostname === "localhost"
+      ) {
+        return "http://127.0.0.1:8787";
+      }
+
+      return "https://ai.billvivinotechnology.com";
+    }
+  });
+</script>
