@@ -16,6 +16,9 @@ include:
   - _includes
   - _layouts
 
+exclude:
+  - bvt-coding-ai-backend/
+
 defaults:
   - scope:
       path: ""

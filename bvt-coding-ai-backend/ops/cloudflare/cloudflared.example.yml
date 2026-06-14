@@ -1,0 +1,7 @@
+tunnel: bvt-coding-ai
+credentials-file: /Users/billvivino/.cloudflared/REPLACE_WITH_TUNNEL_ID.json
+
+ingress:
+  - hostname: ai.billvivinotechnology.com
+    service: http://127.0.0.1:8787
+  - service: http_status:404
