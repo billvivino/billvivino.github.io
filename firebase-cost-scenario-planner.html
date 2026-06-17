@@ -1,0 +1,867 @@
+---
+layout: default
+title: "Firebase Cost Scenario Planner"
+description: "Plan Firebase cost scenarios for MVPs, mid-scale products, and high-volume apps. Compare Firestore, Realtime Database, and Cloud Functions cost drivers."
+permalink: /firebase-cost-scenario-planner/
+canonical: "https://billvivinotechnology.com/firebase-cost-scenario-planner/"
+og_image: "/assets/images/firebase-costs-2026.png"
+breadcrumbs:
+  - name: "Home"
+    url: "https://billvivinotechnology.com/"
+  - name: "Software Decision Toolbox"
+    url: "https://billvivinotechnology.com/toolbox.html"
+  - name: "Firebase Cost Scenario Planner"
+    url: "https://billvivinotechnology.com/firebase-cost-scenario-planner/"
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Firebase Cost Scenario Planner",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Web",
+  "description": "Interactive planner for modeling Firebase cost scenarios across Firestore, Realtime Database, and Cloud Functions.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "Firestore read and write scenario modeling",
+    "Realtime Database bandwidth modeling",
+    "Cloud Functions invocation and compute modeling",
+    "Firebase architecture cost-risk flags",
+    "Downloadable CSV template"
+  ]
+}
+</script>
+
+<style>
+  .planner-shell {
+    max-width: 1180px;
+  }
+  .planner-hero,
+  .planner-card {
+    background: #ffffff;
+    border: 1px solid #dfe7f1;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
+  }
+  .planner-hero {
+    padding: 2rem;
+  }
+  .planner-card {
+    height: 100%;
+    padding: 1.25rem;
+  }
+  .muted {
+    color: #64748b;
+  }
+  .small-note {
+    font-size: 0.92rem;
+  }
+  .section-kicker {
+    color: #0f766e;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .planner-divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 1rem 0;
+  }
+  .scenario-button {
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #0f172a;
+    padding: 0.55rem 0.75rem;
+    text-align: left;
+    width: 100%;
+  }
+  .scenario-button.active,
+  .scenario-button:hover {
+    border-color: #0f766e;
+    background: #ecfdf5;
+    text-decoration: none;
+  }
+  .result-total {
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+  .result-label {
+    color: #64748b;
+    font-size: 0.86rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .risk-pill {
+    display: inline-block;
+    border-radius: 999px;
+    margin: 0 0.35rem 0.35rem 0;
+    padding: 0.32rem 0.65rem;
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    color: #9a3412;
+    font-size: 0.86rem;
+  }
+  .good-pill {
+    background: #ecfdf5;
+    border-color: #bbf7d0;
+    color: #166534;
+  }
+  .driver-bar {
+    background: #e2e8f0;
+    border-radius: 999px;
+    height: 10px;
+    overflow: hidden;
+  }
+  .driver-bar-fill {
+    background: linear-gradient(90deg, #0f766e, #2563eb);
+    height: 10px;
+  }
+  .planner-table th {
+    white-space: nowrap;
+  }
+  .source-list a {
+    display: inline-block;
+    margin-right: 0.75rem;
+  }
+  @media (max-width: 768px) {
+    .planner-hero {
+      padding: 1.25rem;
+    }
+    .result-total {
+      font-size: 2rem;
+    }
+  }
+</style>
+
+<main class="container planner-shell my-4">
+  <section class="planner-hero mb-4">
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-8">
+        <div class="section-kicker mb-2">Firebase cost planning</div>
+        <h1 class="display-5 fw-bold mb-3">
+          Firebase Cost Scenario Planner
+        </h1>
+        <p class="lead mb-3">
+          Model how Firebase costs change when your architecture shifts from a
+          simple MVP to a Firestore-heavy, Realtime Database-heavy, or
+          Cloud Functions-heavy product.
+        </p>
+        <p class="muted mb-0">
+          Use this after the raw calculator. The calculator estimates the bill;
+          this planner explains why the bill happens.
+        </p>
+      </div>
+      <div class="col-lg-4">
+        <div class="d-grid gap-2">
+          <a class="btn btn-primary btn-lg" href="/firebase-calculator/">
+            Open the Firebase calculator
+          </a>
+          <a class="btn btn-outline-primary" href="/downloads/firebase-cost-scenarios-2026.csv">
+            Download scenario CSV
+          </a>
+          <a class="btn btn-success" href="/contact.html">
+            Book a Firebase architecture review
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="row g-4 mb-4">
+    <div class="col-lg-7">
+      <div class="planner-card">
+        <div class="d-flex align-items-start justify-content-between gap-3 mb-3">
+          <div>
+            <div class="section-kicker mb-1">Inputs</div>
+            <h2 class="h4 mb-1">Choose a scenario</h2>
+            <p class="muted mb-0">
+              Start with a preset, then change the usage numbers to match your app.
+            </p>
+          </div>
+        </div>
+
+        <div class="row g-2 mb-3" aria-label="Scenario presets">
+          <div class="col-sm-6 col-xl-3">
+            <button class="scenario-button active" type="button" data-preset="mvp">
+              <strong>Small app / MVP</strong><br />
+              <span class="small muted">Early product usage</span>
+            </button>
+          </div>
+          <div class="col-sm-6 col-xl-3">
+            <button class="scenario-button" type="button" data-preset="mid">
+              <strong>Mid-scale product</strong><br />
+              <span class="small muted">Startup growth usage</span>
+            </button>
+          </div>
+          <div class="col-sm-6 col-xl-3">
+            <button class="scenario-button" type="button" data-preset="enterprise">
+              <strong>Enterprise app</strong><br />
+              <span class="small muted">High-volume workflow</span>
+            </button>
+          </div>
+          <div class="col-sm-6 col-xl-3">
+            <button class="scenario-button" type="button" data-preset="functions">
+              <strong>Functions-heavy</strong><br />
+              <span class="small muted">Backend fan-out risk</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="planner-divider"></div>
+
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label" for="dailyUsers">Daily active users</label>
+            <input id="dailyUsers" class="form-control" type="number" min="0" value="500" />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="architecturePattern">Architecture pattern</label>
+            <select id="architecturePattern" class="form-select">
+              <option value="balanced">Balanced Firebase app</option>
+              <option value="firestore">Firestore-heavy screens</option>
+              <option value="realtime">Realtime sync-heavy app</option>
+              <option value="functions">Cloud Functions fan-out</option>
+            </select>
+          </div>
+
+          <div class="col-12">
+            <h3 class="h6 mt-2 mb-0">Firestore usage</h3>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="firestoreReads">Reads per day</label>
+            <input id="firestoreReads" class="form-control" type="number" min="0" value="50000" />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="firestoreWrites">Writes per day</label>
+            <input id="firestoreWrites" class="form-control" type="number" min="0" value="5000" />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="firestoreDeletes">Deletes per day</label>
+            <input id="firestoreDeletes" class="form-control" type="number" min="0" value="500" />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="firestoreStorage">Firestore storage, GiB</label>
+            <input id="firestoreStorage" class="form-control" type="number" min="0" step="0.1" value="1" />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="firestoreEgress">Firestore egress, GiB/month</label>
+            <input id="firestoreEgress" class="form-control" type="number" min="0" step="0.1" value="5" />
+          </div>
+
+          <div class="col-12">
+            <h3 class="h6 mt-2 mb-0">Realtime Database usage</h3>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="rtdbStorage">Stored data, GB</label>
+            <input id="rtdbStorage" class="form-control" type="number" min="0" step="0.1" value="0" />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="rtdbDownload">Downloaded data, GB/month</label>
+            <input id="rtdbDownload" class="form-control" type="number" min="0" step="0.1" value="0" />
+          </div>
+
+          <div class="col-12">
+            <h3 class="h6 mt-2 mb-0">Cloud Functions usage</h3>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="functionInvocations">Invocations/month</label>
+            <input id="functionInvocations" class="form-control" type="number" min="0" value="200000" />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="functionRuntime">Average runtime, ms</label>
+            <input id="functionRuntime" class="form-control" type="number" min="0" value="300" />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="functionMemory">Memory, MB</label>
+            <input id="functionMemory" class="form-control" type="number" min="128" value="256" />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="functionCpu">CPU, GHz planning value</label>
+            <input id="functionCpu" class="form-control" type="number" min="0" step="0.1" value="0.4" />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="functionEgress">Function egress, GB/month</label>
+            <input id="functionEgress" class="form-control" type="number" min="0" step="0.1" value="1" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-5">
+      <div class="planner-card">
+        <div class="section-kicker mb-1">Results</div>
+        <h2 class="h4 mb-3">Scenario estimate</h2>
+
+        <div class="mb-3">
+          <div class="result-label">Estimated monthly Firebase bill</div>
+          <div class="result-total" id="monthlyTotal">$0</div>
+          <p class="muted small-note mb-0" id="estimateNote">
+            Using the small app preset.
+          </p>
+        </div>
+
+        <div class="planner-divider"></div>
+
+        <div class="mb-3">
+          <div class="result-label mb-2">Cost mix</div>
+          <div class="mb-2">
+            <div class="d-flex justify-content-between small-note">
+              <span>Firestore</span><span id="firestoreCostLabel">$0</span>
+            </div>
+            <div class="driver-bar"><div id="firestoreBar" class="driver-bar-fill" style="width: 0%"></div></div>
+          </div>
+          <div class="mb-2">
+            <div class="d-flex justify-content-between small-note">
+              <span>Realtime Database</span><span id="rtdbCostLabel">$0</span>
+            </div>
+            <div class="driver-bar"><div id="rtdbBar" class="driver-bar-fill" style="width: 0%"></div></div>
+          </div>
+          <div>
+            <div class="d-flex justify-content-between small-note">
+              <span>Cloud Functions</span><span id="functionsCostLabel">$0</span>
+            </div>
+            <div class="driver-bar"><div id="functionsBar" class="driver-bar-fill" style="width: 0%"></div></div>
+          </div>
+        </div>
+
+        <div class="planner-divider"></div>
+
+        <div class="mb-3">
+          <div class="result-label mb-2">Why the bill happens</div>
+          <p id="billExplanation" class="small-note mb-0"></p>
+        </div>
+
+        <div class="mb-3">
+          <div class="result-label mb-2">Architecture risk flags</div>
+          <div id="riskFlags"></div>
+        </div>
+
+        <div class="planner-divider"></div>
+
+        <div class="table-responsive">
+          <table class="table table-sm planner-table align-middle mb-0">
+            <thead>
+              <tr>
+                <th>Line item</th>
+                <th class="text-end">Monthly cost</th>
+              </tr>
+            </thead>
+            <tbody id="breakdownBody"></tbody>
+          </table>
+        </div>
+
+        <p class="muted small-note mt-3 mb-0">
+          This model is for planning. Region, generation, quotas, indexes,
+          security rules, and networking path can change the final bill.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="planner-card mb-4">
+    <div class="section-kicker mb-1">Founder context</div>
+    <h2>Why Firebase Costs Surprise Founders</h2>
+    <p>
+      Firebase pricing is not just based on users. It depends on how often your
+      app reads data, writes data, downloads data, and runs backend functions.
+      An app with 5,000 daily users can be cheap or expensive depending on how
+      the screens, listeners, queries, and functions are designed.
+    </p>
+
+    <div class="table-responsive">
+      <table class="table table-bordered planner-table">
+        <thead>
+          <tr>
+            <th>Firebase service</th>
+            <th>Cost driver</th>
+            <th>Best for</th>
+            <th>Main risk</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Firestore</strong></td>
+            <td>Reads, writes, deletes, storage, egress</td>
+            <td>Structured app data, SaaS, dashboards</td>
+            <td>Read amplification</td>
+          </tr>
+          <tr>
+            <td><strong>Realtime Database</strong></td>
+            <td>Stored GB and downloaded GB</td>
+            <td>Presence, simple sync, live state</td>
+            <td>Bandwidth-heavy data sync</td>
+          </tr>
+          <tr>
+            <td><strong>Cloud Functions</strong></td>
+            <td>Invocations, compute, outbound networking</td>
+            <td>Backend workflows, automation, integrations</td>
+            <td>Function fan-out</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="row g-4 mb-4">
+    <div class="col-lg-4">
+      <div class="planner-card">
+        <h2 class="h5">Scenario 1: Small App / MVP</h2>
+        <p class="muted">
+          Founder prototype, internal tool, small marketplace, or early mobile app.
+        </p>
+        <table class="table table-sm">
+          <tbody>
+            <tr><th>Daily active users</th><td class="text-end">100-1,000</td></tr>
+            <tr><th>Firestore reads/day</th><td class="text-end">10K-100K</td></tr>
+            <tr><th>Firestore writes/day</th><td class="text-end">1K-20K</td></tr>
+            <tr><th>Functions/month</th><td class="text-end">50K-500K</td></tr>
+            <tr><th>Risk level</th><td class="text-end">Low</td></tr>
+          </tbody>
+        </table>
+        <p class="small-note mb-0">
+          Watch dashboard pages that read entire collections and functions that
+          trigger once per document instead of once per workflow.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="planner-card">
+        <h2 class="h5">Scenario 2: Mid-Scale Product</h2>
+        <p class="muted">
+          Funded startup, SaaS dashboard, marketplace, or customer-facing mobile app.
+        </p>
+        <table class="table table-sm">
+          <tbody>
+            <tr><th>Daily active users</th><td class="text-end">5,000-50,000</td></tr>
+            <tr><th>Firestore reads/day</th><td class="text-end">500K-5M</td></tr>
+            <tr><th>Firestore writes/day</th><td class="text-end">50K-500K</td></tr>
+            <tr><th>Functions/month</th><td class="text-end">1M-20M</td></tr>
+            <tr><th>Risk level</th><td class="text-end">Medium</td></tr>
+          </tbody>
+        </table>
+        <p class="small-note mb-0">
+          At this stage, Firestore read patterns matter more than raw user count.
+          A page that reads 200 documents per load can compound quickly.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="planner-card">
+        <h2 class="h5">Scenario 3: Enterprise / High-Volume</h2>
+        <p class="muted">
+          Logistics, healthcare workflow, real-time operations, or large B2B SaaS.
+        </p>
+        <table class="table table-sm">
+          <tbody>
+            <tr><th>Daily active users</th><td class="text-end">100,000+</td></tr>
+            <tr><th>Firestore reads/day</th><td class="text-end">10M-100M+</td></tr>
+            <tr><th>Firestore writes/day</th><td class="text-end">1M-20M+</td></tr>
+            <tr><th>Functions/month</th><td class="text-end">50M+</td></tr>
+            <tr><th>Risk level</th><td class="text-end">High</td></tr>
+          </tbody>
+        </table>
+        <p class="small-note mb-0">
+          Enterprise costs usually come from architecture that was fine at MVP
+          scale but expensive at production scale.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="planner-card mb-4">
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-8">
+        <div class="section-kicker mb-1">Next step</div>
+        <h2>Download the CSV template</h2>
+        <p class="mb-0">
+          Use the companion CSV to model small app usage, mid-scale usage,
+          enterprise usage, Firestore-heavy architecture, Realtime
+          Database-heavy architecture, and Cloud Functions-heavy architecture.
+        </p>
+      </div>
+      <div class="col-lg-4">
+        <div class="d-grid gap-2">
+          <a class="btn btn-primary" href="/downloads/firebase-cost-scenarios-2026.csv">
+            Download Firebase scenario CSV
+          </a>
+          <a class="btn btn-success" href="/contact.html">
+            Talk through the architecture
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="planner-card mb-4">
+    <h2>Founder Takeaway</h2>
+    <p>
+      Firebase is often a strong choice for early products. The better question
+      is not "Is Firebase expensive?" The better question is "What does my
+      architecture make Firebase charge me for?"
+    </p>
+    <p class="mb-0">
+      If you are building a startup product and want help estimating Firebase
+      costs, cleaning up your data model, or deciding whether Firestore,
+      Realtime Database, Supabase, PostgreSQL, or a custom backend is the right
+      fit, I can help.
+    </p>
+  </section>
+
+  <section class="source-list muted small-note mb-4">
+    Pricing references:
+    <a href="https://firebase.google.com/pricing">Firebase pricing</a>
+    <a href="https://firebase.google.com/docs/firestore/pricing">Firestore billing docs</a>
+    <a href="https://cloud.google.com/firestore/pricing">Google Cloud Firestore pricing</a>
+    <a href="https://cloud.google.com/functions/pricing-1stgen">Cloud Functions pricing</a>
+  </section>
+</main>
+
+<script>
+  const pricing = {
+    firestore: {
+      freeReadsPerDay: 50000,
+      freeWritesPerDay: 20000,
+      freeDeletesPerDay: 20000,
+      readPer100k: 0.03,
+      writePer100k: 0.09,
+      deletePer100k: 0.01,
+      freeStorageGib: 1,
+      storagePerGibMonth: 0.18,
+      freeEgressGibMonth: 10,
+      egressPerGib: 0.12,
+    },
+    rtdb: {
+      freeStorageGb: 1,
+      storagePerGbMonth: 5,
+      freeDownloadGbMonth: 10,
+      downloadPerGb: 1,
+    },
+    functions: {
+      freeInvocationsMonth: 2000000,
+      invocationPerMillion: 0.4,
+      freeGbSecondsMonth: 400000,
+      gbSecondPrice: 0.0000025,
+      freeGhzSecondsMonth: 200000,
+      ghzSecondPrice: 0.00001,
+      freeEgressGbMonth: 5,
+      egressPerGb: 0.12,
+    },
+  };
+
+  const presets = {
+    mvp: {
+      label: "small app / MVP",
+      values: {
+        dailyUsers: 500,
+        architecturePattern: "balanced",
+        firestoreReads: 50000,
+        firestoreWrites: 5000,
+        firestoreDeletes: 500,
+        firestoreStorage: 1,
+        firestoreEgress: 5,
+        rtdbStorage: 0,
+        rtdbDownload: 0,
+        functionInvocations: 200000,
+        functionRuntime: 300,
+        functionMemory: 256,
+        functionCpu: 0.4,
+        functionEgress: 1,
+      },
+    },
+    mid: {
+      label: "mid-scale product",
+      values: {
+        dailyUsers: 20000,
+        architecturePattern: "firestore",
+        firestoreReads: 2500000,
+        firestoreWrites: 250000,
+        firestoreDeletes: 20000,
+        firestoreStorage: 40,
+        firestoreEgress: 80,
+        rtdbStorage: 2,
+        rtdbDownload: 25,
+        functionInvocations: 8000000,
+        functionRuntime: 450,
+        functionMemory: 512,
+        functionCpu: 0.8,
+        functionEgress: 10,
+      },
+    },
+    enterprise: {
+      label: "enterprise / high-volume app",
+      values: {
+        dailyUsers: 150000,
+        architecturePattern: "realtime",
+        firestoreReads: 50000000,
+        firestoreWrites: 5000000,
+        firestoreDeletes: 500000,
+        firestoreStorage: 800,
+        firestoreEgress: 2000,
+        rtdbStorage: 50,
+        rtdbDownload: 1200,
+        functionInvocations: 80000000,
+        functionRuntime: 700,
+        functionMemory: 512,
+        functionCpu: 0.8,
+        functionEgress: 250,
+      },
+    },
+    functions: {
+      label: "Cloud Functions-heavy app",
+      values: {
+        dailyUsers: 35000,
+        architecturePattern: "functions",
+        firestoreReads: 5000000,
+        firestoreWrites: 900000,
+        firestoreDeletes: 100000,
+        firestoreStorage: 100,
+        firestoreEgress: 120,
+        rtdbStorage: 0,
+        rtdbDownload: 0,
+        functionInvocations: 50000000,
+        functionRuntime: 500,
+        functionMemory: 256,
+        functionCpu: 0.4,
+        functionEgress: 240,
+      },
+    },
+  };
+
+  function value(id) {
+    const element = document.getElementById(id);
+    return Number(element.value) || 0;
+  }
+
+  function textValue(id) {
+    return document.getElementById(id).value;
+  }
+
+  function money(amount) {
+    if (amount < 1) {
+      return "$" + amount.toFixed(2);
+    }
+    return "$" + Math.round(amount).toLocaleString();
+  }
+
+  function billable(amount, free) {
+    return Math.max(amount - free, 0);
+  }
+
+  function lineItem(label, cost) {
+    return { label: label, cost: cost };
+  }
+
+  function calculateScenario() {
+    const days = 30;
+    const dailyUsers = value("dailyUsers");
+    const firestoreReads = value("firestoreReads");
+    const firestoreWrites = value("firestoreWrites");
+    const firestoreDeletes = value("firestoreDeletes");
+    const firestoreStorage = value("firestoreStorage");
+    const firestoreEgress = value("firestoreEgress");
+    const rtdbStorage = value("rtdbStorage");
+    const rtdbDownload = value("rtdbDownload");
+    const functionInvocations = value("functionInvocations");
+    const functionRuntimeSeconds = value("functionRuntime") / 1000;
+    const functionMemoryGb = value("functionMemory") / 1024;
+    const functionCpuGhz = value("functionCpu");
+    const functionEgress = value("functionEgress");
+    const pattern = textValue("architecturePattern");
+
+    const firestoreReadCost =
+      (billable(firestoreReads, pricing.firestore.freeReadsPerDay) * days / 100000) *
+      pricing.firestore.readPer100k;
+    const firestoreWriteCost =
+      (billable(firestoreWrites, pricing.firestore.freeWritesPerDay) * days / 100000) *
+      pricing.firestore.writePer100k;
+    const firestoreDeleteCost =
+      (billable(firestoreDeletes, pricing.firestore.freeDeletesPerDay) * days / 100000) *
+      pricing.firestore.deletePer100k;
+    const firestoreStorageCost =
+      billable(firestoreStorage, pricing.firestore.freeStorageGib) *
+      pricing.firestore.storagePerGibMonth;
+    const firestoreEgressCost =
+      billable(firestoreEgress, pricing.firestore.freeEgressGibMonth) *
+      pricing.firestore.egressPerGib;
+
+    const rtdbStorageCost =
+      billable(rtdbStorage, pricing.rtdb.freeStorageGb) *
+      pricing.rtdb.storagePerGbMonth;
+    const rtdbDownloadCost =
+      billable(rtdbDownload, pricing.rtdb.freeDownloadGbMonth) *
+      pricing.rtdb.downloadPerGb;
+
+    const functionInvocationCost =
+      (billable(functionInvocations, pricing.functions.freeInvocationsMonth) / 1000000) *
+      pricing.functions.invocationPerMillion;
+    const functionGbSeconds =
+      functionInvocations * functionMemoryGb * functionRuntimeSeconds;
+    const functionGhzSeconds =
+      functionInvocations * functionCpuGhz * functionRuntimeSeconds;
+    const functionMemoryCost =
+      billable(functionGbSeconds, pricing.functions.freeGbSecondsMonth) *
+      pricing.functions.gbSecondPrice;
+    const functionCpuCost =
+      billable(functionGhzSeconds, pricing.functions.freeGhzSecondsMonth) *
+      pricing.functions.ghzSecondPrice;
+    const functionEgressCost =
+      billable(functionEgress, pricing.functions.freeEgressGbMonth) *
+      pricing.functions.egressPerGb;
+
+    const firestoreCost =
+      firestoreReadCost +
+      firestoreWriteCost +
+      firestoreDeleteCost +
+      firestoreStorageCost +
+      firestoreEgressCost;
+    const rtdbCost = rtdbStorageCost + rtdbDownloadCost;
+    const functionsCost =
+      functionInvocationCost + functionMemoryCost + functionCpuCost + functionEgressCost;
+    const total = firestoreCost + rtdbCost + functionsCost;
+
+    const services = [
+      { label: "Firestore", cost: firestoreCost },
+      { label: "Realtime Database", cost: rtdbCost },
+      { label: "Cloud Functions", cost: functionsCost },
+    ].sort((a, b) => b.cost - a.cost);
+    const mainDriver = services[0];
+
+    const items = [
+      lineItem("Firestore reads", firestoreReadCost),
+      lineItem("Firestore writes", firestoreWriteCost),
+      lineItem("Firestore deletes", firestoreDeleteCost),
+      lineItem("Firestore storage", firestoreStorageCost),
+      lineItem("Firestore egress", firestoreEgressCost),
+      lineItem("Realtime Database storage", rtdbStorageCost),
+      lineItem("Realtime Database download", rtdbDownloadCost),
+      lineItem("Functions invocations", functionInvocationCost),
+      lineItem("Functions memory time", functionMemoryCost),
+      lineItem("Functions CPU time", functionCpuCost),
+      lineItem("Functions egress", functionEgressCost),
+    ];
+
+    document.getElementById("monthlyTotal").textContent = money(total);
+    document.getElementById("firestoreCostLabel").textContent = money(firestoreCost);
+    document.getElementById("rtdbCostLabel").textContent = money(rtdbCost);
+    document.getElementById("functionsCostLabel").textContent = money(functionsCost);
+
+    const maxServiceCost = Math.max(firestoreCost, rtdbCost, functionsCost, 1);
+    document.getElementById("firestoreBar").style.width =
+      Math.round((firestoreCost / maxServiceCost) * 100) + "%";
+    document.getElementById("rtdbBar").style.width =
+      Math.round((rtdbCost / maxServiceCost) * 100) + "%";
+    document.getElementById("functionsBar").style.width =
+      Math.round((functionsCost / maxServiceCost) * 100) + "%";
+
+    const presetLabel =
+      document.querySelector(".scenario-button.active strong").textContent || "custom";
+    document.getElementById("estimateNote").textContent =
+      "Using the " + presetLabel.toLowerCase() + " inputs. Adjust any field to make it yours.";
+
+    let explanation =
+      mainDriver.cost > 0
+        ? mainDriver.label + " is the largest modeled cost driver in this scenario."
+        : "This scenario stays mostly inside the no-cost quotas modeled here.";
+
+    if (pattern === "firestore") {
+      explanation += " The architecture leans on Firestore screens, so read amplification is the first thing to inspect.";
+    } else if (pattern === "realtime") {
+      explanation += " The architecture leans on live sync, so downloaded data and listener behavior deserve attention.";
+    } else if (pattern === "functions") {
+      explanation += " The architecture leans on backend workflows, so fan-out and function duration deserve attention.";
+    } else {
+      explanation += " The architecture is balanced, so the biggest savings usually come from finding repeated reads and unnecessary backend triggers.";
+    }
+    document.getElementById("billExplanation").textContent = explanation;
+
+    const riskFlags = [];
+    const readsPerUser = dailyUsers > 0 ? firestoreReads / dailyUsers : 0;
+
+    if (readsPerUser > 120) {
+      riskFlags.push("High reads per active user");
+    }
+    if (firestoreReads > 5000000) {
+      riskFlags.push("Firestore read amplification");
+    }
+    if (firestoreWrites > firestoreReads * 0.25 && firestoreWrites > 50000) {
+      riskFlags.push("Write-heavy data model");
+    }
+    if (rtdbDownload > 100) {
+      riskFlags.push("Realtime bandwidth pressure");
+    }
+    if (functionInvocations > 20000000) {
+      riskFlags.push("Function fan-out");
+    }
+    if (functionRuntimeSeconds > 1 || functionMemoryGb >= 1) {
+      riskFlags.push("Function compute duration");
+    }
+    if (firestoreEgress + functionEgress > 250) {
+      riskFlags.push("Outbound networking growth");
+    }
+
+    const riskContainer = document.getElementById("riskFlags");
+    riskContainer.innerHTML = "";
+    if (riskFlags.length === 0) {
+      const span = document.createElement("span");
+      span.className = "risk-pill good-pill";
+      span.textContent = "No obvious high-risk pattern";
+      riskContainer.appendChild(span);
+    } else {
+      riskFlags.forEach((flag) => {
+        const span = document.createElement("span");
+        span.className = "risk-pill";
+        span.textContent = flag;
+        riskContainer.appendChild(span);
+      });
+    }
+
+    document.getElementById("breakdownBody").innerHTML = items
+      .map(function (item) {
+        return (
+          "<tr><td>" +
+          item.label +
+          "</td><td class=\"text-end\">" +
+          money(item.cost) +
+          "</td></tr>"
+        );
+      })
+      .join("");
+  }
+
+  function applyPreset(name) {
+    const preset = presets[name];
+    Object.keys(preset.values).forEach(function (id) {
+      document.getElementById(id).value = preset.values[id];
+    });
+    document.querySelectorAll(".scenario-button").forEach(function (button) {
+      button.classList.toggle("active", button.dataset.preset === name);
+    });
+    calculateScenario();
+  }
+
+  document.querySelectorAll(".scenario-button").forEach(function (button) {
+    button.addEventListener("click", function () {
+      applyPreset(button.dataset.preset);
+    });
+  });
+
+  document
+    .querySelectorAll("input, select")
+    .forEach(function (element) {
+      element.addEventListener("input", calculateScenario);
+      element.addEventListener("change", calculateScenario);
+    });
+
+  calculateScenario();
+</script>
