@@ -77,7 +77,37 @@ og_image: "/assets/optimized/ai_automation_services.webp"
     border-radius: 8px;
     min-height: 180px;
     padding: 1rem;
-    white-space: pre-wrap;
+  }
+  .coding-ai-output h1,
+  .coding-ai-output h2,
+  .coding-ai-output h3,
+  .coding-ai-output h4 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .coding-ai-output p {
+    margin-bottom: 0.75rem;
+  }
+
+  .coding-ai-output ul,
+  .coding-ai-output ol {
+    margin-left: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .coding-ai-output code {
+    background: #eef3f8;
+    padding: 0.1rem 0.3rem;
+    border-radius: 4px;
+  }
+
+  .coding-ai-output pre {
+    background: #0f1720;
+    color: #f8fafc;
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
   }
   .coding-ai-status {
     background: #eef6ff;
@@ -350,6 +380,8 @@ og_image: "/assets/optimized/ai_automation_services.webp"
   </div>
 </section>
 
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const typeEl = document.getElementById("questionType");
@@ -434,17 +466,20 @@ og_image: "/assets/optimized/ai_automation_services.webp"
           .map((source) => `- ${source.title}`)
           .join("\n");
 
-        outputEl.textContent =
-          "Local model response\n\n" +
+        const markdown =
+          `# Local Model Response\n\n` +
           data.answer +
-          "\n\nModel:\n" +
-          data.model +
-          "\n\nHandoff recommended:\n" +
-          (data.handoff_recommended ? "Yes" : "No") +
-          "\n\nRetrieved context:\n" +
-          (sources || "No matching local context.");
+          `\n\n---\n\n## Model\n${data.model}` +
+          `\n\n## Handoff Recommended\n${data.handoff_recommended ? "Yes" : "No"}` +
+          `\n\n## Retrieved Context\n${sources || "No matching local context."}`;
+
+        outputEl.innerHTML = DOMPurify.sanitize(
+          marked.parse(markdown)
+        );
       } catch (error) {
-        outputEl.textContent = fallbackBrief(question, stack, selected);
+        outputEl.innerHTML = DOMPurify.sanitize(
+          marked.parse(fallbackBrief(question, stack, selected))
+        );
       } finally {
         buttonEl.disabled = false;
         buttonEl.textContent = "Ask Local AI";
@@ -452,9 +487,11 @@ og_image: "/assets/optimized/ai_automation_services.webp"
     }
 
     buttonEl.addEventListener("click", generateBrief);
-      outputEl.textContent =
-      `Backend target: ${getApiBase()}/v1/chat\n\n` +
-      "Enter a question and click Ask Local AI.";
+    outputEl.innerHTML = DOMPurify.sanitize(
+      marked.parse(
+        `## BVT Coding AI\n\nBackend target: ${getApiBase()}/v1/chat\n\nEnter a question and click Ask Local AI.`
+      )
+    );
 
     function getApiBase() {
       const params = new URLSearchParams(window.location.search);
@@ -477,7 +514,7 @@ og_image: "/assets/optimized/ai_automation_services.webp"
         window.location.hostname === "127.0.0.1" ||
         window.location.hostname === "localhost"
       ) {
-        return "http://127.0.0.1:8787";
+        return "http://127.0.0.1:8000";
       }
 
       return "https://ai.billvivinotechnology.com";
