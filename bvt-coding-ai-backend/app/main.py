@@ -5,7 +5,6 @@ from uuid import uuid4
 from fastapi import FastAPI, HTTPException, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
-from fastapi.staticfiles import StaticFiles
 
 from app.config import settings
 from app.schemas import ChatRequest, ChatResponse, SourceSnippet
@@ -131,8 +130,3 @@ def _client_key(request: Request) -> str:
 
 def _sse(event: str, data: dict[str, object]) -> str:
     return f"event: {event}\ndata: {json.dumps(data)}\n\n"
-
-
-static_site = Path(__file__).resolve().parents[2] / "_site"
-if static_site.exists():
-    app.mount("/", StaticFiles(directory=static_site, html=True), name="site")
