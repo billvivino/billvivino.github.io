@@ -501,11 +501,6 @@ og_image: "/assets/optimized/ai_automation_services.webp"
         return apiParam.replace(/\/$/, "");
       }
 
-      const savedApiBase = window.localStorage.getItem("bvtCodingAiApiBase");
-      if (savedApiBase) {
-        return savedApiBase.replace(/\/$/, "");
-      }
-
       if (window.location.hostname.endsWith(".ngrok.app")) {
         return window.location.origin;
       }
@@ -514,6 +509,11 @@ og_image: "/assets/optimized/ai_automation_services.webp"
         window.location.hostname === "127.0.0.1" ||
         window.location.hostname === "localhost"
       ) {
+        const savedApiBase = window.localStorage.getItem("bvtCodingAiApiBase");
+        if (savedApiBase) {
+          return savedApiBase.replace(/\/$/, "");
+        }
+
         return "http://127.0.0.1:8000";
       }
 
