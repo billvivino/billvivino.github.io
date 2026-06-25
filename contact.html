@@ -28,6 +28,7 @@ description: "Share your project goals, timeline, and budget. Get expert guidanc
     <!-- honeypot -->
     <input type="text" name="_gotcha" style="display: none" />
     <input type="hidden" id="ts" name="ts" value="" />
+    <input type="hidden" id="offer" name="offer" value="" />
 
     <div class="mb-3">
       <label for="name" class="form-label">Full Name (First &amp; Last)</label>
@@ -66,9 +67,22 @@ description: "Share your project goals, timeline, and budget. Get expert guidanc
     </div>
 
     <div class="mb-3">
+      <label for="company" class="form-label">Company / Organization</label>
+      <input
+        type="text"
+        class="form-control"
+        id="company"
+        name="company"
+        required
+        placeholder="Company, startup, or personal project"
+      />
+    </div>
+
+    <div class="mb-3">
       <label for="budget" class="form-label">Approximate Budget</label>
       <select id="budget" name="budget" class="form-select" required>
         <option value="" disabled selected>Select a range</option>
+        <option>Discovery Sprint (intro rate up to 10 hours)</option>
         <option>$5 k – 10 k prototype</option>
         <option>$10 k – 25 k MVP</option>
         <option>$25 k – 50 k Full app</option>
@@ -99,7 +113,19 @@ description: "Share your project goals, timeline, and budget. Get expert guidanc
     </div>
 
     <div class="mb-3">
-      <label for="message" class="form-label">Project Description</label>
+      <label for="tech_stack" class="form-label">Tech Stack</label>
+      <input
+        type="text"
+        class="form-control"
+        id="tech_stack"
+        name="tech_stack"
+        required
+        placeholder="e.g., SwiftUI, Firebase, React, Node, PostgreSQL"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="message" class="form-label">Brief Project Description</label>
       <textarea
         class="form-control"
         id="message"
@@ -107,7 +133,19 @@ description: "Share your project goals, timeline, and budget. Get expert guidanc
         rows="5"
         minlength="50"
         required
-        placeholder="Tell us your goal, timeline, and must‑have features (minimum 50 characters)…"
+        placeholder="Briefly describe the project, current state, and what you want to accomplish (minimum 50 characters)..."
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="challenge" class="form-label">Biggest Current Challenge</label>
+      <textarea
+        class="form-control"
+        id="challenge"
+        name="challenge"
+        rows="3"
+        minlength="20"
+        required
+        placeholder="What is the highest-leverage problem you want the sprint to answer?"
       ></textarea>
     </div>
     <div class="mb-3">
@@ -179,21 +217,27 @@ description: "Share your project goals, timeline, and budget. Get expert guidanc
       var nameEl = document.getElementById("name");
       var emailEl = document.getElementById("email");
       var phoneEl = document.getElementById("phone");
+      var companyEl = document.getElementById("company");
       var budgetEl = document.getElementById("budget");
+      var techStackEl = document.getElementById("tech_stack");
       var typeEl = document.getElementById("type");
+      var challengeEl = document.getElementById("challenge");
       var timelineEl = document.getElementById("timeline");
 
       if (
         !nameEl.value.trim() ||
         !emailEl.value.trim() ||
         !phoneEl.value.trim() ||
+        !companyEl.value.trim() ||
         !budgetEl.value ||
+        !techStackEl.value.trim() ||
         !typeEl.value ||
+        !challengeEl.value.trim() ||
         !timelineEl.value.trim()
       ) {
         e.preventDefault();
         alert(
-          "Please fill in Name, Email, Phone, Budget, Project Type, and Timeline before submitting."
+          "Please fill in Name, Email, Phone, Company, Budget, Tech Stack, Project Type, Challenge, and Timeline before submitting."
         );
         return false;
       }
@@ -208,6 +252,16 @@ description: "Share your project goals, timeline, and budget. Get expert guidanc
     // set timestamp value when page loads
     const tsField = document.getElementById("ts");
     if (tsField) tsField.value = Date.now().toString();
+
+    const params = new URLSearchParams(window.location.search);
+    const offer = params.get("offer");
+    const offerField = document.getElementById("offer");
+    if (offerField && offer) offerField.value = offer;
+
+    if (offer === "discovery-sprint") {
+      const budgetField = document.getElementById("budget");
+      if (budgetField) budgetField.value = "Discovery Sprint (intro rate up to 10 hours)";
+    }
 
     form.addEventListener("submit", function (e) {
       const msgEl = document.getElementById("message");
