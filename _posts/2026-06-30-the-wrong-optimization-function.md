@@ -91,7 +91,7 @@ It solves today's problem.
 
 But what happens next?
 
-A technician accidentally creates the wrong hierarchy.
+A technician accidentally makes a mistake.
 
 Now they can't fix it themselves.
 
@@ -103,7 +103,7 @@ The engineering problem wasn't actually "Who can delete?"
 
 It was:
 
-* hierarchy lifecycle
+* edit lifecycle
 * restore workflow
 * permissions
 * operational ownership
@@ -123,7 +123,7 @@ What begins as:
 quickly becomes:
 
 * restore workflow
-* hierarchy consistency
+* consistency
 * permissions
 * parent/child restoration
 * auditability
