@@ -1,0 +1,175 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": {{ page.service_name | default: page.title | jsonify }},
+  "description": {{ page.description | jsonify }},
+  "serviceType": {{ page.service_type | default: page.service_name | jsonify }},
+  "url": {{ page.canonical | jsonify }},
+  "areaServed": {{ page.service_area | default: "United States" | jsonify }},
+  "provider": {
+    "@type": "Organization",
+    "name": "Bill Vivino Technology, LLC",
+    "url": "https://billvivinotechnology.com"
+  }
+}
+</script>
+
+<section class="py-5 text-center">
+  <div class="container">
+    <p class="text-uppercase fw-semibold text-muted mb-2">
+      {{ page.service_label }}
+    </p>
+    <h1 class="display-5 fw-bold">{{ page.service_h1 }}</h1>
+    <p class="lead mx-auto" style="max-width: 920px">
+      {{ page.service_lead }}
+    </p>
+
+    <div class="text-center mt-4">
+      <picture>
+        {% if page.hero_avif %}
+        <source srcset="{{ page.hero_avif }}" type="image/avif" />
+        {% endif %}
+        {% if page.hero_webp %}
+        <source srcset="{{ page.hero_webp }}" type="image/webp" />
+        {% endif %}
+        <img
+          src="{{ page.hero_fallback }}"
+          alt="{{ page.hero_alt }}"
+          class="img-fluid rounded"
+          width="1200"
+          height="800"
+          loading="eager"
+          fetchpriority="high"
+          style="max-width: 100%; height: auto"
+        />
+      </picture>
+    </div>
+
+    <div class="mt-4">
+      <a href="/contact.html" class="btn btn-primary btn-lg">
+        {{ page.primary_cta | default: "Contact Me About Your Project" }}
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 text-center">
+        <h2 class="mb-4">{{ page.service_intro_heading }}</h2>
+        <p>{{ page.service_intro }}</p>
+      </div>
+    </div>
+
+    <div class="row g-4 mt-2">
+      {% for item in page.service_use_cases %}
+      <div class="col-md-6 col-lg-4">
+        <div class="border rounded p-4 h-100 bg-white">
+          <h3 class="h5">{{ item.title }}</h3>
+          <p class="mb-0">{{ item.text }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% if page.service_proof_points %}
+<section class="py-5">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2>{{ page.service_proof_heading | default: "Relevant Proof Points" }}</h2>
+    </div>
+
+    <div class="row g-4">
+      {% for proof in page.service_proof_points %}
+      <div class="col-md-6 col-lg-4">
+        <div class="border rounded p-4 h-100">
+          <h3 class="h5">{{ proof.title }}</h3>
+          <p>{{ proof.text }}</p>
+          {% if proof.url %}
+          <a href="{{ proof.url }}" class="btn btn-outline-primary">
+            View Proof
+          </a>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="py-5">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2>{{ page.service_capabilities_heading }}</h2>
+    </div>
+
+    <div class="row g-4">
+      {% for capability in page.service_capabilities %}
+      <div class="col-md-6">
+        <div class="border rounded p-4 h-100">
+          <h3 class="h5">{{ capability.title }}</h3>
+          <p class="mb-0">{{ capability.text }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <h2 class="text-center mb-4">{{ page.service_questions_heading }}</h2>
+        <div class="row g-4">
+          {% for question in page.service_questions %}
+          <div class="col-md-4">
+            <div class="border rounded p-4 h-100 bg-white">
+              <h3 class="h5">{{ question.title }}</h3>
+              <p class="mb-0">{{ question.text }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2>Related Services</h2>
+    </div>
+    <div class="row g-4 justify-content-center">
+      {% for link in page.related_services %}
+      <div class="col-md-4">
+        <div class="border rounded p-4 h-100 text-center">
+          <h3 class="h5">{{ link.title }}</h3>
+          <p>{{ link.text }}</p>
+          <a href="{{ link.url }}" class="btn btn-outline-primary">
+            View Service
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="text-muted text-center py-5">
+  <div class="container">
+    <h2>{{ page.service_cta_heading }}</h2>
+    <p class="lead mx-auto" style="max-width: 840px">
+      {{ page.service_cta_text }}
+    </p>
+    <a href="/contact.html" class="btn btn-primary btn-lg mt-3">
+      {{ page.primary_cta | default: "Contact Me About Your Project" }}
+    </a>
+  </div>
+</section>
