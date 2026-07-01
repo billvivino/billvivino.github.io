@@ -109,7 +109,7 @@ My role isn't to replace Steve Wozniak.
 
 My role is to replace the missing technical founder once a company decides engineering deserves real, paid investment.
 
-## AI Does Not Make Everyone a Technical Founder
+## AI Does Not Make Everyone a Technical Founder Now
 
 One place I would push back a bit is the role AI is going to play here.
 
