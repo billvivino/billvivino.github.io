@@ -191,7 +191,9 @@ That usually means they want to attract:
 
 At that point, software stops being an experiment.
 
-It becomes part of the business.
+It becomes the core of the business's value.
+
+Creating things of great value are harder than you think they are.
 
 ## Engineering Doesn't End At Launch
 
@@ -227,7 +229,7 @@ Maintaining and evolving a production system for years is a very different commi
 
 That’s a distinction I think many founders underestimate. 
 
-It's one that becomes increasingly difficult to sustain when the engineering team isn’t being compensated as the company’s engineering needs continue to grow.
+It's one that becomes impossible to sustain when the engineering team isn’t being compensated as the company’s engineering needs continue to grow.
 
 ## Why My Model Is Different
 
