@@ -107,7 +107,7 @@ Those are two entirely different company structures.
 
 My role isn't to replace Steve Wozniak.
 
-My role is to replace the missing technical founder once a company decides engineering deserves real investment.
+My role is to replace the missing technical founder once a company decides engineering deserves real, paid investment.
 
 ## AI Does Not Make Everyone a Technical Founder
 
