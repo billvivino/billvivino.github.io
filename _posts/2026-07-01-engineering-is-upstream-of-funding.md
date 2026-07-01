@@ -71,17 +71,17 @@ Founders assume investor money enables engineering.
 
 Great engineering **enables** funding.
 
-Engineering reduces execution risk.
+The best engineers reduce execution risk.
 
 Execution builds credibility.
 
-Credibility attracts customers.
+Credibility attracts customers and investors.
 
-Credibility attracts investors.
+You attract the best engineers by paying them.
 
-Engineering isn't downstream of funding.
+Therefore, engineering isn't downstream of funding.
 
-Engineering helps create it.
+Paid engineering helps create funding.
 
 ## Investors Don't Fund Ideas
 
