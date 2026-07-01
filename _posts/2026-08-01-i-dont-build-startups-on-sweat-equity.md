@@ -111,11 +111,11 @@ My role is to replace the missing technical founder once a company decides engin
 
 ## AI Does Not "Make Everyone a Technical Founder Now"
 
-One place I would push back a bit is the role AI is going to play here.
+One place I would push back is the role AI is going to play here.
 
 I use Copilot and Codex every day, so I'm probably more bullish on AI than most engineers.
 
-But I don't think AI changes the fundamental economics for a non-technical founder.
+But AI doesn't change the fundamental economics for a non-technical founder.
 
 It dramatically increases the productivity of experienced engineers.
 
