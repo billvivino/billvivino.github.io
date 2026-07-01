@@ -193,7 +193,7 @@ At that point, software stops being an experiment.
 
 It becomes the core of the business's value.
 
-Creating things of great value are harder than you think they are.
+Creating things of great value is harder than you think it is.
 
 ## Engineering Doesn't End At Launch
 
