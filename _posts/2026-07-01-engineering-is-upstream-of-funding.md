@@ -107,6 +107,22 @@ They're engineering questions.
 
 Every engineering problem solved removes another source of uncertainty.
 
+## Product Quality Is Part of the Pitch
+
+Founders often think of engineering as a cost.
+
+Engineering is one of the strongest assets on their balance sheet.
+
+A polished, reliable product demonstrates execution.
+
+A stable architecture demonstrates technical maturity.
+
+A well-designed workflow demonstrates product thinking.
+
+A production-ready application tells investors something far more valuable than a roadmap ever can:
+
+This team can build.
+
 ## AI Coding Tools Don't Change This
 
 AI doesn't change the equation.
@@ -194,22 +210,6 @@ It improves fundraising.
 Professional engineering isn't simply another operating expense.
 
 It's one of the strongest competitive advantages an early software company can create.
-
-## Product Quality Is Part of the Pitch
-
-Founders often think of engineering as a cost.
-
-Engineering is one of the strongest assets on their balance sheet.
-
-A polished, reliable product demonstrates execution.
-
-A stable architecture demonstrates technical maturity.
-
-A well-designed workflow demonstrates product thinking.
-
-A production-ready application tells investors something far more valuable than a roadmap ever can:
-
-This team can build.
 
 ## Engineering Is a Strategic Investment
 
