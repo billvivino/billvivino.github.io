@@ -107,61 +107,15 @@ They're engineering questions.
 
 Every engineering problem solved removes another source of uncertainty.
 
-## Product Quality Is Part of the Pitch
-
-Founders often think of engineering as a cost.
-
-Engineering is one of the strongest assets on their balance sheet.
-
-A polished, reliable product demonstrates execution.
-
-A stable architecture demonstrates technical maturity.
-
-A well-designed workflow demonstrates product thinking.
-
-A production-ready application tells investors something far more valuable than a roadmap ever can:
-
-This team can build.
-
-## Engineering Reduces Execution Risk
-
-Every startup carries risk.
-
-Market risk.
-
-Competitive risk.
-
-Financial risk.
-
-Technical risk.
-
-The earlier technical risk is reduced, the more energy the company can spend solving business problems instead of engineering problems.
-
-Experienced engineers don't just write code.
-
-They reduce uncertainty.
-
-They prevent expensive mistakes.
-
-They simplify architecture.
-
-They improve product quality.
-
-They make better technical tradeoffs.
-
-Those things don't simply improve software.
-
-They improve the company.
-
-## AI Doesn't Change This
+## AI Coding Tools Don't Change This
 
 AI doesn't change the equation.
 
 I use GitHub Copilot and Codex every day. They're extraordinary tools.
 
-But every company competing for the same customers (think: every one of your competitors) and the same investment dollars has access to those same tools.
+Every one of your competitors (competing for the same customers and the same investment dollars) has access to the exact same AI tools.
 
-AI is rapidly becoming table stakes.
+**AI is rapidly becoming table stakes.**
 
 The competitive advantage isn't access to AI.
 
@@ -180,27 +134,6 @@ The companies that combine experienced engineers with AI will consistently outpe
 That's why I believe paid engineering sits upstream of funding.
 
 The earlier a company treats engineering as a strategic investment instead of a cost to delay, the earlier it begins reducing execution risk, improving product quality, and increasing its credibility with customers and investors alike.
-
-## Engineering Is a Strategic Investment
-
-Companies spend money on:
-
-- sales
-- marketing
-- legal
-- accounting
-
-because they believe those investments improve the business.
-
-Engineering belongs in exactly the same category.
-
-Not because software developers deserve larger salaries.
-
-Because engineering is fundamental in a software product.
-
-Product quality, customer confidence, execution speed, technical credibility, and fundraising readiness are business outcomes.
-
-Not technical ones.
 
 ## Paid Engineering Is a Competitive Advantage
 
@@ -261,6 +194,43 @@ It improves fundraising.
 Professional engineering isn't simply another operating expense.
 
 It's one of the strongest competitive advantages an early software company can create.
+
+## Product Quality Is Part of the Pitch
+
+Founders often think of engineering as a cost.
+
+Engineering is one of the strongest assets on their balance sheet.
+
+A polished, reliable product demonstrates execution.
+
+A stable architecture demonstrates technical maturity.
+
+A well-designed workflow demonstrates product thinking.
+
+A production-ready application tells investors something far more valuable than a roadmap ever can:
+
+This team can build.
+
+## Engineering Is a Strategic Investment
+
+Companies spend money on:
+
+- sales
+- marketing
+- legal
+- accounting
+
+because they believe those investments improve the business.
+
+Engineering belongs in exactly the same category.
+
+Not because software developers deserve larger salaries.
+
+**Because engineering is fundamental in a software product.**
+
+Product quality, customer confidence, execution speed, technical credibility, and fundraising readiness are business outcomes.
+
+Not technical ones.
 
 ## The Best Companies Figure This Out Early
 
