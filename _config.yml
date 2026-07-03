@@ -12,10 +12,6 @@ permalink: /posts/:title:output_ext
 # plugins:
 #   - jekyll-sitemap
 
-include:
-  - _includes
-  - _layouts
-
 exclude:
   - bvt-coding-ai-backend/
 
