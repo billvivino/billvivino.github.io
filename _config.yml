@@ -14,6 +14,20 @@ permalink: /posts/:title:output_ext
 
 exclude:
   - bvt-coding-ai-backend/
+  - assets/BV Technology Logo Variant 1.png
+  - assets/Dreams Into Reality simple compose.png
+  - assets/Thumbnail - New Digital Commune.png
+  - assets/arrows-cover.png
+  - assets/bv_services_image.png
+  - assets/images/ai_automation.png
+  - assets/optimized/Dreams Into Reality simple compose.png
+  - assets/optimized/Splash-Screen-plus-beer-icon.avif
+  - assets/optimized/Splash-Screen-plus-beer-icon.webp
+  - assets/optimized/Thumbnail - New Digital Commune.png
+  - assets/optimized/ai_automation_services.png
+  - assets/posts/vibe-coding-inline.jpg
+  - assets/posts/vibecoder.png
+  - assets/soccer-cover.png
 
 defaults:
   - scope:
