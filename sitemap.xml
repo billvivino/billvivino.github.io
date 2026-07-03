@@ -9,14 +9,15 @@ permalink: /sitemap.xml
   {% for page in site.pages %}
     {% if page.noindex != true
        and page.url != "/sitemap.xml"
-       and page.url != "/assets/css/style.css"
-       and page.url contains "/_" == false %}
-      <url>
-        <loc>{{ base }}{{ page.url }}</loc>
-        {% if page.last_modified_at %}
-          <lastmod>{{ page.last_modified_at | date: "%Y-%m-%d" }}</lastmod>
-        {% endif %}
-      </url>
+       and page.url != "/assets/css/style.css" %}
+      {% unless page.url contains "/_" %}
+        <url>
+          <loc>{{ base }}{{ page.url }}</loc>
+          {% if page.last_modified_at %}
+            <lastmod>{{ page.last_modified_at | date: "%Y-%m-%d" }}</lastmod>
+          {% endif %}
+        </url>
+      {% endunless %}
     {% endif %}
   {% endfor %}
 
