@@ -1,5 +1,11 @@
 _site/
 .DS_Store
-.DS_Store
-.DS_Store
+**/.DS_Store
 Soccer/.DS_Store
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+.bundle/
+vendor/
+node_modules/
+.DS_Store
