@@ -4,7 +4,7 @@ title: "Bill Vivino Technology Helps Your Company Create Edge AI Software Soluti
 description: "Edge AI is moving from chip news into business software decisions. Bill Vivino Technology helps companies evaluate on-device AI for privacy, offline workflows, latency, and cloud-cost reduction."
 date: 2026-07-06
 categories: ai edge-ai mobile-app-development software-development consulting
-og_image: "/assets/images/edge-ai-software-solutions.png"
+og_image: "/assets/optimized/edge-ai-software-solutions.webp"
 ---
 
 <style>
@@ -49,7 +49,7 @@ og_image: "/assets/images/edge-ai-software-solutions.png"
   <source srcset="/assets/optimized/edge-ai-software-solutions.avif" type="image/avif" />
   <source srcset="/assets/optimized/edge-ai-software-solutions.webp" type="image/webp" />
   <img
-    src="/assets/images/edge-ai-software-solutions.png"
+    src="/assets/optimized/edge-ai-software-solutions.webp"
     alt="Mobile and edge devices running AI inference locally for factory, healthcare, field service, and office workflows"
     width="300"
     loading="lazy"

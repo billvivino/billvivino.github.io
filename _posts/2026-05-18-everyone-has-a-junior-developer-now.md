@@ -2,7 +2,7 @@
 layout: post
 title: "Everyone Has a Junior Developer Now"
 date: 2026-05-17
-og_image: "/assets/images/everyone-has-a-junior-developer-now.png"
+og_image: "/assets/optimized/everyone-has-a-junior-developer-now.webp"
 description: "AI coding agents feel less like senior engineers and more like extremely fast junior developers who make confident assumptions. That changes software development — but maybe not in the way people think."
 ---
 
@@ -59,7 +59,7 @@ description: "AI coding agents feel less like senior engineers and more like ext
   <source srcset="/assets/optimized/everyone-has-a-junior-developer-now.avif" type="image/avif" />
   <source srcset="/assets/optimized/everyone-has-a-junior-developer-now.webp" type="image/webp" />
   <img
-    src="/assets/images/everyone-has-a-junior-developer-now.png"
+    src="/assets/optimized/everyone-has-a-junior-developer-now.webp"
     alt="Illustration representing an AI coding assistant acting like a junior developer under supervision"
     width="300"
     loading="lazy"

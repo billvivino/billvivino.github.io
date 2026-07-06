@@ -4,7 +4,7 @@ title: "Technical Debt Doesn't Usually Come From Bad Engineers"
 description: "Technical debt often starts when engineering implications never enter the product decision, not when engineers are lazy or careless."
 date: 2026-07-04
 categories: software-development engineering technical-debt consulting
-og_image: "/assets/images/technical-debt-doesnt-usually-come-from-bad-engineers.png"
+og_image: "/assets/optimized/technical-debt-doesnt-usually-come-from-bad-engineers.webp"
 ---
 
 <style>
@@ -49,7 +49,7 @@ og_image: "/assets/images/technical-debt-doesnt-usually-come-from-bad-engineers.
   <source srcset="/assets/optimized/technical-debt-doesnt-usually-come-from-bad-engineers.avif" type="image/avif" />
   <source srcset="/assets/optimized/technical-debt-doesnt-usually-come-from-bad-engineers.webp" type="image/webp" />
   <img
-    src="/assets/images/technical-debt-doesnt-usually-come-from-bad-engineers.png"
+    src="/assets/optimized/technical-debt-doesnt-usually-come-from-bad-engineers.webp"
     alt="Software engineer mapping product decisions to downstream technical consequences"
     width="300"
     loading="lazy"

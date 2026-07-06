@@ -4,7 +4,7 @@ title: "What Happens When AI Becomes Good Enough?"
 description: "The most important question in AI may no longer be who has the best model. It may be whether local models become good enough to change the economics entirely."
 date: 2026-06-19
 categories: ai software-development economics
-og_image: "/assets/images/local-ai-idea.png"
+og_image: "/assets/optimized/local-ai-idea.webp"
 ---
 
 <style>
@@ -49,7 +49,7 @@ og_image: "/assets/images/local-ai-idea.png"
   <source srcset="/assets/optimized/local-ai-architecture.avif" type="image/avif" />
   <source srcset="/assets/optimized/local-ai-architecture.webp" type="image/webp" />
   <img
-    src="/assets/images/local-ai-architecture.png"
+    src="/assets/optimized/local-ai-architecture.webp"
     alt="Local AI architecture using FastAPI, Ollama, and Qwen running on developer-owned hardware"
     width="300"
     loading="lazy"

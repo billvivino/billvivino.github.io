@@ -4,7 +4,7 @@ title: "I Don't Build Startups on Sweat Equity"
 description: "One of the biggest lessons I've learned as a software consultant is that there are two fundamentally different ways companies approach engineering. My business is built around one of them."
 date: 2026-08-01
 categories: software-development consulting startups
-og_image: "/assets/images/i-dont-build-startups-on-sweat-equity.png"
+og_image: "/assets/optimized/i-dont-build-startups-on-sweat-equity.webp"
 ---
 
 <style>
@@ -49,7 +49,7 @@ og_image: "/assets/images/i-dont-build-startups-on-sweat-equity.png"
   <source srcset="/assets/optimized/i-dont-build-startups-on-sweat-equity.avif" type="image/avif" />
   <source srcset="/assets/optimized/i-dont-build-startups-on-sweat-equity.webp" type="image/webp" />
   <img
-    src="/assets/images/i-dont-build-startups-on-sweat-equity.png"
+    src="/assets/optimized/i-dont-build-startups-on-sweat-equity.webp"
     alt="Professional software engineering transforming an early startup into a scalable business"
     width="300"
     loading="lazy"

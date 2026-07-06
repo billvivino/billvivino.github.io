@@ -3,7 +3,7 @@ layout: post
 title: "Why Developers Ghost"
 description: "Ghosting isn’t random. It’s usually the final stage of a system the developer no longer feels able to control. Here’s what actually causes it—and how to see it coming."
 date: 2026-04-19
-og_image: "/assets/images/why-developers-ghost.png"
+og_image: "/assets/optimized/why-developers-ghost.webp"
 ---
 
 <style>
@@ -59,7 +59,7 @@ og_image: "/assets/images/why-developers-ghost.png"
   <source srcset="/assets/optimized/why-developers-ghost.avif" type="image/avif" />
   <source srcset="/assets/optimized/why-developers-ghost.webp" type="image/webp" />
   <img
-    src="/assets/images/why-developers-ghost.png"
+    src="/assets/optimized/why-developers-ghost.webp"
     alt="Illustration representing a software developer fading away from an overwhelming project"
     width="300"
     loading="lazy"

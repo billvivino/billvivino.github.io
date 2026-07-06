@@ -3,7 +3,7 @@ layout: post
 title: "Why Knowing a Programming Language Isn't the Bottleneck"
 description: "Programming languages are not the hard part of software engineering. Once you understand systems, architecture, and core engineering concepts, moving between frameworks and languages becomes surprisingly easy."
 date: 2026-06-03
-og_image: "/assets/images/why-knowing-a-programming-language-isnt-the-bottleneck.png"
+og_image: "/assets/optimized/why-knowing-a-programming-language-isnt-the-bottleneck.webp"
 ---
 
 <div class="tldr-box">
@@ -15,7 +15,7 @@ og_image: "/assets/images/why-knowing-a-programming-language-isnt-the-bottleneck
   <source srcset="/assets/optimized/why-knowing-a-programming-language-isnt-the-bottleneck.avif" type="image/avif" />
   <source srcset="/assets/optimized/why-knowing-a-programming-language-isnt-the-bottleneck.webp" type="image/webp" />
   <img
-    src="/assets/images/why-knowing-a-programming-language-isnt-the-bottleneck.png"
+    src="/assets/optimized/why-knowing-a-programming-language-isnt-the-bottleneck.webp"
     alt="Software developer moving between programming languages while focusing on architecture, systems, and engineering concepts"
     width="300"
     loading="lazy"

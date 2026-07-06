@@ -3,7 +3,7 @@ layout: post
 title: "We’ve Been Trying to Replace Programmers Since COBOL — It Still Hasn’t Worked"
 description: "From COBOL to no-code to AI, every generation thinks programmers are about to be replaced. History shows the same pattern repeating."
 date: 2026-04-08
-og_image: "/assets/images/software-is-a-commitment.png"
+og_image: "/assets/optimized/software-is-a-commitment.webp"
 ---
 
 <style>
@@ -59,7 +59,7 @@ og_image: "/assets/images/software-is-a-commitment.png"
   <source srcset="/assets/optimized/software-is-a-commitment.avif" type="image/avif" />
   <source srcset="/assets/optimized/software-is-a-commitment.webp" type="image/webp" />
   <img
-    src="/assets/images/software-is-a-commitment.png"
+    src="/assets/optimized/software-is-a-commitment.webp"
     alt="Software complexity persists across COBOL, no-code, and AI"
     width="300"
     loading="lazy"
@@ -260,7 +260,7 @@ It delays needing them.
   <source srcset="/assets/optimized/cobol-vs-ai.avif" type="image/avif" />
   <source srcset="/assets/optimized/cobol-vs-ai.webp" type="image/webp" />
   <img
-    src="/assets/images/cobol-vs-ai.png"
+    src="/assets/optimized/cobol-vs-ai.webp"
     alt="COBOL vs AI – same promise, different era"
     width="300"
     loading="lazy"

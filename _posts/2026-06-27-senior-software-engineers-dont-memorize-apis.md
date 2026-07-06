@@ -4,7 +4,7 @@ title: "Senior Software Engineers Don't Memorize APIs"
 description: "Senior software engineering is not about memorizing every API. It is about investigating problems, evaluating tradeoffs, and building systems that keep working."
 date: 2026-06-27
 categories: software-development consulting senior-engineering
-og_image: "/assets/images/senior-software-engineers-dont-memorize-apis.png"
+og_image: "/assets/optimized/senior-software-engineers-dont-memorize-apis.webp"
 ---
 
 <style>
@@ -49,7 +49,7 @@ og_image: "/assets/images/senior-software-engineers-dont-memorize-apis.png"
   <source srcset="/assets/optimized/senior-software-engineers-dont-memorize-apis.avif" type="image/avif" />
   <source srcset="/assets/optimized/senior-software-engineers-dont-memorize-apis.webp" type="image/webp" />
   <img
-    src="/assets/images/senior-software-engineers-dont-memorize-apis.png"
+    src="/assets/optimized/senior-software-engineers-dont-memorize-apis.webp"
     alt="Senior software engineer evaluating architecture decisions, tradeoffs, and test checklists instead of memorizing API details"
     width="300"
     loading="lazy"

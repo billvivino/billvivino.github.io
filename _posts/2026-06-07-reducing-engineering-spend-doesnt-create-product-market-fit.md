@@ -4,7 +4,7 @@ title: "Reducing Engineering Spend Doesn't Create Product-Market Fit"
 description: "Lower engineering costs can extend runway, but they do not prove demand. Product-market fit comes from customers wanting, using, paying for, and renewing a product."
 date: 2026-06-07
 categories: startups product-market-fit software consulting engineering costs
-og_image: "/assets/images/reducing-engineering-spend-product-market-fit.png"
+og_image: "/assets/optimized/reducing-engineering-spend-product-market-fit.webp"
 ---
 
 <style>
@@ -49,7 +49,7 @@ og_image: "/assets/images/reducing-engineering-spend-product-market-fit.png"
   <source srcset="/assets/optimized/reducing-engineering-spend-product-market-fit.avif" type="image/avif" />
   <source srcset="/assets/optimized/reducing-engineering-spend-product-market-fit.webp" type="image/webp" />
   <img
-    src="/assets/images/reducing-engineering-spend-product-market-fit.png"
+    src="/assets/optimized/reducing-engineering-spend-product-market-fit.webp"
     alt="Startup team comparing engineering cost pressure with customer adoption and product-market fit signals"
     width="300"
     loading="lazy"

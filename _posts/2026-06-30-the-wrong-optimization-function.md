@@ -4,7 +4,7 @@ title: "The Wrong Optimization Function"
 description: "Software projects get into trouble when teams optimize for the cheapest individual feature instead of the engineering investment that creates the greatest operational improvement."
 date: 2026-06-30
 categories: software-development consulting operational-software
-og_image: "/assets/images/the-wrong-optimization-function.png"
+og_image: "/assets/optimized/the-wrong-optimization-function.webp"
 ---
 
 <style>
@@ -49,7 +49,7 @@ og_image: "/assets/images/the-wrong-optimization-function.png"
   <source srcset="/assets/optimized/the-wrong-optimization-function.avif" type="image/avif" />
   <source srcset="/assets/optimized/the-wrong-optimization-function.webp" type="image/webp" />
   <img
-    src="/assets/images/the-wrong-optimization-function.png"
+    src="/assets/optimized/the-wrong-optimization-function.webp"
     alt="Workflow board showing a cheap local optimization creating an operational bottleneck and a better system-level software workflow"
     width="300"
     loading="lazy"

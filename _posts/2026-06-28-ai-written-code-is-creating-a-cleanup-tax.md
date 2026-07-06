@@ -4,7 +4,7 @@ title: "AI-Written Code Is Creating a \"Cleanup Tax\""
 description: "AI-generated code can accelerate startups, but it can also create hidden maintenance costs. The opportunity is codebase stabilization, architecture review, test coverage, and production hardening."
 date: 2026-06-28
 categories: ai software-development consulting technical-debt
-og_image: "/assets/images/ai-generated-code-cleanup-tax.png"
+og_image: "/assets/optimized/ai-generated-code-cleanup-tax.webp"
 ---
 
 <style>
@@ -58,7 +58,7 @@ og_image: "/assets/images/ai-generated-code-cleanup-tax.png"
   <source srcset="/assets/optimized/ai-generated-code-cleanup-tax.avif" type="image/avif" />
   <source srcset="/assets/optimized/ai-generated-code-cleanup-tax.webp" type="image/webp" />
   <img
-    src="/assets/images/ai-generated-code-cleanup-tax.png"
+    src="/assets/optimized/ai-generated-code-cleanup-tax.webp"
     alt="Developer reviewing AI-generated code for bugs, architecture issues, and maintainability risks"
     width="300"
     loading="lazy"

@@ -4,7 +4,7 @@ title: "Why More Businesses Want to Own Their AI"
 description: "Bill Vivino Technology helps companies build their own AI solutions, including private models, secure RAG systems, and hybrid architectures."
 date: 2026-07-03
 categories: ai consulting software-development enterprise
-og_image: "/assets/images/why-more-businesses-want-to-own-their-ai.png"
+og_image: "/assets/optimized/why-more-businesses-want-to-own-their-ai.webp"
 ---
 
 <style>
@@ -49,7 +49,7 @@ og_image: "/assets/images/why-more-businesses-want-to-own-their-ai.png"
   <source srcset="/assets/optimized/why-more-businesses-want-to-own-their-ai.avif" type="image/avif" />
   <source srcset="/assets/optimized/why-more-businesses-want-to-own-their-ai.webp" type="image/webp" />
   <img
-    src="/assets/images/why-more-businesses-want-to-own-their-ai.png"
+    src="/assets/optimized/why-more-businesses-want-to-own-their-ai.webp"
     alt="Private enterprise AI infrastructure with secure servers, analytics dashboards, and business-owned data systems"
     width="300"
     loading="lazy"

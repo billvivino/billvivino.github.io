@@ -4,7 +4,7 @@ title: "The Surprising Part of Local AI Wasn't the Model"
 description: "Building a self-hosted coding assistant taught me that the biggest challenge isn't running the model. It's understanding the economics and architecture around it."
 date: 2026-06-18
 categories: ai software-development local-ai
-og_image: "/assets/images/local-ai-is-closer-than-most-businesses-realize.png"
+og_image: "/assets/optimized/local-ai-is-closer-than-most-businesses-realize.webp"
 ---
 
 <style>
@@ -49,7 +49,7 @@ og_image: "/assets/images/local-ai-is-closer-than-most-businesses-realize.png"
   <source srcset="/assets/optimized/local-ai-is-closer-than-most-businesses-realize.avif" type="image/avif" />
   <source srcset="/assets/optimized/local-ai-is-closer-than-most-businesses-realize.webp" type="image/webp" />
   <img
-    src="/assets/images/local-ai-is-closer-than-most-businesses-realize.png"
+    src="/assets/optimized/local-ai-is-closer-than-most-businesses-realize.webp"
     alt="Self-hosted AI architecture running locally with Ollama, FastAPI, GitHub Pages, and Qwen3-Coder"
     width="300"
     loading="lazy"

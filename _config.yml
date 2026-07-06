@@ -13,6 +13,7 @@ permalink: /posts/:title:output_ext
 #   - jekyll-sitemap
 
 exclude:
+  - assets/images/
   - bvt-coding-ai-backend/
   - assets/BV Technology Logo Variant 1.png
   - assets/Dreams Into Reality simple compose.png

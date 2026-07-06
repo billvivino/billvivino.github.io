@@ -3,7 +3,7 @@ layout: post
 title: "Why Hire a Software Developer in 2026?"
 description: "Everyone can vibe code now. So why hire a software developer at all? Because software engineering was never really about typing code."
 date: 2026-05-20
-og_image: "/assets/images/why-hire-a-software-developer-in-2026.png"
+og_image: "/assets/optimized/why-hire-a-software-developer-in-2026.webp"
 ---
 
 <style>
@@ -59,7 +59,7 @@ og_image: "/assets/images/why-hire-a-software-developer-in-2026.png"
   <source srcset="/assets/optimized/why-hire-a-software-developer-in-2026.avif" type="image/avif" />
   <source srcset="/assets/optimized/why-hire-a-software-developer-in-2026.webp" type="image/webp" />
   <img
-    src="/assets/images/why-hire-a-software-developer-in-2026.png"
+    src="/assets/optimized/why-hire-a-software-developer-in-2026.webp"
     alt="Illustration representing a human software engineer supervising AI-generated code and complex systems"
     width="300"
     loading="lazy"

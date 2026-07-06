@@ -4,7 +4,7 @@ title: "Engineering Is Upstream of Funding"
 description: "Many founders think funding enables great engineering. My experience has been the opposite. Great engineering often enables funding."
 date: 2026-07-01
 categories: startups software-development consulting fundraising
-og_image: "/assets/images/engineering-is-upstream-of-funding.png"
+og_image: "/assets/optimized/engineering-is-upstream-of-funding.webp"
 ---
 
 <style>
@@ -49,7 +49,7 @@ og_image: "/assets/images/engineering-is-upstream-of-funding.png"
   <source srcset="/assets/optimized/engineering-is-upstream-of-funding.avif" type="image/avif" />
   <source srcset="/assets/optimized/engineering-is-upstream-of-funding.webp" type="image/webp" />
   <img
-    src="/assets/images/engineering-is-upstream-of-funding.png"
+    src="/assets/optimized/engineering-is-upstream-of-funding.webp"
     alt="Software engineering creating product confidence, technical credibility, and startup fundraising readiness"
     width="300"
     loading="lazy"
