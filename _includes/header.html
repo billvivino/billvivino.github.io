@@ -2,7 +2,7 @@
 <!-- Shared Header Include for Bill Vivino Blog Posts -->
 
 {% assign seo_title = page.title | default: site.title %}
-{% assign seo_description = page.description | default: site.description %}
+{% assign seo_description = page.description | default: page.video_description | default: site.description %}
 {% if page.canonical %}
   {% assign canonical_url = page.canonical %}
 {% else %}

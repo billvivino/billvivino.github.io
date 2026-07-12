@@ -38,7 +38,7 @@ description: "Insights, software lessons, and real project breakdowns from Bill 
               <source srcset="/assets/optimized/{{ image_name }}.webp" type="image/webp">
               <img
                 src="/assets/optimized/{{ image_name }}.webp"
-                alt="{{ post.title }}"
+                alt="{{ post.title | escape }}"
                 class="img-fluid rounded mb-3"
                 width="800"
                 height="450"
