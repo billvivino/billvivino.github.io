@@ -1,357 +1,738 @@
 ---
 layout: default
-title: "Free Firebase Cost Calculator 2026 - Avoid $5k-$15k Overages"
-description: "Free 2026 Firebase cost calculator for Kotlin/Android apps. Accurate Blaze estimates (auth, storage, functions, Firestore). Avoid overages – by senior Azure/full-stack dev Bill Vivino."
+title: "Firebase Pricing 2026: Android & Kotlin Cost Calculator"
+description: "Estimate Firebase costs for a Kotlin or Android app. Compare Spark and Blaze, learn which usage patterns raise bills, and open the raw-usage calculator."
+canonical: "https://billvivinotechnology.com/kotlin-firebase-cost-calculator.html"
+og_image: "/assets/optimized/firebase-costs-2026.webp"
+breadcrumbs:
+  - name: "Home"
+    url: "https://billvivinotechnology.com/"
+  - name: "Software Decision Toolbox"
+    url: "https://billvivinotechnology.com/toolbox.html"
+  - name: "Firebase Pricing for Android and Kotlin"
+    url: "https://billvivinotechnology.com/kotlin-firebase-cost-calculator.html"
 ---
 
 <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "SoftwareApplication",
-        "name": "Firebase Cost Calculator 2026",
-        "applicationCategory": "DeveloperApplication",
-        "operatingSystem": "Web",
-        "description": "Firebase Cost Calculator for 2026 that estimates Firestore, Cloud Functions, storage, and bandwidth costs for apps using the Firebase Blaze Plan.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        },
-        "featureList": [
-          "Firestore reads and writes estimation",
-          "Firebase Cloud Functions cost estimation",
-          "Firebase Storage usage estimation",
-          "Outbound bandwidth cost estimation",
-          "Firebase Blaze Plan pricing support"
-        ]
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://billvivinotechnology.com/kotlin-firebase-cost-calculator.html#webpage",
+      "url": "https://billvivinotechnology.com/kotlin-firebase-cost-calculator.html",
+      "name": "Firebase Pricing 2026: Android & Kotlin Cost Calculator",
+      "description": "Estimate Firebase costs for a Kotlin or Android app using transparent 2026 pricing assumptions for Firestore, Realtime Database, and Cloud Functions invocations.",
+      "dateModified": "2026-07-12",
+      "author": {
+        "@type": "Person",
+        "name": "Bill Vivino",
+        "url": "https://billvivinotechnology.com/"
       },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "How much does Firebase cost in 2026?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Blaze plan is pay-as-you-go. Auth + storage can add $5k–$15k/year at scale. Use our free calculator for your exact usage."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Is this calculator accurate for 2026?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes – updated for current Blaze pricing, Firestore reads/writes, Functions, and outbound bandwidth. Estimates help avoid surprise bills."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Why use a Firebase cost calculator?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Firebase costs grow fast with usage. This tool shows real 2026 costs before you scale and get hit with $5k–$15k overages."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How can I reduce Firebase costs?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Use batch operations, proper indexing, anonymous auth for onboarding, and function throttling. Book a free scoping call for expert optimization tips."
-            }
-          }
-        ]
-      },
-      {
-        "@type": "WebPage",
-        "name": "Firebase Cost Calculator 2026",
-        "description": "Estimate Firebase monthly costs for Android and Kotlin apps in 2026 using Firestore, Cloud Functions, storage, and bandwidth.",
-        "dateModified": "2026-02-27"
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "name": "Software Decision Toolbox",
+        "url": "https://billvivinotechnology.com/toolbox.html"
       }
-    ]
-  }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://billvivinotechnology.com/kotlin-firebase-cost-calculator.html#calculator",
+      "name": "Android and Kotlin Firebase Cost Estimator",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web",
+      "isAccessibleForFree": true,
+      "description": "A simplified Firebase monthly cost estimator that converts Android app usage patterns into Firestore, Realtime Database, and Cloud Functions invocation estimates.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Android daily-active-user workload modeling",
+        "Firestore regional and multi-region reference rates",
+        "Realtime Database storage and download estimates",
+        "Cloud Functions 1st gen invocation estimates",
+        "Spark and Blaze plan guidance"
+      ]
+    }
+  ]
+}
 </script>
 
 <style>
-  body {
-    background: #fdfdfd;
+  .firebase-guide-shell {
+    max-width: 1180px;
   }
-  .calculator-card {
-    max-width: 720px;
-    margin: 2rem auto;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
-    border-radius: 1rem;
+  .firebase-guide-card {
+    background: #ffffff;
+    border: 1px solid #dfe7f1;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
+    padding: 1.35rem;
+    height: 100%;
   }
-  .price-out {
-    font-size: 2.5rem;
+  .firebase-guide-hero {
+    padding: 2rem;
+  }
+  .firebase-guide-kicker {
+    color: #0f766e;
+    font-size: 0.78rem;
     font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .firebase-guide-muted {
+    color: #64748b;
+  }
+  .firebase-guide-total {
+    font-size: 2.75rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+  .firebase-guide-divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 1rem 0;
+  }
+  .firebase-guide-preset {
+    background: #ffffff;
+    border: 1px solid #94a3b8;
+    border-radius: 7px;
+    color: #0f172a;
+    padding: 0.45rem 0.7rem;
+  }
+  .firebase-guide-preset:hover,
+  .firebase-guide-preset:focus {
+    background: #ecfdf5;
+    border-color: #0f766e;
+  }
+  .firebase-guide-source-list a {
+    display: inline-block;
+    margin: 0 0.75rem 0.35rem 0;
+  }
+  .firebase-guide-table th {
+    white-space: nowrap;
+  }
+  .firebase-guide-note {
+    font-size: 0.92rem;
+  }
+  @media (max-width: 767px) {
+    .firebase-guide-hero {
+      padding: 1.25rem;
+    }
+    .firebase-guide-total {
+      font-size: 2.25rem;
+    }
   }
 </style>
 
-<header class="text-center mt-4">
-  <h1 class="display-5 fw-bold">
-    Firebase Cost Calculator 2026 (Kotlin + Android)
-  </h1>
-  <p class="lead">
-    Estimate your real Firebase monthly costs for 2026 in under 30 seconds.<br />
-    Updated for Firebase Blaze Plan pricing, Firestore usage, and Cloud
-    Functions.
-  </p>
-</header>
-
-<div
-  style="
-    text-align: center;
-    margin: 1.5rem 0;
-    padding: 1rem;
-    background: #f0f9ff;
-    border-radius: 12px;
-    border: 1px solid #bfdbfe;
-  "
->
-  <p
-    style="
-      font-weight: bold;
-      color: #2563eb;
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-    "
-  >
-    Created by Bill Vivino – Senior Azure & Mobile Consultant
-  </p>
-  <p style="color: #1e40af; font-size: 1.1rem; margin: 0">
-    5+ years experience • Helped 50+ startups scale • Production-grade
-    estimates to avoid $5k–$15k+ surprises
-  </p>
-</div>
-
-<div
-  style="
-    max-width: 900px;
-    margin: 1.5rem auto;
-    padding: 1rem;
-    background: #ecfdf5;
-    border: 1px solid #bbf7d0;
-    border-radius: 8px;
-    text-align: center;
-  "
->
-  <p style="margin-bottom: 0.75rem; font-weight: 700">
-    Need the generic 2026 Firebase usage calculator or scenario planner?
-  </p>
-  <a class="btn btn-primary mt-1" href="/firebase-calculator/">
-    Open Firebase Cost Calculator
-  </a>
-  <a class="btn btn-outline-primary mt-1" href="/firebase-cost-scenario-planner/">
-    Compare Firebase Cost Scenarios
-  </a>
-</div>
-
-<main class="calculator-card bg-white p-4">
-  <form id="calcForm">
-    <div class="mb-3">
-      <label for="screens" class="form-label">How many unique screens?</label>
-      <input
-        type="number"
-        min="1"
-        max="40"
-        value="5"
-        class="form-control"
-        id="screens"
-      />
-    </div>
-
-    <div class="mb-3">
-      <label class="form-label">Select features:</label>
-      <div class="form-check">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          value="auth"
-          id="featureAuth"
-          checked
-        />
-        <label class="form-check-label" for="featureAuth"
-          >Email / Social Authentication</label
-        >
+<main class="container firebase-guide-shell my-4">
+  <section class="firebase-guide-card firebase-guide-hero mb-4">
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-8">
+        <div class="firebase-guide-kicker mb-2">Android workload estimate</div>
+        <h1 class="display-5 fw-bold mb-3">
+          Firebase Pricing in 2026 for Android and Kotlin Apps
+        </h1>
+        <p class="lead mb-2">
+          Estimate how Android app behavior can translate into a monthly Firebase bill,
+          then compare the result with Spark and Blaze plan rules.
+        </p>
+        <p class="firebase-guide-muted mb-0">
+          Kotlin does not carry a Firebase pricing premium. Reads, writes, listeners,
+          functions, stored data, downloads, authentication methods, and region determine
+          the bill.
+        </p>
       </div>
-      <div class="form-check">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          value="realtime"
-          id="featureRealtime"
-        />
-        <label class="form-check-label" for="featureRealtime"
-          >Real-time Database / Sync</label
-        >
-      </div>
-      <div class="form-check">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          value="push"
-          id="featurePush"
-        />
-        <label class="form-check-label" for="featurePush"
-          >Push Notifications</label
-        >
-      </div>
-      <div class="form-check">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          value="payments"
-          id="featurePayments"
-        />
-        <label class="form-check-label" for="featurePayments"
-          >In-App Purchases / Stripe</label
-        >
+      <div class="col-lg-4">
+        <div class="d-grid gap-2">
+          <a class="btn btn-primary" href="/firebase-calculator/">
+            Open the advanced raw-usage calculator
+          </a>
+          <a class="btn btn-outline-primary" href="/firebase-cost-scenario-planner/">
+            Compare architecture scenarios
+          </a>
+        </div>
       </div>
     </div>
+  </section>
 
-    <button type="button" class="btn btn-primary w-100" onclick="calculate()">
-      Calculate Cost
-    </button>
-  </form>
+  <section class="alert alert-info mb-4" aria-label="Pricing review status">
+    <strong>Pricing reviewed July 12, 2026.</strong>
+    This page uses published Google rates and no-cost quotas. Results are planning
+    estimates, not Google quotes; region, database edition, billing-account usage,
+    index reads, networking path, and connected Google Cloud services can change the bill.
+  </section>
 
-  <hr />
-  <div class="text-center">
-    <span class="price-out" id="price">$0</span>
+  <section class="firebase-guide-card mb-4">
+    <div class="firebase-guide-kicker mb-1">Plans</div>
+    <h2 class="h3">Spark vs. Blaze in 60 seconds</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered firebase-guide-table mb-0">
+        <thead>
+          <tr>
+            <th>Plan detail</th>
+            <th>Spark</th>
+            <th>Blaze</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Billing account</strong></td>
+            <td>No payment method required</td>
+            <td>Links the project to Cloud Billing</td>
+          </tr>
+          <tr>
+            <td><strong>Usage above no-cost quotas</strong></td>
+            <td>Products are limited or unavailable after their quotas</td>
+            <td>Eligible no-cost quotas remain, then overage is pay as you go</td>
+          </tr>
+          <tr>
+            <td><strong>Cloud Functions</strong></td>
+            <td>Deployment is unavailable</td>
+            <td>Required for deployment; eligible no-cost compute quotas can still apply</td>
+          </tr>
+          <tr>
+            <td><strong>Cloud Storage for Firebase</strong></td>
+            <td>Unavailable</td>
+            <td>Required since February 3, 2026; bucket and region affect rates</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="row g-4 mb-4">
+    <div class="col-lg-7">
+      <div class="firebase-guide-card">
+        <div class="firebase-guide-kicker mb-1">Estimator</div>
+        <h2 class="h3 mb-2">Model an Android app workload</h2>
+        <p class="firebase-guide-muted">
+          Choose a starting profile or enter your own average daily usage. The model
+          assumes roughly uniform daily activity across a 30-day month.
+        </p>
+
+        <div class="d-flex flex-wrap gap-2 mb-4">
+          <button type="button" class="firebase-guide-preset" data-preset="small">
+            Small MVP
+          </button>
+          <button type="button" class="firebase-guide-preset" data-preset="growing">
+            Growing app
+          </button>
+          <button type="button" class="firebase-guide-preset" data-preset="realtime">
+            Realtime-heavy app
+          </button>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-12">
+            <label class="form-label" for="firestoreLocation">
+              Firestore Standard edition reference location
+            </label>
+            <select id="firestoreLocation" class="form-select">
+              <option value="nam5" selected>North America multi-region (nam5)</option>
+              <option value="usCentral1">Iowa regional (us-central1)</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="dailyUsers">Daily active users</label>
+            <input id="dailyUsers" class="form-control" type="number" min="0" value="5000" />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="firestoreStorage">Firestore stored data, GiB</label>
+            <input id="firestoreStorage" class="form-control" type="number" min="0" step="0.1" value="10" />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="readsPerUser">Reads per active user/day</label>
+            <input id="readsPerUser" class="form-control" type="number" min="0" value="100" />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="writesPerUser">Writes per active user/day</label>
+            <input id="writesPerUser" class="form-control" type="number" min="0" value="10" />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="deletesPerUser">Deletes per active user/day</label>
+            <input id="deletesPerUser" class="form-control" type="number" min="0" value="1" />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="functionsPerUser">
+              Function invocations per active user/day
+            </label>
+            <input id="functionsPerUser" class="form-control" type="number" min="0" step="0.1" value="5" />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="rtdbStorage">Realtime Database storage, GB</label>
+            <input id="rtdbStorage" class="form-control" type="number" min="0" step="0.1" value="0" />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="rtdbDownloadPerUser">
+              Realtime Database download per user/day, MB
+            </label>
+            <input id="rtdbDownloadPerUser" class="form-control" type="number" min="0" step="0.1" value="0" />
+          </div>
+          <div class="col-md-6 d-flex flex-column justify-content-end">
+            <div class="form-check mb-2">
+              <input id="usesCloudStorage" class="form-check-input" type="checkbox" />
+              <label class="form-check-label" for="usesCloudStorage">
+                Uses Cloud Storage for Firebase
+              </label>
+            </div>
+            <div class="form-check">
+              <input id="usesPhoneAuth" class="form-check-input" type="checkbox" />
+              <label class="form-check-label" for="usesPhoneAuth">
+                Uses phone/SMS authentication
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <p class="firebase-guide-muted firebase-guide-note mt-3 mb-0">
+          The checkboxes affect plan guidance but not the dollar total. Cloud Storage
+          depends on bucket type, region, operations, and destination. Phone-auth rates
+          depend on destination country.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-lg-5">
+      <div class="firebase-guide-card">
+        <div class="firebase-guide-kicker mb-1">Estimate</div>
+        <h2 class="h3 mb-3">Modeled monthly Firebase cost</h2>
+        <div class="firebase-guide-total" id="monthlyTotal">$0.00</div>
+        <p class="firebase-guide-muted mb-3" id="estimateSummary">
+          Change an input to update the estimate.
+        </p>
+
+        <div id="planStatus" class="alert alert-warning" role="status"></div>
+
+        <div class="table-responsive">
+          <table class="table table-sm align-middle mb-0">
+            <thead>
+              <tr>
+                <th>Line item</th>
+                <th>Modeled usage</th>
+                <th class="text-end">Cost</th>
+              </tr>
+            </thead>
+            <tbody id="costLines"></tbody>
+            <tfoot>
+              <tr>
+                <td colspan="2"><strong>Estimated total</strong></td>
+                <td class="text-end"><strong id="monthlyTotalFoot">$0.00</strong></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <div class="firebase-guide-divider"></div>
+        <p class="firebase-guide-note mb-2" id="locationAssumption"></p>
+        <p class="firebase-guide-muted firebase-guide-note mb-0">
+          Included: Firestore reads, writes, deletes, storage; Realtime Database storage
+          and downloads; 1st-gen Cloud Functions invocation count. Excluded: Firestore
+          egress and index-entry amplification, Functions compute/networking/deployment,
+          Cloud Storage, phone/SMS, Hosting, Identity Platform, taxes, and third-party APIs.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="firebase-guide-card mb-4">
+    <div class="firebase-guide-kicker mb-1">Reference rates</div>
+    <h2 class="h3">What this calculator assumes</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered firebase-guide-table">
+        <thead>
+          <tr>
+            <th>Firestore location</th>
+            <th>Reads / 100K</th>
+            <th>Writes / 100K</th>
+            <th>Deletes / 100K</th>
+            <th>Storage / GiB-month</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>North America multi-region (nam5)</td>
+            <td>$0.06</td>
+            <td>$0.18</td>
+            <td>$0.02</td>
+            <td>$0.18</td>
+          </tr>
+          <tr>
+            <td>Iowa regional (us-central1)</td>
+            <td>$0.03</td>
+            <td>$0.09</td>
+            <td>$0.01</td>
+            <td>Approximately $0.15</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      The eligible default Firestore database receives 50,000 reads/day, 20,000
+      writes/day, 20,000 deletes/day, 1 GiB stored data, and 10 GiB outbound transfer
+      per month at no cost. Additional or named databases do not receive that free quota.
+    </p>
     <p class="mb-0">
-      <b>Estimated Project Budget -Last updated: January 2026</b><br />
-      This Firebase cost calculator reflects current Firebase and Google Cloud
-      pricing for the Blaze (pay-as-you-go) plan. Estimates are based on
-      Firestore reads and writes, Cloud Functions invocations, storage usage,
-      and outbound bandwidth.
+      Realtime Database includes 1 GB stored and 10 GB downloaded per month, then uses
+      $5/GB-month for storage and $1/GB downloaded. The Functions line models 1st-gen,
+      Tier-1 invocations only: the first 2 million invocations per month are no cost,
+      then $0.40 per million. Compute and networking can add charges.
     </p>
-    <a href="/pricing.html" class="btn btn-outline-primary mt-2"
-      >See detailed pricing tiers</a
-    >
-    <a href="/contact.html" class="btn btn-success mt-2"
-      >Book a free scoping call</a
-    >
-  </div>
-  <section class="mt-5">
-    <h2>What Is a Firebase Cost Calculator and Why Should You Use One?</h2>
+  </section>
+
+  <section class="row g-4 mb-4">
+    <div class="col-lg-6">
+      <div class="firebase-guide-card">
+        <h2 class="h4">Android patterns that raise Firebase usage</h2>
+        <ul class="mb-0">
+          <li>Snapshot listeners that return large result sets or reconnect frequently</li>
+          <li>Repeated reads caused by screen refreshes, pagination mistakes, or missing caching</li>
+          <li>Security rules that perform additional document reads</li>
+          <li>Function triggers that fan out into more reads, writes, or external calls</li>
+          <li>Media-heavy workflows that shift cost toward Cloud Storage and transfer</li>
+          <li>Phone authentication, whose SMS rates vary by destination country</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="firebase-guide-card">
+        <h2 class="h4">Cloud Storage changed in 2026</h2>
+        <p>
+          Since February 3, 2026, Cloud Storage for Firebase requires the Blaze plan.
+          No-cost usage can still apply, but legacy <code>*.appspot.com</code> buckets and
+          newer <code>*.firebasestorage.app</code> buckets use different quotas and rates.
+        </p>
+        <p class="mb-0">
+          That variability is why this simplified Android estimator flags Storage as a
+          Blaze requirement without adding a generic Storage dollar amount. Use the live
+          Google pricing table for the bucket and region you actually deploy.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="firebase-guide-card mb-4">
+    <div class="firebase-guide-kicker mb-1">Methodology</div>
+    <h2 class="h3">Pricing sources, assumptions, and last review</h2>
     <p>
-      If you’re building an Android app with Firebase in 2026, estimating your
-      monthly Firebase costs is critical. Firebase pricing is usage-based, and
-      costs can increase quickly as your app scales. This Firebase Cost
-      Calculator is designed for developers using the Firebase Blaze Plan. It
-      estimates real-world Firebase costs based on actual usage patterns, not
-      guesses.
+      Last verified July 12, 2026 against Google’s Firebase pricing table and
+      product-specific billing documentation. Results exclude software-development labor;
+      this page estimates selected backend usage only.
     </p>
-    <h3>✅ What Can This Firebase Cost Calculator Estimate in 2026?</h3>
-    <p>This calculator estimates monthly Firebase costs for:</p>
-    <ul>
-      <li>Cloud Firestore reads/writes/deletes</li>
-      <li>Cloud Storage GB used</li>
-      <li>Data transfer bandwidth</li>
-      <li>Function invocations</li>
-      <li>Firebase Hosting usage</li>
-    </ul>
+    <div class="firebase-guide-source-list">
+      <a href="https://firebase.google.com/pricing" target="_blank" rel="noopener">
+        Firebase pricing
+      </a>
+      <a href="https://firebase.google.com/docs/projects/billing/firebase-pricing-plans" target="_blank" rel="noopener">
+        Spark and Blaze plans
+      </a>
+      <a href="https://firebase.google.com/docs/firestore/pricing" target="_blank" rel="noopener">
+        Firestore billing details
+      </a>
+      <a href="https://firebase.google.com/docs/firestore/billing-example" target="_blank" rel="noopener">
+        Firestore multi-region example
+      </a>
+      <a href="https://firebase.google.com/docs/database/usage/billing" target="_blank" rel="noopener">
+        Realtime Database billing
+      </a>
+      <a href="https://cloud.google.com/functions/pricing-1stgen" target="_blank" rel="noopener">
+        1st-gen Functions pricing
+      </a>
+      <a href="https://firebase.google.com/docs/storage/faqs-storage-changes-announced-sept-2024" target="_blank" rel="noopener">
+        2026 Storage billing requirement
+      </a>
+    </div>
+  </section>
+
+  <section class="firebase-guide-card mb-4">
+    <div class="firebase-guide-kicker mb-1">FAQ</div>
+    <h2 class="h3">Firebase pricing questions</h2>
+
+    <h3 class="h5">Is Firebase free in 2026?</h3>
     <p>
-      It then gives you a detailed cost breakdown based on the latest Google
-      Cloud pricing. Whether you’re launching a Kotlin + Firebase MVP or scaling
-      a production app, this tool helps you predict costs across Firebase
-      services.
+      Firebase can cost $0 when a project stays within no-cost products and usage quotas.
+      Spark is the no-cost plan. Blaze is pay as you go and retains eligible no-cost usage
+      before additional charges begin.
     </p>
-    <h3>✅ Firebase Pricing in 2026: What Drives Costs the Most?</h3>
-    <p>Firebase costs are most commonly driven by:</p>
-    <ul>
-      <li>High-volume Firestore reads and real-time listeners</li>
-      <li>Frequent Cloud Functions invocations</li>
-      <li>Outbound network bandwidth</li>
-      <li>Large file storage in Firebase Cloud Storage</li>
-    </ul>
+
+    <h3 class="h5">Does Firebase cost more for Kotlin or Android apps?</h3>
     <p>
-      Many apps remain inexpensive during MVP stages but see rapid cost growth
-      once daily active users increase. This is why using a Firebase cost
-      estimator before launch is essential.
+      No separate Kotlin or Android premium applies. The bill depends on Firebase products
+      and measured usage. Android implementation choices can change that usage.
     </p>
-    <h3>🔎 Firebase Cost Examples</h3>
+
+    <h3 class="h5">What drives Cloud Firestore costs?</h3>
     <p>
-      <b>Small MVP:</b>
-      A lightweight app using Firebase Authentication, limited Firestore reads,
-      and minimal storage may stay within the free tier or cost under $10/month.
-      <br />
-      <b>Growing App:</b>
-      Apps with thousands of daily users, real-time updates, and moderate Cloud
-      Functions usage often range between $50–$300/month.
-      <br />
-      <b>Production App:</b>
-      High-traffic apps with heavy Firestore usage, push notifications, and
-      background processing can exceed $1,000/month without optimization.
+      Firestore bills document and index-entry reads, writes, deletes, stored data, and
+      network transfer. Realtime listeners can generate reads as results change or clients
+      reconnect.
     </p>
-    <h3>🔎 How Accurate Is This Firebase Cost Calculator?</h3>
+
+    <h3 class="h5">Do Firebase budget alerts stop charges?</h3>
     <p>
-      This calculator provides realistic estimates based on Firebase’s published
-      2026 pricing. Actual costs depend on usage patterns, optimization, and
-      query design. Always monitor real usage in the Firebase Console and set
-      billing alerts to avoid unexpected charges.
+      No. Budget alerts notify billing-account owners but do not cap usage or charges.
+      Use quotas, architecture controls, monitoring, and tested failure behavior as well.
     </p>
+
+    <h3 class="h5">Which calculator should I use?</h3>
+    <p class="mb-0">
+      Use this page to translate Android usage patterns into a first-pass estimate. Use the
+      <a href="/firebase-calculator/">advanced raw-usage calculator</a> when you know exact
+      Firestore, Realtime Database, and Functions volumes. Use the
+      <a href="/firebase-cost-scenario-planner/">scenario planner</a> to compare architecture
+      and growth patterns.
+    </p>
+  </section>
+
+  <section class="firebase-guide-card text-center mb-4">
+    <h2 class="h4">Need the exact raw-usage model?</h2>
     <p>
-      <strong>💡 Pro tip:</strong> Firebase offers a generous free tier. If your
-      app stays within those limits, your cost might be $0/month — but the
-      moment you scale, having an estimator like this becomes essential.
+      Move from per-user assumptions to direct Firestore, Realtime Database, and Cloud
+      Functions inputs.
     </p>
-    <h3>💬 Common Questions</h3>
-    <p>
-      <strong>Is Firebase free in 2026?</strong> Yes — Firebase has a free tier
-      called the Spark Plan. But for production apps or scaling, you’ll need the
-      Blaze Plan.
-    </p>
-    <p>
-      <strong>Is Firebase expensive?</strong> It depends on your usage. Costs
-      can rise with real-time listeners, large file storage, or high traffic,
-      which is why estimating beforehand is smart.
-    </p>
-    <p>
-      <strong>Where do I check actual Firebase costs?</strong> In your Firebase
-      console: go to Project Settings → Usage and Billing. For historical cost
-      data, head to the linked Google Cloud Console.
-    </p>
-    <p>
-      This Firebase Cost Calculator is intended for planning and estimation. For
-      production apps, cost optimization strategies such as query batching,
-      index tuning, and function throttling can significantly reduce monthly
-      Firebase bills.
-    </p>
+    <a class="btn btn-primary" href="/firebase-calculator/">
+      Open the advanced Firebase calculator
+    </a>
+    <a class="btn btn-outline-primary" href="/contact.html">
+      Review my Firebase architecture
+    </a>
   </section>
 </main>
 
 <script>
-  const basePerScreen = 800; // USD
-  const featureCosts = {
-    auth: 1200,
-    realtime: 1800,
-    push: 600,
-    payments: 1400,
+  const firestoreRates = {
+    nam5: {
+      label: "North America multi-region (nam5)",
+      readPer100k: 0.06,
+      writePer100k: 0.18,
+      deletePer100k: 0.02,
+      storagePerGibMonth: 0.18,
+    },
+    usCentral1: {
+      label: "Iowa regional (us-central1)",
+      readPer100k: 0.03,
+      writePer100k: 0.09,
+      deletePer100k: 0.01,
+      storagePerGibMonth: 0.15,
+    },
   };
-  function number(val) {
-    return isNaN(val) ? 0 : parseInt(val, 10);
+
+  const firebaseQuotas = {
+    firestore: {
+      freeReadsPerDay: 50000,
+      freeWritesPerDay: 20000,
+      freeDeletesPerDay: 20000,
+      freeStorageGib: 1,
+    },
+    rtdb: {
+      freeStorageGb: 1,
+      storagePerGbMonth: 5,
+      freeDownloadGbMonth: 10,
+      downloadPerGb: 1,
+    },
+    functions: {
+      freeInvocationsMonth: 2000000,
+      invocationPerMillion: 0.4,
+    },
+  };
+
+  const presets = {
+    small: {
+      firestoreLocation: "nam5",
+      dailyUsers: 100,
+      readsPerUser: 40,
+      writesPerUser: 5,
+      deletesPerUser: 1,
+      firestoreStorage: 0.5,
+      functionsPerUser: 0,
+      rtdbStorage: 0,
+      rtdbDownloadPerUser: 0,
+      usesCloudStorage: false,
+      usesPhoneAuth: false,
+    },
+    growing: {
+      firestoreLocation: "nam5",
+      dailyUsers: 5000,
+      readsPerUser: 100,
+      writesPerUser: 10,
+      deletesPerUser: 1,
+      firestoreStorage: 10,
+      functionsPerUser: 5,
+      rtdbStorage: 0,
+      rtdbDownloadPerUser: 0,
+      usesCloudStorage: true,
+      usesPhoneAuth: false,
+    },
+    realtime: {
+      firestoreLocation: "nam5",
+      dailyUsers: 10000,
+      readsPerUser: 250,
+      writesPerUser: 25,
+      deletesPerUser: 2,
+      firestoreStorage: 25,
+      functionsPerUser: 10,
+      rtdbStorage: 10,
+      rtdbDownloadPerUser: 1,
+      usesCloudStorage: true,
+      usesPhoneAuth: true,
+    },
+  };
+
+  function amount(id) {
+    return Math.max(Number(document.getElementById(id).value) || 0, 0);
   }
-  function calculate() {
-    const screens = number(document.getElementById("screens").value);
-    let total = screens * basePerScreen;
-    [
-      "featureAuth",
-      "featureRealtime",
-      "featurePush",
-      "featurePayments",
-    ].forEach((id) => {
-      const el = document.getElementById(id);
-      if (el.checked) total += featureCosts[el.value];
+
+  function over(value, free) {
+    return Math.max(value - free, 0);
+  }
+
+  function formatMoney(value) {
+    if (value > 0 && value < 0.01) {
+      return "$" + value.toFixed(4);
+    }
+    return value.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
     });
-    document.getElementById("price").innerText = `$${total.toLocaleString()}`;
   }
-  // Initialize price on load
-  calculate();
-  const yearEl = document.getElementById("year");
-  if (yearEl) {
-    yearEl.innerText = new Date().getFullYear();
+
+  function formatNumber(value) {
+    return Math.round(value).toLocaleString("en-US");
   }
+
+  function calculateAndroidFirebaseCost() {
+    const days = 30;
+    const locationKey = document.getElementById("firestoreLocation").value;
+    const location = firestoreRates[locationKey];
+    const dailyUsers = amount("dailyUsers");
+    const readsDay = dailyUsers * amount("readsPerUser");
+    const writesDay = dailyUsers * amount("writesPerUser");
+    const deletesDay = dailyUsers * amount("deletesPerUser");
+    const firestoreStorage = amount("firestoreStorage");
+    const functionsMonth = dailyUsers * amount("functionsPerUser") * days;
+    const rtdbStorage = amount("rtdbStorage");
+    const rtdbDownloadGb =
+      (dailyUsers * amount("rtdbDownloadPerUser") * days) / 1024;
+
+    const lines = [
+      {
+        label: "Firestore reads",
+        usage: formatNumber(readsDay) + "/day",
+        cost:
+          (over(readsDay, firebaseQuotas.firestore.freeReadsPerDay) * days / 100000) *
+          location.readPer100k,
+      },
+      {
+        label: "Firestore writes",
+        usage: formatNumber(writesDay) + "/day",
+        cost:
+          (over(writesDay, firebaseQuotas.firestore.freeWritesPerDay) * days / 100000) *
+          location.writePer100k,
+      },
+      {
+        label: "Firestore deletes",
+        usage: formatNumber(deletesDay) + "/day",
+        cost:
+          (over(deletesDay, firebaseQuotas.firestore.freeDeletesPerDay) * days / 100000) *
+          location.deletePer100k,
+      },
+      {
+        label: "Firestore storage",
+        usage: firestoreStorage.toLocaleString("en-US") + " GiB",
+        cost:
+          over(firestoreStorage, firebaseQuotas.firestore.freeStorageGib) *
+          location.storagePerGibMonth,
+      },
+      {
+        label: "Realtime Database storage",
+        usage: rtdbStorage.toLocaleString("en-US") + " GB",
+        cost:
+          over(rtdbStorage, firebaseQuotas.rtdb.freeStorageGb) *
+          firebaseQuotas.rtdb.storagePerGbMonth,
+      },
+      {
+        label: "Realtime Database download",
+        usage: rtdbDownloadGb.toFixed(1) + " GB/month",
+        cost:
+          over(rtdbDownloadGb, firebaseQuotas.rtdb.freeDownloadGbMonth) *
+          firebaseQuotas.rtdb.downloadPerGb,
+      },
+      {
+        label: "Functions invocations",
+        usage: formatNumber(functionsMonth) + "/month",
+        cost:
+          (over(functionsMonth, firebaseQuotas.functions.freeInvocationsMonth) / 1000000) *
+          firebaseQuotas.functions.invocationPerMillion,
+      },
+    ];
+
+    const total = lines.reduce(function (sum, line) {
+      return sum + line.cost;
+    }, 0);
+    const dominant = lines.slice().sort(function (a, b) {
+      return b.cost - a.cost;
+    })[0];
+    const usesCloudStorage = document.getElementById("usesCloudStorage").checked;
+    const usesPhoneAuth = document.getElementById("usesPhoneAuth").checked;
+    const requiresBlaze = total > 0 || functionsMonth > 0 || usesCloudStorage || usesPhoneAuth;
+
+    document.getElementById("monthlyTotal").textContent = formatMoney(total);
+    document.getElementById("monthlyTotalFoot").textContent = formatMoney(total);
+    document.getElementById("estimateSummary").textContent =
+      dominant && dominant.cost > 0
+        ? dominant.label + " is the largest modeled line item."
+        : "The modeled usage stays inside the listed no-cost quotas.";
+    document.getElementById("costLines").innerHTML = lines
+      .map(function (line) {
+        return (
+          "<tr><td>" +
+          line.label +
+          "</td><td>" +
+          line.usage +
+          "</td><td class=\"text-end\">" +
+          formatMoney(line.cost) +
+          "</td></tr>"
+        );
+      })
+      .join("");
+
+    const planStatus = document.getElementById("planStatus");
+    planStatus.className = requiresBlaze ? "alert alert-warning" : "alert alert-success";
+    planStatus.textContent = requiresBlaze
+      ? "Blaze is required for one or more modeled overages or selected services. Eligible no-cost quotas still apply before the modeled charges."
+      : "This modeled workload stays within the listed no-cost quotas. Spark may be sufficient for these services, subject to product-specific limits.";
+
+    document.getElementById("locationAssumption").textContent =
+      "Firestore operations and storage use " + location.label + " reference rates.";
+  }
+
+  function applyPreset(name) {
+    const preset = presets[name];
+    Object.keys(preset).forEach(function (key) {
+      const element = document.getElementById(key);
+      if (typeof preset[key] === "boolean") {
+        element.checked = preset[key];
+      } else {
+        element.value = preset[key];
+      }
+    });
+    calculateAndroidFirebaseCost();
+  }
+
+  document.querySelectorAll("input, select").forEach(function (control) {
+    control.addEventListener("input", calculateAndroidFirebaseCost);
+    control.addEventListener("change", calculateAndroidFirebaseCost);
+  });
+
+  document.querySelectorAll("[data-preset]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      applyPreset(button.dataset.preset);
+    });
+  });
+
+  calculateAndroidFirebaseCost();
 </script>

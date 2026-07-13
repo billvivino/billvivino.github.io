@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Firebase Cost Calculator 2026"
-description: "Estimate monthly Firebase costs from Firestore, Realtime Database, and Cloud Functions usage, then compare scenarios with the Firebase Cost Scenario Planner."
+title: "Advanced Firebase Cost Calculator 2026"
+description: "Enter raw Firestore, Realtime Database, and Cloud Functions usage to estimate a monthly Firebase bill with labeled 2026 reference rates."
 permalink: /firebase-calculator/
 canonical: "https://billvivinotechnology.com/firebase-calculator/"
 breadcrumbs:
@@ -9,7 +9,7 @@ breadcrumbs:
     url: "https://billvivinotechnology.com/"
   - name: "Software Decision Toolbox"
     url: "https://billvivinotechnology.com/toolbox.html"
-  - name: "Firebase Cost Calculator"
+  - name: "Advanced Firebase Cost Calculator"
     url: "https://billvivinotechnology.com/firebase-calculator/"
 ---
 
@@ -17,10 +17,11 @@ breadcrumbs:
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "Firebase Cost Calculator 2026",
+  "name": "Advanced Firebase Cost Calculator 2026",
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "Web",
-  "description": "Interactive Firebase cost calculator for estimating monthly Firestore, Realtime Database, and Cloud Functions usage costs.",
+  "description": "Advanced raw-usage calculator for estimating monthly Firestore, Realtime Database, and 1st-gen Cloud Functions costs with labeled regional assumptions.",
+  "dateModified": "2026-07-12",
   "offers": {
     "@type": "Offer",
     "price": "0",
@@ -75,7 +76,7 @@ breadcrumbs:
     <div class="row g-4 align-items-center">
       <div class="col-lg-8">
         <div class="section-kicker mb-2">Raw usage estimate</div>
-        <h1 class="display-5 fw-bold mb-3">Firebase Cost Calculator 2026</h1>
+        <h1 class="display-5 fw-bold mb-3">Advanced Firebase Cost Calculator 2026</h1>
         <p class="lead mb-0">
           Estimate a monthly Firebase bill from direct usage numbers for
           Firestore, Realtime Database, and Cloud Functions.
@@ -85,6 +86,9 @@ breadcrumbs:
         <div class="d-grid gap-2">
           <a class="btn btn-primary" href="/firebase-cost-scenario-planner/">
             Open the scenario planner
+          </a>
+          <a class="btn btn-outline-primary" href="/kotlin-firebase-cost-calculator.html">
+            Estimate an Android or Kotlin workload
           </a>
           <a class="btn btn-success" href="/contact.html">
             Review my Firebase architecture
@@ -101,6 +105,15 @@ breadcrumbs:
         <h2 class="h4 mb-3">Monthly usage assumptions</h2>
 
         <div class="row g-3">
+          <div class="col-12">
+            <label class="form-label" for="firestoreLocation">
+              Firestore Standard edition reference location
+            </label>
+            <select id="firestoreLocation" class="form-select">
+              <option value="nam5" selected>North America multi-region (nam5)</option>
+              <option value="usCentral1">Iowa regional (us-central1)</option>
+            </select>
+          </div>
           <div class="col-12">
             <h3 class="h6 mb-0">Firestore</h3>
           </div>
@@ -138,7 +151,7 @@ breadcrumbs:
           </div>
 
           <div class="col-12">
-            <h3 class="h6 mt-2 mb-0">Cloud Functions</h3>
+            <h3 class="h6 mt-2 mb-0">Cloud Functions (1st gen, Tier 1 reference)</h3>
           </div>
           <div class="col-md-6">
             <label class="form-label" for="functionCalls">Invocations/month</label>
@@ -163,9 +176,11 @@ breadcrumbs:
         </div>
 
         <p class="muted small mt-3 mb-0">
-          This calculator uses common public pricing assumptions for planning.
-          Exact bills vary by region, database edition, function generation,
-          networking path, indexes, and free-tier eligibility.
+          Pricing reviewed July 12, 2026. Firestore egress uses the first common
+          worldwide internet-transfer tier after the 10 GiB monthly allowance.
+          Functions runtime is rounded up to 100 ms per invocation. Exact bills vary
+          by region, destination, database edition, function generation, indexes,
+          billing-account usage, and free-tier eligibility.
         </p>
       </div>
     </div>
@@ -178,6 +193,7 @@ breadcrumbs:
         <p class="muted mb-3" id="costSummary">
           Change any input to update the estimate.
         </p>
+        <p class="muted small" id="advancedLocationAssumption"></p>
 
         <div class="calc-divider"></div>
 
@@ -210,23 +226,39 @@ breadcrumbs:
     Pricing references:
     <a href="https://firebase.google.com/pricing">Firebase pricing</a>
     <a href="https://firebase.google.com/docs/firestore/pricing">Firestore billing docs</a>
+    <a href="https://firebase.google.com/docs/firestore/billing-example">Firestore multi-region example</a>
+    <a href="https://firebase.google.com/docs/database/usage/billing">Realtime Database billing</a>
     <a href="https://cloud.google.com/functions/pricing-1stgen">Cloud Functions pricing</a>
   </section>
 </main>
 
 <script>
+  const firestoreLocations = {
+    nam5: {
+      label: "North America multi-region (nam5)",
+      readPer100k: 0.06,
+      writePer100k: 0.18,
+      deletePer100k: 0.02,
+      storagePerGibMonth: 0.18,
+      egressPerGib: 0.12,
+    },
+    usCentral1: {
+      label: "Iowa regional (us-central1)",
+      readPer100k: 0.03,
+      writePer100k: 0.09,
+      deletePer100k: 0.01,
+      storagePerGibMonth: 0.15,
+      egressPerGib: 0.12,
+    },
+  };
+
   const firebasePricing = {
     firestore: {
       freeReadsPerDay: 50000,
       freeWritesPerDay: 20000,
       freeDeletesPerDay: 20000,
-      readPer100k: 0.03,
-      writePer100k: 0.09,
-      deletePer100k: 0.01,
       freeStorageGib: 1,
-      storagePerGibMonth: 0.18,
       freeEgressGibMonth: 10,
-      egressPerGib: 0.12,
     },
     rtdb: {
       freeStorageGb: 1,
@@ -255,14 +287,21 @@ breadcrumbs:
   }
 
   function formatMoney(value) {
-    if (value < 1) {
-      return "$" + value.toFixed(2);
+    if (value > 0 && value < 0.01) {
+      return "$" + value.toFixed(4);
     }
-    return "$" + Math.round(value).toLocaleString();
+    return value.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
   }
 
   function calculateFirebaseCost() {
     const days = 30;
+    const firestoreLocation =
+      firestoreLocations[document.getElementById("firestoreLocation").value];
     const readsDay = amount("readsDay");
     const writesDay = amount("writesDay");
     const deletesDay = amount("deletesDay");
@@ -271,7 +310,7 @@ breadcrumbs:
     const rtdbStorage = amount("rtdbStorage");
     const rtdbDownload = amount("rtdbDownload");
     const functionCalls = amount("functionCalls");
-    const functionRuntimeSeconds = amount("functionRuntime") / 1000;
+    const functionRuntimeSeconds = Math.ceil(amount("functionRuntime") / 100) / 10;
     const functionMemoryGb = amount("functionMemory") / 1024;
     const functionCpuGhz = amount("functionCpu");
     const functionEgress = amount("functionEgress");
@@ -281,31 +320,31 @@ breadcrumbs:
         label: "Firestore reads",
         cost:
           (over(readsDay, firebasePricing.firestore.freeReadsPerDay) * days / 100000) *
-          firebasePricing.firestore.readPer100k,
+          firestoreLocation.readPer100k,
       },
       {
         label: "Firestore writes",
         cost:
           (over(writesDay, firebasePricing.firestore.freeWritesPerDay) * days / 100000) *
-          firebasePricing.firestore.writePer100k,
+          firestoreLocation.writePer100k,
       },
       {
         label: "Firestore deletes",
         cost:
           (over(deletesDay, firebasePricing.firestore.freeDeletesPerDay) * days / 100000) *
-          firebasePricing.firestore.deletePer100k,
+          firestoreLocation.deletePer100k,
       },
       {
         label: "Firestore storage",
         cost:
           over(firestoreStorage, firebasePricing.firestore.freeStorageGib) *
-          firebasePricing.firestore.storagePerGibMonth,
+          firestoreLocation.storagePerGibMonth,
       },
       {
         label: "Firestore egress",
         cost:
           over(firestoreEgress, firebasePricing.firestore.freeEgressGibMonth) *
-          firebasePricing.firestore.egressPerGib,
+          firestoreLocation.egressPerGib,
       },
       {
         label: "Realtime Database storage",
@@ -365,6 +404,10 @@ breadcrumbs:
       dominant && dominant.cost > 0
         ? dominant.label + " is the largest modeled line item."
         : "This usage mostly stays inside the modeled no-cost quotas.";
+    document.getElementById("advancedLocationAssumption").textContent =
+      "Firestore operations, storage, and first-tier egress use " +
+      firestoreLocation.label +
+      " reference assumptions.";
 
     document.getElementById("costLines").innerHTML = lines
       .map(function (line) {
@@ -379,8 +422,9 @@ breadcrumbs:
       .join("");
   }
 
-  document.querySelectorAll("input").forEach(function (input) {
-    input.addEventListener("input", calculateFirebaseCost);
+  document.querySelectorAll("input, select").forEach(function (control) {
+    control.addEventListener("input", calculateFirebaseCost);
+    control.addEventListener("change", calculateFirebaseCost);
   });
 
   calculateFirebaseCost();
