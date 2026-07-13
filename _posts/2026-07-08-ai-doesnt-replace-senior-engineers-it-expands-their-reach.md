@@ -87,6 +87,16 @@ It scales it.
 
 If someone doesn't understand system design, API contracts, state management, testing, deployment, or long-term maintainability, they'll simply generate those mistakes much faster and over a much larger codebase.
 
+## Code Was Never the Bottleneck
+
+Even before AI, typing code was rarely the hardest part of building production software.
+
+The difficult work was deciding where state belongs, how services fail, which contracts must remain stable, and how the system can change without breaking the business workflows already depending on it.
+
+AI can accelerate implementation, but that acceleration also creates more integrations, dependencies, and behavior for someone to reason about. Hidden costs such as inconsistent error handling, synchronization bugs, weak boundaries, and security assumptions often appear only after the system meets real users and real scale.
+
+The faster a team can generate software, the more important it becomes to understand the consequences between the generated pieces.
+
 ## The Real Superpower
 
 The real advantage I've discovered is visibility.
@@ -96,6 +106,15 @@ Instead of spending hours tracing how one API change propagates through five rep
 Instead of manually searching dozens of files, I can review an entire feature's implementation across backend, web, iOS, and Android before making a change.
 
 Instead of hoping every client interprets an API contract consistently, I can update the contract, inspect each consumer, identify mismatches, and systematically bring everything back into alignment.
+
+That wider view supports questions that used to require long manual investigations:
+
+- Where is this status interpreted across the backend, web, iOS, and Android?
+- Which screens depend on this API response shape?
+- Do two clients treat `null`, `false`, and a missing value differently?
+- Is this inconsistency a defect, or are the product flows intentionally different?
+
+The agent can trace those paths and surface contradictions. The engineer still has to decide whether the safe answer is a narrow patch, a coordinated contract change, or a larger refactor that should wait until the release pressure is lower.
 
 That's not replacing engineering.
 
@@ -175,3 +194,10 @@ It just hands you better tools.
 The sculptor still matters.
 
 In fact, the better the tools become, the more important the sculptor becomes.
+
+## Continue the Thread
+
+- Start with the broader question: [Will AI replace software engineers?](/posts/will-ai-replace-software-engineers.html)
+- See why generated code still needs a [production execution layer](/posts/ai-coding-tools-still-need-an-execution-layer.html)
+- Understand the [cleanup tax in AI-written code](/posts/ai-written-code-is-creating-a-cleanup-tax.html)
+- Explore [AI integration consulting for existing products](/ai-integration-consultant.html)

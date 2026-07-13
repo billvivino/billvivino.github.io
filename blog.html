@@ -29,6 +29,7 @@ description: "Insights, software lessons, and real project breakdowns from Bill 
     <div class="row g-4">
       {% assign sorted = site.posts | sort: "date" | reverse %}
       {% for post in sorted %}
+      {% unless post.sitemap == false or post.redirect_to %}
       <div class="col-md-6 col-lg-4 blog-card">
         <div class="h-100 p-3 bg-white shadow-sm rounded border">
           {% if post.og_image %}
@@ -52,9 +53,12 @@ description: "Insights, software lessons, and real project breakdowns from Bill 
             {{ post.date | date: "%B %d, %Y" }}
           </p>
           <p>{{ post.description }}</p>
-          <a href="{{ post.url }}" class="stretched-link text-primary fw-semibold">Read More →</a>
+          <a href="{{ post.url }}" class="stretched-link text-primary fw-semibold">
+            Read {{ post.title }} →
+          </a>
         </div>
       </div>
+      {% endunless %}
       {% endfor %}
     </div>
   </div>

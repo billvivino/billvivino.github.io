@@ -148,6 +148,12 @@ The AI sees the task.
 
 A senior engineer has to see the system.
 
+The dangerous mismatch is not simply that AI writes imperfect code. It is that implementation can now move faster than a team can define contracts, ownership boundaries, and failure behavior.
+
+A generated screen, function, or migration may work on its own while the interactions between them introduce race conditions, duplicated state, fragile dependencies, or scaling bottlenecks. The code looks productive locally while architectural risk accumulates globally.
+
+That risk is debt before it becomes a visible bug.
+
 ## This Is Where Human Engineering Becomes More Valuable
 
 The mistake is assuming the choice is:
@@ -175,6 +181,14 @@ It includes:
 Those are not decorative tasks.
 
 They are the difference between a prototype and a maintainable product.
+
+## The Refactoring Cycle
+
+Every major acceleration in software development has produced a stabilization cycle. The early web, the mobile-app boom, and the shift toward microservices all made new systems easier to create before teams fully understood how to operate them at scale.
+
+AI is likely compressing the same pattern. More products reach a convincing MVP quickly, then need deliberate work on architecture, performance, and reliability once real usage exposes the deferred decisions.
+
+The engineers who thrive in that cycle will not necessarily be the fastest prompt writers. They will be the people who can stabilize a system, redesign the right boundary, diagnose performance, and improve operational reliability without turning every problem into a rewrite.
 
 ## The Paid Audit Opportunity
 
@@ -277,6 +291,12 @@ to:
 That is the cleanup tax.
 
 And for engineers who know how to stabilize real systems, it is a very clear market signal.
+
+## Related Production Guidance
+
+- [How AI expands senior engineers' reach](/posts/ai-doesnt-replace-senior-engineers-it-expands-their-reach.html)
+- [What it takes to move vibe-coded software into production](/posts/can-you-vibe-code-to-production.html)
+- [AI integration consulting for an existing app or workflow](/ai-integration-consultant.html)
 
 <p class="mt-4">
   If your product was built quickly with AI and now needs a stabilization pass,

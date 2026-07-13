@@ -1,15 +1,15 @@
 ---
 layout: default
-title: "Firebase vs Supabase vs Heroku vs AWS"
-description: "A practical comparison of Firebase, Supabase, Heroku, and AWS. Understand cost drivers, operational overhead, lock-in, and when each choice stops being worth it."
+title: "Firebase vs Supabase vs AWS vs Heroku: Best Backend for an MVP"
+description: "Compare Firebase, Supabase, AWS, and Heroku for an MVP in 2026. Use the interactive picker to weigh speed, cost, compliance, realtime needs, and team maturity."
 ---
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Firebase vs Supabase vs Heroku vs AWS",
-  "description": "A practical comparison of Firebase, Supabase, Heroku, and AWS that explains cost drivers, operational overhead, lock-in risk, and when each backend choice stops being worth it.",
+  "headline": "Firebase vs Supabase vs AWS vs Heroku: Best Backend for an MVP",
+  "description": "A practical comparison and interactive decision guide for MVP teams choosing Firebase, Supabase, AWS, or Heroku.",
   "author": {
     "@type": "Person",
     "name": "Bill Vivino"
@@ -22,10 +22,84 @@ description: "A practical comparison of Firebase, Supabase, Heroku, and AWS. Und
       "url": "https://billvivinotechnology.com/assets/logo.png"
     }
   },
+  "dateModified": "2026-07-13",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://billvivinotechnology.com/firebase-vs-supabase-vs-heroku-vs-aws.html"
   }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "MVP Backend Decision Tool",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web",
+      "url": "https://billvivinotechnology.com/firebase-vs-supabase-vs-heroku-vs-aws.html",
+      "description": "An interactive backend picker comparing Firebase, Supabase, AWS, and Heroku for MVP teams.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://billvivinotechnology.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Software Decision Toolbox",
+          "item": "https://billvivinotechnology.com/toolbox.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Firebase vs Supabase vs AWS vs Heroku",
+          "item": "https://billvivinotechnology.com/firebase-vs-supabase-vs-heroku-vs-aws.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the best backend for an MVP in 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The best backend depends on the product constraints. Firebase favors speed and managed realtime features, Supabase favors relational data and SQL, AWS favors compliance and control, and Heroku favors straightforward deployment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Firebase better than Supabase for startups?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Firebase is often faster when realtime features and a managed mobile stack matter. Supabase is often stronger when relational modeling, SQL reporting, and data portability matter early."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should an MVP use AWS?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AWS becomes a stronger choice when compliance, infrastructure control, multiple environments, or long-term platform flexibility outweigh the need for the fastest initial delivery."
+          }
+        }
+      ]
+    }
+  ]
 }
 </script>
 
@@ -56,15 +130,17 @@ description: "A practical comparison of Firebase, Supabase, Heroku, and AWS. Und
     display:inline-block;
   }
   .btn-outline:hover { background:#0d6efd; color:#fff; }
+  .result-number { font-size: 1.4rem; font-weight: 700; }
+  .form-label { font-weight: 600; }
   .table td, .table th { vertical-align: top; }
 </style>
 
 <div class="container my-4">
   <div class="text-center mb-4">
-    <h1>Firebase vs Supabase vs Heroku vs AWS</h1>
+    <h1>Firebase vs Supabase vs AWS vs Heroku</h1>
     <p class="muted mb-0">
-      There is no free backend. There are tradeoffs you choose early.
-      This page explains when each choice makes sense and when it starts hurting.
+      Choose the best backend for your MVP in 2026 by matching the platform to
+      your data, delivery, compliance, cost, and team constraints.
     </p>
   </div>
 
@@ -77,6 +153,88 @@ description: "A practical comparison of Firebase, Supabase, Heroku, and AWS. Und
         <li><strong>Heroku:</strong> convenience premium, costs multiply with always-on dynos and environments.</li>
         <li><strong>AWS:</strong> highest flexibility, you pay for control and operational overhead from day one.</li>
       </ul>
+    </div>
+  </div>
+
+  <div class="mini-card mb-4">
+    <div class="mini-card-body">
+      <h2 class="h5 mb-3">Quick backend picker</h2>
+      <p class="muted">
+        Define the constraints first. The recommendation is directional, not a
+        substitute for modeling your architecture and usage.
+      </p>
+
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label" for="team">Team strength</label>
+          <select id="team" class="form-select">
+            <option value="lean" selected>Lean (1-2 engineers)</option>
+            <option value="mid">Mid (3-6 engineers)</option>
+            <option value="strong">Strong platform or infrastructure experience</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label" for="dataModel">Data model</label>
+          <select id="dataModel" class="form-select">
+            <option value="doc" selected>Document-oriented or rapidly changing</option>
+            <option value="sql">Relational or SQL-first</option>
+            <option value="mixed">Mixed</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label" for="realtime">Realtime requirement</label>
+          <select id="realtime" class="form-select">
+            <option value="none" selected>None or minimal</option>
+            <option value="some">Some live updates or presence</option>
+            <option value="heavy">Heavy collaboration or live feeds</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label" for="compliance">Compliance pressure</label>
+          <select id="compliance" class="form-select">
+            <option value="none" selected>None</option>
+            <option value="some">Some audit or governance needs</option>
+            <option value="heavy">Heavy or regulated</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label" for="volatility">Cost volatility tolerance</label>
+          <select id="volatility" class="form-select">
+            <option value="low" selected>Low: predictable bills matter</option>
+            <option value="med">Medium</option>
+            <option value="high">High: optimize later</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label" for="speed">Time to first usable version</label>
+          <select id="speed" class="form-select">
+            <option value="fast" selected>Fast: weeks</option>
+            <option value="normal">Normal</option>
+            <option value="slow">Okay to invest up front</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <button id="pickBtn" type="button" class="btn btn-primary w-100">
+        Recommend a backend
+      </button>
+
+      <div id="pickEmpty" class="muted mt-3">
+        Choose your inputs and request a recommendation.
+      </div>
+
+      <div id="pickResults" class="d-none mt-3" aria-live="polite">
+        <div class="mb-2 muted">Recommendation</div>
+        <div class="result-number" id="pickBackend">-</div>
+        <div class="mt-2" id="pickWhy"></div>
+        <div class="mt-3 d-grid gap-2">
+          <a class="btn-outline" href="/custom-software-cost-reality-check.html">
+            Model the broader software cost
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -164,6 +322,8 @@ description: "A practical comparison of Firebase, Supabase, Heroku, and AWS. Und
           </ul>
 
           <div class="divider"></div>
+          <a class="btn-outline" href="/firebase-calculator/">Firebase Raw-Usage Cost Calculator</a>
+          <a class="btn-outline mt-2" href="/firebase-cost-scenario-planner/">Firebase Cost Scenario Planner</a>
           <a class="btn-outline" href="/kotlin-firebase-cost-calculator.html">Firebase Pricing for Android &amp; Kotlin</a>
           <a class="btn-outline mt-2" href="/swiftui-firebase-cost-calculator.html">SwiftUI Firebase App Budget Estimator</a>
         </div>
@@ -252,9 +412,38 @@ description: "A practical comparison of Firebase, Supabase, Heroku, and AWS. Und
 
   <div class="mini-card mt-4">
     <div class="mini-card-body">
+      <h2 class="h5 mb-3">Backend choice FAQ</h2>
+
+      <h3 class="h6">What is the best backend for an MVP in 2026?</h3>
+      <p>
+        There is no universal winner. Firebase favors speed and managed realtime
+        features, Supabase favors relational data and SQL, AWS favors compliance
+        and control, and Heroku favors straightforward deployment.
+      </p>
+
+      <h3 class="h6">Is Firebase better than Supabase for startups?</h3>
+      <p>
+        Firebase is often faster when a managed mobile stack and realtime behavior
+        matter. Supabase is often stronger when relational modeling, reporting,
+        and data portability matter early.
+      </p>
+
+      <h3 class="h6">When should an MVP use AWS?</h3>
+      <p class="mb-0">
+        AWS becomes a stronger choice when compliance, infrastructure control,
+        multiple environments, or long-term flexibility outweigh the fastest
+        possible initial delivery.
+      </p>
+    </div>
+  </div>
+
+  <div class="mini-card mt-4">
+    <div class="mini-card-body">
       <h2 class="h5 mb-2">Related tools</h2>
       <div class="d-grid gap-2">
         <a class="btn-outline" href="/toolbox.html">Software Decision Toolbox</a>
+        <a class="btn-outline" href="/posts/how-to-estimate-firebase-costs-accurately-in-2026.html">Firebase cost modeling guide</a>
+        <a class="btn-outline" href="/database-model-decision.html">Database Model Decision</a>
         <a class="btn-outline" href="/strategic-invariant-analyzer.html">Strategic Invariant Analyzer</a>
         <a class="btn-outline" href="/custom-software-cost-reality-check.html">Custom Software Cost Reality Check</a>
       </div>
@@ -268,3 +457,184 @@ description: "A practical comparison of Firebase, Supabase, Heroku, and AWS. Und
     </p>
   </div>
 </div>
+
+<script>
+  const pickBtn = document.getElementById("pickBtn");
+  const pickEmpty = document.getElementById("pickEmpty");
+  const pickResults = document.getElementById("pickResults");
+  const pickBackend = document.getElementById("pickBackend");
+  const pickWhy = document.getElementById("pickWhy");
+
+  function pickBackendForMvp() {
+    const team = document.getElementById("team").value;
+    const dataModel = document.getElementById("dataModel").value;
+    const realtime = document.getElementById("realtime").value;
+    const compliance = document.getElementById("compliance").value;
+    const volatility = document.getElementById("volatility").value;
+    const speed = document.getElementById("speed").value;
+
+    const score = { firebase: 0, supabase: 0, aws: 0, heroku: 0 };
+    let notes = [];
+
+    if (speed === "fast") {
+      score.firebase += 3;
+      score.heroku += 2;
+      score.supabase += 2;
+      score.aws -= 1;
+    } else if (speed === "slow") {
+      score.aws += 2;
+      score.supabase += 1;
+    }
+
+    if (team === "lean") {
+      score.firebase += 3;
+      score.heroku += 2;
+      score.aws -= 2;
+    } else if (team === "mid") {
+      score.supabase += 2;
+      score.firebase += 1;
+      score.heroku += 1;
+    } else {
+      score.aws += 4;
+      score.supabase += 2;
+    }
+
+    if (dataModel === "doc") {
+      score.firebase += 2;
+      score.aws += 1;
+    } else if (dataModel === "sql") {
+      score.supabase += 4;
+      score.aws += 2;
+      score.firebase -= 1;
+    } else {
+      score.supabase += 2;
+      score.aws += 2;
+      score.firebase += 1;
+    }
+
+    if (realtime === "some") {
+      score.firebase += 2;
+      score.supabase += 1;
+    } else if (realtime === "heavy") {
+      score.firebase += 4;
+      score.supabase += 2;
+      score.heroku -= 1;
+    }
+
+    if (compliance === "some") {
+      score.aws += 2;
+      score.supabase += 1;
+      score.firebase -= 1;
+    } else if (compliance === "heavy") {
+      score.aws += 5;
+      score.supabase += 2;
+      score.firebase -= 3;
+      score.heroku -= 2;
+    }
+
+    if (volatility === "low") {
+      score.heroku += 2;
+      score.supabase += 1;
+      score.firebase -= 1;
+    } else if (volatility === "high") {
+      score.firebase += 1;
+      score.aws += 1;
+    }
+
+    const maxScore = Math.max(...Object.values(score));
+    const tiedBackends = Object.keys(score).filter((backend) => score[backend] === maxScore);
+    let tiePriority;
+
+    if (compliance === "heavy" || compliance === "some") {
+      tiePriority = ["aws", "supabase", "firebase", "heroku"];
+    } else if (dataModel === "sql") {
+      tiePriority = ["supabase", "aws", "firebase", "heroku"];
+    } else if (realtime === "heavy" || realtime === "some") {
+      tiePriority = ["firebase", "supabase", "aws", "heroku"];
+    } else if (volatility === "low") {
+      tiePriority = ["supabase", "heroku", "firebase", "aws"];
+    } else if (speed === "fast" && team === "lean") {
+      tiePriority = ["firebase", "heroku", "supabase", "aws"];
+    } else {
+      tiePriority = ["supabase", "firebase", "heroku", "aws"];
+    }
+
+    const winner = tiePriority.find((backend) => tiedBackends.includes(backend));
+
+    if (winner === "firebase") {
+      pickBackend.textContent = "Firebase";
+      notes = [
+        "You are optimizing for speed and managed infrastructure.",
+        "Watch realtime listeners and fan-out reads as usage grows.",
+        "Model Firebase usage before launch instead of relying on traffic alone."
+      ];
+    } else if (winner === "supabase") {
+      pickBackend.textContent = "Supabase";
+      notes = [
+        "Your product is relational or SQL-first.",
+        "Relationships and reporting matter early.",
+        "Model compute, storage, and realtime usage as the product grows."
+      ];
+    } else if (winner === "aws") {
+      pickBackend.textContent = "AWS";
+      notes = [
+        "You are buying flexibility, compliance readiness, and control.",
+        "Plan for the operational work that comes with that flexibility.",
+        "This is strongest when the system must survive sustained pressure."
+      ];
+    } else {
+      pickBackend.textContent = "Heroku";
+      notes = [
+        "You want straightforward deployment and predictable operations early.",
+        "Expect a convenience premium as environments and add-ons grow.",
+        "This can fit internal tools and uncomplicated APIs well."
+      ];
+    }
+
+    if (tiedBackends.length > 1) {
+      const labels = {
+        firebase: "Firebase",
+        supabase: "Supabase",
+        aws: "AWS",
+        heroku: "Heroku"
+      };
+      const alternatives = tiedBackends
+        .filter((backend) => backend !== winner)
+        .map((backend) => labels[backend])
+        .join(", ");
+      notes.push(`This was a close result. Also evaluate ${alternatives} against your specific architecture.`);
+    }
+
+    if (compliance === "heavy") {
+      notes.push("Regulated workloads require a formal security, data-boundary, and compliance review before committing to a platform.");
+    }
+
+    pickWhy.replaceChildren();
+    const list = document.createElement("ul");
+    list.className = "mb-0";
+    notes.forEach((note) => {
+      const item = document.createElement("li");
+      item.textContent = note;
+      list.appendChild(item);
+    });
+    pickWhy.appendChild(list);
+
+    pickEmpty.classList.add("d-none");
+    pickResults.classList.remove("d-none");
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "calculator_calculate",
+      calculator: "backend_mvp_picker",
+      recommended: winner,
+      team,
+      dataModel,
+      realtime,
+      compliance,
+      volatility,
+      speed
+    });
+  }
+
+  pickBtn.addEventListener("click", pickBackendForMvp);
+</script>

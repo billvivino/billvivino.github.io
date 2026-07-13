@@ -8,6 +8,7 @@ permalink: /sitemap.xml
 
   {% for page in site.pages %}
     {% if page.noindex != true
+       and page.sitemap != false
        and page.url != "/sitemap.xml"
        and page.url != "/assets/css/style.css" %}
       {% unless page.url contains "/_" %}
@@ -22,9 +23,11 @@ permalink: /sitemap.xml
   {% endfor %}
 
   {% for post in site.posts %}
+    {% if post.noindex != true and post.sitemap != false %}
       <url>
         <loc>{{ base }}{{ post.url }}</loc>
         <lastmod>{{ post.date | date: "%Y-%m-%d" }}</lastmod>
       </url>
+    {% endif %}
   {% endfor %}
 </urlset>

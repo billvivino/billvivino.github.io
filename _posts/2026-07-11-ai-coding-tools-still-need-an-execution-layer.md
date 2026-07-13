@@ -187,3 +187,10 @@ It does not assume responsibility for the system.
 That is still the execution layer.
 
 I’m interested in hearing from other developers using coding agents on substantial production systems. Where have they genuinely improved your workflow, and where do you still find yourself correcting or containing them?
+
+## Related Reading
+
+- [Will AI replace software engineers?](/posts/will-ai-replace-software-engineers.html)
+- [How AI expands senior engineers' reach](/posts/ai-doesnt-replace-senior-engineers-it-expands-their-reach.html)
+- [The cleanup tax in AI-written code](/posts/ai-written-code-is-creating-a-cleanup-tax.html)
+- [AI integration consulting for production systems](/ai-integration-consultant.html)

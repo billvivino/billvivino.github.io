@@ -91,7 +91,7 @@
           <p>{{ proof.text }}</p>
           {% if proof.url %}
           <a href="{{ proof.url }}" class="btn btn-outline-primary">
-            View Proof
+            View {{ proof.title }}
           </a>
           {% endif %}
         </div>
@@ -153,7 +153,7 @@
           <h3 class="h5">{{ link.title }}</h3>
           <p>{{ link.text }}</p>
           <a href="{{ link.url }}" class="btn btn-outline-primary">
-            View Service
+            Explore {{ link.title }}
           </a>
         </div>
       </div>
