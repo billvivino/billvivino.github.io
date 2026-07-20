@@ -28,8 +28,6 @@ exclude:
   - assets/optimized/ai_automation_services.png
   - assets/posts/vibe-coding-inline.jpg
   - assets/posts/vibecoder.png
-  - assets/soccer-cover.png
-
 defaults:
   - scope:
       path: ""
