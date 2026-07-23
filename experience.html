@@ -14,6 +14,10 @@ breadcrumbs:
 ---
 
 <style>
+  html {
+    scroll-behavior: smooth;
+  }
+
   .experience-page {
     --experience-navy: #0a2540;
     --experience-blue: #0066cc;
@@ -115,13 +119,40 @@ breadcrumbs:
   }
 
   .experience-tech-list li {
-    padding: 0.45rem 0.75rem;
-    color: var(--experience-ink);
+    margin: 0;
     font-size: 0.88rem;
     font-weight: 600;
+  }
+
+  .experience-tech-list a {
+    display: block;
+    padding: 0.45rem 0.75rem;
+    color: var(--experience-ink);
     background: #ffffff;
     border: 1px solid var(--experience-border);
     border-radius: 999px;
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .experience-tech-list a:hover {
+    color: var(--experience-blue);
+    text-decoration: none;
+    background: #f2f8fd;
+    border-color: #9dc9ea;
+    transform: translateY(-1px);
+  }
+
+  .experience-anchor-target {
+    scroll-margin-top: 6rem;
+  }
+
+  .experience-card:target {
+    border-color: var(--experience-blue);
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.12);
   }
 
   .experience-section {
@@ -328,8 +359,17 @@ breadcrumbs:
   }
 
   @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    .experience-tech-list a,
     .experience-link-card {
       transition: none;
+    }
+
+    .experience-tech-list a:hover {
+      transform: none;
     }
   }
 </style>
@@ -411,14 +451,14 @@ breadcrumbs:
           </div>
 
           <ul class="experience-tech-list" aria-label="Core technologies">
-            <li>Swift &amp; SwiftUI</li>
-            <li>Android &amp; Kotlin</li>
-            <li>React Native</li>
-            <li>Node.js</li>
-            <li>Firebase</li>
-            <li>Cloud &amp; APIs</li>
-            <li>AI Integrations</li>
-            <li>Unity &amp; AR</li>
+            <li><a href="#ios-experience">Swift &amp; SwiftUI</a></li>
+            <li><a href="#mobile-shared-experience">Android &amp; Kotlin</a></li>
+            <li><a href="#mobile-shared-experience">React Native</a></li>
+            <li><a href="#backend-api-experience">Node.js</a></li>
+            <li><a href="#cloud-data-experience">Firebase</a></li>
+            <li><a href="#cloud-data-experience">Cloud &amp; APIs</a></li>
+            <li><a href="#ai-experience">AI Integrations</a></li>
+            <li><a href="#spatial-experience">Unity &amp; AR</a></li>
           </ul>
         </div>
 
@@ -637,7 +677,7 @@ breadcrumbs:
 
       <div class="row g-4">
         <div class="col-md-6 col-lg-4">
-          <article class="experience-card">
+          <article id="ios-experience" class="experience-card experience-anchor-target">
             <h3>iOS, Swift &amp; SwiftUI</h3>
             <p>
               Native application work across SwiftUI and UIKit, Firebase-backed
@@ -651,7 +691,7 @@ breadcrumbs:
         </div>
 
         <div class="col-md-6 col-lg-4">
-          <article class="experience-card">
+          <article id="mobile-shared-experience" class="experience-card experience-anchor-target">
             <h3>Android, Kotlin &amp; shared products</h3>
             <p>
               Native Android work in Kotlin plus React Native/Expo delivery across
@@ -665,7 +705,7 @@ breadcrumbs:
         </div>
 
         <div class="col-md-6 col-lg-4">
-          <article class="experience-card">
+          <article id="spatial-experience" class="experience-card experience-anchor-target">
             <h3>Connected and spatial experiences</h3>
             <p>
               Wireless device communication, external positioning data,
@@ -692,7 +732,7 @@ breadcrumbs:
 
       <div class="row g-4">
         <div class="col-lg-4">
-          <article class="experience-card">
+          <article id="backend-api-experience" class="experience-card experience-anchor-target">
             <h3>Web applications and backend APIs</h3>
             <p>
               React and Next.js interfaces connected to Node.js/Express services,
@@ -704,7 +744,7 @@ breadcrumbs:
         </div>
 
         <div class="col-lg-4">
-          <article class="experience-card">
+          <article id="cloud-data-experience" class="experience-card experience-anchor-target">
             <h3>Cloud and data systems</h3>
             <p>
               Firebase, Azure, AWS, Docker, BigQuery, Power BI, Azure Data Factory,
@@ -716,7 +756,7 @@ breadcrumbs:
         </div>
 
         <div class="col-lg-4">
-          <article class="experience-card">
+          <article id="ai-experience" class="experience-card experience-anchor-target">
             <h3>AI integrations in real products</h3>
             <p>
               Experience includes a cross-platform generative-AI assistant with
