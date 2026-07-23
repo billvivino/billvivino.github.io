@@ -1,0 +1,926 @@
+---
+layout: default
+title: "Senior Software Consultant Experience | Bill Vivino"
+description: "Explore Bill Vivino’s software consulting experience across iOS, Android, React Native, web apps, backend APIs, cloud systems, AI integrations, Unity, and AR."
+canonical: "https://billvivinotechnology.com/experience/"
+permalink: /experience/
+og_type: profile
+last_modified_at: 2026-07-23
+breadcrumbs:
+  - name: "Home"
+    url: "https://billvivinotechnology.com/"
+  - name: "Experience"
+    url: "https://billvivinotechnology.com/experience/"
+---
+
+<style>
+  .experience-page {
+    --experience-navy: #0a2540;
+    --experience-blue: #0066cc;
+    --experience-sky: #eaf5ff;
+    --experience-ink: #17324d;
+    --experience-border: #d9e5ef;
+  }
+
+  .experience-page section,
+  .experience-page .row {
+    margin-bottom: 0 !important;
+  }
+
+  .experience-hero {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(4rem, 8vw, 7rem) 0;
+    background:
+      radial-gradient(circle at 88% 16%, rgba(0, 179, 255, 0.2), transparent 28%),
+      linear-gradient(145deg, #f8fbff 0%, var(--experience-sky) 100%);
+    border-bottom: 1px solid var(--experience-border);
+  }
+
+  .experience-kicker {
+    margin-bottom: 0.75rem;
+    color: var(--experience-blue) !important;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .experience-hero h1 {
+    max-width: 13ch;
+    color: var(--experience-navy) !important;
+    font-size: clamp(2.45rem, 5vw, 4.6rem);
+    line-height: 1.04;
+    letter-spacing: -0.04em;
+  }
+
+  .experience-hero .lead {
+    max-width: 63ch;
+    color: #36536d !important;
+    font-size: clamp(1.08rem, 2vw, 1.28rem);
+    line-height: 1.7;
+  }
+
+  .experience-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .experience-actions .btn {
+    white-space: normal;
+  }
+
+  .experience-summary-card {
+    position: relative;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(0, 102, 204, 0.18);
+    border-radius: 1.25rem;
+    box-shadow: 0 1.1rem 3rem rgba(10, 37, 64, 0.12);
+  }
+
+  .experience-summary-card::before {
+    content: "";
+    position: absolute;
+    inset: 0.85rem auto 0.85rem 0;
+    width: 4px;
+    background: linear-gradient(#00b3ff, #0066cc);
+    border-radius: 999px;
+  }
+
+  .experience-summary-title {
+    color: var(--experience-navy) !important;
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+
+  .experience-summary-card li {
+    margin-bottom: 0.85rem;
+    color: #36536d;
+    line-height: 1.55;
+  }
+
+  .experience-summary-card li:last-child {
+    margin-bottom: 0;
+  }
+
+  .experience-tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin: 2rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .experience-tech-list li {
+    padding: 0.45rem 0.75rem;
+    color: var(--experience-ink);
+    font-size: 0.88rem;
+    font-weight: 600;
+    background: #ffffff;
+    border: 1px solid var(--experience-border);
+    border-radius: 999px;
+  }
+
+  .experience-section {
+    padding: clamp(4rem, 7vw, 6rem) 0;
+  }
+
+  .experience-section-muted {
+    background: #f6f9fc;
+    border-top: 1px solid #e5edf4;
+    border-bottom: 1px solid #e5edf4;
+  }
+
+  .experience-section-accent {
+    background: linear-gradient(145deg, #eef7ff 0%, #f8fbff 100%);
+    border-top: 1px solid var(--experience-border);
+    border-bottom: 1px solid var(--experience-border);
+  }
+
+  .experience-section-header {
+    max-width: 790px;
+    margin-bottom: 2.25rem;
+  }
+
+  .experience-section-header h2 {
+    margin-bottom: 1rem;
+    color: var(--experience-navy) !important;
+    font-size: clamp(1.85rem, 3vw, 2.6rem);
+    line-height: 1.16;
+    letter-spacing: -0.025em;
+  }
+
+  .experience-section-header p,
+  .experience-prose {
+    max-width: 72ch;
+    color: #405d75 !important;
+    line-height: 1.75;
+  }
+
+  .experience-card {
+    height: 100%;
+    padding: clamp(1.4rem, 2.5vw, 2rem);
+    background: #ffffff;
+    border: 1px solid var(--experience-border);
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(10, 37, 64, 0.055);
+  }
+
+  .experience-card h3 {
+    margin-bottom: 0.8rem;
+    color: var(--experience-navy) !important;
+    font-size: 1.15rem;
+    line-height: 1.35;
+  }
+
+  .experience-card p,
+  .experience-card li {
+    color: #405d75 !important;
+    line-height: 1.68;
+  }
+
+  .experience-card p:last-child,
+  .experience-card ul:last-child {
+    margin-bottom: 0;
+  }
+
+  .experience-card a {
+    font-weight: 600;
+  }
+
+  .experience-feature-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .experience-feature-list li {
+    position: relative;
+    margin-bottom: 1rem;
+    padding-left: 1.25rem;
+    color: #405d75;
+    line-height: 1.65;
+  }
+
+  .experience-feature-list li::before {
+    content: "";
+    position: absolute;
+    top: 0.68em;
+    left: 0;
+    width: 0.48rem;
+    height: 0.48rem;
+    background: var(--experience-blue);
+    border-radius: 50%;
+  }
+
+  .experience-feature-list li:last-child {
+    margin-bottom: 0;
+  }
+
+  .experience-text-link-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  .experience-text-link-group a {
+    font-weight: 600;
+  }
+
+  .experience-feature-panel {
+    height: 100%;
+    padding: clamp(1.6rem, 3vw, 2.35rem);
+    background: #ffffff;
+    border: 1px solid rgba(0, 102, 204, 0.2);
+    border-radius: 1.15rem;
+  }
+
+  .experience-feature-panel h3 {
+    color: var(--experience-navy) !important;
+    font-size: 1.3rem;
+  }
+
+  .experience-link-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1.65rem;
+    background: #ffffff;
+    border: 1px solid var(--experience-border);
+    border-radius: 1rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .experience-link-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0.8rem 1.8rem rgba(10, 37, 64, 0.1);
+  }
+
+  .experience-link-card h3 {
+    font-size: 1.12rem;
+  }
+
+  .experience-link-card p {
+    flex: 1;
+    color: #405d75 !important;
+    line-height: 1.6;
+  }
+
+  .experience-link-card a {
+    font-weight: 700;
+  }
+
+  .experience-cta {
+    padding: clamp(4rem, 8vw, 6.5rem) 0;
+    background: linear-gradient(135deg, #0a2540 0%, #001730 100%);
+  }
+
+  .experience-cta h2,
+  .experience-cta p {
+    color: #ffffff !important;
+  }
+
+  .experience-cta p {
+    max-width: 700px;
+    margin-right: auto;
+    margin-left: auto;
+    color: #d9e7f4 !important;
+  }
+
+  .experience-cta .btn-outline-light:hover {
+    color: var(--experience-navy) !important;
+  }
+
+  .experience-page a:focus-visible {
+    outline: 3px solid #ffbf47;
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 767.98px) {
+    .experience-hero {
+      padding: 3.5rem 0;
+    }
+
+    .experience-hero h1 {
+      max-width: none;
+    }
+
+    .experience-actions {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .experience-actions .btn {
+      width: 100%;
+    }
+
+    .experience-summary-card {
+      margin-top: 1rem;
+    }
+
+    .experience-tech-list {
+      gap: 0.45rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .experience-link-card {
+      transition: none;
+    }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "name": {{ page.title | jsonify }},
+  "description": {{ page.description | jsonify }},
+  "url": {{ page.canonical | jsonify }},
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Bill Vivino",
+    "jobTitle": "Senior Software Engineer and Consultant",
+    "url": {{ page.canonical | jsonify }},
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Bill Vivino Technology, LLC",
+      "url": "https://billvivinotechnology.com/"
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Rutgers University"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/billvivino/",
+      "https://www.upwork.com/freelancers/billvivino"
+    ],
+    "knowsAbout": [
+      "Software architecture",
+      "iOS development",
+      "Swift",
+      "SwiftUI",
+      "Android development",
+      "Kotlin",
+      "React Native",
+      "Web application development",
+      "Backend APIs",
+      "Node.js",
+      "Firebase",
+      "Cloud systems",
+      "AI integrations",
+      "Unity",
+      "Augmented reality"
+    ]
+  }
+}
+</script>
+
+<main class="experience-page">
+  <header class="experience-hero">
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-7">
+          <p class="experience-kicker">Professional Experience</p>
+          <h1 id="experience-title" class="mb-4">
+            Senior Software Consulting &amp; Product Development Experience
+          </h1>
+          <p class="lead mb-4">
+            Bill Vivino works with founders, technical leaders, and organizations
+            that need an experienced development partner—not another layer between
+            the business problem and the engineering work.
+          </p>
+          <p class="experience-prose mb-4">
+            His work spans native and cross-platform mobile applications, web
+            products, backend APIs, cloud systems, AI integrations, Unity, and
+            augmented reality. Engagements range from new product development to
+            architecture, technical rescue, and hands-on delivery inside existing
+            codebases.
+          </p>
+          <div class="experience-actions">
+            <a href="/contact.html" class="btn btn-primary btn-lg">
+              Discuss a Software Project
+            </a>
+            <a href="#selected-experience" class="btn btn-outline-primary btn-lg">
+              View Selected Experience
+            </a>
+          </div>
+
+          <ul class="experience-tech-list" aria-label="Core technologies">
+            <li>Swift &amp; SwiftUI</li>
+            <li>Android &amp; Kotlin</li>
+            <li>React Native</li>
+            <li>Node.js</li>
+            <li>Firebase</li>
+            <li>Cloud &amp; APIs</li>
+            <li>AI Integrations</li>
+            <li>Unity &amp; AR</li>
+          </ul>
+        </div>
+
+        <div class="col-lg-5">
+          <aside class="experience-summary-card" aria-label="Experience at a glance">
+            <p class="experience-summary-title">Experience at a glance</p>
+            <ul class="mb-0 ps-3">
+              <li>Full-stack product work across mobile, web, APIs, data, and cloud</li>
+              <li>Native iOS and Android plus React Native and Unity delivery</li>
+              <li>Architecture, technical leadership, codebase rescue, and release work</li>
+              <li>Products for startups, established businesses, and public-sector teams</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="experience-section" aria-labelledby="professional-overview">
+    <div class="container">
+      <div class="row g-5 align-items-start justify-content-center">
+        <div class="col-lg-7">
+          <div class="experience-section-header mb-0">
+            <p class="experience-kicker">Professional Overview</p>
+            <h2 id="professional-overview">
+              Senior engineering where product and technical decisions meet
+            </h2>
+          </div>
+          <p class="experience-prose">
+            Bill’s experience is strongest in work that crosses boundaries: a
+            mobile feature that depends on the backend, a prototype that needs a
+            durable architecture, a cloud workflow that must serve real users, or
+            an inherited application that has to become maintainable before it can
+            move forward.
+          </p>
+          <p class="experience-prose mb-0">
+            He has led and delivered native iOS, Android, React Native, Unity, web
+            application development, API, database, and cloud work. That breadth
+            supports practical product development—not technology for its own
+            sake—and helps buyers evaluate tradeoffs across the whole system.
+          </p>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="experience-card">
+            <h3>Where this experience is most useful</h3>
+            <ul class="experience-feature-list">
+              <li>New products and focused MVP development</li>
+              <li>Existing app or codebase stabilization</li>
+              <li>Architecture, integration, and system design</li>
+              <li>Hands-on technical leadership through delivery</li>
+            </ul>
+            <div class="experience-text-link-group">
+              <a href="/services.html">Explore software services</a>
+              <a href="/how-i-work/">See how Bill works</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="experience-section experience-section-muted" aria-labelledby="core-expertise">
+    <div class="container">
+      <div class="experience-section-header">
+        <p class="experience-kicker">Core Technical Expertise</p>
+        <h2 id="core-expertise">A cross-platform view of the product</h2>
+        <p>
+          The technology breadth reflects full product responsibility:
+          client applications, services, data, infrastructure, integrations, and
+          the release work that connects them.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-xl-3">
+          <article class="experience-card">
+            <h3>Mobile Applications</h3>
+            <p>
+              iOS with Swift, SwiftUI, UIKit, Combine, StoreKit, Vision, WatchKit,
+              and HealthKit; Android with Kotlin; and cross-platform delivery with
+              React Native, Expo, Flutter, and Unity.
+            </p>
+          </article>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <article class="experience-card">
+            <h3>Web, APIs &amp; Data</h3>
+            <p>
+              React, Next.js, Node.js, Express, Firebase Functions, REST APIs,
+              PostgreSQL, Drizzle ORM, SQL Server, GraphQL, WebSockets, and
+              FHIR-based healthcare interoperability.
+            </p>
+          </article>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <article class="experience-card">
+            <h3>Cloud &amp; Operations</h3>
+            <p>
+              Firebase, Azure, AWS, Docker, BigQuery, Cloud Pub/Sub, deployment,
+              authentication, role-aware access, offline synchronization, and
+              production support.
+            </p>
+          </article>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <article class="experience-card">
+            <h3>AI, Unity &amp; AR</h3>
+            <p>
+              Generative AI application integrations, Apple Vision, TensorFlow.js,
+              Unity/C#, AR Foundation, ARKit, Vuforia, WebAR, computer-vision
+              workflows, and interactive product experiences.
+            </p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="experience-section" aria-labelledby="selected-experience">
+    <div class="container">
+      <div class="experience-section-header">
+        <p class="experience-kicker">Selected Consulting &amp; Product Experience</p>
+        <h2 id="selected-experience">Representative systems and product responsibilities</h2>
+        <p>
+          These examples show the kinds of product and engineering problems Bill
+          has handled across mobile, web, backend, cloud, and specialized systems.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <article class="experience-card">
+            <h3>Surgical Workflow Coordination Platform</h3>
+            <p>
+              Full-stack architecture and delivery across TypeScript, React,
+              Node.js, PostgreSQL, healthcare interoperability standards,
+              real-time communication, native iOS, and native Android. The work
+              includes multi-role workflow modeling, notification logic, relational
+              data design, scheduling integration, authenticated access, and
+              synchronized application state.
+            </p>
+            <p>
+              Relevant capabilities: workflow architecture, full-stack rescue,
+              data modeling, integrations, and cross-platform delivery.
+            </p>
+          </article>
+        </div>
+
+        <div class="col-lg-6">
+          <article class="experience-card">
+            <h3>Industrial Field-Service Operations Platform</h3>
+            <p>
+              Architecture and implementation of a cross-platform mobile
+              application and TypeScript API for industrial field workflows. The
+              system uses hierarchical operational data, offline-capable
+              synchronization, cloud deployment, containerized development,
+              relational storage, secure authentication, search, and deep linking.
+            </p>
+            <p>
+              Relevant capabilities: cross-platform mobile architecture, backend
+              APIs, offline data, cloud operations, and maintainable delivery.
+            </p>
+          </article>
+        </div>
+
+        <div class="col-lg-6">
+          <article class="experience-card">
+            <h3>Mobile Field &amp; Connected-Device Systems</h3>
+            <p>
+              Selected work includes native measurement and mapping tools that
+              integrate external positioning hardware, iOS and Android
+              connected-device control, multilingual offline field collection,
+              and native mobile sharing workflows connected to cross-platform
+              products.
+            </p>
+            <p>
+              Relevant capabilities: device integration, offline workflows,
+              geospatial interfaces, background processing, and native platform
+              extensions.
+            </p>
+          </article>
+        </div>
+
+        <div class="col-lg-6">
+          <article class="experience-card">
+            <h3>Consumer, Community &amp; Creator Products</h3>
+            <p>
+              Product work spans native iOS, native Android, responsive web,
+              cloud backends, and cross-platform applications. Responsibilities
+              include profiles and messaging, media pipelines, notifications,
+              background processing, analytics, subscriptions, interactive
+              drawing and vision features, and store delivery.
+            </p>
+            <p>
+              Relevant capabilities: realtime products, media handling,
+              serverless backends, analytics, subscriptions, and release support.
+            </p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="experience-section experience-section-muted" aria-labelledby="mobile-experience">
+    <div class="container">
+      <div class="experience-section-header">
+        <p class="experience-kicker">Mobile Application Development</p>
+        <h2 id="mobile-experience">Native depth with cross-platform judgment</h2>
+        <p>
+          Mobile work is treated as a complete product system: interface, state,
+          data, authentication, hardware, backend behavior, distribution, and
+          long-term maintenance.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <article class="experience-card">
+            <h3>iOS, Swift &amp; SwiftUI</h3>
+            <p>
+              Native application work across SwiftUI and UIKit, Firebase-backed
+              products, Combine and MVVM state, App Store delivery, StoreKit,
+              Apple Vision, media, maps, WatchOS, HealthKit, and hardware SDKs.
+            </p>
+            <a href="/ios-app-development-consultant.html">
+              View iOS consulting services
+            </a>
+          </article>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <article class="experience-card">
+            <h3>Android, Kotlin &amp; shared products</h3>
+            <p>
+              Native Android work in Kotlin plus React Native/Expo delivery across
+              iOS, Android, and web—including native modules, deep links,
+              background processing, offline behavior, and release workflows.
+            </p>
+            <a href="/react-native-consultant.html">
+              View React Native consulting services
+            </a>
+          </article>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <article class="experience-card">
+            <h3>Connected and spatial experiences</h3>
+            <p>
+              Wireless device communication, external positioning data,
+              watch-to-phone interaction, authenticated device workflows, AR
+              camera experiences, computer vision, and Unity-based mobile delivery.
+            </p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="experience-section" aria-labelledby="web-cloud-ai">
+    <div class="container">
+      <div class="experience-section-header">
+        <p class="experience-kicker">Web, Backend, Cloud &amp; AI</p>
+        <h2 id="web-cloud-ai">The systems behind the interface</h2>
+        <p>
+          Bill’s software consulting work regularly extends beyond the client app
+          into API design, data modeling, identity, cloud deployment, analytics,
+          and AI-enabled workflows.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <article class="experience-card">
+            <h3>Web applications and backend APIs</h3>
+            <p>
+              React and Next.js interfaces connected to Node.js/Express services,
+              Firebase Functions, PostgreSQL, SQL Server, GraphQL, WebSockets, and
+              third-party platforms. Work includes API contracts, auth, real-time
+              behavior, structured data, and operational tooling.
+            </p>
+          </article>
+        </div>
+
+        <div class="col-lg-4">
+          <article class="experience-card">
+            <h3>Cloud and data systems</h3>
+            <p>
+              Firebase, Azure, AWS, Docker, BigQuery, Power BI, Azure Data Factory,
+              Azure SQL, Blob Storage, Cloud Pub/Sub, role-level security, and
+              documented technical handoff across mobile, web, and reporting
+              systems.
+            </p>
+          </article>
+        </div>
+
+        <div class="col-lg-4">
+          <article class="experience-card">
+            <h3>AI integrations in real products</h3>
+            <p>
+              Experience includes a cross-platform generative-AI assistant with
+              secure authentication, progressive responses, source citations, and
+              contextual media; plus native visual-computing features,
+              browser-based segmentation, image-generation workflows, and
+              server-side motion analysis.
+            </p>
+            <a href="/ai-integration-consultant.html">
+              Explore AI integration consulting
+            </a>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="experience-section experience-section-accent" aria-labelledby="public-sector-experience">
+    <div class="container">
+      <div class="experience-section-header">
+        <p class="experience-kicker">Public-Sector Software</p>
+        <h2 id="public-sector-experience">Interactive experiences and internal data systems</h2>
+        <p>
+          Two public-sector consulting engagements demonstrate different sides of
+          delivery: an augmented-reality educational experience and an internal
+          reporting and cloud-data system.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <article class="experience-feature-panel">
+            <h3>Public Science Education AR Experience</h3>
+            <p class="experience-prose">
+              Unity and C# work for a publicly released iOS and Android educational
+              application. Responsibilities included AR models and object
+              interaction, AR and 3D interface behavior, scene and production bug
+              fixes, store delivery, maintenance, and feature updates.
+            </p>
+          </article>
+        </div>
+
+        <div class="col-lg-6">
+          <article class="experience-feature-panel">
+            <h3>Internal Program Reporting &amp; Cloud Data</h3>
+            <p class="experience-prose">
+              In a separate engagement, Bill designed and deployed an internal
+              analytics dashboard supported by multiple data sources and managed
+              cloud services. Responsibilities included data integration,
+              role-aware access, automated refresh workflows, performance work,
+              documentation, and technical handoff.
+            </p>
+            <p class="experience-prose mb-0">
+              Together, the engagements show both sides of the work: a public,
+              interactive mobile experience and a private data system supporting
+              internal decision-making.
+            </p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="experience-section" aria-labelledby="technical-leadership">
+    <div class="container">
+      <div class="row g-5 align-items-start justify-content-center">
+        <div class="col-lg-7">
+          <div class="experience-section-header">
+            <p class="experience-kicker">Technical Leadership &amp; Delivery</p>
+            <h2 id="technical-leadership">Architecture connected to implementation</h2>
+          </div>
+          <p class="experience-prose">
+            Lead roles across mobile, full-stack, GIS, and product work support a
+            practical form of technical leadership: understand the system, find
+            the highest-risk boundary, make the architecture legible, and stay
+            close enough to implementation to validate the decision.
+          </p>
+          <p class="experience-prose mb-0">
+            The underlying work includes re-architecture, API and data-model
+            design, hardware-independent test harnesses, unit-testable services,
+            deployment and distribution, production maintenance, documentation,
+            technical handoff, and collaboration with domain experts and
+            cross-functional teams.
+          </p>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="experience-card">
+            <h3>Delivery approach</h3>
+            <ul class="experience-feature-list">
+              <li>Start with the system’s real constraints</li>
+              <li>Prioritize the highest-leverage technical work</li>
+              <li>Combine review, architecture, and implementation</li>
+              <li>Keep product decisions connected to engineering reality</li>
+            </ul>
+            <div class="experience-text-link-group">
+              <a href="/how-i-work/">Read How I Work</a>
+              <a href="/fractional-cto-technical-advisor.html">
+                Explore technical advisory services
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="experience-section experience-section-muted" aria-labelledby="education-background">
+    <div class="container">
+      <div class="row g-5 justify-content-center">
+        <div class="col-lg-7">
+          <div class="experience-section-header">
+            <p class="experience-kicker">Education &amp; Background</p>
+            <h2 id="education-background">Computer science foundations and product breadth</h2>
+          </div>
+          <p class="experience-prose">
+            Bill earned a Bachelor of Science in Computer Science and a Bachelor
+            of Arts in Music from Rutgers University in 2004, graduating from the
+            Honors Program with a 4.0 GPA in his computer science courses.
+          </p>
+          <p class="experience-prose mb-0">
+            His early background includes computer science internships at IBM and
+            Lucent Technologies. That foundation developed into mobile, web,
+            cloud, game, AR, AI, and full-stack consulting work across a wide
+            range of products and organizations.
+          </p>
+        </div>
+
+        <div class="col-lg-4">
+          <aside class="experience-card">
+            <h3>Additional qualifications</h3>
+            <ul class="experience-feature-list">
+              <li>Software released through major mobile app stores and the web</li>
+              <li>Cloud, data, frontend, backend, and mobile coursework</li>
+              <li>Hands-on consulting across new builds and inherited products</li>
+              <li>Experience communicating technical work to nontechnical stakeholders</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="experience-section" aria-labelledby="selected-work">
+    <div class="container">
+      <div class="experience-section-header">
+        <p class="experience-kicker">Services &amp; Next Steps</p>
+        <h2 id="selected-work">Connect the experience to your project</h2>
+        <p>
+          Review the available services, delivery approach, and engagement options
+          most relevant to your product.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-xl-3">
+          <article class="experience-link-card">
+            <h3>Software Services</h3>
+            <p>Review mobile, web, backend, AI, architecture, and rescue services.</p>
+            <a href="/services.html">Explore software services</a>
+          </article>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <article class="experience-link-card">
+            <h3>Working Together</h3>
+            <p>Understand ownership, scope, collaboration, and delivery expectations.</p>
+            <a href="/how-i-work/">Read How I Work</a>
+          </article>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <article class="experience-link-card">
+            <h3>Engagement Options</h3>
+            <p>Compare focused work blocks for active products and technical decisions.</p>
+            <a href="/pricing.html">Review pricing and engagement options</a>
+          </article>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <article class="experience-link-card">
+            <h3>Start a Conversation</h3>
+            <p>Share the product, codebase, integration, or architecture problem.</p>
+            <a href="/contact.html">Contact Bill about your project</a>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="experience-cta text-center" aria-labelledby="experience-cta-title">
+    <div class="container">
+      <h2 id="experience-cta-title" class="display-6 fw-bold mb-3">
+        Have a product, codebase, or technical decision that needs senior attention?
+      </h2>
+      <p class="lead mb-4">
+        Contact Bill about an existing app, MVP, backend integration, AI feature,
+        architecture review, or technical rescue project.
+      </p>
+      <div class="experience-actions justify-content-center">
+        <a href="/contact.html" class="btn btn-primary btn-lg">
+          Contact Bill About Your Project
+        </a>
+        <a href="/pricing.html" class="btn btn-outline-light btn-lg">
+          Review Pricing &amp; Engagement Options
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
