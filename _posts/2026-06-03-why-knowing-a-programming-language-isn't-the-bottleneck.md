@@ -304,7 +304,7 @@ Or:
 
 The translation happens almost instantly.
 
-What AI cannot do for you is understand:
+AI can also help reason about:
 
 - system architecture
 - business requirements
@@ -316,9 +316,11 @@ What AI cannot do for you is understand:
 
 Those are still the hard parts.
 
+The difference is not access to the tool. AI is table stakes for a new builder and a senior engineer alike. The experienced engineer knows which questions matter, supplies business and production context that may not be visible in the codebase, evaluates competing answers, and remains accountable for the decision.
+
 In other words:
 
-AI is getting very good at translating vocabulary.
+AI is getting very good at translating vocabulary and analyzing engineering decisions.
 
 The vocabulary was never the bottleneck.
 

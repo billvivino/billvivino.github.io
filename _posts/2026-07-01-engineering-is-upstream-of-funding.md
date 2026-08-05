@@ -123,29 +123,27 @@ A production-ready application tells investors something far more valuable than 
 
 This team can build.
 
-## AI Coding Tools Don't Change This
+## AI Coding Tools Make Execution More Accessible
 
-AI doesn't change the equation.
+AI changes how much every founder and engineer can produce. It does not erase the importance of execution.
 
 I use GitHub Copilot and Codex every day. They're extraordinary tools.
 
-Every one of your competitors (competing for the same customers and the same investment dollars) has access to the exact same AI tools.
+Every one of your competitors—competing for the same customers and investment dollars—has access to comparable AI tools.
 
 **AI is rapidly becoming table stakes.**
 
 The competitive advantage isn't access to AI.
 
-The competitive advantage is the quality of the engineers directing it.
+The competitive advantage is how well people direct those tools and turn the output into a product customers can trust.
 
 AI accelerates implementation.
 
-It doesn't replace engineering judgment.
+It lets people apply engineering judgment, architecture, and technical leadership at greater scale. It does not make a first-time builder and a senior engineer equivalent users of the same tool.
 
-It doesn't replace architecture.
+Companies that combine experienced engineers with AI are better positioned to manage architecture, reliability, security, and long-term product ownership than companies treating AI and sweat equity as permanent substitutes for those capabilities.
 
-It doesn't replace technical leadership.
-
-The companies that combine experienced engineers with AI will consistently outperform companies relying on AI and sweat equity.
+This is not unique to software. AI is also table stakes in law, medicine, architecture, analytics, and other knowledge professions. It raises each person's capacity without making domain experience irrelevant or removing the need for human accountability.
 
 That's why I believe paid engineering sits upstream of funding.
 
@@ -161,7 +159,7 @@ It can help build an early prototype.
 
 It can even help validate that a market exists.
 
-But eventually every successful software company reaches the same conclusion:
+As products become consequential, many software companies reach the same conclusion:
 
 Engineering is important enough that we're willing to compete for the best engineers.
 
@@ -185,7 +183,7 @@ As products mature, the engineering problems become more difficult, not less.
 
 Maintaining and evolving a production system for years is a very different commitment than building version one.
 
-That's a distinction I think many founders underestimate, and one that becomes impossible  for a sweat-equity engineering team to sustain as careers, families, and competing opportunities naturally evolve.
+That's a distinction I think many founders underestimate, and one that becomes difficult for a sweat-equity engineering team to sustain as careers, families, and competing opportunities naturally evolve.
 
 Companies that view engineering as a competitive advantage make a different decision.
 

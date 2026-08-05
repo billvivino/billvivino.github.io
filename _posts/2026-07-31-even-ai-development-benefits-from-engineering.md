@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Even AI Development Benefits from Engineering"
-description: "I am using AI to refactor the Discover feed in our social media app, but the work still has to happen in measured stages: isolate the bottleneck, preserve behavior, cache safely, and gradually move expensive ranking calculations off the phone."
+title: "AI-Assisted Refactoring Works Best in Measured Stages"
+description: "I am using AI to refactor the Discover feed in our social media app through measured stages: isolate the bottleneck, preserve behavior, cache safely, and gradually move expensive ranking calculations off the phone."
 date: 2026-07-31
 permalink: /blog/even-ai-development-benefits-from-engineering/
 categories: ai software-development software-engineering mobile-development
@@ -51,13 +51,13 @@ og_image: "/assets/optimized/even-ai-development-benefits-from-engineering.webp"
   }
 </style>
 
-<h1 class="fw-bold">Even AI Development Benefits from Engineering</h1>
+<h1 class="fw-bold">AI-Assisted Refactoring Works Best in Measured Stages</h1>
 
 <p class="text-muted">July 31, 2026 · 7 min read</p>
 
 <div class="tldr-box">
   <strong>TL;DR</strong><br />
-  I am working with AI to refactor the Discover feed in the social media app my brothers and I are building. We are not attempting one enormous rewrite. We are isolating one bottleneck at a time, measuring it on a real device, preserving the current interface, and gradually moving expensive ranking work away from the phone. AI makes each stage faster. It does not eliminate the need to engineer the stages—at least not in 2026.
+  I am working with AI to refactor the Discover feed in the social media app my brothers and I are building. We are isolating one bottleneck at a time, measuring it on a real device, preserving the current interface, and gradually moving expensive ranking work away from the phone. AI makes each stage faster; iterative validation connects that speed to production evidence.
 </div>
 
 <picture class="blog-img-right">
@@ -190,9 +190,9 @@ That is not merely an implementation detail. It defines what “blocked” means
 
 AI can explain the alternatives and write either version. It should not silently choose the product's privacy semantics.
 
-## Why the AI Cannot One-Shot This
+## Why This Refactor Needs Evidence in Stages
 
-A one-shot refactor would have to know, before measuring anything:
+A trustworthy refactor has to answer questions that are not all available before measurement:
 
 * Whether the delay came from images, calculations, or both
 * Which calculations were repeated unnecessarily
@@ -207,9 +207,9 @@ Those answers do not all live in the source code.
 
 Some live in runtime behavior. Some live in product policy. Some appear only after a real person uses the app. Some are economic decisions about Firebase reads, writes, function executions, storage, and complexity.
 
-An AI can propose an impressive end-state architecture in one response.
+AI can propose an impressive end-state architecture in one response.
 
-That does not mean the architecture has earned its way into the product.
+That proposal still has to earn its way into the product through evidence.
 
 The work still needs evidence.
 
@@ -230,12 +230,8 @@ The advantage becomes stronger when it is paired with engineering discipline:
 * A migration path that preserves the interface
 * Honest separation between what exists now and what comes later
 
-AI does not make those habits obsolete.
+AI makes the feedback loop around those habits faster.
 
-It makes the feedback loop around them faster.
+It is table stakes: a new builder can take on far more of this work, while a senior engineer can use the same tools to apply architecture, debugging, and production judgment across every stage.
 
-At least in 2026, even AI cannot one-shot a careful refactor of a real social feed with performance, ranking, privacy, and cost constraints.
-
-It can help us move through the stages much faster.
-
-We still have to engineer the stages.
+The tool raises both baselines. The difference is still visible in how the stages are designed, measured, and owned.

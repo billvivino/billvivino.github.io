@@ -57,13 +57,13 @@ og_image: "/assets/optimized/ai-coding-production-execution-layer.webp"
   />
 </picture>
 
-I use tools like Codex while building real production software—not throwaway demos or one-shot landing pages, but enterprise systems used in healthcare and manufacturing operations.
+I use tools like Codex while building production enterprise systems used in healthcare and manufacturing operations.
 
 These systems involve native iOS and Android applications, web interfaces, backend APIs, databases, permissions, reporting, workflow rules, and multiple repositories that all have to remain aligned.
 
 AI absolutely helps. It can generate a first implementation, trace unfamiliar code, suggest tests, identify related files, draft documentation, and accelerate repetitive work.
 
-But my experience has been almost the opposite of the popular story that AI has eliminated the need for software engineers.
+My experience is more nuanced than the popular story that access to AI makes software-engineering experience irrelevant.
 
 To make Codex useful on a large project, I first have to build an execution environment around it.
 
@@ -75,7 +75,7 @@ That is part of why I began using BMAD.
 
 BMAD is not a magic coding agent. It is a structured way of giving the model product context, architecture documentation, implementation stories, acceptance criteria, engineering conventions, and explicit instructions about how the project should work.
 
-I also have to point Codex toward the right context through repository instructions, architecture documents, and project-specific guidance. Without that scaffolding, it often makes locally reasonable changes that are globally wrong.
+I also have to point Codex toward the right context through repository instructions, architecture documents, and project-specific guidance. Without that scaffolding, it can make locally reasonable changes that are misaligned with the broader system.
 
 Even with the documentation, the AI still has to be supervised.
 
@@ -93,13 +93,13 @@ Then you examine the actual behavior and discover that the model:
 - Added abstractions and fallback logic that made the system more complicated without making it more correct.
 - Assumed two similarly named concepts meant the same thing when the business treats them differently.
 
-This is particularly dangerous in enterprise software because many of the most important rules are not obvious from an individual function.
+This is particularly consequential in enterprise software because many of the most important rules are not obvious from an individual function.
 
 For example, “deleting” something may really mean canceling it while retaining history. Restoring a parent record may or may not restore every relationship beneath it. A user may be allowed to view a workflow without being allowed to modify its documents. A backend change may affect native mobile clients, reporting exports, and technician applications in different ways.
 
-The model can write code for any one of those behaviors.
+The model can write code for any one of those behaviors and can help compare the tradeoffs.
 
-It cannot independently decide which behavior the business actually intends.
+The result still needs business intent to be supplied and confirmed before anyone can trust which behavior belongs in production.
 
 ## My Real Workflow Still Looks Like Engineering
 
@@ -152,33 +152,31 @@ When I say AI still needs an execution layer, I mean the person or team responsi
 - Deciding what not to build
 - Taking responsibility when the system reaches production
 
-That layer cannot be replaced by producing more code.
+Producing more code by itself does not replace that layer.
 
 In many cases, producing code is no longer the bottleneck. Determining which code should exist—and proving that it works inside the larger system—is the bottleneck.
 
-## One-Shot Software Is Mostly a Category Error
+## One-Shot Software Depends on the Category
 
 There are products that can be generated quickly. Some are genuinely useful. AI has made prototypes, internal utilities, simple websites, and narrow applications dramatically cheaper to create.
 
-But software that can be reliably one-shotted was generally not the type of software a senior engineer was being hired to build in the first place.
+Whether software can be reliably generated in one pass depends on its scope, existing constraints, and consequences. The projects that call for senior engineering usually involve incomplete requirements, existing systems, messy data, competing stakeholders, exceptional workflows, or meaningful failure costs.
 
-The difficult projects are difficult because the requirements are incomplete, the systems already exist, the data is messy, the stakeholders disagree, the workflows contain exceptions, and the consequences of failure matter.
+Faster code generation helps with all of those projects, but it does not make those conditions disappear.
 
-Those conditions do not disappear because code generation becomes faster.
-
-In some ways, faster code generation makes judgment more important. A model can now produce the wrong implementation at extraordinary speed.
+In some ways, faster code generation makes judgment more important. A model can now produce an unverified implementation at extraordinary speed.
 
 ## AI Is Becoming Table Stakes, Not a Permanent Advantage
 
-I expect AI-assisted development to become normal. Every serious engineering organization will have access to capable models. Your competitors will have them too.
+AI-assisted development is becoming normal. Founders, new builders, senior engineers, and competitors all have access to capable models.
 
 The durable advantage will not be access to code generation.
 
 It will be the ability to combine those tools with sound judgment, domain understanding, technical depth, and disciplined execution.
 
-I am not anti-AI. I use it. I am actively improving the documentation and workflows that make it more effective.
+I use AI every day, and I am actively improving the documentation and workflows that make it more effective.
 
-But the more I use these tools inside real production systems, the less credible I find the idea that the tool itself is the engineering team.
+The more I use these tools inside real production systems, the more clearly I see the distinction between access to the tool and responsibility for the system.
 
 AI can accelerate the work.
 

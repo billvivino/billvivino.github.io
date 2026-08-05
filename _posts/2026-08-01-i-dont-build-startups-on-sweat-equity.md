@@ -109,23 +109,15 @@ My role isn't to replace Steve Wozniak.
 
 My role is to replace the missing technical founder once a company decides engineering deserves real, paid investment.
 
-## AI Does Not "Make Everyone a Technical Founder Now"
+## AI Is Table Stakes. Experience Still Compounds.
 
-One place I would push back is the role AI is going to play here.
+AI changes the economics of building software. Nontechnical founders can prototype, debug, and ship far more than before. Senior engineers have access to the same tools.
 
-I use Copilot and Codex every day, so I'm probably more bullish on AI than most engineers.
+Access to AI does not erase differences in architecture, debugging, security, product judgment, or production experience. It amplifies whatever knowledge the operator brings. A founder may need less paid engineering than before, but that does not make a first-time builder equivalent to a senior engineer using the same leverage—and it does not turn unpaid engineering into a fair compensation model.
 
-But AI doesn't change the fundamental economics for a non-technical founder.
+This pattern is not unique to software. Lawyers, doctors, architects, surveyors, analysts, and other knowledge professionals all have access to increasingly capable AI. The tools expand what people can do; the expertise and accountability of the person using them still matter.
 
-It dramatically increases the productivity of experienced engineers.
-
-I don't think it replaces the need for them.
-
-The technical-founder examples people point to, like Microsoft, Apple, or Stripe, were built by extraordinary engineers who were also the founders.
-
-That is a very different situation than a non-technical founder relying primarily on sweat equity and AI.
-
-My experience has been almost the opposite.
+The technical-founder examples people point to, like Microsoft, Apple, or Stripe, were built by extraordinary engineers who were also the founders. AI gives today's founders substantially more technical reach, but it does not make experience irrelevant or make sweat equity the right model for my business.
 
 The companies I've had the longest and most successful relationships with invested in professional engineering early because they viewed engineering as one of the things that would make the company fundable and reduce execution risk.
 
@@ -143,13 +135,9 @@ Before serious funding conversations could move forward, the product had to actu
 
 It had to become reliable enough for real customers, real operations, and real investor scrutiny.
 
-That is where AI alone falls short for non-technical founders.
+AI can accelerate the entire journey, not just the early experiment. But as the product becomes consequential, the work also expands into architecture, operations, security, integrations, testing, and long-term ownership.
 
-AI can accelerate experimentation.
-
-It can help someone get from idea to demo faster than ever before.
-
-But getting from promising demo to dependable product is a different kind of work.
+Getting from promising demo to dependable product requires those concerns to be handled, whether the founder develops that expertise, hires it internally, or brings in outside help.
 
 Before that, they were self-funded.
 
@@ -170,6 +158,16 @@ Engineering wasn't simply a cost.
 It became part of the fundraising story.
 
 That's why I believe founders who view engineering as a strategic business investment dramatically reduce execution risk.
+
+## Code Generation Does Not Replace System Ownership
+
+I have also had clients take AI-assisted development fully in-house, believing they can continue adding features indefinitely while focusing on the many other demands of running a business.
+
+That may work for a while. AI can keep producing features and help a founder solve problems that once required a larger team.
+
+But continued code generation is not the same as continued system health. Inexperienced decisions can accumulate in data models, permissions, state management, integrations, testing, deployment, and operations. AI accelerates those decisions; it does not make their consequences disappear.
+
+If the product continues to grow and matter, senior engineering judgment eventually has to enter the system—whether the founder develops that expertise, hires it internally, or brings in outside help.
 
 ## My Clients Look Different
 

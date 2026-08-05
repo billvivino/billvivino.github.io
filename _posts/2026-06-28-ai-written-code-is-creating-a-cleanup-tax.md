@@ -142,11 +142,9 @@ It may introduce a dependency that works today but complicates deployment later.
 
 That is not always a model failure.
 
-It is often a context problem.
+It is often a context and ownership problem. AI can inspect a repository and reason across the system when the relevant context is available.
 
-The AI sees the task.
-
-A senior engineer has to see the system.
+A senior engineer brings accumulated context, recognizes which tradeoffs matter, evaluates the consequences, and remains accountable for whether the change belongs.
 
 ## This Is Where Human Engineering Becomes More Valuable
 

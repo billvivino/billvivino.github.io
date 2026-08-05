@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Everyone Has a Junior Developer Now"
+title: "AI Makes Code Generation Cheap. Review Is the Bottleneck."
 date: 2026-05-17
 og_image: "/assets/optimized/everyone-has-a-junior-developer-now.webp"
-description: "AI coding agents feel less like senior engineers and more like extremely fast junior developers who make confident assumptions. That changes software development — but maybe not in the way people think."
+description: "AI coding agents give everyone a high-throughput development partner. As generation accelerates, context, review, and accountable validation become the bottleneck."
 ---
 
 <style>
@@ -52,7 +52,7 @@ description: "AI coding agents feel less like senior engineers and more like ext
 
 <div class="tldr-box">
   <strong>TL;DR</strong><br />
-  AI coding agents currently behave less like senior engineers and more like extremely fast junior developers. They generate huge amounts of code quickly, but also make aggressive assumptions that increase review burden, architectural risk, and hidden technical debt.
+  AI coding agents give everyone a high-throughput development partner. They raise the amount of software any person can produce, while shifting more of the bottleneck into context, review, architecture, and accountable validation.
 </div>
 
 <picture class="blog-img-right">
@@ -60,24 +60,24 @@ description: "AI coding agents feel less like senior engineers and more like ext
   <source srcset="/assets/optimized/everyone-has-a-junior-developer-now.webp" type="image/webp" />
   <img
     src="/assets/optimized/everyone-has-a-junior-developer-now.webp"
-    alt="Illustration representing an AI coding assistant acting like a junior developer under supervision"
+    alt="Illustration representing a high-throughput AI coding partner working inside an engineering review process"
     width="300"
     loading="lazy"
     decoding="async"
   />
 </picture>
 
-I finally spent some real time using AI coding agents directly instead of just talking about them from the sidelines. And my immediate reaction was not:
+When I first spent real time using AI coding agents directly, my immediate reaction was not:
 
 > “This replaces engineers.”
 
 It was:
 
-> “Everyone now has access to an extremely fast junior developer.”
+> “Everyone now has access to a high-throughput development partner.”
 
-That sounds impressive until you remember what managing junior developers is actually like. The issue wasn’t that the AI couldn’t produce code. It produced *tons* of code. Rapidly. Confidently. Relentlessly.
+That is a meaningful change. The AI produced *tons* of code—rapidly and confidently. It lowered the barrier to implementation and let me explore more possibilities in less time.
 
-The issue was the assumptions.
+It also made assumptions that needed review.
 
 The loose typing.  
 The inferred architecture.  
@@ -98,11 +98,11 @@ function process(data: any) {
 
 Or entire assumptions about backend response shapes that were never specified.
 
-The AI would happily move forward by collapsing uncertainty into guesses.
+When necessary context was absent, the agent sometimes moved forward by turning uncertainty into unverified assumptions.
 
-## AI coding agents optimize for forward motion, not correctness
+## AI coding agents often optimize for forward motion
 
-Human senior engineers usually pause at ambiguity.  
+Experienced engineers learn to recognize when ambiguity matters.
 They ask questions like:
 
 * “What’s the actual API contract?”
@@ -111,17 +111,16 @@ They ask questions like:
 * “Is this supposed to fail loudly or silently?”
 * “Do we control this type upstream?”
 
-Good engineers are often slower precisely because they resist making assumptions.  
-AI agents do the opposite.  
-They aggressively resolve ambiguity because stalling looks like failure.
+That pause is not resistance to progress. It is part of establishing what "correct" means.
+An AI agent asked only to move a feature forward will often infer missing details and keep going. Better instructions, tests, and project context can improve that behavior, but the assumptions still need to be visible and verified.
 
-That creates an uncanny experience where the output looks productive while quietly accumulating technical risk underneath.
+The output can look productive while technical risk remains underneath.
 
 ---
 
-## The real bottleneck wasn’t typing speed anyway
+## The real bottleneck was not typing speed
 
-A lot of the AI hype assumes software engineering is fundamentally limited by how quickly humans can write syntax.  
+Many AI productivity claims focus on how quickly people can generate syntax.
 But in most professional systems, that isn’t the bottleneck.  
 The bottlenecks are things like:
 
@@ -136,13 +135,13 @@ The bottlenecks are things like:
 
 The actual act of typing code is often the easy part.
 
-This is why using AI coding agents can feel strangely similar to supervising a junior developer:
+This is why the review loop matters even when an AI coding agent is moving quickly:
 
 * they move fast
 * they generate volume
 * they create momentum
-* they occasionally do impressive things
-* but you still have to review everything carefully
+* they can solve substantial problems
+* consequential changes still need careful review
 
 And critically:
 
@@ -152,10 +151,9 @@ In some cases, it increases.
 
 ---
 
-## “But it made me faster”
+## It Made Me Faster
 
-Sure.  
-I think AI absolutely increases local velocity.  
+AI absolutely increases local velocity.
 Especially for:
 
 * boilerplate
@@ -182,13 +180,11 @@ Especially on large production systems.
 
 ---
 
-## The hidden cost: confidence inflation
+## The hidden cost: unverified confidence
 
-One thing I noticed immediately is that AI-generated code often arrives with a level of confidence disproportionate to its correctness.  
-That’s dangerous organizationally.  
-A weak junior developer usually signals uncertainty visibly.  
-AI often does not.  
-So companies may accidentally absorb large amounts of:
+One thing I noticed immediately is that AI-generated code can arrive with a level of confidence disproportionate to the available evidence.
+That creates organizational risk when fluent output is treated as verified output.
+Companies may accidentally absorb large amounts of:
 
 * subtly incorrect logic
 * fragile assumptions
@@ -225,7 +221,7 @@ They’re built around:
 * risk management
 * long-term architecture
 
-And those are still deeply human judgment problems.
+And those still benefit from human judgment and accountability.
 
 ---
 
@@ -249,8 +245,9 @@ It becomes:
 > “Who can correctly judge the code being produced?”
 
 That’s a very different skill.  
-And right now, I’m not convinced the underlying LLM technology is precise enough to eliminate that layer.  
-At least not yet.
+AI is table stakes. A founder with AI can build far more than before, and a senior engineer with access to the same AI can apply years of architecture, debugging, and production judgment at greater scale. Both baselines rise; they do not become equal.
+
+The same pattern appears across law, medicine, architecture, analytics, and other knowledge professions. AI increases individual power, while people remain responsible for deciding what the output means and whether it is ready to use.
 
 <p class="mt-4">
   Need help stabilizing, rebuilding, or scaling a software system?

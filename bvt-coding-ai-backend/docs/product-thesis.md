@@ -1,9 +1,13 @@
 # Product Thesis
 
-The original part of BVT Coding AI is not that it runs a model locally. Anyone
-can run a model locally.
+AI is table stakes. Open models give founders, engineers, and product teams
+meaningful new implementation power. BVT Coding AI starts with that widely
+available capability and connects it to a focused engineering workflow.
 
-The original part is the opinionated engineering product around the model:
+Access to the same model does not flatten the difference between novice and
+expert. The product applies BVT's accumulated architecture, debugging,
+security, and production judgment through retrieval, evaluation, operational
+controls, and clear escalation paths:
 
 - It understands the kinds of questions potential clients ask before hiring a
   software developer.
@@ -12,7 +16,7 @@ The original part is the opinionated engineering product around the model:
 - It retrieves from Bill Vivino Technology's own writing, tools, case studies,
   and engineering philosophy.
 - It is evaluated against realistic client questions.
-- It knows when the answer should become a paid human review.
+- It identifies high-stakes questions that need qualified human review.
 - It runs on hardware controlled by BVT, giving the case study a local-first
   hosting story.
 
@@ -20,9 +24,9 @@ The original part is the opinionated engineering product around the model:
 
 Use this framing:
 
-> A self-hosted coding AI portal built with a local open-weight model, custom
-> retrieval, custom evaluation, and a client-intake workflow for software
-> consulting.
+> A self-hosted coding AI portal that combines a local open-weight model with
+> BVT-specific retrieval, evaluation, client intake, operational controls, and
+> high-stakes human review.
 
 Avoid this framing:
 

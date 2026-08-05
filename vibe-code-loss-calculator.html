@@ -1,13 +1,13 @@
 ---
 layout: default
-title: "Vibe Code Loss Calculator (2026)"
-description: "Estimate how much money your startup may have already lost due to vibe coding, rewrites, and lack of technical ownership. Built for founders, CTOs, and product teams."
+title: "AI-Assisted Build Readiness Check (2026)"
+description: "Get a directional readiness band and next review action for an AI-assisted software project using technical ownership, tests, production history, and prior rework."
 breadcrumbs:
   - name: "Home"
     url: "https://billvivinotechnology.com/"
   - name: "Software Decision Toolbox"
     url: "https://billvivinotechnology.com/toolbox.html"
-  - name: "Vibe Code Loss Calculator"
+  - name: "AI-Assisted Build Readiness Check"
     url: "https://billvivinotechnology.com/vibe-code-loss-calculator.html"
 ---
 
@@ -17,20 +17,20 @@ breadcrumbs:
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "name": "Vibe Code Loss Calculator",
+      "name": "AI-Assisted Build Readiness Check",
       "applicationCategory": "DeveloperApplication",
       "operatingSystem": "Web",
-      "description": "A calculator that estimates hidden engineering and opportunity costs caused by AI-first, vibe-coded development workflows.",
+      "description": "A directional readiness check that recommends a next review action from observable project controls and history, regardless of whether the code was written by people, AI, or both.",
       "offers": {
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD"
       },
       "featureList": [
-        "Startup rewrite cost estimation",
+        "Software readiness action guidance",
         "Technical ownership risk analysis",
-        "Vibe coding cost modeling",
-        "Engineering debt projection"
+        "Production-control readiness review",
+        "Rework history assessment"
       ]
     },
     {
@@ -38,18 +38,18 @@ breadcrumbs:
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "What is vibe coding?",
+          "name": "Does using AI make a software project less ready?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Vibe coding is an AI-first development approach where code is generated rapidly without deep architectural planning, often leading to rewrites and technical debt."
+            "text": "No. AI use is not a risk factor by itself. Readiness depends on observable controls such as technical ownership, tests, documented data contracts, repeatable deployments, monitoring, and the project's actual rework and incident history."
           }
         },
         {
           "@type": "Question",
-          "name": "Why does vibe coding cost more over time?",
+          "name": "Why does technical ownership still matter when AI writes code?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "While vibe coding feels fast initially, it often leads to rewrites, delays, and senior engineering cleanup that increase total project cost."
+            "text": "AI gives every builder more implementation power, but it does not flatten the difference between novice and expert judgment. Clear ownership connects generated output to architecture, verification, operations, and accountable decisions."
           }
         },
         {
@@ -57,16 +57,16 @@ breadcrumbs:
           "name": "Is this calculator exact?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. It provides directional estimates based on common startup patterns observed in real-world projects."
+            "text": "No. It provides a directional readiness band and next action from the answers supplied. It is not an audit or prediction that a rewrite will occur."
           }
         }
       ]
     },
     {
       "@type": "WebPage",
-      "name": "Vibe Code Loss Calculator",
-      "description": "Estimate the hidden cost of AI-driven development shortcuts.",
-      "dateModified": "2026-01-01"
+      "name": "AI-Assisted Build Readiness Check",
+      "description": "Get a directional readiness band and next action from technical ownership, production controls, and actual project history.",
+      "dateModified": "2026-08-02"
     }
   ]
 }
@@ -82,50 +82,49 @@ breadcrumbs:
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
     border-radius: 1rem;
   }
-  .loss-range {
-    font-size: 2rem;
+  .readiness-result {
+    font-size: 1.5rem;
     font-weight: 700;
+  }
+  .calc-group {
+    margin-bottom: 1rem;
+  }
+  .calc-group > label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+  }
+  .calc-group select {
+    box-sizing: border-box;
+    max-width: 100%;
+    padding: 0.5rem;
+    width: 100%;
+  }
+  .checkboxes label {
+    align-items: flex-start;
+    display: flex;
+    font-weight: 400;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .checkboxes input {
+    flex: 0 0 auto;
+    margin-top: 0.25rem;
   }
   .fine-print {
     color: #666;
     font-size: 0.9rem;
   }
-  .severity-meter {
-    margin-top: 1rem;
-    background: #eee;
-    border-radius: 0.5rem;
-    height: 1.5rem;
-    overflow: hidden;
-    position: relative;
-  }
-  .severity-bar {
-    background: #ff5722;
-    height: 100%;
-    width: 0%;
-    transition: width 0.8s ease-out;
-    border-radius: 0.5rem 0 0 0.5rem;
-  }
-  .severity-label {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    font-weight: 600;
-    color: #fff;
-    font-size: 0.9rem;
-    line-height: 1.5rem;
-    user-select: none;
-  }
 </style>
 
 <header class="text-center mt-4">
   <h1 class="display-5 fw-bold">
-    Vibe Code Loss Calculator (2026)
+    AI-Assisted Build Readiness Check (2026)
   </h1>
   <p class="lead">
-    Estimate how much money your project may have already lost due to
-    “fast” AI-driven development.<br />
-    Built from real startup postmortems — not theory.
+    AI is table stakes. This check looks at the engineering controls around the
+    code—not whether a person, an AI agent, or both produced it.<br />
+    Use it to identify a directional readiness band and the next review action.
   </p>
 </header>
 
@@ -133,14 +132,14 @@ breadcrumbs:
 
   <!-- Calculator -->
   <section class="calculator">
-    <h2>Estimate Your Hidden Cost</h2>
+    <h2>Assess Your Current Build Controls</h2>
     <p>
-      This calculator estimates *money already lost* — not future spend —
-      from rewrites, delays, and lack of technical ownership.
+      Answer from the current state of the project. The assessment is based on
+      ownership, controls, incidents, and rework already observed—not AI usage.
     </p>
 
     <div class="calc-group">
-      <label>Project stage</label>
+      <label for="stage">Project stage</label>
       <select id="stage">
         <option value="idea">Idea / Demo</option>
         <option value="mvp">MVP / Pilot</option>
@@ -150,25 +149,25 @@ breadcrumbs:
     </div>
 
     <div class="calc-group">
-      <label>How was the app built?</label>
-      <select id="buildMethod">
-        <option value="vibe">Mostly AI / vibe coding</option>
-        <option value="mixed">AI + manual coding</option>
-        <option value="senior">Senior engineer from start</option>
+      <label for="reviewMaturity">How consistently is technical review and ownership applied?</label>
+      <select id="reviewMaturity">
+        <option value="limited">Limited — decisions are mostly ad hoc</option>
+        <option value="periodic" selected>Periodic — major changes are reviewed</option>
+        <option value="continuous">Continuous — one accountable owner reviews the system</option>
       </select>
     </div>
 
     <div class="calc-group">
-      <label>Number of developers involved</label>
-      <select id="devCount">
-        <option value="1">1</option>
-        <option value="2">2–3</option>
-        <option value="4">4+</option>
+      <label for="issueHistory">What does the production issue history look like?</label>
+      <select id="issueHistory">
+        <option value="none">Not in production / no material issues observed</option>
+        <option value="occasional">Occasional regressions or incidents</option>
+        <option value="repeated">Repeated regressions or incidents</option>
       </select>
     </div>
 
     <div class="calc-group">
-      <label>How many times has the code been reworked?</label>
+      <label for="rewrites">How much rework has already occurred?</label>
       <select id="rewrites">
         <option value="none">None</option>
         <option value="refactor">Some refactors</option>
@@ -180,351 +179,266 @@ breadcrumbs:
     <div class="calc-group">
       <label>Check all that apply:</label>
       <div class="checkboxes">
-        <label><input type="checkbox" class="penalty" /> No automated tests</label>
-        <label><input type="checkbox" class="penalty" /> No clear data model</label>
-        <label><input type="checkbox" class="penalty" /> No single technical owner</label>
-        <label><input type="checkbox" class="penalty" /> Multiple people touching everything</label>
+        <label><input type="checkbox" class="control-gap" /> No automated tests for critical paths</label>
+        <label><input type="checkbox" class="control-gap" /> No documented data model or contracts</label>
+        <label><input type="checkbox" class="control-gap" /> No repeatable deployment and rollback process</label>
+        <label><input type="checkbox" class="control-gap" /> No monitoring or error visibility</label>
       </div>
     </div>
 
-    <button class="btn btn-primary w-100" onclick="calculateLoss()">
-      Calculate Loss
+    <button type="button" class="btn btn-primary w-100" onclick="calculateReadiness()">
+      Check Build Readiness
     </button>
 
-    <div id="result" class="result mt-4" style="display:none;"></div>
-    <div id="severityMeter" class="severity-meter" style="display:none;">
-      <div class="severity-bar"></div>
-      <div class="severity-label"></div>
-    </div>
-    <div id="vortex" class="alert alert-warning mt-3" style="display:none;">
-      <strong>You’re in the vortex.</strong><br />
-      This pattern almost always leads to a rewrite unless technical ownership is clarified.
+    <div id="result" class="result mt-4" role="status" aria-live="polite" style="display:none;"></div>
+    <div id="attention" class="alert alert-warning mt-3" role="alert" aria-live="assertive" style="display:none;">
+      <strong>Several readiness signals need attention.</strong><br />
+      The current answers show multiple signals across ownership, controls,
+      incidents, project exposure, or prior rework.
       <p class="mt-2 mb-2">
-        You don’t fix this by coding faster — you fix it by clarifying ownership, scope, and constraints.
+        Clarify ownership, stabilize the highest-risk path, and verify the system before expanding scope.
       </p>
       <a href="/contact.html" class="btn btn-warning btn-sm">
-        Show me how to get out of the vortex
+        Discuss a focused technical review
       </a>
     </div>
-    <div id="rewriteTimeline" class="alert alert-info mt-3" style="display:none;"></div>
-    <div id="rewriteEffort" class="alert alert-secondary mt-3" style="display:none;"></div>
   </section>
 
   <hr />
 
   <section class="mt-5">
-    <h2>Rewrite Probability Calculator</h2>
+    <h2>Rewrite Risk Check</h2>
     <p>
-      Estimate how likely your current trajectory is to require a major rewrite.
+      Review whether the current answers suggest incremental hardening, a
+      focused technical assessment, or broader recovery planning.
     </p>
 
-    <button class="btn btn-outline-danger w-100" onclick="calculateRewriteRisk()">
+    <button type="button" class="btn btn-outline-primary w-100" onclick="calculateRewriteRisk()">
       Calculate Rewrite Risk
     </button>
 
-    <div id="rewriteResult" class="mt-3" style="display:none;"></div>
+    <div id="rewriteResult" class="mt-3" role="status" aria-live="polite" style="display:none;"></div>
   </section>
 
   <!-- Article Content -->
   <section class="mt-5">
-    <h2>What Is the Vibe Code Loss Calculator?</h2>
+    <h2>What Is the AI-Assisted Build Readiness Check?</h2>
     <p>
-      This tool exists because many startups don’t fail due to lack of effort —
-      they fail due to *invisible technical debt* accumulated early.
+      AI gives founders and engineers more implementation power. It can help a
+      small team prototype, ship, debug, and maintain far more software than
+      before.
     </p>
 
     <p>
-      AI-first development can feel productive, but without architectural ownership,
-      teams often discover the real cost later:
-      rewrites, stalled pilots, missed launches, and lost credibility.
+      That leverage does not make every operator equivalent. A senior engineer
+      uses the same AI with years of architecture, debugging, security, and
+      production judgment. The tool raises both baselines; it does not flatten
+      the difference between them.
     </p>
 
-    <h3>Why “Fast” Code Becomes Expensive</h3>
+    <h3>What This Check Measures</h3>
     <ul>
-      <li>Multiple developers touching the same logic</li>
-      <li>No clear data ownership</li>
-      <li>Features added without constraints</li>
-      <li>Rewrites disguised as “refactors”</li>
+      <li>Whether one person is accountable for technical decisions</li>
+      <li>Whether tests, data contracts, deployments, and monitoring are in place</li>
+      <li>Whether regressions, incidents, or major rework have already occurred</li>
+      <li>How much operational exposure the current project stage creates</li>
     </ul>
 
     <p>
-      By the time a senior engineer is brought in, the cost is already sunk.
-      This calculator models that reality.
+      It does not score how the code was generated. AI-assisted and fully manual
+      projects can both be well engineered or poorly controlled.
     </p>
 
     <h3>Who This Is For</h3>
     <ul>
       <li>Founders evaluating rewrite risk</li>
-      <li>CTOs inheriting AI-generated codebases</li>
+      <li>CTOs inheriting fast-growing codebases</li>
       <li>Investors doing technical diligence</li>
       <li>Teams feeling “stuck” despite progress</li>
     </ul>
 
-    <h3>How to Use This Number</h3>
+    <h3>How to Use This Result</h3>
     <p>
-      Treat this estimate as a signal — not a verdict.
-      If the number surprises you, it usually means the architecture hasn’t been
-      explicitly owned yet.
+      Use the readiness band to decide what to inspect next. It is a planning
+      signal—not an audit finding or automatic recommendation to rewrite.
     </p>
 
     <p class="fine-print">
-      The fastest teams are not the ones who write code the quickest —
-      they’re the ones who avoid rewriting it.
+      AI makes implementation faster for everyone. Durable speed comes from
+      pairing that leverage with ownership, verification, and operational feedback.
     </p>
 
     <a href="/contact.html" class="btn btn-success mt-3">
-      Book a technical reality check
+      Request a focused architecture review
     </a>
+
+    <h3 class="mt-5">Frequently Asked Questions</h3>
+    <h4>Does using AI make a software project less ready?</h4>
+    <p>
+      No. AI use is not a risk factor by itself. Readiness depends on observable
+      controls such as technical ownership, tests, documented data contracts,
+      repeatable deployments, monitoring, and the project's actual rework and
+      incident history.
+    </p>
+    <h4>Why does technical ownership still matter when AI writes code?</h4>
+    <p>
+      AI gives every builder more implementation power, but it does not flatten
+      the difference between novice and expert judgment. Clear ownership connects
+      generated output to architecture, verification, operations, and accountable
+      decisions.
+    </p>
+    <h4>Is this calculator exact?</h4>
+    <p>
+      No. It provides a directional readiness band and next action from the
+      answers supplied. It is not an audit or prediction that a rewrite will
+      occur.
+    </p>
   </section>
 
   <section class="mt-5">
-    <h2>Why “Just One More Rewrite” Is a Lie</h2>
+    <h2>Why a Rewrite Alone May Not Solve the Problem</h2>
     <p>
       Rewrites often feel like corrective measures, a chance to fix what went wrong.
-      But more often than not, they repeat the same failures around ownership and accountability that caused the problem in the first place.
+      But a new codebase can reproduce the same ownership and accountability
+      gaps that affected the previous one.
     </p>
     <p>
-      Founders frequently blame the tools or frameworks for architectural shortcomings,
-      when the real issue lies in unclear decision rights and lack of technical leadership.
-      Without clear ownership, the same patterns emerge again and again.
+      Teams may initially focus on tools or frameworks when architectural
+      problems appear, while the evidence may instead point to unclear decision
+      rights or ownership.
+      Without clear ownership, the same patterns can return.
     </p>
     <p>
-      Each rewrite resets velocity back to zero, erasing hard-won progress and momentum.
-      What feels like a fresh start is often just revisiting the same challenges under a different name.
+      Each rewrite also carries migration, validation, and opportunity costs.
+      Sometimes it is justified; in other cases, incremental hardening is the
+      safer path.
     </p>
     <p>
-      Senior engineers recognize this pattern early and push for clarity in ownership and scope before investing time in rewrites.
-      Ignoring these signals usually leads to repeated cycles of frustration and lost time.
+      Experienced engineers use AI too. Their advantage is the ability to connect
+      faster implementation with system history, risk, tradeoffs, and a viable
+      migration plan before committing to a rewrite.
     </p>
     <p>
       Understanding this cycle is the first step toward breaking it — and building software that lasts.
     </p>
     <a href="/contact.html" class="btn btn-primary mt-3">
-      Talk to someone who’s seen this movie before
+      Discuss the evidence with a senior engineer
     </a>
   </section>
 </main>
 
 <script>
-function estimateRewriteEffort(stage) {
-  switch (stage) {
-    case "idea":
-      return "2–4 months (small MVP, limited surface area)";
-    case "mvp":
-      return "4–6 months (pilot-grade rewrite with real users)";
-    case "live":
-      return "6–12 months (live users, production hardening)";
-    case "revenue":
-      return "9–18+ months (revenue system with operational risk)";
-    default:
-      return "Unknown";
-  }
-}
-function calculateLoss() {
-  const stage = document.getElementById("stage").value;
-  const buildMethod = document.getElementById("buildMethod").value;
-  const devCount = document.getElementById("devCount").value;
-  const rewrites = document.getElementById("rewrites").value;
-  const penalties = document.querySelectorAll(".penalty:checked").length;
-
-  let baseLoss = 5000;
-
-  const stageMultiplier = { idea: 1, mvp: 2, live: 3, revenue: 4 };
-  const buildPenalty = { vibe: 2.5, mixed: 1.25, senior: 0 };
-  const rewritePenalty = { none: 0, refactor: 5000, rewrite: 15000, rebuild: 30000 };
-  const devPenalty = { 1: 1, 2: 1.5, 4: 2 };
-
-  let total =
-    baseLoss *
-    stageMultiplier[stage] *
-    buildPenalty[buildMethod] *
-    devPenalty[devCount];
-
-  total += rewritePenalty[rewrites];
-  total += penalties * 2500;
-
-  // Call checkVortex before showing result
-  const inVortex = checkVortex(buildMethod, rewrites, penalties);
-
-  // Update localStorage stats
-  let totalRuns = parseInt(localStorage.getItem('vibeCalcTotalRuns') || '0', 10);
-  let vortexHits = parseInt(localStorage.getItem('vibeCalcVortexHits') || '0', 10);
-  totalRuns++;
-  if (inVortex) {
-    vortexHits++;
-  }
-  localStorage.setItem('vibeCalcTotalRuns', totalRuns);
-  localStorage.setItem('vibeCalcVortexHits', vortexHits);
-  console.log(`Vortex stats (local): ${vortexHits} vortex hits / ${totalRuns} total runs`);
-
-  const low = Math.round(total * 0.75);
-  const high = Math.round(total * 1.25);
+function calculateReadiness() {
+  const inputs = getReadinessInputs();
+  const assessment = assessReadiness(inputs);
 
   const resultEl = document.getElementById("result");
   resultEl.style.display = "block";
   resultEl.innerHTML = `
-    <h3>Estimated Hidden Cost</h3>
-    <p class="loss-range">$${low.toLocaleString()} – $${high.toLocaleString()}</p>
-    <p>
-      This reflects lost time, momentum, and senior cleanup —
-      not just dollars paid.
-    </p>
+    <div class="alert ${assessment.alertClass} mb-0">
+      <h3>Directional Readiness Band</h3>
+      <p class="readiness-result">${assessment.band}</p>
+      <p class="mb-2">${assessment.action}</p>
+      <span class="fine-print">
+        Based only on the ownership, control, incident, and rework answers
+        supplied. This is not an audit or a judgment about AI-assisted development.
+      </span>
+    </div>
   `;
 
-  // Hide rewrite timeline on each new calculation until updated by animation
-  const timelineEl = document.getElementById("rewriteTimeline");
-  timelineEl.style.display = "none";
-  timelineEl.innerHTML = "";
-
-  animateSeverityMeter(buildMethod, rewrites, penalties);
+  const attentionEl = document.getElementById("attention");
+  attentionEl.style.display = assessment.level === "focused" ? "block" : "none";
 }
 
-function checkVortex(buildMethod, rewrites, penalties) {
-  const inVortex =
-    buildMethod === "vibe" &&
-    (rewrites === "rewrite" || rewrites === "rebuild") &&
-    penalties >= 2;
+function getReadinessInputs() {
+  return {
+    stage: document.getElementById("stage").value,
+    reviewMaturity: document.getElementById("reviewMaturity").value,
+    issueHistory: document.getElementById("issueHistory").value,
+    rewrites: document.getElementById("rewrites").value,
+    controlGaps: document.querySelectorAll(".control-gap:checked").length
+  };
+}
 
-  const vortexEl = document.getElementById("vortex");
-  vortexEl.style.display = inVortex ? "block" : "none";
-  return inVortex;
+function buildSignalScore(inputs) {
+  const stageSignals = { idea: 0, mvp: 0, live: 1, revenue: 2 };
+  const maturitySignals = { limited: 3, periodic: 1, continuous: 0 };
+  const issueSignals = { none: 0, occasional: 2, repeated: 4 };
+  const reworkSignals = { none: 0, refactor: 1, rewrite: 3, rebuild: 4 };
+
+  return (
+    stageSignals[inputs.stage] +
+    maturitySignals[inputs.reviewMaturity] +
+    issueSignals[inputs.issueHistory] +
+    reworkSignals[inputs.rewrites] +
+    inputs.controlGaps
+  );
+}
+
+function assessReadiness(inputs) {
+  const score = buildSignalScore(inputs);
+
+  if (score <= 2) {
+    return {
+      level: "routine",
+      band: "Continue with routine review",
+      action: "Maintain the current controls and verify them as the product changes.",
+      alertClass: "alert-success"
+    };
+  }
+
+  if (score <= 6) {
+    return {
+      level: "strengthen",
+      band: "Strengthen controls before the next major release",
+      action: "Address the selected control gaps and review the highest-consequence workflow before expanding scope.",
+      alertClass: "alert-warning"
+    };
+  }
+
+  return {
+    level: "focused",
+    band: "Run a focused technical review before expanding scope",
+    action: "Use production evidence to decide between incremental hardening, targeted replacement, and broader recovery planning.",
+    alertClass: "alert-danger"
+  };
 }
 
 function calculateRewriteRisk() {
-  const buildMethod = document.getElementById("buildMethod").value;
-  const rewrites = document.getElementById("rewrites").value;
-  const devCount = parseInt(document.getElementById("devCount").value, 10);
-  const penalties = document.querySelectorAll(".penalty:checked").length;
+  const inputs = getReadinessInputs();
+  const score = buildSignalScore(inputs);
 
-  let score = 0;
-
-  if (buildMethod === "vibe") score += 3;
-  if (buildMethod === "mixed") score += 1;
-
-  if (rewrites === "refactor") score += 1;
-  if (rewrites === "rewrite") score += 3;
-  if (rewrites === "rebuild") score += 5;
-
-  if (devCount >= 2) score += 1;
-  if (devCount >= 4) score += 2;
-
-  score += penalties;
-
-  let risk, explanation;
+  let risk;
+  let explanation;
+  let alertClass;
 
   if (score <= 3) {
-    risk = "Low";
-    explanation = "Architecture is likely recoverable without a full rewrite.";
+    risk = "Lower";
+    explanation = "The current answers show few indicators that a broad rewrite should be considered.";
+    alertClass = "alert-success";
   } else if (score <= 7) {
     risk = "Moderate";
-    explanation = "A partial rewrite is likely as requirements harden.";
+    explanation = "Review the highest-consequence workflow and the selected control gaps before choosing a recovery path.";
+    alertClass = "alert-warning";
   } else {
-    risk = "High";
-    explanation = "A full rewrite is the statistically dominant outcome.";
+    risk = "Higher";
+    explanation = "Several observable signals warrant focused recovery planning, but inspect the system before choosing a rewrite.";
+    alertClass = "alert-danger";
   }
 
   const el = document.getElementById("rewriteResult");
   el.style.display = "block";
   el.innerHTML = `
-    <div class="alert alert-danger">
-      <strong>Rewrite Risk: ${risk}</strong><br />
+    <div class="alert ${alertClass}">
+      <strong>Rewrite Risk Signal: ${risk}</strong><br />
       ${explanation}
     </div>
   `;
 }
 
-function estimateRewriteTimeline(severityPercent) {
-  if (severityPercent <= 30) {
-    return "Unlikely within the next 12–18 months";
-  } else if (severityPercent <= 50) {
-    return "Likely within 6–12 months";
-  } else if (severityPercent <= 70) {
-    return "Likely within 3–6 months";
-  } else if (severityPercent <= 85) {
-    return "Likely within 1–3 months";
-  } else {
-    return "Now–3 months (rewrite pressure already influencing decisions)";
-  }
-}
-
-function animateSeverityMeter(buildMethod, rewrites, penalties) {
-  const meter = document.getElementById('severityMeter');
-  const bar = meter.querySelector('.severity-bar');
-  const label = meter.querySelector('.severity-label');
-  const timelineEl = document.getElementById("rewriteTimeline");
-
-  // Calculate severity percentage
-  let severity = 20;
-  if (buildMethod === 'vibe') severity += 20;
-  if (rewrites === 'refactor') severity += 15;
-  if (rewrites === 'rewrite') severity += 30;
-  if (rewrites === 'rebuild') severity += 40;
-  severity += penalties * 10;
-  if (severity > 100) severity = 100;
-
-  meter.style.display = 'block';
-  bar.style.width = '0%';
-  label.textContent = 'Severity: 0%';
-
-  const duration = 800; // ms
-  const start = performance.now();
-
-  function animate(time) {
-    const elapsed = time - start;
-    const progress = Math.min(elapsed / duration, 1);
-    const currentWidth = progress * severity;
-    bar.style.width = currentWidth + '%';
-    const rounded = Math.round(currentWidth);
-    label.textContent =
-      rounded >= 85
-        ? `Severity: ${rounded}% (Critical)`
-        : `Severity: ${rounded}%`;
-    if (progress < 1) {
-      requestAnimationFrame(animate);
-    } else {
-      // Animation complete - show timeline estimate
-      const timeline = estimateRewriteTimeline(severity);
-      timelineEl.innerHTML = `
-        <strong>Estimated Timeline to Rewrite:</strong><br/>
-        ${timeline}<br/>
-        <span class="fine-print">
-          Based on observed startup patterns when ownership and scope are not corrected.
-        </span>
-      `;
-      timelineEl.style.display = "block";
-      // Populate and show rewrite effort estimate, conditionally
-      const effortEl = document.getElementById("rewriteEffort");
-      const stage = document.getElementById("stage").value;
-      // Retrieve buildMethod again in case it changed
-      const buildMethodCurrent = document.getElementById("buildMethod").value;
-      effortEl.style.display = "block";
-      if (severity < 30 && buildMethodCurrent === 'senior') {
-        effortEl.innerHTML = `
-          <strong>Estimated Senior Rewrite Effort:</strong><br/>
-          None — senior ownership prevented rewrite<br/>
-          <span class="fine-print">
-            Incremental cleanup and hardening may still occur, but a full rewrite is not indicated.
-          </span>
-        `;
-      } else {
-        const effort = estimateRewriteEffort(stage);
-        effortEl.innerHTML = `
-          <strong>Estimated Senior Rewrite Effort (Once Started):</strong><br/>
-          ${effort}<br/>
-          <span class="fine-print">
-            Assumes a senior engineer with full ownership, scope control, and production responsibility.
-          </span>
-        `;
-      }
-    }
-  }
-  requestAnimationFrame(animate);
-}
-
-// Hidden console message for those who look 👀
 console.log(
-  "%cVibe Code Detector:",
+  "%cAI-Assisted Build Readiness Check:",
   "font-weight:bold;color:#ff5722;",
-  "If you’re reading this, you already know why this page exists."
+  "AI usage is not scored; ownership, controls, incidents, and rework are."
 );
 </script>

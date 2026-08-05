@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "AI Coding Agents Are Changing Software Development"
-description: "I used agentic coding tools on real software work. They help, but their real value is delegation, not replacing developer judgment."
+description: "AI coding agents expand delegation, investigation, and implementation. Context, review, and accountable ownership turn that capability into reliable software work."
 date: 2026-05-27
 og_image: "/assets/optimized/ai-coding-agents-change-software-development.webp"
 ---
@@ -41,7 +41,10 @@ og_image: "/assets/optimized/ai-coding-agents-change-software-development.webp"
 
 <div class="tldr-box">
   <strong>TL;DR</strong><br />
-  I have been using agentic coding tools on real software work, not just demos. They are useful, but not in the way the hype suggests. The biggest change is delegation. AI coding agents make good technical judgment more important, not less.
+  AI coding agents give every builder more reach through delegation,
+  investigation, implementation, and review. A founder can own far more of a
+  product, while a senior engineer can apply accumulated judgment across more of
+  the system. The tools raise both baselines without making them equal.
 </div>
 
 <picture class="blog-img-right">
@@ -56,25 +59,26 @@ og_image: "/assets/optimized/ai-coding-agents-change-software-development.webp"
   />
 </picture>
 
-I have been using agentic coding tools in real development work.
-
-Not just demos.
-Not just toy apps.
-Not just asking a chatbot to write a function in isolation.
-
-I mean actual repo work: reading existing files, fixing bugs, checking rendered output, repairing metadata, tracing side effects, running builds, and deciding what should or should not be changed.
+I have been using agentic coding tools throughout real development work: reading
+existing files, implementing features, fixing bugs, checking rendered output,
+repairing metadata, tracing side effects, running builds, and comparing what
+should or should not be changed.
 
 That experience has made one thing clear:
 
-**AI coding agents are useful, but not in the way the hype usually suggests.**
+**AI coding agents give every builder real leverage.**
 
-They are not magic senior engineers.
-They are not automatic product builders.
-They are not a substitute for technical ownership.
+A founder can now prototype, debug, ship, and maintain far more independently.
+An experienced engineer can use the same tools to investigate more of a system,
+test more options, and apply accumulated judgment across a wider surface area.
+The capability is shared; the context and responsibility brought to it still
+shape the result.
 
-But they are real leverage.
-
-In fact, this article was drafted with the help of an agentic coding workflow. The same tool was used to inspect my repo, repair SEO front matter, run a local Jekyll build, stage files, and create a commit. That is the point. The useful part was not that the tool had opinions. The useful part was that I could delegate bounded work while still deciding what mattered.
+In fact, this article was drafted with the help of an agentic coding workflow.
+The same tool was used to inspect my repo, repair SEO front matter, run a local
+Jekyll build, stage files, and create a commit. That is the point: I could
+delegate substantial work while remaining accountable for what mattered and
+whether the result was ready.
 
 ---
 
@@ -105,9 +109,10 @@ That is where coding agents become useful.
 
 ---
 
-## Coding agents are good at bounded tasks
+## Clear boundaries make coding agents more effective
 
-In my experience, agentic coding tools are strongest when the task has a clear boundary.
+In my experience, agentic coding tools become more reliable when the task has a
+clear boundary, enough context, and a verifiable definition of done.
 
 They are good at things like:
 
@@ -116,34 +121,39 @@ They are good at things like:
 * checking rendered HTML output
 * writing small utilities
 * finding repeated patterns across a repo
-* generating boilerplate
+* implementing cross-file changes
 * adding narrow tests
 * running builds and summarizing failures
 * making scoped edits to known files
 
-That kind of work is valuable.
-
-It is also not the same as owning a system.
+That work is valuable, and increasingly it can cover substantial parts of a
+product. It is still different from being accountable for the system's outcome.
 
 A coding agent can quickly identify that a Jekyll page is missing its opening `---` delimiter. It can add the delimiter, rebuild the site, and confirm that the page now has a `<title>`, meta description, canonical URL, and sitemap entry.
 
 That is useful.
 
-But the agent did not decide whether the page should exist, whether it should be indexed, whether it supports the site's content strategy, or whether the surrounding pages are competing with each other.
+The agent can also help evaluate whether the page should exist, whether it should
+be indexed, whether it supports the site's content strategy, or whether the
+surrounding pages are competing with each other. Those recommendations become
+useful when they are grounded in the actual business goal and site evidence.
 
 Those are higher-level decisions.
 
-The agent can help execute them. It does not replace the need to make them.
+The people responsible for the site still choose among the tradeoffs and own the
+result.
 
 ---
 
-## They struggle with judgment, priority, and restraint
+## Context connects capability to judgment, priority, and restraint
 
 The hardest part of software development is rarely typing the code.
 
 It is deciding what should happen.
 
-Agentic coding tools still struggle when the task requires:
+Agentic coding tools can reason about all of those questions. The quality of the
+answer depends on whether the workflow gives them the relevant product context,
+constraints, evidence, and authority. That includes:
 
 * product judgment
 * architectural context
@@ -163,7 +173,10 @@ Sometimes the right move is no code.
 Sometimes the right move is to stop and clarify the business rule.
 Sometimes the right move is to avoid a refactor because the blast radius is not worth it.
 
-AI coding agents can imitate restraint if instructed carefully. But they do not naturally understand the full business context behind the repo. They do not know which tradeoffs matter unless a human provides that frame.
+AI coding agents can apply restraint when the instructions, tools, project
+history, and evaluators make the tradeoffs visible. The people responsible for
+the product still have to supply or confirm the business intent and decide which
+tradeoffs to accept.
 
 This is why "the AI wrote the code" is not the interesting question.
 
@@ -196,21 +209,26 @@ This is still software engineering.
 
 It is just a different shape of software engineering.
 
-And in many ways, it raises the bar. If a tool can generate code quickly, then weak judgment creates bad software faster. The bottleneck moves from typing speed to decision quality.
+And in many ways, it raises the bar. When implementation moves quickly, the
+bottleneck shifts from typing speed toward decision quality and verification.
 
-That is why I do not think AI coding agents make senior developers less valuable.
-
-I think they make senior judgment more visible.
+AI is table stakes. It raises what a new builder can accomplish and lets a senior
+engineer apply architecture, debugging, and production judgment across far more
+work. Both baselines rise; they do not become equal.
 
 ---
 
-## What founders should understand
+## What founders can now own
 
-For founders, AI coding agents are both useful and dangerous.
+For founders, AI coding agents can reduce execution friction across the product
+lifecycle. They can help build prototypes, ship production features, debug real
+behavior, maintain an existing system, and reduce how much outside engineering a
+product needs.
 
-They can reduce execution friction. They can help build prototypes. They can speed up repetitive work. They can make it easier to explore an idea before investing heavily.
-
-But they do not remove the need for technical ownership.
+That independence is real. As a product becomes consequential, someone still
+needs to provide technical ownership and senior-level judgment—whether the
+founder develops that expertise, hires it internally, or brings it in from
+outside.
 
 Someone still has to answer questions like:
 
@@ -226,7 +244,10 @@ Those questions do not go away because a coding agent can produce files quickly.
 
 If anything, they become more important.
 
-This is the same pattern I have written about in [why hiring a software developer still matters](/posts/why-hire-a-software-developer-in-2026.html), [why vibe coding gets expensive](/posts/the-real-dangers-of-vibe-coding.html), and [why AI-generated code often fails security audits](/posts/wh-ai-generated-code-fails-security-audits.html).
+This is the same pattern I have written about in [how AI expands an engineer's
+reach](/posts/ai-doesnt-replace-senior-engineers-it-expands-their-reach.html),
+[moving an AI-built prototype toward production](/posts/the-real-dangers-of-vibe-coding.html),
+and [preparing AI-assisted code for a security audit](/posts/wh-ai-generated-code-fails-security-audits.html).
 
 Generating software is easier now.
 
@@ -252,8 +273,7 @@ An unclear technical process can use the same tools to create more code, more co
 
 That is the real shift.
 
-AI coding agents are not replacing developers in the simple way people keep predicting.
-
-They are changing what good developers spend their time doing.
-
-And the more powerful the tools become, the more valuable good judgment becomes.
+AI coding agents are changing how much software one person can build and what
+experienced developers spend their time doing. The more capable the tools
+become, the further every builder can go—and the more widely experienced judgment
+can be applied.

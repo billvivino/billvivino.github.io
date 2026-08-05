@@ -91,11 +91,11 @@ That was just the visible part.
 
 ## Most software problems are not syntax problems
 
-AI is extremely good at generating syntax.
+AI is extremely good at generating and working with software.
 
 Sometimes shockingly good.
 
-It can scaffold components, write endpoints, connect libraries, generate migrations, refactor files, and produce huge amounts of code extremely quickly.
+It can scaffold components, write endpoints, connect libraries, generate migrations, inspect existing code, investigate bugs, run tests, propose architectures, refactor files, and produce huge amounts of useful work extremely quickly.
 
 But most expensive software failures were never caused by a lack of syntax generation.
 
@@ -122,13 +122,11 @@ And judgment remains stubbornly human.
 
 ---
 
-## AI makes software generation cheaper. It does not automatically make systems safer.
+## AI makes software generation cheaper. It does not make every builder equally prepared.
 
 This is the distinction many businesses are still learning.
 
-An AI can generate a feature quickly.
-
-But can it answer questions like:
+AI can generate a feature quickly. It can also help analyze questions like:
 
 * What happens when this fails under concurrency?
 * What owns this state long-term?
@@ -139,6 +137,8 @@ But can it answer questions like:
 * Is this abstraction helping or hiding confusion?
 * What assumptions are being silently made?
 
+AI can help reason through every question on that list. The relative advantage of an experienced engineer is knowing which questions matter, providing context that may not be available in the codebase or prompt, distinguishing a plausible answer from a durable one, and owning the tradeoff.
+
 Those questions matter enormously once software becomes real.
 
 Not demo-real.
@@ -147,7 +147,7 @@ Operationally real.
 
 The moment real customers, money, scale, legal exposure, healthcare data, operational workflows, or business dependencies enter the system, the cost of bad assumptions rises dramatically.
 
-That is where developers still matter.
+That is where accumulated engineering judgment still matters.
 
 ---
 
@@ -176,32 +176,32 @@ They are the people who can:
 
 That work becomes more important, not less, in an AI-assisted world.
 
-Because AI dramatically increases the volume of software being created.
+Because AI dramatically increases the volume and pace of software being created.
 
-And volume amplifies chaos unless someone can structure it.
+More parallel change increases the coordination load unless someone maintains coherence.
 
 ---
 
-## “Vibe coding” works best right before complexity arrives
+## “Vibe coding” makes early progress fast; complexity still arrives
 
-This is why so many AI-generated projects feel magical at first.
+This is why AI-assisted projects can move so quickly at first.
 
-The first 70% often looks incredible.
+Early progress often looks incredible.
 
 Screens appear quickly.
 Features seem easy.
 Momentum is high.
 The founder feels empowered.
 
-Then reality arrives.
+As the product grows, a different kind of work arrives.
 
-Authentication becomes inconsistent.
-The database model starts drifting.
+Authentication has to remain consistent.
+The database model has to remain coherent.
 Edge cases appear.
-State management grows unstable.
-Infrastructure decisions begin colliding.
-Performance degrades.
-The AI starts patching previous AI assumptions.
+State management grows more demanding.
+Infrastructure decisions begin interacting.
+Performance needs change.
+New changes begin interacting with earlier assumptions, whether those assumptions came from people or AI.
 
 At some point, the project quietly transitions from:
 
@@ -211,9 +211,7 @@ to
 
 > “maintain a coherent system.”
 
-That transition is where many vibe-coded projects begin struggling.
-
-Not because the AI is useless.
+That transition is where many fast-moving projects need stronger technical ownership.
 
 But because coherence is harder than generation.
 

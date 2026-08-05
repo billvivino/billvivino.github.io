@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "We’ve Been Trying to Replace Programmers Since COBOL — It Still Hasn’t Worked"
-description: "From COBOL to no-code to AI, every generation thinks programmers are about to be replaced. History shows the same pattern repeating."
+description: "From COBOL to no-code to AI, better tools replace meaningful tasks and give people more power while human ownership remains essential."
 date: 2026-04-08
 og_image: "/assets/optimized/software-is-a-commitment.webp"
 ---
@@ -52,7 +52,7 @@ og_image: "/assets/optimized/software-is-a-commitment.webp"
 
 <div class="tldr-box">
   <strong>TL;DR</strong><br />
-  Every generation claims programmers are about to be replaced. COBOL, 4GLs, visual tools, no-code, and now AI. Each time, the interface gets easier, but complexity returns. Programmers don’t disappear. The bar just rises.
+  Every generation claims programmers are about to be replaced. COBOL, 4GLs, visual tools, no-code, and now AI have all replaced meaningful tasks and made software more accessible. But complexity returns as products grow, and people still have to own the outcome. The job changes. The bar rises.
 </div>
 
 <picture class="blog-img-right">
@@ -69,7 +69,7 @@ og_image: "/assets/optimized/software-is-a-commitment.webp"
 
 
 
-We’ve been trying to replace programmers for over sixty years.
+We’ve been trying to reduce—or replace—the work programmers do for over sixty years.
 
 And every single time, people think the same thing:
 
@@ -99,9 +99,9 @@ COBOL.
 
 Back in 1959, COBOL was created with a very specific goal.
 
-Not to help programmers.
+Not merely to help programmers.
 
-To replace them.
+The larger promise was to let businesspeople describe what they needed without relying on technical specialists.
 
 The idea was simple.
 
@@ -252,9 +252,11 @@ And suddenly the conversation shifts.
 
 “We need something more flexible.”
 
-**No-code doesn’t replace programmers.**
+**No-code has replaced meaningful programming work.**
 
-It delays needing them.
+People now build internal tools, automations, websites, and even complete early products without a traditional developer. That is a genuine transfer of capability.
+
+What no-code does not guarantee is that every growing product will remain inside the platform’s boundaries forever. As workflows, integrations, performance needs, and data models become more specific, some teams still need deeper engineering expertise.
 
 <picture class="blog-img-right">
   <source srcset="/assets/optimized/cobol-vs-ai.avif" type="image/avif" />
@@ -281,7 +283,7 @@ Because all of these attempts are based on the same assumption.
 
 That programming is just translating ideas into syntax.
 
-**That’s not what programming is.**
+**That’s not all programming is.**
 
 Programming is dealing with ambiguity.
 
@@ -315,14 +317,23 @@ What should the system do?
 
 **That’s the real work.**
 
-No tool removes that.
+Tools can help discover, model, and implement those answers. A person still has to decide which answer fits the real organization and accept responsibility for it.
 
 <p></p>
-## AI: The Latest Attempt
+## Software Is Not Uniquely Replaceable
+
+AI can perform meaningful work in law, medicine, architecture, surveying, finance, analytics, design, and nearly every other knowledge profession.
+
+That does not make software engineering uniquely disposable. It means a general-purpose technology is changing tasks across the whole economy.
+
+If AI eventually replaces people throughout those professions, software will be part of that much larger transformation. The grounded position today is simpler: people in every field have more leverage, and domain expertise still shapes how well that leverage is used.
+
+<p></p>
+## AI: The Most Powerful Shift Yet
 
 And now we’re at AI.
 
-The newest, most convincing attempt yet.
+The newest and most capable abstraction yet.
 
 “Just describe your app.”
 
@@ -334,27 +345,25 @@ And to be clear…
 
 AI is powerful.
 
-It’s very good at generating code.
+It can plan, generate code, run tests, investigate bugs, review changes, and work across a repository.
 
-It speeds things up.
+It speeds up both mechanical work and substantial problem-solving.
 
-It removes a lot of the mechanical effort.
+It lets founders build products that once required a development team.
 
 **But it doesn’t own the system.**
 
-It doesn’t understand long-term consequences.
+It can reason about long-term consequences and evolving requirements when it has the right context.
 
-It doesn’t manage evolving requirements.
+But it does not carry your obligations to customers, employees, regulators, or investors.
 
-It doesn’t take responsibility when things break.
+It gives you extraordinary leverage.
 
-It gives you output.
-
-**It does not give you ownership.**
+**It does not take ownership away from you.**
 
 So what’s actually changing?
 
-Before, programmers wrote everything.
+Before, programmers wrote much more of the implementation by hand.
 
 Now, they guide systems.
 
@@ -364,9 +373,9 @@ They make architectural decisions.
 
 They decide what matters and what doesn’t.
 
-**The role isn’t going away.**
+**The role is changing.**
 
-**It’s getting harder.**
+**Its leverage—and its scope—are growing.**
 
 Because now you’re not just writing code.
 
@@ -376,15 +385,15 @@ And if you zoom out, the pattern is obvious.
 
 Every attempt follows the same cycle.
 
-A new tool abstracts complexity.
+A new tool abstracts complexity and makes more people capable.
 
-People think the problem is solved.
+People solve problems that were previously out of reach.
 
 Real-world edge cases appear.
 
 Complexity comes back.
 
-Skilled people are needed again.
+Skilled people are still needed where the remaining complexity and consequences justify them.
 
 <p></p>
 ## The Reality
@@ -395,11 +404,15 @@ Skilled people are needed again.
 
 **It’s hard because of reality.**
 
-COBOL didn’t replace programmers.
+COBOL replaced tasks and created new programming work.
 
-No-code didn’t replace programmers.
+No-code replaced tasks and expanded who could build.
 
-**AI won’t replace programmers.**
+**AI is replacing even more tasks and giving every builder more power.**
+
+AI is table stakes. A founder with AI can build far more than before. A senior engineer with AI can apply years of architecture, debugging, and production judgment at far greater scale. The tool raises both baselines; it does not make those baselines equal.
+
+Human beings remain in the loop because someone must decide what the system should do, verify that it does it, and own what happens next.
 
 But every wave does change the job.
 

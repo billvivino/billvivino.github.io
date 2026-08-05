@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "AI Can Improve the Interface and Still Break the Product"
-description: "A coding agent cleaned up our craft app's UI, then broke the state-machine logic behind emoji reactions. The experience shows how harnesses, deterministic automation, and human review create the appearance of autonomous AI coding."
+title: "AI-Assisted Interface Refactoring Needs Behavioral Validation"
+description: "A coding agent improved our craft app's UI while introducing a gesture regression. Iterative validation let me keep the visual gains and preserve the product behavior."
 date: 2026-07-29
 permalink: /blog/ai-can-improve-interface-and-still-break-product/
 categories: ai software-development software-engineering
@@ -51,13 +51,13 @@ og_image: "/assets/optimized/ai-can-improve-interface-and-still-break-product.we
   }
 </style>
 
-<h1 class="fw-bold">The Code Looked Superfluous—Until You Dragged an Emoji</h1>
+<h1 class="fw-bold">Validate the Behavior, Not Just the Interface</h1>
 
 <p class="text-muted">July 29, 2026 · 7 min read</p>
 
 <div class="tldr-box">
   <strong>TL;DR</strong><br />
-  Codex gave the craft app my brothers and I are building a better-looking interface, then broke the state machine behind a drag-based emoji reaction by treating intentional code as superfluous. The lesson is not that AI cannot code. It is that an apparently autonomous coding agent is a probabilistic model surrounded by expensive deterministic harnesses—and those harnesses are only as good as their behavioral oracle. I kept the useful visual changes, but I integrated them one piece at a time.
+  Codex gave the craft app my brothers and I are building a better-looking interface while introducing a regression in the state machine behind a drag-based emoji reaction. The result showed why AI-assisted refactors benefit from behavioral tests, deterministic tooling, and human review. I kept the useful visual changes and integrated them one piece at a time.
 </div>
 
 <picture class="blog-img-right">
@@ -80,7 +80,7 @@ The result was one of those commits that makes AI coding easy to overrate and un
 
 The visual work was good. It cleaned up parts of the interface and produced login-screen changes I wanted to keep.
 
-It also broke some of the deepest interaction logic I had written for emoji reactions.
+It also introduced a regression in interaction logic I had written for emoji reactions.
 
 I summarized the problem in our group text:
 
@@ -118,7 +118,7 @@ That makes it less like laying out a form and more like implementing input in a 
 
 An LLM can write a state machine when the states and transitions are specified clearly.
 
-What it cannot safely assume is that an awkward-looking guard, flag, branch, or sequence in an existing interaction is accidental. The code may look repetitive when viewed as text and still be essential when experienced through a fingertip.
+What no refactor should assume without behavioral validation is that an awkward-looking guard, flag, branch, or sequence in an existing interaction is accidental. The code may look repetitive when viewed as text and still be essential when experienced through a fingertip.
 
 The product is not the screenshot.
 
@@ -138,7 +138,7 @@ Then somebody touches the control.
 
 The regression appears only in motion because the “mess” was carrying product knowledge that had never been written down anywhere else.
 
-## People See the Model, but They Underestimate the Harness
+## The Model and Harness Work Together
 
 People often talk about an AI coding agent as if the model alone opened a repository, understood it, edited the right files, validated the work, and delivered a finished result.
 
@@ -155,7 +155,7 @@ A serious coding agent is surrounded by a harness that can:
 * Inspect diffs and report what changed
 * Stage, commit, and push through Git
 
-People see the conversational surface. They do not see how much product engineering and capital went into the scaffolding around an otherwise probabilistic and stochastic model.
+People see the conversational surface. They do not always see how much product engineering and capital went into the scaffolding that helps a probabilistic model participate in a reliable workflow.
 
 That scaffolding is not incidental. It is what makes the model look “autonomous” and, in the best demos, almost “flawless.”
 
@@ -165,7 +165,7 @@ The harness narrows the model’s choices, gives it deterministic tools, catches
 
 I have described this before as an [execution layer around AI coding tools](/posts/ai-coding-tools-still-need-an-execution-layer.html). The more capable the agents become, the more important it is to distinguish improvements in the model from improvements in everything built around it.
 
-## The Most Flawless Part May Not Need an LLM
+## Deterministic Tools Are Part of the AI Workflow
 
 I love being able to tell an agent to commit my work and push it to GitHub.
 
@@ -181,7 +181,7 @@ Some, I will concede.
 
 The agent can inspect the current state, stage only the intended files when instructed correctly, draft a useful commit message, push the branch, and summarize the result. That saves keystrokes and attention. It can also reduce context switching when commit-and-push is only the final administrative step in a larger task.
 
-But the time savings should not be confused with a new reasoning capability. Often the most flawless-looking part of an agent workflow is the moment when the model hands the task to older, deterministic software.
+The time savings and reasoning support are real, and so is the contribution of the deterministic software that performs the operation.
 
 The LLM makes the interface more convenient.
 
@@ -199,7 +199,7 @@ Nothing.
 
 The available checks did not encode that behavior. A screenshot could verify the row of reactions without exercising the drag. A build could succeed while the interaction was wrong. Even a broad instruction to “preserve existing behavior” could not replace a precise evaluator for the states that mattered.
 
-That missing oracle is where apparent autonomy reaches its boundary.
+That missing oracle is where this workflow reached its validation boundary.
 
 The answer is not always permanent human intuition. We can improve the harness with interaction tests, recorded behavior, explicit state diagrams, better acceptance criteria, runtime instrumentation, and project documentation. We can make more of the product observable and verifiable.
 
@@ -229,15 +229,13 @@ The best AI coding workflow is not blind acceptance or reflexive rejection. It i
 
 ## Generation Is Becoming Accessible Faster Than Ownership
 
-My brother’s reaction was that everyday people are probably still a long way from having AI build software for them without someone who knows how to clean it up afterward.
-
-That depends on the software.
+How much independent ownership AI enables depends on the software.
 
 For a new, bounded interface with obvious behavior, the gap may already be surprisingly small. For an existing product with interaction history, hidden invariants, real users, and code whose complexity encodes lessons from earlier failures, the gap is much larger.
 
-AI is making it easier for more people to propose software changes.
+AI is making it easier for more people to propose and implement software changes. It raises the baseline for a new builder and gives an experienced engineer the same leverage across more architecture, debugging, and production work.
 
-It is not making every change equally safe to own.
+Those baselines both rise, but they do not become equal. The safety of a change still depends on its consequences and the quality of the evidence behind it.
 
 The easier it becomes to generate plausible code, the more important it becomes to recognize when plausibility has diverged from the product.
 
