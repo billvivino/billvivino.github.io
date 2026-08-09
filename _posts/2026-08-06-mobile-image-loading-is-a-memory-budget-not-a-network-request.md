@@ -13,7 +13,7 @@ tags:
   - Performance
   - Memory Management
   - Software Architecture
-excerpt: "Reliable mobile image loading requires far more than downloading an image. Production systems must manage decoding, memory, caching, request cancellation, upload normalization, and lifecycle-aware resource management."
+description: "Reliable mobile image loading requires far more than downloading an image. Production systems must manage decoding, memory, caching, request cancellation, upload normalization, and lifecycle-aware resource management."
 ---
 
 <style>
