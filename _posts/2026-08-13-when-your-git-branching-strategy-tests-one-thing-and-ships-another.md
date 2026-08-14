@@ -13,7 +13,8 @@ tags:
   - feature branches
   - trunk-based development
   - feature flags
-description: "A Git workflow can pass QA on develop and ship a different main-based tree. Preserve feature isolation while testing the actual release candidate."
+  - agentic software development
+description: "A merge-only topic graduation workflow is legitimate, but integration QA and production still exercise different complete trees. The final release candidate must be validated."
 ---
 
 <style>
@@ -54,7 +55,7 @@ description: "A Git workflow can pass QA on develop and ship a different main-ba
 
 <div class="tldr-box">
   <strong>TL;DR</strong><br />
-  If QA tests a feature combined with develop, then production receives that feature rebased onto a newer main, approval does not cover the source tree being shipped. Keep the canonical feature branch clean, use temporary integration candidates, and validate the exact main-based release candidate.
+  A feature-graduation strategy can preserve the exact same feature commits across develop and main while still testing and shipping different complete source trees. The critical direction is that develop absorbs the feature; the canonical feature never absorbs develop. Rebasing or replaying the feature after publication creates the avoidable duplicate-history problem. Even with perfect commit preservation, the final main-based candidate still requires validation.
 </div>
 
 <picture class="blog-img-right">
@@ -70,168 +71,406 @@ description: "A Git workflow can pass QA on develop and ship a different main-ba
   />
 </picture>
 
-There is a Git branching pattern that sounds reasonable when you first hear it:
+This article needs to begin with a correction.
+
+The workflow I originally described was the problematic sequence I experienced, not the strategy the team intended:
+
+```
+feature from main
+    → feature absorbs develop
+    → feature is reconstructed for main
+    → a second representation goes to production
+```
+
+The intended workflow is different:
 
 1. Create a feature branch from main.
-2. Build the feature.
-3. Merge or rebase it into develop for integration testing.
-4. Once QA approves it, return to the feature branch.
-5. Rebase the feature onto the latest main.
-6. Open a PR containing only that feature into main.
+2. Build the feature without incorporating develop.
+3. Merge the same feature commits into develop for integration testing.
+4. Resolve develop-specific conflicts in the develop-side merge.
+5. Merge the unchanged feature commits into main when approved.
+6. Validate the resulting main-based release candidate.
 
-The motivation is understandable.
+The intended model preserves one canonical feature history.
 
-develop provides a shared environment where multiple pieces of work can interact. But when it is time to release, you don’t want every unfinished change sitting on develop to ride along with the feature that passed QA.
+The accidental recovery path creates two independently evolving representations of the same logical feature.
 
-So develop becomes the laboratory, while the original feature branch becomes the release vehicle.
+Those are not the same workflow.
 
-There is just one fundamental problem:
+The more precise thesis is:
 
-> The code you tested is not necessarily the code you ship.
+> A feature-graduation strategy can preserve the exact same feature commits across develop and main, yet still test and ship different complete source trees.
 
-## Two Different Source Trees
+Preserving commit identity solves the historical-duplication problem.
 
-Suppose a feature starts from main:
+It does not make the develop integration tree equivalent to the main release tree.
 
-```
-main
-  \
-   F1 -- F2
-```
+## This Strategy Has a Legitimate Pedigree
 
-Meanwhile, other work is accumulating on develop:
+The closest established name for the intended model is a **topic-branch graduation workflow with a testing integration branch**.
+
+For a ticket such as MFLP-357, the intended develop-side graph is:
 
 ```
-main
-  \
-   D1 -- D2 -- D3
+          D1────D2────────Mdev       develop
+         /               /
+A──B──C─┤               /
+         \             /
+          F1────F2─────             ticket branch
 ```
 
-To test the feature, the two histories are combined:
+The ticket branch stays based on main. The unchanged `F1` and `F2` commits are merged into develop. If `D1` or `D2` conflicts with `F1` or `F2`, the resolution belongs in `Mdev`, the develop-side merge commit.
+
+Later, the same feature commits go to main:
 
 ```
-develop + feature
+A──B──C────────────Mmain             main
+         \         /
+          F1───F2─
 ```
 
-QA is therefore testing something conceptually equivalent to:
+So:
 
 ```
-main + D1 + D2 + D3 + F1 + F2
+develop contains F1 and F2
+main contains F1 and F2
 ```
 
-Everything looks good.
+Develop and main may have different merge commits, different conflict resolutions, and different complete trees. The underlying feature commits retain the same identities.
 
-Now imagine main has changed while testing was taking place:
+[Git’s branching and merging documentation](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging.html) describes this exact mechanism: Git performs a three-way merge using the two branch tips and their common ancestor, then records the reconciled snapshot in a merge commit with both histories as parents. If overlapping changes cannot be reconciled automatically, Git pauses so the conflict can be resolved in that merge.
+
+Once that topic has been merged anywhere, it must not be rebased. A rebase would replace the published commits with new commits and new identities.
+
+This is remarkably similar to the workflow described in the [Git project’s own workflow documentation](https://git-scm.com/docs/gitworkflows):
+
+* `next` is used to test topics before they are accepted into `master`.
+* A topic can be merged into `next`, tested, and later merged into a more stable branch.
+* A topic that has already been merged elsewhere should not subsequently be rebased.
+* A separate throwaway integration branch can test combinations of topics.
+* An integration branch can periodically be rebuilt from the stable branch and the topics that remain under evaluation.
+
+That explains the rule:
+
+> Merge preserves commit identity; rebase manufactures new commits.
+
+Within this model, that is not an arbitrary Git taboo.
+
+Preserving the feature commits is a central invariant.
+
+## It Is Not Simply “The Strategy Large Companies Use”
+
+The strategy is legitimate.
+
+It is also specialized.
+
+It is not the generic industry default for large software companies, and size alone is not a reason to adopt it.
+
+Other prominent large-scale workflows are considerably simpler:
+
+* [GitHub Flow](https://docs.github.com/en/get-started/using-github/github-flow) uses a short-lived branch, review and checks, then a merge into the default branch.
+* [Microsoft’s release flow](https://learn.microsoft.com/en-us/devops/develop/how-microsoft-develops-devops) uses short-lived topic branches from one buildable main branch, merges them into main, and creates release branches from main. Microsoft says this single-main approach reduces merge debt; the documented workflow supports products processing more than 200 pull requests and 300 continuous-integration builds per day.
+* [GitLab Flow’s documented best practices](https://about.gitlab.com/topics/version-control/what-are-gitlab-flow-best-practices/) say everyone starts from main and targets main, pushed commits generally should not be rebased, and every commit should be tested. For branch-level manual testing, [GitLab Review Apps](https://docs.gitlab.com/ci/review_apps/) provide a temporary environment for each branch or merge request.
+* The [2021 Accelerate State of DevOps research](https://cloud.google.com/resources/state-of-devops) found that elite performers meeting their reliability targets were 2.3 times more likely to use trunk-based development. Low performers were more likely to use long-lived branches and delay integration.
+
+So the accurate answer is:
+
+> Sophisticated and very large projects have used a strategy closely related to this. It is not the prevailing modern SaaS default.
+
+Topic graduation makes the most sense where maintainers need to move independently reviewable work through several stability levels while selectively deciding which topics reach the stable branch.
+
+That is closer to maintaining Git, an operating system, a database, or a versioned product line than to the simplest continuous-deployment workflow for a small web product.
+
+Even Git’s documentation says its complete workflow is rarely necessary for smaller projects and that merge-based graduation requires careful branch management.
+
+## The Current Model Is Exacting by Design
+
+For this strategy to work as intended, all of these details must remain true:
+
+1. The feature starts from main.
+2. The feature is merged into develop.
+3. Develop is never merged into the feature merely for routine integration testing.
+4. The feature is never rebased onto develop.
+5. Once the feature commits have been published through a develop merge, those commits are never rebased.
+6. Develop uses a real merge, not a squash that replaces the feature commits.
+7. Main later receives the same feature commits.
+8. Fixes discovered during integration are committed to the feature branch, then merged into develop again.
+9. Main and develop are periodically reconciled according to a documented procedure.
+10. The final main composition receives appropriate validation.
+
+Changing the GitHub merge method alone can break the commit-identity premise.
+
+A squash merge into develop creates a new combined commit. A later squash or ordinary merge into main no longer produces the clean shared feature ancestry the workflow depends on.
+
+GitHub’s [merge-method documentation](https://docs.github.com/en/enterprise-cloud@latest/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/about-merge-methods-on-github) makes the distinction explicit: a standard merge adds the feature commits to the base through a merge commit, while squash and rebase methods create different commit histories. GitHub’s rebase-and-merge option creates new commit SHAs.
+
+That does not make the strategy invalid.
+
+It means the strategy should not exist only as tribal knowledge.
+
+## What Actually Happened to MFLP-357
+
+The MFLP-357 sequence was closer to this:
 
 ```
-main + M1 + M2
+Develop-targeted history:
+A──B──C──F1──F2──c53a9762
+                    /
+             develop history
 ```
 
-The feature branch is rebased onto the latest main:
+Develop was merged into the canonical ticket branch.
+
+That branch acquired:
+
+* Develop ancestry.
+* Develop-specific conflict resolutions.
+* Develop-specific migration numbering.
+
+It could no longer represent “only MFLP-357 against main.” A pull request from that branch to main would also propose unrelated develop history.
+
+A second history was then created for main:
 
 ```
-main + M1 + M2 + F1' + F2'
+Main-targeted history:
+A──B──C──F1'──F2'──X
 ```
 
-That is what gets submitted for production.
+Here:
 
-But that isn’t what QA tested.
+* `F1'` and `F2'` were replayed versions of the logical feature.
+* They had different SHAs from `F1` and `F2`.
+* `X` was the main-only session-restoration fix.
+
+The [Git rebase documentation](https://git-scm.com/docs/git-rebase/2.53.0.html) explains why the identities changed. Rebase lists the commits on the topic, checks out the new upstream, then replays the commits one by one in order—similar to running `git cherry-pick` repeatedly. Git’s [cherry-pick documentation](https://git-scm.com/docs/git-cherry-pick.html) likewise describes applying the change introduced by an existing commit while recording a new commit.
+
+Git therefore saw:
+
+```
+develop: F1  + F2  + develop resolution
+main:    F1' + F2' + main-only fix
+```
+
+That is the duplicate-history problem.
+
+It was not caused merely by having two branch names.
+
+It was caused by maintaining two independently replayed feature histories.
+
+## Two Branch Names Were Not the Technical Problem
+
+These structures are not equivalent.
+
+### Two Independent Feature Histories
+
+```
+feature-develop: F1  ── F2  ── develop adaptations
+feature-main:    F1' ── F2' ── main adaptations
+```
+
+The feature has effectively forked. Each target receives a different patch series.
+
+### One Feature History Plus a Disposable Integration Branch
+
+```
+canonical feature:
+A──B──C──F1──F2
+
+temporary integration branch:
+develop──D1──D2──M
+                 /
+             F1──F2
+```
+
+The temporary branch starts from develop and merges the canonical feature into itself. It does not replay or reimplement the feature. `F1` and `F2` remain the same commits.
+
+The temporary integration branch can carry:
+
+* The merge commit.
+* Conflict resolutions needed only for develop.
+* Migration-number reconciliation needed only for that integration tree.
+
+It can then be merged into develop and deleted.
+
+That is not “doing the feature in two branches.”
+
+It is using a temporary branch to construct the develop merge result while preserving one canonical feature history.
+
+Whether a team permits this temporary carrier branch is a policy question. Technically, it is not the same pathology as maintaining two independently replayed versions of the feature.
+
+## Responsibility Is Not Binary
+
+There is also a human issue here, especially when an engineer is learning a specialized branching process and an agentic coding tool at the same time.
+
+A fair description of that situation is:
+
+> I was learning a specialized branching flow and a new agentic tool at the same time. I missed what the tool did. I accept that I need to catch it, but I also expect some grace while I learn the process.
+
+That is a reasonable position.
+
+An engineer can own the specific miss—not inspecting the resulting graph closely enough—without accepting the stronger judgment that the entire incident demonstrates irresponsibility or a refusal to follow instructions.
+
+Responsibility is not binary.
+
+The unfamiliarity of the workflow, the subtlety of the invariant, and the fact that a coding agent repeatedly gravitates toward a different solution are all relevant context.
+
+There are three possible positions:
+
+1. **No responsibility:** “The AI did it; this has nothing to do with me.”
+2. **Full responsibility without context:** “I should have executed an unfamiliar, exacting procedure perfectly on the first attempt.”
+3. **Proportionate responsibility:** “I missed it, I understand the invariant now, and I will add controls—but I was learning both the workflow and the tool, so treat this as an onboarding mistake rather than defiance or negligence.”
+
+The third position is not blame shifting.
+
+It distinguishes two materially different failures:
+
+```
+I knowingly ignored the required strategy
+```
+
+from:
+
+```
+I was unfamiliar with the strategy, did not realize the agent had
+rewritten the branch, and did not catch the ancestry change soon enough.
+```
+
+The engineer remains accountable for what an agent pushes.
+
+That does not imply:
+
+* The learning context is irrelevant.
+* The procedure was obvious.
+* The procedure is typical everywhere.
+* No grace is warranted.
+* The workflow itself cannot be improved.
+* Any conflict proves deliberate failure to follow directions.
+
+Agents will take many technically plausible actions to reach an objective.
+
+Precisely because they will, a non-obvious Git workflow requires explicit agent constraints and human verification habits that may need to be learned.
+
+That is not evidence that the branching strategy is wrong.
+
+It is evidence that adopting the strategy with agents requires additional controls.
+
+## What the Original Article Got Right—and What It Overstated
+
+The article’s central thesis remains valid:
+
+> The tree tested on develop is not necessarily the tree ultimately released from main.
+
+The original article correctly distinguished:
+
+```
+QA:
+develop-only work + feature
+
+Production:
+main-only work + feature
+```
+
+It also correctly argued that shared integration testing can conceal dependencies or create failures caused by unrelated pending work.
+
+Those criticisms survive even when the merge-only procedure is followed perfectly.
+
+However, the original article also described parts of the accidental agent behavior as if they were inherent to the intended strategy:
+
+* It presented rebasing onto develop as one possible baseline step.
+* Its duplicate-logical-commit discussion assumed the feature would later be rebased and represented by new SHAs on main.
+* It implied that the intentional workflow necessarily created duplicate feature identities.
+
+That implication was too broad.
+
+The intended workflow is specifically designed to avoid duplicate feature identities.
+
+The more precise distinction is:
+
+### The Inherent Tradeoff
+
+Even with perfect merges and preserved commit identity, integration QA and release validation operate on different complete trees.
+
+### The Avoidable Failure Mode
+
+Rebasing a published feature branch onto develop destroys the commit-identity mechanism and makes later reconciliation substantially harder.
+
+Those are separate concerns.
+
+## Two Different Complete Trees
+
+Suppose main and develop share commit `C`:
+
+```
+A──B──C
+```
+
+Develop receives unreleased work while the ticket independently receives feature work:
+
+```
+          D1──D2             develop
+         /
+A──B──C
+         \
+          F1──F2             feature
+```
+
+The unchanged `F1` and `F2` commits are merged into develop. If the two lines conflict, the develop-side merge records the reconciliation in `Mdev`.
+
+QA tests something conceptually equivalent to:
+
+```
+base + develop-only changes + F1/F2 + Mdev resolution
+```
+
+Main may also have changed while integration testing took place. When approved, the same `F1` and `F2` commits are merged into main, producing `Mmain` and any main-side reconciliation required there.
+
+```
+base + main-only changes + F1/F2 + Mmain resolution
+```
+
+The intended strategy has preserved the feature commits.
+
+It has not preserved the surrounding system.
 
 QA tested:
 
 ```
-main + D1 + D2 + D3 + F1 + F2
+develop-only changes + F1/F2 + develop merge resolution
 ```
 
 Production receives:
 
 ```
-main + M1 + M2 + F1' + F2'
+main-only changes + F1/F2 + main merge resolution
 ```
 
-The feature may be logically identical. The surrounding system isn’t.
+The feature identity is the same.
+
+The complete source tree is not.
 
 That distinction matters.
 
-## A Rebase After QA Creates a New Release Candidate
+## A Main Merge Still Creates a Release Candidate
 
-Rebasing is sometimes treated as Git housekeeping.
+The final main merge does not need to rewrite the feature commits to produce a new release candidate.
 
-In this situation, it isn’t.
+The merge composition itself creates a source-tree state that QA has not yet exercised.
 
-If a branch is rebased after testing, the resulting commit graph represents a new candidate for release. Conflicts may have been resolved differently. Dependencies may have changed. APIs may have evolved. Surrounding code may now behave differently.
+Main may contain new behavior. Dependencies may have changed. APIs may have evolved. A function’s signature may be identical while its runtime behavior has changed.
 
-And none of this requires a Git conflict.
-
-Consider a function whose signature hasn’t changed, but whose behavior has. Git happily applies the feature commit. The compiler is happy. Yet the interaction that QA previously verified is different.
+None of this requires a Git conflict.
 
 This leads to a useful release-engineering principle:
 
-> If the code changes after QA, you have a new release candidate.
+> If the complete source tree changes after QA, you have a new release candidate.
 
-That doesn’t necessarily mean repeating an entire manual regression cycle. It does mean the final main-based candidate deserves automated validation, targeted smoke testing, and appropriate integration testing.
+That does not necessarily mean repeating an entire manual regression cycle.
 
-QA approval should ultimately correspond to a particular release candidate—not merely to a feature name.
+It does mean that the final main-based candidate deserves automated validation, targeted smoke testing, and appropriate integration testing.
 
-## Rebasing Onto develop Makes the Problem Worse
+QA approval should ultimately correspond to a release candidate—not merely to a feature name or an unchanged set of feature commits.
 
-There is another subtle danger.
-
-Suppose the canonical feature branch itself is rebased onto develop before testing.
-
-Originally:
-
-```
-main
-  \
-   F1
-```
-
-And:
-
-```
-main
-  \
-   D1 -- D2
-```
-
-After rebasing the feature onto develop, its ancestry becomes conceptually:
-
-```
-main
-  \
-   D1 -- D2 -- F1'
-```
-
-The feature branch no longer represents simply:
-
-```
-main + feature
-```
-
-It represents:
-
-```
-main + develop changes + feature
-```
-
-Now someone wants to return that branch to main while preserving “only the feature.”
-
-That requires Git history surgery.
-
-It can be done. rebase --onto, cherry-picking, or careful commit-range manipulation can reconstruct the desired branch.
-
-But the workflow has created a problem that Git now has to solve.
-
-A safer rule is much simpler:
-
-> Never modify the canonical feature branch merely to test it in an integration environment.
-
-Keep the feature branch clean.
-
-## The Hidden Dependency Problem
-
-The more serious problem isn’t Git history. It’s software behavior.
+## The Hidden Dependency Problem Still Exists
 
 Imagine develop contains Feature A:
 
@@ -243,21 +482,21 @@ Your Feature B contains:
 **Feature B:**
 Reads the new database column.
 
-Feature B is deployed to the integration environment.
+Feature B is merged into the integration environment.
 
 Everything works.
 
 QA approves it.
 
-Then the team follows the isolation strategy: only Feature B gets rebased onto main and released.
+Then the team follows the isolation strategy and merges only Feature B into main.
 
-Production doesn’t have Feature A.
+Production does not have Feature A.
 
 The feature that passed every integration test can now fail immediately.
 
-The integration environment accidentally concealed an undeclared dependency.
+The integration environment concealed an undeclared dependency.
 
-This becomes especially dangerous in systems involving multiple layers:
+This becomes especially dangerous across several layers:
 
 ```
 Database
@@ -285,216 +524,250 @@ It does not prove:
 
 Those are different claims.
 
-## Integration Testing Can Produce False Negatives Too
+## Shared Integration Can Produce False Negatives Too
 
-Shared integration branches don’t only hide problems.
+Shared integration branches do not only hide problems.
 
 They can create them.
 
 Suppose Feature A introduces a regression into develop.
 
-Feature B is perfectly valid when applied to main, but its QA tests fail because Feature A broke something nearby.
+Feature B is valid when applied to main, but its QA tests fail because Feature A broke something nearby.
 
-Now Feature B is blocked by code that isn’t part of Feature B and isn’t intended to ship with it.
+Now Feature B is blocked by code that is not part of Feature B and is not intended to ship with it.
 
-So a permanently shared develop environment can produce both:
+A permanently shared develop environment can therefore produce both:
 
-* False confidence: another feature supplies something your feature secretly requires.
-* False failures: another feature breaks something your feature doesn’t actually affect.
+* **False confidence:** Another feature supplies something your feature secretly requires.
+* **False failures:** Another feature breaks something your feature does not actually affect.
 
 This makes debugging harder because “Does Feature B work?” becomes entangled with “What happens to be deployed on develop today?”
 
-## Duplicate Logical Commits Create Another Problem
+## A Main-Based Feature Can Still Conflict With Develop
 
-There is also a Git-history consequence.
+Regularly merging main into develop does not guarantee that a main-based feature will merge cleanly into develop.
 
-Suppose a feature is merged into develop:
-
-```
-develop: F1
-```
-
-Then its original branch is rebased onto a newer main:
+Suppose main and develop are synchronized at commit `C`:
 
 ```
-main: F1'
+A──B──C                 main and develop
 ```
 
-F1 and F1' may represent essentially the same logical change, but they are different Git commits with different hashes.
+Develop then receives an unreleased change:
 
-Later, someone synchronizes main and develop.
+```
+A──B──C──D1             develop
+```
 
-Git now has to reconcile two histories containing different representations of the same work.
+A ticket independently branches from `C`:
 
-Repeat this across dozens of features and the repository can accumulate:
+```
+A──B──C──F1             feature
+```
+
+If `D1` and `F1` modify overlapping code, the combined graph is:
+
+```
+          D1             develop
+         /
+A──B──C
+         \
+          F1             feature
+```
+
+Merging main into develop immediately beforehand contributes nothing new. The disagreement is between the develop-only change `D1` and the feature change `F1`.
+
+That conflict is normal Git behavior. It does not mean the feature started from the wrong branch.
+
+The engineer is correct to say:
+
+> Since develop has a different commit history, Git has to do something to combine this branch with it.
+
+Under the merge-only policy, the “something” is:
+
+```
+merge feature into develop
+resolve conflicts in the develop-side merge
+```
+
+It is not:
+
+```
+merge develop into feature
+```
+
+And it is not:
+
+```
+replay the feature separately for each target
+```
+
+## The Dangerous Workaround: Letting the Feature Absorb Develop
+
+Merge direction determines which branch acquires the combined ancestry.
+
+The wrong direction for the canonical feature is:
+
+```bash
+git switch feature/MFLP-357
+git merge develop
+```
+
+The result is:
+
+```
+feature = main-based feature + develop ancestry + develop reconciliation
+```
+
+The feature can no longer represent “only this ticket against main.”
+
+The safe direction is:
+
+```bash
+git switch develop
+git merge feature/MFLP-357
+```
+
+The result is:
+
+```
+develop = develop history + unchanged feature commits + merge resolution
+feature = unchanged main-based ticket history
+```
+
+When direct work on protected develop is unavailable, a disposable integration branch can represent the same merge direction:
+
+```bash
+git switch develop
+git switch -c integration/MFLP-357
+git merge feature/MFLP-357
+# resolve develop-specific conflicts here
+# open PR: integration/MFLP-357 → develop
+```
+
+The critical invariant is:
+
+> The integration branch absorbs the feature. The canonical feature never absorbs the integration branch.
+
+Rebasing the contaminated feature back onto main does not restore the original history. It creates replayed commits such as `F1'` and `F2'`.
+
+If `F1` and `F2` were already merged into develop, the two targets now contain different historical representations of the same logical work.
+
+Later reconciliation can produce:
 
 * Duplicate logical changes.
 * Confusing merge bases.
 * Repeated conflicts.
-* Difficult PR comparisons.
-* Hard-to-explain commit histories.
-* Uncertainty about which version of a feature was actually tested.
+* Difficult pull-request comparisons.
+* Uncertainty about which version was tested.
 
-The branching strategy begins requiring increasingly sophisticated Git operations simply to maintain itself.
+This is not an unavoidable consequence of testing on develop.
 
-That’s usually a warning sign.
+It occurs when the canonical feature is rewritten or replayed instead of preserving its original commits.
 
-## Preserve the Goal, Change the Mechanics
+If integration testing finds a feature defect, commit the fix to the canonical feature branch, merge that new feature commit into develop again, and retest.
 
-The original goals are good:
+Develop-specific merge reconciliation stays in the develop-side merge.
 
-Goal 1: Test features alongside other work.
+## Exacting Workflows Need Mechanical Enforcement
 
-Goal 2: Don’t release unrelated unfinished work.
+A mature implementation should encode the procedure in repository settings and tooling:
 
-We don’t need to abandon either.
+* Require the intended merge type.
+* Block force pushes to published feature branches.
+* Protect main and develop.
+* Require checks and review.
+* Give coding agents a repository-local workflow document.
+* Add a preflight check that detects whether a feature branch contains develop-only ancestry.
+* Use disposable integration branches created from develop when protected-branch pull requests are required.
+* Show the graph before any integration push.
+* Record which exact commit and tree QA approved.
 
-Instead, separate the feature branch from the integration artifact.
+[GitHub rulesets](https://docs.github.com/en/enterprise-cloud@latest/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets) can require pull requests and status checks, restrict the allowed merge type, and block force pushes.
 
-Start with:
+If correctness depends on ten invisible rules and none are mechanically enforced, then the process itself shares responsibility when someone new gets one wrong.
+
+A branching strategy should make the safe path the easy path.
+
+## Is This Complexity Worth It Here?
+
+My judgment is: probably not in a manually enforced form unless the company has a concrete requirement that simpler models cannot satisfy.
+
+The graduation model buys two real things:
+
+1. Test a feature with all pending integrated work.
+2. Release that feature without releasing every other pending feature.
+
+It pays for them with:
+
+* Dual pull requests for each feature.
+* Exact merge-method requirements.
+* A permanent branch that can diverge from production.
+* Extra synchronization work.
+* Ambiguous QA meaning.
+* Potential hidden dependencies.
+* A high cognitive burden on every engineer and coding agent.
+* A final release candidate that still needs validation against main.
+
+For a small company, that is a lot of procedural machinery.
+
+The Git project can justify a complex graduation model because it has a large distributed contributor population, multiple stability tiers, release-maintenance branches, subsystem maintainers, and a mature culture built around those rules.
+
+A small product company should have a specific answer to this question:
+
+> What business or technical constraint makes this complexity cheaper than preview environments, feature flags, or short-lived release branches?
+
+If the answer is merely, “We have one shared develop deployment where QA tests things,” then the branch model may be compensating for missing deployment infrastructure.
+
+## Three Serious Alternatives
+
+### 1. Mainline With Per-Feature Testing
+
+```
+main → feature branch → PR candidate
+                         ↓
+                    temporary QA environment
+                         ↓
+                    merge to main
+```
+
+Use feature flags when code needs to merge before functionality should be exposed.
+
+Use a merge queue when the final candidate must be tested with the latest target branch. GitHub’s [merge queue](https://docs.github.com/en/enterprise-cloud@latest/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue) creates a temporary merge group containing the pull request, the latest target branch, and changes ahead of it in the queue; required checks must pass before the changes merge.
+
+This is the cleanest long-term option when QA can examine the actual candidate instead of whatever happens to coexist on develop.
+
+### 2. A Short-Lived Release or Integration Branch
 
 ```
 main
-  \
-   feature
+  └── release/candidate
+        ├── selected feature A
+        ├── selected feature B
+        └── selected feature C
 ```
 
-Keep that feature branch based on main.
+Test the exact release branch, merge that tested composition to main, and delete it.
 
-For integration testing, create a temporary composition:
+This is appropriate when several changes genuinely need to ship together.
 
-```
-develop
-   \
-    qa/feature
-       +
-     feature
-```
+It still requires discipline, but it makes the release unit explicit and avoids keeping a permanent alternate branch full of unrelated pending work.
 
-Or conceptually:
+### 3. Keep the Graduation Model—but Treat It as Specialized
 
 ```
-main ─────────────── feature
-  \
-   develop ───────────────\
-                           integration candidate
-feature ──────────────────/
+main-based topic
+    → merge unchanged into develop/next
+    → integration test
+    → merge the same topic into main
+    → validate the final main candidate
 ```
 
-Now the integration candidate can contain all the messy shared state necessary for testing.
+No rebase after the topic has been merged anywhere.
 
-The canonical feature branch doesn’t.
+No squash if commit identity matters.
 
-If integration testing discovers a bug, fix it on the feature branch:
-
-```
-feature
-   ↓
-fix
-   ↓
-rebuild integration candidate
-   ↓
-retest
-```
-
-Don’t make unique fixes directly on the integration branch.
-
-That ensures every meaningful feature change remains part of the branch that will eventually ship.
-
-## Then Test the Actual Release Candidate
-
-After integration testing succeeds, update the feature against the latest main:
-
-```
-latest main
-    \
-     feature
-```
-
-Now run validation against that exact candidate.
-
-Depending on the risk of the change, that could include:
-
-* Unit and integration tests.
-* Build validation.
-* Database migration tests.
-* API compatibility tests.
-* Targeted manual smoke testing.
-* End-to-end tests.
-* A final diff review.
-
-The important question is:
-
-> Have we tested the tree we’re actually proposing to merge?
-
-If the answer is yes, the release process has a much stronger guarantee.
-
-## Sometimes the Features Shouldn’t Be Separate
-
-There is an even deeper lesson hidden in the dependency problem.
-
-Suppose Feature B genuinely cannot work without Feature A.
-
-Trying to preserve a “strict Feature B only” production PR may be the wrong goal.
-
-Those features form a release unit.
-
-An integration or epic branch can express that honestly:
-
-```
-main
-  \
-   release-feature
-      ├── Feature A
-      ├── Feature B
-      └── Feature C
-```
-
-Test:
-
-```
-release-feature
-```
-
-Then release:
-
-```
-release-feature → main
-```
-
-Now the thing tested is the thing shipped.
-
-This doesn’t mean every related ticket belongs on a long-lived branch. Long-lived branches introduce their own problems and should generally be avoided.
-
-But if several changes truly constitute one atomic production capability, pretending they’re independent doesn’t make the architecture independent.
-
-## What About Feature Flags?
-
-Another approach avoids much of this branch choreography altogether.
-
-Merge frequently into main:
-
-```
-feature → main
-```
-
-but place unfinished functionality behind feature flags.
-
-Now main can contain:
-
-```
-Feature A: disabled
-Feature B: enabled
-Feature C: disabled
-```
-
-The code is integrated continuously without making every integrated capability publicly available.
-
-This is one reason trunk-based development and feature flags are attractive. They move release coordination away from complicated Git ancestry and into explicit product configuration.
-
-Feature flags aren’t free. They require cleanup, testing of flag states, and discipline around migrations and backward compatibility.
-
-But they often scale better than maintaining multiple semipermanent versions of the repository.
+Consider periodically rebuilding develop from main plus the topics still under evaluation, analogous to Git’s treatment of its integration branches.
 
 ## The Broader Principle
 
@@ -510,7 +783,7 @@ Those are secondary questions.
 
 The more important question is:
 
-> What does a successful test actually prove about the code we’re about to release?
+> What does a successful test actually prove about the code we are about to release?
 
 A good branching strategy should make that answer obvious.
 
@@ -528,61 +801,48 @@ SHIP
 
 all operate on the same source-tree state—or on artifacts whose equivalence can be demonstrated.
 
-When the workflow instead becomes:
+## My Bottom Line
+
+The original problem was real and unavoidable:
+
+> A feature based on main may conflict when it is merged into an ahead-of-main develop branch, even when main is regularly synchronized into develop.
+
+The mistake was not recognizing that a conflict could happen. The mistake was where the reconciliation landed:
 
 ```
-build feature
-     ↓
-transform branch
-     ↓
-test with develop
-     ↓
-transform branch again
-     ↓
-combine with newer main
-     ↓
-ship
+What should happen: develop absorbs feature
+What happened:      feature absorbed develop
 ```
 
-every transformation creates another opportunity for the tested and released states to diverge.
+Once the canonical feature contained develop ancestry, it no longer represented only the ticket against main. Replaying that work for main then created a second history for the same logical feature.
 
-Git may execute all of those operations perfectly.
+The corrected analysis has four parts:
 
-The process can still be wrong.
+1. **Inherent challenge:** Develop and the feature can conflict because they contain different changes after their common ancestor.
+2. **Intended solution:** Merge the unchanged feature commits into develop and keep any develop-specific reconciliation in the develop-side merge.
+3. **Avoidable failure:** Do not let the canonical feature absorb develop and then recreate the feature separately for main.
+4. **Remaining tradeoff:** Even when commit identity is preserved perfectly, develop QA and the main release still exercise different complete trees.
 
-## A Useful Rule of Thumb
+The right personal conclusion is not:
 
-A branching strategy should make the safe path the easy path.
+> An agent made a mistake, so the strategy is bad.
 
-If engineers routinely need to remember:
+It is also not:
 
-* Which branch originally forked from which commit.
-* Which commits belong exclusively to the feature.
-* Whether develop changes should survive a rebase.
-* Which commit range needs rebase --onto.
-* Whether a dependency on develop has reached main.
-* Whether the post-QA rebase requires another round of testing.
+> The process is typical, so any difficulty is entirely the engineer’s fault.
 
-then too much release correctness depends on individual Git expertise.
+A more accurate conclusion is:
 
-Simpler is usually better:
+> This is a specialized, exacting integration-branch workflow that I had not used before. I did not realize the agent had rewritten the feature branch, and I need to add controls so I catch that. I accept that responsibility. Asking for some grace while learning both the workflow and the agent is not the same as refusing responsibility. Separately, the team should decide whether the workflow’s complexity is justified.
 
-```
-main
-  ↓
-feature
-  ↓
-test the candidate
-  ↓
-main
-```
+Technically, the strategy is legitimate and has precedent in large distributed projects.
 
-Use temporary integration environments when you need integration.
+It is not the generic large-company standard.
 
-Use release branches when several changes genuinely form one release.
+It has known costs.
 
-Use feature flags when code integration and product release need to happen independently.
+Even the Git project’s documentation describes this family of workflows as requiring careful branch management and often being unnecessary for smaller teams.
 
-And whatever model you choose, preserve the most important invariant:
+The original release-engineering invariant still holds:
 
 > The closer the code you test is to the code you ship, the stronger your release process becomes.
