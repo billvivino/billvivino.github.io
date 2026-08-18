@@ -71,18 +71,7 @@ description: "A merge-only topic graduation workflow is legitimate, but integrat
   />
 </picture>
 
-This article needs to begin with a correction.
-
-The workflow I originally described was the problematic sequence I experienced, not the strategy the team intended:
-
-```
-feature from main
-    → feature absorbs develop
-    → feature is reconstructed for main
-    → a second representation goes to production
-```
-
-The intended workflow is different:
+Some teams use a merge-only topic-graduation workflow:
 
 1. Create a feature branch from main.
 2. Build the feature without incorporating develop.
@@ -91,11 +80,7 @@ The intended workflow is different:
 5. Merge the unchanged feature commits into main when approved.
 6. Validate the resulting main-based release candidate.
 
-The intended model preserves one canonical feature history.
-
-The accidental recovery path creates two independently evolving representations of the same logical feature.
-
-Those are not the same workflow.
+This model preserves one canonical feature history. A workflow that instead lets the feature absorb develop and then reconstructs the feature for main creates two independently evolving representations of the same logical change.
 
 The more precise thesis is:
 
@@ -109,17 +94,17 @@ It does not make the develop integration tree equivalent to the main release tre
 
 The closest established name for the intended model is a **topic-branch graduation workflow with a testing integration branch**.
 
-For a ticket such as MFLP-357, the intended develop-side graph is:
+For a generic feature, the intended develop-side graph is:
 
 ```
           D1────D2────────Mdev       develop
          /               /
 A──B──C─┤               /
          \             /
-          F1────F2─────             ticket branch
+          F1────F2─────             feature branch
 ```
 
-The ticket branch stays based on main. The unchanged `F1` and `F2` commits are merged into develop. If `D1` or `D2` conflicts with `F1` or `F2`, the resolution belongs in `Mdev`, the develop-side merge commit.
+The feature branch stays based on main. The unchanged `F1` and `F2` commits are merged into develop. If `D1` or `D2` conflicts with `F1` or `F2`, the resolution belongs in `Mdev`, the develop-side merge commit.
 
 Later, the same feature commits go to main:
 
@@ -208,55 +193,6 @@ That does not make the strategy invalid.
 
 It means the strategy should not exist only as tribal knowledge.
 
-## What Actually Happened to MFLP-357
-
-The MFLP-357 sequence was closer to this:
-
-```
-Develop-targeted history:
-A──B──C──F1──F2──c53a9762
-                    /
-             develop history
-```
-
-Develop was merged into the canonical ticket branch.
-
-That branch acquired:
-
-* Develop ancestry.
-* Develop-specific conflict resolutions.
-* Develop-specific migration numbering.
-
-It could no longer represent “only MFLP-357 against main.” A pull request from that branch to main would also propose unrelated develop history.
-
-A second history was then created for main:
-
-```
-Main-targeted history:
-A──B──C──F1'──F2'──X
-```
-
-Here:
-
-* `F1'` and `F2'` were replayed versions of the logical feature.
-* They had different SHAs from `F1` and `F2`.
-* `X` was the main-only session-restoration fix.
-
-The [Git rebase documentation](https://git-scm.com/docs/git-rebase/2.53.0.html) explains why the identities changed. Rebase lists the commits on the topic, checks out the new upstream, then replays the commits one by one in order—similar to running `git cherry-pick` repeatedly. Git’s [cherry-pick documentation](https://git-scm.com/docs/git-cherry-pick.html) likewise describes applying the change introduced by an existing commit while recording a new commit.
-
-Git therefore saw:
-
-```
-develop: F1  + F2  + develop resolution
-main:    F1' + F2' + main-only fix
-```
-
-That is the duplicate-history problem.
-
-It was not caused merely by having two branch names.
-
-It was caused by maintaining two independently replayed feature histories.
-
 ## Two Branch Names Were Not the Technical Problem
 
 These structures are not equivalent.
@@ -288,7 +224,7 @@ The temporary integration branch can carry:
 
 * The merge commit.
 * Conflict resolutions needed only for develop.
-* Migration-number reconciliation needed only for that integration tree.
+* Reconciliation needed only for that integration tree.
 
 It can then be merged into develop and deleted.
 
@@ -298,69 +234,13 @@ It is using a temporary branch to construct the develop merge result while prese
 
 Whether a team permits this temporary carrier branch is a policy question. Technically, it is not the same pathology as maintaining two independently replayed versions of the feature.
 
-## Responsibility Is Not Binary
+## Separate the Inherent Tradeoff From the Avoidable Failure
 
-There is also a human issue here, especially when an engineer is learning a specialized branching process and an agentic coding tool at the same time.
-
-A fair description of that situation is:
-
-> I was learning a specialized branching flow and a new agentic tool at the same time. I missed what the tool did. I accept that I need to catch it, but I also expect some grace while I learn the process.
-
-That is a reasonable position.
-
-An engineer can own the specific miss—not inspecting the resulting graph closely enough—without accepting the stronger judgment that the entire incident demonstrates irresponsibility or a refusal to follow instructions.
-
-Responsibility is not binary.
-
-The unfamiliarity of the workflow, the subtlety of the invariant, and the fact that a coding agent repeatedly gravitates toward a different solution are all relevant context.
-
-There are three possible positions:
-
-1. **No responsibility:** “The AI did it; this has nothing to do with me.”
-2. **Full responsibility without context:** “I should have executed an unfamiliar, exacting procedure perfectly on the first attempt.”
-3. **Proportionate responsibility:** “I missed it, I understand the invariant now, and I will add controls—but I was learning both the workflow and the tool, so treat this as an onboarding mistake rather than defiance or negligence.”
-
-The third position is not blame shifting.
-
-It distinguishes two materially different failures:
-
-```
-I knowingly ignored the required strategy
-```
-
-from:
-
-```
-I was unfamiliar with the strategy, did not realize the agent had
-rewritten the branch, and did not catch the ancestry change soon enough.
-```
-
-The engineer remains accountable for what an agent pushes.
-
-That does not imply:
-
-* The learning context is irrelevant.
-* The procedure was obvious.
-* The procedure is typical everywhere.
-* No grace is warranted.
-* The workflow itself cannot be improved.
-* Any conflict proves deliberate failure to follow directions.
-
-Agents will take many technically plausible actions to reach an objective.
-
-Precisely because they will, a non-obvious Git workflow requires explicit agent constraints and human verification habits that may need to be learned.
-
-That is not evidence that the branching strategy is wrong.
-
-It is evidence that adopting the strategy with agents requires additional controls.
-
-## What the Original Article Got Right—and What It Overstated
-
-The article’s central thesis remains valid:
+The central thesis is:
 
 > The tree tested on develop is not necessarily the tree ultimately released from main.
 
-The original article correctly distinguished:
+The workflow produces two different compositions:
 
 ```
 QA:
@@ -370,21 +250,7 @@ Production:
 main-only work + feature
 ```
 
-It also correctly argued that shared integration testing can conceal dependencies or create failures caused by unrelated pending work.
-
-Those criticisms survive even when the merge-only procedure is followed perfectly.
-
-However, the original article also described parts of the accidental agent behavior as if they were inherent to the intended strategy:
-
-* It presented rebasing onto develop as one possible baseline step.
-* Its duplicate-logical-commit discussion assumed the feature would later be rebased and represented by new SHAs on main.
-* It implied that the intentional workflow necessarily created duplicate feature identities.
-
-That implication was too broad.
-
-The intended workflow is specifically designed to avoid duplicate feature identities.
-
-The more precise distinction is:
+Shared integration testing can conceal dependencies or create failures caused by unrelated pending work, even when the merge-only procedure is followed perfectly. The workflow is specifically designed to avoid duplicate feature identities, so the more precise distinction is:
 
 ### The Inherent Tradeoff
 
@@ -404,7 +270,7 @@ Suppose main and develop share commit `C`:
 A──B──C
 ```
 
-Develop receives unreleased work while the ticket independently receives feature work:
+Develop receives unreleased work while a feature branch independently receives its own changes:
 
 ```
           D1──D2             develop
@@ -559,7 +425,7 @@ Develop then receives an unreleased change:
 A──B──C──D1             develop
 ```
 
-A ticket independently branches from `C`:
+A feature independently branches from `C`:
 
 ```
 A──B──C──F1             feature
@@ -579,7 +445,7 @@ Merging main into develop immediately beforehand contributes nothing new. The di
 
 That conflict is normal Git behavior. It does not mean the feature started from the wrong branch.
 
-The engineer is correct to say:
+It is accurate to say:
 
 > Since develop has a different commit history, Git has to do something to combine this branch with it.
 
@@ -609,7 +475,7 @@ Merge direction determines which branch acquires the combined ancestry.
 The wrong direction for the canonical feature is:
 
 ```bash
-git switch feature/MFLP-357
+git switch feature/example-change
 git merge develop
 ```
 
@@ -619,30 +485,30 @@ The result is:
 feature = main-based feature + develop ancestry + develop reconciliation
 ```
 
-The feature can no longer represent “only this ticket against main.”
+The feature can no longer represent only its own changes against main.
 
 The safe direction is:
 
 ```bash
 git switch develop
-git merge feature/MFLP-357
+git merge feature/example-change
 ```
 
 The result is:
 
 ```
 develop = develop history + unchanged feature commits + merge resolution
-feature = unchanged main-based ticket history
+feature = unchanged main-based feature history
 ```
 
 When direct work on protected develop is unavailable, a disposable integration branch can represent the same merge direction:
 
 ```bash
 git switch develop
-git switch -c integration/MFLP-357
-git merge feature/MFLP-357
+git switch -c integration/example-change
+git merge feature/example-change
 # resolve develop-specific conflicts here
-# open PR: integration/MFLP-357 → develop
+# open PR: integration/example-change → develop
 ```
 
 The critical invariant is:
@@ -685,7 +551,7 @@ A mature implementation should encode the procedure in repository settings and t
 
 [GitHub rulesets](https://docs.github.com/en/enterprise-cloud@latest/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets) can require pull requests and status checks, restrict the allowed merge type, and block force pushes.
 
-If correctness depends on ten invisible rules and none are mechanically enforced, then the process itself shares responsibility when someone new gets one wrong.
+If correctness depends on ten invisible rules and none are mechanically enforced, the workflow is too fragile for routine use.
 
 A branching strategy should make the safe path the easy path.
 
@@ -803,37 +669,16 @@ all operate on the same source-tree state—or on artifacts whose equivalence ca
 
 ## My Bottom Line
 
-The original problem was real and unavoidable:
+The underlying Git constraint is real:
 
 > A feature based on main may conflict when it is merged into an ahead-of-main develop branch, even when main is regularly synchronized into develop.
 
-The mistake was not recognizing that a conflict could happen. The mistake was where the reconciliation landed:
-
-```
-What should happen: develop absorbs feature
-What happened:      feature absorbed develop
-```
-
-Once the canonical feature contained develop ancestry, it no longer represented only the ticket against main. Replaying that work for main then created a second history for the same logical feature.
-
-The corrected analysis has four parts:
+The analysis has four parts:
 
 1. **Inherent challenge:** Develop and the feature can conflict because they contain different changes after their common ancestor.
 2. **Intended solution:** Merge the unchanged feature commits into develop and keep any develop-specific reconciliation in the develop-side merge.
-3. **Avoidable failure:** Do not let the canonical feature absorb develop and then recreate the feature separately for main.
+3. **Failure to avoid:** Do not let the canonical feature absorb develop and then recreate the feature separately for main.
 4. **Remaining tradeoff:** Even when commit identity is preserved perfectly, develop QA and the main release still exercise different complete trees.
-
-The right personal conclusion is not:
-
-> An agent made a mistake, so the strategy is bad.
-
-It is also not:
-
-> The process is typical, so any difficulty is entirely the engineer’s fault.
-
-A more accurate conclusion is:
-
-> This is a specialized, exacting integration-branch workflow that I had not used before. I did not realize the agent had rewritten the feature branch, and I need to add controls so I catch that. I accept that responsibility. Asking for some grace while learning both the workflow and the agent is not the same as refusing responsibility. Separately, the team should decide whether the workflow’s complexity is justified.
 
 Technically, the strategy is legitimate and has precedent in large distributed projects.
 
