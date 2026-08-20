@@ -1,9 +1,8 @@
 ---
 layout: default
-title: "App Rescue Assessment Purchase Confirmed"
-description: "Your App Rescue Assessment payment was completed."
+title: "Payment Confirmed — Bill Vivino Technology"
+description: "Your payment to Bill Vivino Technology was completed."
 noindex: true
-seo_cluster: "software-rescue"
 ---
 
 <section class="container my-5" style="max-width: 760px">
@@ -15,22 +14,16 @@ seo_cluster: "software-rescue"
       style="max-width: 200px"
     />
 
-    <p class="text-uppercase fw-semibold text-muted mb-2">
-      App Rescue Assessment
+    <p class="text-uppercase fw-semibold text-muted mb-2" id="paymentLabel">
+      Payment Confirmed
     </p>
-    <h1 class="mb-3">Your Payment Is Complete</h1>
+    <h1 class="mb-3" id="paymentHeading">Thank You — Your Payment Is Complete</h1>
 
-    <p class="lead">
-      Thank you for purchasing the Four-Hour App Rescue Assessment.
-    </p>
-
-    <p>
-      I will send secure intake, repository-access, and scheduling instructions
-      to the email associated with your PayPal payment. Do not email passwords,
-      access tokens, or other repository credentials.
+    <p class="lead" id="paymentLead">
+      I will follow up using the email address associated with your PayPal payment.
     </p>
 
-    <div class="alert alert-light border mt-4 text-start">
+    <div class="alert alert-light border mt-4 text-start d-none" id="appRescueNextSteps">
       <h2 class="h5">What happens next</h2>
       <ol class="mb-0">
         <li class="mb-2">You receive secure intake instructions.</li>
@@ -38,6 +31,9 @@ seo_cluster: "software-rescue"
         <li class="mb-2">I review the current blocker, risks, and technical state.</li>
         <li>You receive written findings, recommended next steps, and a debrief.</li>
       </ol>
+      <p class="small text-muted mt-3 mb-0">
+        Do not email passwords, access tokens, or other repository credentials.
+      </p>
     </div>
 
     <a href="/" class="btn btn-outline-primary mt-4">Return to the Home Page</a>
@@ -60,11 +56,19 @@ seo_cluster: "software-rescue"
     }
 
     const checkoutAge = Date.now() - checkoutStartedAt;
-    const cameFromRecentCheckout =
+    const cameFromRecentAppRescueCheckout =
       checkoutReference && checkoutAge >= 0 && checkoutAge <= 24 * 60 * 60 * 1000;
-    const dedupeKey = "app_rescue_purchase_reported_" + checkoutReference;
 
-    if (!cameFromRecentCheckout || localStorage.getItem(dedupeKey) === "1") return;
+    if (!cameFromRecentAppRescueCheckout) return;
+
+    document.getElementById("paymentLabel").textContent = "App Rescue Assessment";
+    document.getElementById("paymentHeading").textContent = "Your App Rescue Payment Is Complete";
+    document.getElementById("paymentLead").textContent =
+      "Thank you for purchasing the Four-Hour App Rescue Assessment.";
+    document.getElementById("appRescueNextSteps").classList.remove("d-none");
+
+    const dedupeKey = "app_rescue_purchase_reported_" + checkoutReference;
+    if (localStorage.getItem(dedupeKey) === "1") return;
 
     localStorage.setItem(dedupeKey, "1");
     localStorage.removeItem("app_rescue_checkout_reference");

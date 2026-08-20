@@ -5,12 +5,7 @@ description: "Purchase a fixed-fee senior technical assessment for an existing a
 seo_cluster: "software-rescue"
 ---
 
-{% assign assessment_button_id = site.paypal.app_rescue_assessment_button_id | default: "" %}
-{% if assessment_button_id != "" %}
-<script
-  src="https://www.paypal.com/sdk/js?client-id={{ site.paypal.client_id }}&components=hosted-buttons&enable-funding=venmo&currency=USD"
-></script>
-{% endif %}
+{% assign assessment_payment_url = site.paypal.app_rescue_assessment_url | default: "" %}
 
 <style>
   .assessment-shell {
@@ -53,9 +48,6 @@ seo_cluster: "software-rescue"
     border-radius: 8px;
   }
 
-  .paypal-checkout-shell {
-    display: none;
-  }
 </style>
 
 <section class="container assessment-shell py-5" id="app-rescue-assessment">
@@ -151,26 +143,15 @@ seo_cluster: "software-rescue"
             </div>
           </div>
 
-          {% if assessment_button_id != "" %}
+          {% if assessment_payment_url != "" %}
           <button
             type="button"
             class="btn btn-primary btn-lg w-100"
             id="revealAssessmentCheckout"
             disabled
           >
-            Continue to Secure Payment
+            Continue to Secure PayPal Checkout
           </button>
-
-          <div
-            class="paypal-checkout-shell mt-3"
-            id="assessmentPaypalCheckout"
-            aria-live="polite"
-          >
-            <p class="small text-center mb-3">
-              Purchase the App Rescue Assessment — $1,000
-            </p>
-            <div id="paypal-container-{{ assessment_button_id }}"></div>
-          </div>
           {% else %}
           <button type="button" class="btn btn-secondary btn-lg w-100" disabled>
             PayPal Checkout Setup Pending
@@ -199,8 +180,7 @@ seo_cluster: "software-rescue"
       document.querySelectorAll(".assessment-confirmation")
     );
     const revealButton = document.getElementById("revealAssessmentCheckout");
-    const checkoutShell = document.getElementById("assessmentPaypalCheckout");
-    let paypalRendered = false;
+    const assessmentPaymentUrl = {{ assessment_payment_url | jsonify }};
 
     function confirmationsComplete() {
       return confirmations.length === 3 && confirmations.every(function (input) {
@@ -217,9 +197,12 @@ seo_cluster: "software-rescue"
     });
     syncCheckoutButton();
 
-    if (revealButton && checkoutShell) {
+    if (revealButton && assessmentPaymentUrl) {
       revealButton.addEventListener("click", function () {
         if (!confirmationsComplete()) return;
+
+        revealButton.disabled = true;
+        revealButton.textContent = "Opening Secure PayPal Checkout…";
 
         const checkoutReference =
           "AR-" +
@@ -234,6 +217,13 @@ seo_cluster: "software-rescue"
           // Checkout still works when storage is unavailable.
         }
 
+        let checkoutOpened = false;
+        function openPayPalCheckout() {
+          if (checkoutOpened) return;
+          checkoutOpened = true;
+          window.location.assign(assessmentPaymentUrl);
+        }
+
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
           event: "app_rescue_assessment_checkout_start",
@@ -242,21 +232,11 @@ seo_cluster: "software-rescue"
           checkout_reference: checkoutReference,
           value: 1000,
           currency: "USD",
+          eventCallback: openPayPalCheckout,
+          eventTimeout: 800,
         });
 
-        revealButton.style.display = "none";
-        checkoutShell.style.display = "block";
-
-        {% if assessment_button_id != "" %}
-        if (!paypalRendered && window.paypal && window.paypal.HostedButtons) {
-          paypalRendered = true;
-          window.paypal
-            .HostedButtons({
-              hostedButtonId: {{ assessment_button_id | jsonify }},
-            })
-            .render("#paypal-container-{{ assessment_button_id }}");
-        }
-        {% endif %}
+        window.setTimeout(openPayPalCheckout, 900);
       });
     }
   });
