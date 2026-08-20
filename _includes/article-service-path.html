@@ -1,0 +1,101 @@
+{% capture article_topic_source %} {{ page.title }} {{ page.description }} {{ page.categories | join: " " }} {{ page.tags | join: " " }} {% endcapture %}
+{% assign article_topic_source = article_topic_source | downcase %}
+{% assign article_cluster = page.seo_cluster | default: "" %}
+
+{% if article_cluster == "" %}
+  {% if article_topic_source contains "mobile"
+     or article_topic_source contains "ios"
+     or article_topic_source contains "android"
+     or article_topic_source contains "swift"
+     or article_topic_source contains "kotlin"
+     or article_topic_source contains "firebase"
+     or article_topic_source contains "react native"
+     or article_topic_source contains "app store"
+     or article_topic_source contains "offline-first"
+     or article_topic_source contains "hardware integration"
+     or article_topic_source contains "image loading" %}
+    {% assign article_cluster = "mobile-systems" %}
+  {% elsif article_topic_source contains " ai "
+     or article_topic_source contains "ai-"
+     or article_topic_source contains "agentic"
+     or article_topic_source contains "coding agent"
+     or article_topic_source contains "artificial intelligence"
+     or article_topic_source contains "llm"
+     or article_topic_source contains "hallucin"
+     or article_topic_source contains "automation" %}
+    {% assign article_cluster = "practical-ai" %}
+  {% elsif article_topic_source contains "startup"
+     or article_topic_source contains "founder"
+     or article_topic_source contains "funding"
+     or article_topic_source contains "product-market"
+     or article_topic_source contains "mvp"
+     or article_topic_source contains "estimate software"
+     or article_topic_source contains "scope"
+     or article_topic_source contains "engineering spend"
+     or article_topic_source contains "compensation" %}
+    {% assign article_cluster = "product-strategy" %}
+  {% else %}
+    {% assign article_cluster = "software-rescue" %}
+  {% endif %}
+{% endif %}
+
+{% case article_cluster %}
+  {% when "mobile-systems" %}
+    {% assign article_cluster_label = "Mobile and Firebase systems" %}
+    {% assign article_pillar_url = "/blog/offline-first-mobile-app-conflict-resolution/" %}
+    {% assign article_pillar_title = "Offline-First Mobile Apps Are Conflict-Resolution Systems" %}
+    {% assign article_service_url = "/senior-mobile-app-developer.html" %}
+    {% assign article_service_label = "Explore senior mobile app development" %}
+    {% assign article_service_text = "Turn mobile architecture, Firebase, release, performance, or synchronization lessons into a practical plan for an app already in motion." %}
+  {% when "practical-ai" %}
+    {% assign article_cluster_label = "Practical AI engineering" %}
+    {% assign article_pillar_url = "/posts/ai-doesnt-replace-senior-engineers-it-expands-their-reach.html" %}
+    {% assign article_pillar_title = "AI Doesn't Replace Senior Engineers. It Expands Their Reach." %}
+    {% assign article_service_url = "/ai-integration-consultant.html" %}
+    {% assign article_service_label = "Explore AI integration consulting" %}
+    {% assign article_service_text = "Move from AI commentary to a production workflow with context controls, evaluation, fallbacks, cost boundaries, and human review." %}
+  {% when "product-strategy" %}
+    {% assign article_cluster_label = "Product and technical strategy" %}
+    {% assign article_pillar_url = "/posts/engineering-is-upstream-of-funding.html" %}
+    {% assign article_pillar_title = "Engineering Is Upstream of Funding" %}
+    {% assign article_service_url = "/fractional-cto-technical-advisor.html" %}
+    {% assign article_service_label = "Explore fractional CTO guidance" %}
+    {% assign article_service_text = "Connect scope, funding, hiring, vendor, and roadmap decisions to the technical evidence in the current product." %}
+  {% else %}
+    {% assign article_cluster_label = "Software rescue and reliability" %}
+    {% assign article_pillar_url = "/blog/software-rewrite-vs-stabilization/" %}
+    {% assign article_pillar_title = "Software Rewrite vs. Stabilization" %}
+    {% assign article_service_url = "/fractional-cto-technical-advisor.html" %}
+    {% assign article_service_label = "Get a codebase rescue strategy" %}
+    {% assign article_service_text = "Use the current code, failure evidence, delivery constraints, and business risk to decide what to stabilize, refactor, replace, or stop." %}
+{% endcase %}
+
+<section class="border rounded-3 bg-light p-4 mt-5" aria-label="Related technical guidance and services" data-seo-cluster="{{ article_cluster }}">
+  <p class="text-uppercase fw-semibold text-muted small mb-2">{{ article_cluster_label }}</p>
+  {% if page.seo_pillar == true %}
+    <h2 class="h4">Primary guide in this topic</h2>
+  {% else %}
+    <h2 class="h4">Continue with the primary guide</h2>
+  {% endif %}
+  <p>{{ article_service_text }}</p>
+  <div class="d-flex flex-wrap gap-2">
+    {% unless page.url == article_pillar_url %}
+      <a
+        href="{{ article_pillar_url }}"
+        class="btn btn-outline-primary"
+        data-seo-cta="article_to_pillar"
+        data-seo-cluster="{{ article_cluster }}"
+      >
+        Read: {{ article_pillar_title }}
+      </a>
+    {% endunless %}
+    <a
+      href="{{ article_service_url }}"
+      class="btn btn-primary"
+      data-seo-cta="article_to_service"
+      data-seo-cluster="{{ article_cluster }}"
+    >
+      {{ article_service_label }}
+    </a>
+  </div>
+</section>

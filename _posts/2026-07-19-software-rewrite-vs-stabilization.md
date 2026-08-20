@@ -3,6 +3,9 @@ layout: post
 title: "Software Rewrite vs. Stabilization: What to Do With a Troubled App"
 description: "A complete software rewrite is not always the safest way to rescue a troubled application. Learn how to stabilize, investigate, and decide what should actually be rebuilt."
 date: 2026-07-19
+last_modified_at: 2026-08-20
+seo_cluster: software-rescue
+seo_pillar: true
 permalink: /blog/software-rewrite-vs-stabilization/
 categories: software-development application-stabilization legacy-modernization technical-rescue
 tags:

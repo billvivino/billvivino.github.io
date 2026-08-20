@@ -47,7 +47,12 @@
     </div>
 
     <div class="mt-4">
-      <a href="/contact.html" class="btn btn-primary btn-lg">
+      <a
+        href="/contact.html"
+        class="btn btn-primary btn-lg"
+        data-seo-cta="service_to_contact"
+        data-seo-cluster="{{ page.seo_cluster | default: page.service_type }}"
+      >
         {{ page.primary_cta | default: "Contact Me About Your Project" }}
       </a>
     </div>
@@ -152,7 +157,12 @@
         <div class="border rounded p-4 h-100 text-center">
           <h3 class="h5">{{ link.title }}</h3>
           <p>{{ link.text }}</p>
-          <a href="{{ link.url }}" class="btn btn-outline-primary">
+          <a
+            href="{{ link.url }}"
+            class="btn btn-outline-primary"
+            data-seo-cta="service_to_related_service"
+            data-seo-cluster="{{ page.seo_cluster | default: page.service_type }}"
+          >
             View Service
           </a>
         </div>
@@ -168,7 +178,12 @@
     <p class="lead mx-auto" style="max-width: 840px">
       {{ page.service_cta_text }}
     </p>
-    <a href="/contact.html" class="btn btn-primary btn-lg mt-3">
+    <a
+      href="/contact.html"
+      class="btn btn-primary btn-lg mt-3"
+      data-seo-cta="service_to_contact"
+      data-seo-cluster="{{ page.seo_cluster | default: page.service_type }}"
+    >
       {{ page.primary_cta | default: "Contact Me About Your Project" }}
     </a>
   </div>

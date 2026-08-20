@@ -1,3 +1,83 @@
+{% assign seo_page_url = page.url | default: "" | downcase %}
+{% assign seo_is_tool = false %}
+{% if seo_page_url contains "calculator"
+   or seo_page_url contains "estimator"
+   or seo_page_url contains "analyzer"
+   or seo_page_url contains "detector"
+   or seo_page_url contains "stress-test"
+   or seo_page_url contains "scenario-planner"
+   or seo_page_url contains "scoping-tool"
+   or seo_page_url contains "reality-check"
+   or seo_page_url contains "timeline-divider"
+   or seo_page_url contains "2026-mvp-blueprint" %}
+  {% assign seo_is_tool = true %}
+{% endif %}
+{% assign seo_content_group = "site" %}
+{% if page.layout == "post" %}
+  {% assign seo_content_group = "article" %}
+{% elsif page.service_name %}
+  {% assign seo_content_group = "service" %}
+{% elsif seo_is_tool %}
+  {% assign seo_content_group = "tool" %}
+{% endif %}
+{% assign seo_page_cluster = page.seo_cluster | default: "unassigned" %}
+{% if seo_page_cluster == "unassigned" %}
+  {% capture seo_topic_source %} {{ page.title }} {{ page.description }} {{ page.categories | join: " " }} {{ page.tags | join: " " }} {{ page.url }} {% endcapture %}
+  {% assign seo_topic_source = seo_topic_source | downcase %}
+
+  {% if page.layout == "post" %}
+    {% if seo_topic_source contains "mobile"
+       or seo_topic_source contains "ios"
+       or seo_topic_source contains "android"
+       or seo_topic_source contains "swift"
+       or seo_topic_source contains "kotlin"
+       or seo_topic_source contains "firebase"
+       or seo_topic_source contains "react native"
+       or seo_topic_source contains "app store"
+       or seo_topic_source contains "offline-first"
+       or seo_topic_source contains "hardware integration"
+       or seo_topic_source contains "image loading" %}
+      {% assign seo_page_cluster = "mobile-systems" %}
+    {% elsif seo_topic_source contains " ai "
+       or seo_topic_source contains "ai-"
+       or seo_topic_source contains "agentic"
+       or seo_topic_source contains "coding agent"
+       or seo_topic_source contains "artificial intelligence"
+       or seo_topic_source contains "llm"
+       or seo_topic_source contains "hallucin"
+       or seo_topic_source contains "automation" %}
+      {% assign seo_page_cluster = "practical-ai" %}
+    {% elsif seo_topic_source contains "startup"
+       or seo_topic_source contains "founder"
+       or seo_topic_source contains "funding"
+       or seo_topic_source contains "product-market"
+       or seo_topic_source contains "mvp"
+       or seo_topic_source contains "estimate software"
+       or seo_topic_source contains "scope"
+       or seo_topic_source contains "engineering spend"
+       or seo_topic_source contains "compensation" %}
+      {% assign seo_page_cluster = "product-strategy" %}
+    {% else %}
+      {% assign seo_page_cluster = "software-rescue" %}
+    {% endif %}
+  {% elsif seo_is_tool %}
+    {% if seo_topic_source contains "firebase" or seo_topic_source contains "swiftui" or seo_topic_source contains "mobile-app" %}
+      {% assign seo_page_cluster = "mobile-systems" %}
+    {% elsif seo_topic_source contains " ai " or seo_topic_source contains "ai-" or seo_topic_source contains "vibe-code" %}
+      {% assign seo_page_cluster = "practical-ai" %}
+    {% else %}
+      {% assign seo_page_cluster = "product-strategy" %}
+    {% endif %}
+  {% elsif page.service_name %}
+    {% if seo_topic_source contains "ai-integration" %}
+      {% assign seo_page_cluster = "practical-ai" %}
+    {% elsif seo_topic_source contains "mobile" or seo_topic_source contains "ios" or seo_topic_source contains "react-native" %}
+      {% assign seo_page_cluster = "mobile-systems" %}
+    {% else %}
+      {% assign seo_page_cluster = "product-strategy" %}
+    {% endif %}
+  {% endif %}
+{% endif %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -79,6 +159,7 @@
     </div>
 
     {% include body-start.html %}
+    {% include seo-measurement.html %}
 
     <!-- Google Tag Manager (noscript) -->
     <noscript>
@@ -93,6 +174,10 @@
     {% include navbar.html %}
 
     {{ content }}
+
+    {% if seo_is_tool and page.seo_service_path != false %}
+      {% include tool-service-path.html %}
+    {% endif %}
 
     {% include footer.html %}
   </body>

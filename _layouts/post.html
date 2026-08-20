@@ -25,7 +25,7 @@ layout: default
   {% endif %}
   "url": "{{ page.url | absolute_url }}",
   "datePublished": "{{ page.date | date_to_xmlschema }}",
-  "dateModified": "{{ page.date | date_to_xmlschema }}",
+  "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
   "author": {
     "@type": "Person",
     "name": "Bill Vivino"
@@ -60,6 +60,8 @@ layout: default
   <article class="mt-4">
     {{ content }}
   </article>
+
+  {% include article-service-path.html %}
 
   <div class="mt-5">
     <a href="/blog.html" class="btn btn-outline-primary">← Back to Blog</a>

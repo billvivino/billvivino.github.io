@@ -3,6 +3,9 @@ layout: post
 title: "AI Doesn't Replace Senior Engineers. It Expands Their Reach."
 description: "AI coding tools do not replace senior engineers. They expand how much of a system strong engineers can understand, review, and improve."
 date: 2026-07-08
+last_modified_at: 2026-08-20
+seo_cluster: practical-ai
+seo_pillar: true
 categories: ai software-development consulting senior-engineering
 og_image: "/assets/optimized/senior-engineer-ai-era.webp"
 ---

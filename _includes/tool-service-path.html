@@ -1,0 +1,33 @@
+{% assign tool_path = page.url | default: "" | downcase %}
+{% assign tool_cluster = seo_page_cluster | default: "product-strategy" %}
+{% assign tool_service_url = "/fractional-cto-technical-advisor.html" %}
+{% assign tool_service_label = "Turn this result into a technical plan" %}
+{% assign tool_service_text = "A calculator can expose the decision boundary. The next step is validating its assumptions against the product, codebase, team, and delivery constraints." %}
+
+{% if tool_path contains "firebase" or tool_path contains "swiftui" or tool_path contains "mobile-app" %}
+  {% assign tool_cluster = "mobile-systems" %}
+  {% assign tool_service_url = "/senior-mobile-app-developer.html" %}
+  {% assign tool_service_label = "Review the result with a senior mobile developer" %}
+  {% assign tool_service_text = "Use the estimate as a starting point, then validate the Firebase, mobile architecture, release, and operating assumptions against the real app." %}
+{% elsif tool_path contains "ai" or tool_path contains "vibe-code" %}
+  {% assign tool_cluster = "practical-ai" %}
+  {% assign tool_service_url = "/ai-integration-consultant.html" %}
+  {% assign tool_service_label = "Review the AI implementation path" %}
+  {% assign tool_service_text = "Use the tool's result to define the surrounding workflow, evaluation, data, security, fallback, and human-review requirements." %}
+{% endif %}
+
+<section class="py-5 bg-light" aria-label="Professional help for this tool result" data-seo-cluster="{{ tool_cluster }}">
+  <div class="container text-center" style="max-width: 900px">
+    <p class="text-uppercase fw-semibold text-muted small mb-2">From estimate to implementation</p>
+    <h2 class="h3">{{ tool_service_label }}</h2>
+    <p class="lead">{{ tool_service_text }}</p>
+    <a
+      href="{{ tool_service_url }}"
+      class="btn btn-primary btn-lg"
+      data-seo-cta="tool_to_service"
+      data-seo-cluster="{{ tool_cluster }}"
+    >
+      Explore the relevant service
+    </a>
+  </div>
+</section>

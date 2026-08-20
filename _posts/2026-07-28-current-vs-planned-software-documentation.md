@@ -94,7 +94,7 @@ In practice, it can describe several different things:
 
 Those descriptions may overlap. They are not interchangeable.
 
-The distinction becomes especially important in inherited systems, [multi-platform products](/blog/mobile-app-feature-parity-ios-android/), and AI-assisted development. A human engineer may notice that a document sounds aspirational and verify the behavior in the code. A coding agent may read the same statement as an authoritative description of the existing system and confidently build on top of something that does not exist.
+The distinction becomes especially important in inherited systems, [multi-platform products](/posts/mobile-app-feature-parity-ios-android.html), and AI-assisted development. A human engineer may notice that a document sounds aspirational and verify the behavior in the code. A coding agent may read the same statement as an authoritative description of the existing system and confidently build on top of something that does not exist.
 
 My work has included technical handoff, production maintenance, architecture, documentation, mobile and web delivery, APIs, cloud systems, and inherited codebases. Across those environments, documentation is most useful when it makes the state of the product more legible—not when it makes the roadmap sound finished.
 

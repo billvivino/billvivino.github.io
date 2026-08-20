@@ -1,0 +1,63 @@
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    window.dataLayer = window.dataLayer || [];
+
+    window.dataLayer.push({
+      event: "seo_content_view",
+      content_group: {{ seo_content_group | jsonify }},
+      seo_cluster: {{ seo_page_cluster | jsonify }},
+      page_path: window.location.pathname,
+    });
+
+    document.addEventListener("click", function (event) {
+      const link = event.target.closest("a[href]");
+      if (!link) return;
+
+      const href = link.getAttribute("href") || "";
+      const pathway = link.dataset.seoCta || "";
+      const cluster = link.dataset.seoCluster || {{ seo_page_cluster | jsonify }};
+      const linkText = (link.textContent || "").trim().replace(/\s+/g, " ").slice(0, 120);
+      let destination = href;
+
+      try {
+        const resolved = new URL(link.href, window.location.origin);
+        destination = resolved.origin === window.location.origin
+          ? resolved.pathname
+          : resolved.hostname + resolved.pathname;
+      } catch (_error) {
+        destination = href;
+      }
+
+      if (pathway) {
+        window.dataLayer.push({
+          event: "seo_path_click",
+          pathway: pathway,
+          seo_cluster: cluster,
+          content_group: {{ seo_content_group | jsonify }},
+          source_path: window.location.pathname,
+          destination: destination,
+          link_text: linkText,
+        });
+      }
+
+      const isContact = href.includes("/contact.html") || href.startsWith("mailto:") || href.startsWith("tel:");
+      if (isContact) {
+        const contactMethod = href.startsWith("mailto:")
+          ? "email"
+          : href.startsWith("tel:")
+            ? "phone"
+            : "contact_page";
+
+        window.dataLayer.push({
+          event: "contact_intent_click",
+          contact_method: contactMethod,
+          content_group: {{ seo_content_group | jsonify }},
+          seo_cluster: cluster,
+          source_path: window.location.pathname,
+          destination: destination,
+          link_text: linkText,
+        });
+      }
+    });
+  });
+</script>
