@@ -1,0 +1,83 @@
+---
+layout: default
+title: "App Rescue Assessment Purchase Confirmed"
+description: "Your App Rescue Assessment payment was completed."
+noindex: true
+seo_cluster: "software-rescue"
+---
+
+<section class="container my-5" style="max-width: 760px">
+  <div class="text-center">
+    <img
+      src="/assets/logo.png"
+      class="img-fluid mb-4"
+      alt="Bill Vivino Technology Logo"
+      style="max-width: 200px"
+    />
+
+    <p class="text-uppercase fw-semibold text-muted mb-2">
+      App Rescue Assessment
+    </p>
+    <h1 class="mb-3">Your Payment Is Complete</h1>
+
+    <p class="lead">
+      Thank you for purchasing the Four-Hour App Rescue Assessment.
+    </p>
+
+    <p>
+      I will send secure intake, repository-access, and scheduling instructions
+      to the email associated with your PayPal payment. Do not email passwords,
+      access tokens, or other repository credentials.
+    </p>
+
+    <div class="alert alert-light border mt-4 text-start">
+      <h2 class="h5">What happens next</h2>
+      <ol class="mb-0">
+        <li class="mb-2">You receive secure intake instructions.</li>
+        <li class="mb-2">You provide the product context and authorized code access.</li>
+        <li class="mb-2">I review the current blocker, risks, and technical state.</li>
+        <li>You receive written findings, recommended next steps, and a debrief.</li>
+      </ol>
+    </div>
+
+    <a href="/" class="btn btn-outline-primary mt-4">Return to the Home Page</a>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    let checkoutReference = "";
+    let checkoutStartedAt = 0;
+
+    try {
+      checkoutReference = localStorage.getItem("app_rescue_checkout_reference") || "";
+      checkoutStartedAt = parseInt(
+        localStorage.getItem("app_rescue_checkout_started_at") || "0",
+        10
+      );
+    } catch (_error) {
+      return;
+    }
+
+    const checkoutAge = Date.now() - checkoutStartedAt;
+    const cameFromRecentCheckout =
+      checkoutReference && checkoutAge >= 0 && checkoutAge <= 24 * 60 * 60 * 1000;
+    const dedupeKey = "app_rescue_purchase_reported_" + checkoutReference;
+
+    if (!cameFromRecentCheckout || localStorage.getItem(dedupeKey) === "1") return;
+
+    localStorage.setItem(dedupeKey, "1");
+    localStorage.removeItem("app_rescue_checkout_reference");
+    localStorage.removeItem("app_rescue_checkout_started_at");
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "app_rescue_assessment_purchase",
+      transaction_id: checkoutReference,
+      product_id: "app_rescue_assessment",
+      product_name: "Four-Hour App Rescue Assessment",
+      value: 1000,
+      currency: "USD",
+    });
+  });
+</script>

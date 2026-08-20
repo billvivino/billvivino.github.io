@@ -1,0 +1,284 @@
+---
+layout: default
+title: "App Rescue and Technical Assessment"
+description: "Purchase a fixed-fee senior technical assessment for an existing application, prototype, MVP, or software codebase that is stalled, unstable, unfinished, or unclear."
+seo_cluster: "software-rescue"
+---
+
+{% assign assessment_button_id = site.paypal.app_rescue_assessment_button_id | default: "" %}
+{% if assessment_button_id != "" %}
+<script
+  src="https://www.paypal.com/sdk/js?client-id={{ site.paypal.client_id }}&components=hosted-buttons&enable-funding=venmo&currency=USD"
+></script>
+{% endif %}
+
+<style>
+  .assessment-shell {
+    max-width: 980px;
+  }
+
+  .assessment-card {
+    background: #ffffff;
+    border: 1px solid #dce3ea;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(10, 37, 64, 0.08);
+  }
+
+  .assessment-price {
+    color: #0a2540 !important;
+    font-size: clamp(2.4rem, 6vw, 3.75rem);
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .assessment-label {
+    color: #003d80 !important;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .assessment-checklist li {
+    margin-bottom: 0.75rem;
+  }
+
+  .qualification-notice {
+    background: #eef6ff;
+    border-left: 4px solid #0d6efd;
+  }
+
+  .purchase-confirmations {
+    background: #f8f9fa;
+    border-radius: 8px;
+  }
+
+  .paypal-checkout-shell {
+    display: none;
+  }
+</style>
+
+<section class="container assessment-shell py-5" id="app-rescue-assessment">
+  <div class="text-center mb-5">
+    <p class="assessment-label mb-2">Fixed-Fee Senior Technical Review</p>
+    <h1 class="display-5 fw-bold">
+      Get Your Existing Software Project Moving Again
+    </h1>
+    <p class="lead mx-auto" style="max-width: 850px">
+      The Four-Hour App Rescue Assessment is for businesses with an existing
+      application, prototype, MVP, or codebase that is stalled, unstable,
+      unfinished, inherited, or unclear.
+    </p>
+  </div>
+
+  <div class="qualification-notice rounded p-4 mb-4">
+    <h2 class="h5">An existing software product is required</h2>
+    <p class="mb-0">
+      You must own or control the product and be authorized to provide private
+      source-code access. Do not send passwords, credentials, repository links,
+      or repository invitations before receiving secure intake instructions.
+    </p>
+  </div>
+
+  <div class="assessment-card p-4 p-lg-5">
+    <div class="row g-5 align-items-start">
+      <div class="col-lg-7">
+        <h2>Four-Hour App Rescue Assessment</h2>
+        <p>
+          This is a focused diagnostic engagement for determining what is wrong,
+          what is risky, and what should happen next. It is not an open-ended
+          block of development time.
+        </p>
+
+        <h3 class="h5 mt-4">What you receive</h3>
+        <ul class="assessment-checklist">
+          <li>Senior review of the existing codebase and current blocker.</li>
+          <li>Prioritized technical findings.</li>
+          <li>Risk and feasibility assessment.</li>
+          <li>Recommended next steps and technical direction.</li>
+          <li>Written findings and a debrief.</li>
+        </ul>
+
+        <p class="small text-muted mb-0">
+          The engagement typically includes approximately four hours of focused
+          analysis and will not exceed five hours without a separate written
+          agreement. Implementation, repair work, and additional development are
+          not included in the fixed price.
+        </p>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="border rounded p-4">
+          <p class="assessment-label mb-2">One Fixed Price</p>
+          <p class="assessment-price mb-2">$1,000</p>
+          <p class="text-muted">Paid once through PayPal before intake.</p>
+
+          <div class="purchase-confirmations p-3 my-4">
+            <div class="form-check mb-3">
+              <input
+                class="form-check-input assessment-confirmation"
+                type="checkbox"
+                id="confirmExistingSoftware"
+              />
+              <label class="form-check-label" for="confirmExistingSoftware">
+                I confirm that an existing application, prototype, MVP, or
+                codebase exists for this assessment.
+              </label>
+            </div>
+
+            <div class="form-check mb-3">
+              <input
+                class="form-check-input assessment-confirmation"
+                type="checkbox"
+                id="confirmAuthorizedAccess"
+              />
+              <label class="form-check-label" for="confirmAuthorizedAccess">
+                I own or control the product, or I am authorized to provide
+                private source-code access.
+              </label>
+            </div>
+
+            <div class="form-check">
+              <input
+                class="form-check-input assessment-confirmation"
+                type="checkbox"
+                id="confirmAssessmentScope"
+              />
+              <label class="form-check-label" for="confirmAssessmentScope">
+                I understand that this purchase covers assessment and findings,
+                not a guarantee that repairs will be completed within four hours.
+              </label>
+            </div>
+          </div>
+
+          {% if assessment_button_id != "" %}
+          <button
+            type="button"
+            class="btn btn-primary btn-lg w-100"
+            id="revealAssessmentCheckout"
+            disabled
+          >
+            Continue to Secure Payment
+          </button>
+
+          <div
+            class="paypal-checkout-shell mt-3"
+            id="assessmentPaypalCheckout"
+            aria-live="polite"
+          >
+            <p class="small text-center mb-3">
+              Purchase the App Rescue Assessment — $1,000
+            </p>
+            <div id="paypal-container-{{ assessment_button_id }}"></div>
+          </div>
+          {% else %}
+          <button type="button" class="btn btn-secondary btn-lg w-100" disabled>
+            PayPal Checkout Setup Pending
+          </button>
+          {% endif %}
+
+          <p class="small text-muted mt-3 mb-0">
+            After successful payment, you will receive the secure intake and
+            scheduling instructions. Do not send repository credentials through
+            this page.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="text-center mt-4 mb-0">
+    Looking for a selected prototype build, larger engagement, or partnership?
+    <a href="/contact.html">Send a general project inquiry</a>.
+  </p>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const confirmations = Array.from(
+      document.querySelectorAll(".assessment-confirmation")
+    );
+    const revealButton = document.getElementById("revealAssessmentCheckout");
+    const checkoutShell = document.getElementById("assessmentPaypalCheckout");
+    let paypalRendered = false;
+
+    function confirmationsComplete() {
+      return confirmations.length === 3 && confirmations.every(function (input) {
+        return input.checked;
+      });
+    }
+
+    function syncCheckoutButton() {
+      if (revealButton) revealButton.disabled = !confirmationsComplete();
+    }
+
+    confirmations.forEach(function (input) {
+      input.addEventListener("change", syncCheckoutButton);
+    });
+    syncCheckoutButton();
+
+    if (revealButton && checkoutShell) {
+      revealButton.addEventListener("click", function () {
+        if (!confirmationsComplete()) return;
+
+        const checkoutReference =
+          "AR-" +
+          Date.now().toString(36).toUpperCase() +
+          "-" +
+          Math.random().toString(36).slice(2, 10).toUpperCase();
+
+        try {
+          localStorage.setItem("app_rescue_checkout_reference", checkoutReference);
+          localStorage.setItem("app_rescue_checkout_started_at", Date.now().toString());
+        } catch (_error) {
+          // Checkout still works when storage is unavailable.
+        }
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "app_rescue_assessment_checkout_start",
+          product_id: "app_rescue_assessment",
+          product_name: "Four-Hour App Rescue Assessment",
+          checkout_reference: checkoutReference,
+          value: 1000,
+          currency: "USD",
+        });
+
+        revealButton.style.display = "none";
+        checkoutShell.style.display = "block";
+
+        {% if assessment_button_id != "" %}
+        if (!paypalRendered && window.paypal && window.paypal.HostedButtons) {
+          paypalRendered = true;
+          window.paypal
+            .HostedButtons({
+              hostedButtonId: {{ assessment_button_id | jsonify }},
+            })
+            .render("#paypal-container-{{ assessment_button_id }}");
+        }
+        {% endif %}
+      });
+    }
+  });
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Four-Hour App Rescue Assessment",
+  "description": "Senior technical assessment for an existing application, prototype, MVP, or software codebase.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Bill Vivino Technology, LLC",
+    "url": "https://billvivinotechnology.com"
+  },
+  "areaServed": "United States",
+  "offers": {
+    "@type": "Offer",
+    "price": "1000.00",
+    "priceCurrency": "USD",
+    "url": "https://billvivinotechnology.com/app-rescue-assessment.html"
+  }
+}
+</script>

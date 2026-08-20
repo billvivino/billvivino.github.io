@@ -5,6 +5,9 @@ description: "Custom software development, mobile apps, web platforms, AI automa
 url: "https://billvivinotechnology.com"
 email: "info@billvivinotechnology.com"
 phone: "+1-973-358-2341"
+paypal:
+  client_id: "BAAPELyHS7SrInuwUIdVNF3ZgCoZsv6QrSREvC5f2UkLVxaPQIJyfRqnE0PnwYSRMRkErhTkZxh2-rmHQo"
+  app_rescue_assessment_button_id: ""
 markdown: kramdown
 highlighter: rouge
 permalink: /posts/:title:output_ext

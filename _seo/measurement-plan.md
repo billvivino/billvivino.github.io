@@ -8,7 +8,7 @@ Use completed data only; Search Console commonly trails the current date.
 - **Non-branded queries:** exclude that same expression.
 - **Articles:** filter pages matching `/(posts/|blog/)` and review `blog.html` separately.
 - **Tools:** filter pages matching `(calculator|estimator|analyzer|detector|stress-test|scenario-planner|scoping-tool|reality-check)`.
-- **Commercial pages:** review `services.html`, `ai-integration-consultant.html`, `senior-mobile-app-developer.html`, and `fractional-cto-technical-advisor.html` together.
+- **Commercial pages:** review `services.html`, `pricing.html`, `app-rescue-assessment.html`, `ai-integration-consultant.html`, `senior-mobile-app-developer.html`, and `fractional-cto-technical-advisor.html` together.
 
 ## Cadence
 
@@ -33,5 +33,8 @@ Investigate when at least one of these persists across a complete 28-day period:
 - `seo_content_view`: identifies site, article, tool, and service page views.
 - `seo_path_click`: records article-to-pillar, article-to-service, tool-to-service, and service-to-contact pathways.
 - `contact_intent_click`: records contact-page, email, and phone intent.
+- `app_rescue_assessment_checkout_start`: records an eligible visitor continuing from `app-rescue-assessment.html` to the hosted PayPal checkout. This is not a conversion.
+- `app_rescue_assessment_purchase`: records the successful PayPal auto-return after a $1,000 assessment purchase. Route this to a primary Google Ads purchase conversion with `value`, `currency`, and `transaction_id`.
+- `general_project_inquiry_submit`: records the secondary inquiry form for selected prototype/MVP work, referrals, and partnerships. Keep this secondary for paid-search bidding.
 
 Google Tag Manager must route these custom events to the analytics destination used for reporting.

@@ -1,33 +1,50 @@
 ---
 layout: default
-title: "Contact Bill Vivino — Schedule a Free Dev Call"
-description: "Share your project goals, timeline, and budget. Get expert guidance and a fast proposal from a senior software developer."
+title: "Contact Bill Vivino Technology — Project Inquiries"
+description: "Contact Bill Vivino Technology about selected prototype builds, existing MVP completion, larger software engagements, referrals, and agency partnerships."
 ---
 
-<!-- HERO INTRO -->
-<section class="text-start text-lg-center my-4">
-  <h1 class="text-start text-lg-center ms-3 ms-lg-0">
-    Post Your App Development Project
-  </h1>
-  <p class="ms-3 ms-lg-0">
-    Share your project goals, timeline, and budget — we’ll send back a scoped
-    proposal within one business day. We work with clients in North Jersey, the
-    NYC metro area, and across the United States.
-  </p>
-</section>
+<section class="container py-5" style="max-width: 760px">
+  <div class="text-center mb-4">
+    <p class="text-uppercase fw-semibold text-primary small mb-2">
+      General Project Inquiries
+    </p>
+    <h1>Tell Me About Your Software Project</h1>
+    <p class="lead">
+      This route is for selected prototype builds, existing MVP completion,
+      larger production engagements, referrals, and agency partnerships.
+    </p>
+  </div>
 
-<!-- CONTACT FORM -->
-<section class="container" style="max-width: 600px">
-  <h2 class="visually-hidden">Quote Request Form</h2>
+  <div class="alert alert-primary border-0 mb-5" role="note">
+    <h2 class="h5">Already have a stalled or unclear codebase?</h2>
+    <p class="mb-3">
+      Start with the fixed-fee Four-Hour App Rescue Assessment for a senior
+      technical review, prioritized findings, and a concrete next-step plan.
+    </p>
+    <a
+      href="/app-rescue-assessment.html"
+      class="btn btn-primary"
+      data-seo-cta="contact_to_assessment"
+      data-seo-cluster="software-rescue"
+    >
+      View the $1,000 App Rescue Assessment
+    </a>
+  </div>
+
   <form
     id="contactForm"
     action="https://formspree.io/f/mqapjzyq"
     method="POST"
     class="needs-validation"
   >
-    <!-- honeypot -->
     <input type="text" name="_gotcha" style="display: none" />
     <input type="hidden" id="ts" name="ts" value="" />
+    <input
+      type="hidden"
+      name="_subject"
+      value="General project inquiry from billvivinotechnology.com"
+    />
 
     <div class="mb-3">
       <label for="name" class="form-label">Full Name (First &amp; Last)</label>
@@ -61,23 +78,36 @@ description: "Share your project goals, timeline, and budget. Get expert guidanc
         id="phone"
         name="phone"
         required
-        placeholder="(973) 555‑1234"
+        placeholder="(973) 555-1234"
       />
+    </div>
+
+    <div class="mb-3">
+      <label for="projectStage" class="form-label">Current Project Stage</label>
+      <select id="projectStage" name="project_stage" class="form-select" required>
+        <option value="" disabled selected>Choose…</option>
+        <option>Existing application or codebase</option>
+        <option>Existing prototype or MVP that needs completion</option>
+        <option>New prototype build — selected engagements only</option>
+        <option>Referral or agency partnership</option>
+        <option>Other</option>
+      </select>
     </div>
 
     <div class="mb-3">
       <label for="budget" class="form-label">Approximate Budget</label>
       <select id="budget" name="budget" class="form-select" required>
         <option value="" disabled selected>Select a range</option>
-        <option>$5 k – 10 k prototype</option>
-        <option>$10 k – 25 k MVP</option>
-        <option>$25 k – 50 k Full app</option>
-        <option>$50 k+</option>
+        <option>$5k–$10k — Prototype</option>
+        <option>$10k–$25k — MVP</option>
+        <option>$25k–$50k — Full application</option>
+        <option>$50k+</option>
       </select>
     </div>
+
     <div class="mt-2 mb-3 small text-muted">
-      Not sure about budget yet?
-      For MVPs and production builds, you can sanity-check scope and cost first with our
+      For MVP and production-build planning, you can sanity-check scope and cost
+      with the
       <a href="/custom-software-cost-reality-check.html">
         Custom Software Cost Reality Check
       </a>.
@@ -107,133 +137,123 @@ description: "Share your project goals, timeline, and budget. Get expert guidanc
         rows="5"
         minlength="50"
         required
-        placeholder="Tell us your goal, timeline, and must‑have features (minimum 50 characters)…"
+        placeholder="Describe what exists today, what is blocked, your timeline, and the outcome you need (minimum 50 characters)…"
       ></textarea>
     </div>
+
     <div class="mb-3">
-      <label for="timeline" class="form-label"
-        >Desired Timeline / Deadline</label
-      >
+      <label for="timeline" class="form-label">Desired Timeline / Deadline</label>
       <input
         type="text"
         class="form-control"
         id="timeline"
         name="timeline"
         required
-        placeholder="e.g., MVP in 3 months"
+        placeholder="e.g., Complete the existing MVP within 3 months"
       />
     </div>
+
     <div class="mt-2 mb-3 small text-muted">
-      Unsure whether your timeline is realistic?
-      Our
+      The
       <a href="/pilot-vs-product-timeline-divider.html">
         Pilot vs Product Timeline Divider
       </a>
-      helps clarify whether you’re planning a quick pilot or a production‑ready system.
+      can help distinguish a quick pilot from a production-ready system.
     </div>
+
     <button type="submit" class="btn btn-primary w-100">
-      Submit My Project Brief
+      Submit a General Project Inquiry
     </button>
   </form>
+
   <p class="mt-3 text-center">
-    Prefer phone? Call&nbsp;<a href="tel:+19733582341">(973) 358-2341</a>
+    Existing clients and referral partners may call
+    <a href="tel:+19733582341">(973) 358-2341</a>.
   </p>
 </section>
 
-<!-- (Removed duplicate or legacy intro paragraph as per new intro above) -->
-
-<!-- PRICE‑RANGE FAQ -->
-<section class="container my-5">
-  <h3 class="h5 fw-bold mb-3 text-start text-lg-center">Project Budget FAQ</h3>
+<section class="container my-5" style="max-width: 680px">
+  <h2 class="h5 fw-bold mb-3 text-center">Project Budget FAQ</h2>
   <div class="card">
     <div class="card-body">
       <p class="mb-2">
         <strong>What does a typical MVP cost?</strong><br />
-        Most minimum‑viable products we build fall between
-        <strong>$15 k – $40 k</strong>, depending on scope and platform (iOS,
-        Android, Web, or cross‑platform).
+        Most MVP engagements fall between <strong>$15k–$40k</strong>, depending
+        on scope and platform. Existing MVP completion and rescue work begins
+        with the current state of the product and codebase.
       </p>
       <p class="mb-2">
-        <strong>How are payments structured?</strong><br />
-        We typically work on a
-        <em>time‑and‑materials basis with a weekly cap</em>&nbsp;—&nbsp;you’re
-        invoiced every week and can pause or adjust scope at any milestone
+        <strong>How are larger engagements structured?</strong><br />
+        Larger implementation engagements generally use time-and-materials
+        billing with a weekly cap. Scope can be paused or adjusted at a milestone
         review.
       </p>
       <p class="mb-0">
-        <strong>Need something smaller?</strong><br />
-        Prototype engagements start around <strong>$5 k</strong>. Tell us your
-        goals and we’ll recommend the most cost‑effective path.
+        <strong>What about a new prototype?</strong><br />
+        Selected prototype builds start around <strong>$5k</strong>. They use the
+        general inquiry path and are separate from the App Rescue Assessment,
+        which requires existing software.
       </p>
     </div>
   </div>
 </section>
 
 <script>
-  // Ensure all required fields are filled
   document.addEventListener("DOMContentLoaded", function () {
-    var form = document.querySelector("form[action^='https://formspree.io']");
-    if (!form) return;
-
-    form.addEventListener("submit", function (e) {
-      var nameEl = document.getElementById("name");
-      var emailEl = document.getElementById("email");
-      var phoneEl = document.getElementById("phone");
-      var budgetEl = document.getElementById("budget");
-      var typeEl = document.getElementById("type");
-      var timelineEl = document.getElementById("timeline");
-
-      if (
-        !nameEl.value.trim() ||
-        !emailEl.value.trim() ||
-        !phoneEl.value.trim() ||
-        !budgetEl.value ||
-        !typeEl.value ||
-        !timelineEl.value.trim()
-      ) {
-        e.preventDefault();
-        alert(
-          "Please fill in Name, Email, Phone, Budget, Project Type, and Timeline before submitting."
-        );
-        return false;
-      }
-    });
-  });
-</script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector("form[action^='https://formspree.io']");
-    if (!form) return;
-
-    // set timestamp value when page loads
+    const form = document.getElementById("contactForm");
     const tsField = document.getElementById("ts");
-    if (tsField) tsField.value = Date.now().toString();
+    if (!form || !tsField) return;
 
-    form.addEventListener("submit", function (e) {
-      const msgEl = document.getElementById("message");
-      if (!msgEl) return;
-      const msg = msgEl.value.trim();
+    tsField.value = Date.now().toString();
 
-      /* 1 — enforce 30‑second dwell time */
+    form.addEventListener("submit", function (event) {
+      const requiredIds = [
+        "name",
+        "email",
+        "phone",
+        "projectStage",
+        "budget",
+        "type",
+        "timeline",
+      ];
+      const missingRequiredField = requiredIds.some(function (id) {
+        const element = document.getElementById(id);
+        return !element || !String(element.value || "").trim();
+      });
+
+      if (missingRequiredField) {
+        event.preventDefault();
+        alert(
+          "Please complete your contact information, project stage, budget, project type, and timeline."
+        );
+        return;
+      }
+
+      const messageElement = document.getElementById("message");
+      const message = messageElement ? messageElement.value.trim() : "";
       const dwell = Date.now() - parseInt(tsField.value || "0", 10);
+
       if (dwell < 20000) {
-        e.preventDefault();
-        alert(
-          "Please spend at least 20 seconds on the form before submitting."
-        );
-        return false;
+        event.preventDefault();
+        alert("Please spend at least 20 seconds on the form before submitting.");
+        return;
       }
 
-      /* 2 — reject low‑detail or repetitive text */
-      const uniqueWords = [...new Set(msg.split(/\s+/))].length;
-      const repeatedChars = /([a-zA-Z])\1{4,}/.test(msg); // 5+ identical chars
-      if (uniqueWords < 20 || repeatedChars) {
-        e.preventDefault();
-        alert(
-          "Please provide at least 50 meaningful characters about your project."
-        );
-        return false;
+      const uniqueWords = new Set(message.split(/\s+/).filter(Boolean)).size;
+      const repeatedChars = /([a-zA-Z])\1{4,}/.test(message);
+      if (message.length < 50 || uniqueWords < 20 || repeatedChars) {
+        event.preventDefault();
+        alert("Please provide at least 50 meaningful characters about your project.");
+        return;
       }
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "general_project_inquiry_submit",
+        project_stage: document.getElementById("projectStage").value,
+        budget_range: document.getElementById("budget").value,
+        project_type: document.getElementById("type").value,
+      });
     });
   });
 </script>
