@@ -35,6 +35,18 @@ Investigate when at least one of these persists across a complete 28-day period:
 - `contact_intent_click`: records contact-page, email, and phone intent.
 - `app_rescue_assessment_checkout_start`: records an eligible visitor leaving `app-rescue-assessment.html` for the hosted PayPal payment link. This is not a conversion.
 - `app_rescue_assessment_purchase`: records a successful PayPal auto-return to `payment-thanks.html` when the browser has a recent App Rescue checkout reference. Route this to a primary Google Ads purchase conversion with `value`, `currency`, and `transaction_id`.
+- `hourly_consulting_checkout_start`: records a visitor leaving a site-controlled hourly purchase CTA for the hosted PayPal payment link. This is not a conversion.
+- `hourly_consulting_purchase`: records a successful PayPal auto-return when the browser has a recent hourly checkout reference. Route this to a separate primary Google Ads purchase conversion, but do not assign a dynamic revenue value from the website event.
 - `general_project_inquiry_submit`: records the secondary inquiry form for selected prototype/MVP work, referrals, and partnerships. Keep this secondary for paid-search bidding.
 
 Google Tag Manager must route these custom events to the analytics destination used for reporting.
+
+The hourly PayPal link allows 1–40 hours to be selected on PayPal. PayPal's hosted auto-return does not return that purchased quantity to this static site, so the hourly event reports the $175 unit price but deliberately omits `value`. Reconcile actual hourly revenue from PayPal, or add a verified PayPal transaction/webhook integration before importing dynamic conversion values into Google Ads. Do not hard-code every hourly purchase as a one-hour $175 sale.
+
+## Google Tag Manager routing
+
+- Trigger the fixed-fee Google Ads purchase tag only on `app_rescue_assessment_purchase`. Pass `value`, `currency`, and `transaction_id` from data-layer variables.
+- Trigger a separate count-only Google Ads purchase tag on `hourly_consulting_purchase`. Leave conversion value unset because PayPal selects the final quantity after the visitor leaves the site.
+- Send both checkout-start events to analytics for funnel reporting, but do not mark them as primary campaign conversions.
+- Use either direct Google Ads conversion tags or conversions imported from GA4 for a given purchase event, not both, to avoid double counting.
+- The current `transaction_id` is a locally generated checkout reference used for deduplication. It is not the PayPal transaction ID and must not be used to reconcile revenue.

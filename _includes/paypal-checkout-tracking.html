@@ -1,0 +1,70 @@
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const hourlyCheckoutLinks = document.querySelectorAll(
+      '[data-paypal-product="hourly_consulting"]'
+    );
+
+    hourlyCheckoutLinks.forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        const checkoutUrl = link.href;
+        if (!checkoutUrl || link.dataset.checkoutOpening === "true") return;
+
+        event.preventDefault();
+        link.dataset.checkoutOpening = "true";
+        link.setAttribute("aria-disabled", "true");
+
+        const originalText = link.textContent;
+        link.textContent = "Opening Secure PayPal Checkout…";
+
+        const checkoutReference =
+          "HC-" +
+          Date.now().toString(36).toUpperCase() +
+          "-" +
+          Math.random().toString(36).slice(2, 10).toUpperCase();
+
+        try {
+          localStorage.setItem(
+            "hourly_consulting_checkout_reference",
+            checkoutReference
+          );
+          localStorage.setItem(
+            "hourly_consulting_checkout_started_at",
+            Date.now().toString()
+          );
+        } catch (_error) {
+          // Checkout still works when storage is unavailable.
+        }
+
+        let checkoutOpened = false;
+        function openPayPalCheckout() {
+          if (checkoutOpened) return;
+          checkoutOpened = true;
+          window.location.assign(checkoutUrl);
+        }
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "hourly_consulting_checkout_start",
+          product_id: "hourly_consulting",
+          product_name: "Senior Software Consulting",
+          checkout_reference: checkoutReference,
+          unit_price: {{ site.paypal.hourly_consulting_rate | default: 175 }},
+          currency: "USD",
+          quantity_status: "selected_at_paypal",
+          eventCallback: openPayPalCheckout,
+          eventTimeout: 800,
+        });
+
+        window.setTimeout(openPayPalCheckout, 900);
+
+        window.setTimeout(function () {
+          if (!checkoutOpened) {
+            link.dataset.checkoutOpening = "false";
+            link.removeAttribute("aria-disabled");
+            link.textContent = originalText;
+          }
+        }, 1200);
+      });
+    });
+  });
+</script>

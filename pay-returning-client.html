@@ -5,6 +5,9 @@ description: "Private payment page for approved senior-level hourly consulting, 
 noindex: true
 ---
 
+{% assign hourly_payment_url = site.paypal.hourly_consulting_url | default: "" %}
+{% assign hourly_rate = site.paypal.hourly_consulting_rate | default: 175 %}
+
 <style>
   .payment-wrap {
     max-width: 720px;
@@ -51,6 +54,29 @@ noindex: true
   .payment-list li {
     margin-bottom: 0.6rem;
   }
+
+  .hourly-payment-button {
+    align-items: center;
+    background-color: #ffd140;
+    border: none;
+    border-radius: 0.25rem;
+    color: #000000;
+    display: inline-flex;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    height: 2.625rem;
+    justify-content: center;
+    line-height: 1.25rem;
+    min-width: 11.625rem;
+    padding: 0 2rem;
+    text-decoration: none;
+  }
+
+  .hourly-payment-button:hover,
+  .hourly-payment-button:focus {
+    color: #000000;
+  }
 </style>
 
 <div class="container">
@@ -73,7 +99,7 @@ noindex: true
         Vivino Technology. No long-term commitment — just expert guidance when
         you need it.
       </p>
-      <p class="payment-price">$200/hr</p>
+      <p class="payment-price">${{ hourly_rate }}/hr</p>
       <p class="text-muted">
         Purchase only the approved number of hours. Scheduling and scope should
         be confirmed before payment.
@@ -85,53 +111,29 @@ noindex: true
           Useful for targeted technical help, architecture, or code reviews.
         </li>
         <li>
-          Hourly work is billed at $200/hr unless otherwise agreed in writing.
+          Hourly work is billed at ${{ hourly_rate }}/hr unless otherwise agreed
+          in writing.
         </li>
         <li>Quantity should match the number of approved hours.</li>
       </ul>
-      <div>
-        <style>
-          .pp-EZAJKLB3668QE {
-            text-align: center;
-            border: none;
-            border-radius: 0.25rem;
-            min-width: 11.625rem;
-            padding: 0 2rem;
-            height: 2.625rem;
-            font-weight: bold;
-            background-color: #ffd140;
-            color: #000000;
-            font-family: "Helvetica Neue", Arial, sans-serif;
-            font-size: 1rem;
-            line-height: 1.25rem;
-            cursor: pointer;
-          }
-        </style>
-        <form
-          action="https://www.paypal.com/ncp/payment/EZAJKLB3668QE"
-          method="post"
-          target="_blank"
-          style="
-            display: inline-grid;
-            justify-items: center;
-            align-content: start;
-            gap: 0.5rem;
-          "
-        >
-          <input class="pp-EZAJKLB3668QE" type="submit" value="Buy Now" />
+      <div style="display: inline-grid; justify-items: center; gap: 0.5rem">
+        <a
+          href="{{ hourly_payment_url }}"
+          class="hourly-payment-button"
+          data-paypal-product="hourly_consulting"
+        >Purchase Hours</a>
+        <img
+          src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg"
+          alt="cards"
+        />
+        <section style="font-size: 0.75rem">
+          Powered by
           <img
-            src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg"
-            alt="cards"
+            src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg"
+            alt="paypal"
+            style="height: 0.875rem; vertical-align: middle"
           />
-          <section style="font-size: 0.75rem">
-            Powered by
-            <img
-              src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg"
-              alt="paypal"
-              style="height: 0.875rem; vertical-align: middle"
-            />
-          </section>
-        </form>
+        </section>
       </div>
     </div>
   </section>

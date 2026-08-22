@@ -7,6 +7,8 @@ email: "info@billvivinotechnology.com"
 phone: "+1-973-358-2341"
 paypal:
   app_rescue_assessment_url: "https://www.paypal.com/ncp/payment/ZZZLRKPGUV9J2"
+  hourly_consulting_url: "https://www.paypal.com/ncp/payment/EZAJKLB3668QE"
+  hourly_consulting_rate: 175
 markdown: kramdown
 highlighter: rouge
 permalink: /posts/:title:output_ext

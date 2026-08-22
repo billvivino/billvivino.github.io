@@ -4,6 +4,9 @@ title: "Software Consulting Pricing — App Rescue & Hourly Help"
 description: "Transparent pricing for a $1,000 fixed-fee App Rescue Assessment and senior technical consulting at $175 per hour."
 ---
 
+{% assign hourly_payment_url = site.paypal.hourly_consulting_url | default: "" %}
+{% assign hourly_rate = site.paypal.hourly_consulting_rate | default: 175 %}
+
 <section class="container py-5" style="max-width: 1040px">
   <div class="text-center mb-5">
     <p class="text-uppercase fw-semibold text-primary small mb-2">
@@ -59,7 +62,7 @@ description: "Transparent pricing for a $1,000 fixed-fee App Rescue Assessment a
             Purchase a defined block of senior developer time for architecture,
             debugging, code review, implementation, or technical direction.
           </p>
-          <p class="display-5 fw-bold my-3">$175<span class="fs-4">/hr</span></p>
+          <p class="display-5 fw-bold my-3">${{ hourly_rate }}<span class="fs-4">/hr</span></p>
           <ul class="text-start mb-4">
             <li class="mb-2">Choose 1–40 hours at checkout</li>
             <li class="mb-2">Up to one full week of focused development</li>
@@ -67,12 +70,11 @@ description: "Transparent pricing for a $1,000 fixed-fee App Rescue Assessment a
             <li>Best for a clearly defined technical objective</li>
           </ul>
           <a
-            href="https://www.paypal.com/ncp/payment/EZAJKLB3668QE"
+            href="{{ hourly_payment_url }}"
             class="btn btn-outline-primary btn-lg mt-auto"
-            target="_blank"
-            rel="noopener"
             data-seo-cta="pricing_to_hourly_purchase"
             data-seo-cluster="software-consulting"
+            data-paypal-product="hourly_consulting"
           >
             Purchase Hours
           </a>

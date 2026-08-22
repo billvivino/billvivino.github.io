@@ -36,52 +36,112 @@ noindex: true
       </p>
     </div>
 
+    <div class="alert alert-light border mt-4 text-start d-none" id="hourlyNextSteps">
+      <h2 class="h5">What happens next</h2>
+      <p class="mb-0">
+        I will confirm the purchased hours and follow up using the email address
+        associated with your PayPal payment to coordinate scope and scheduling.
+      </p>
+    </div>
+
     <a href="/" class="btn btn-outline-primary mt-4">Return to the Home Page</a>
   </div>
 </section>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    let checkoutReference = "";
-    let checkoutStartedAt = 0;
+    const checkoutProducts = [
+      {
+        id: "app_rescue_assessment",
+        name: "Four-Hour App Rescue Assessment",
+        referenceKey: "app_rescue_checkout_reference",
+        startedAtKey: "app_rescue_checkout_started_at",
+        eventName: "app_rescue_assessment_purchase",
+        value: 1000,
+      },
+      {
+        id: "hourly_consulting",
+        name: "Senior Software Consulting",
+        referenceKey: "hourly_consulting_checkout_reference",
+        startedAtKey: "hourly_consulting_checkout_started_at",
+        eventName: "hourly_consulting_purchase",
+        unitPrice: {{ site.paypal.hourly_consulting_rate | default: 175 }},
+      },
+    ];
+
+    let recentCheckout = null;
 
     try {
-      checkoutReference = localStorage.getItem("app_rescue_checkout_reference") || "";
-      checkoutStartedAt = parseInt(
-        localStorage.getItem("app_rescue_checkout_started_at") || "0",
-        10
-      );
+      checkoutProducts.forEach(function (product) {
+        const reference = localStorage.getItem(product.referenceKey) || "";
+        const startedAt = parseInt(
+          localStorage.getItem(product.startedAtKey) || "0",
+          10
+        );
+        const age = Date.now() - startedAt;
+
+        if (
+          reference &&
+          age >= 0 &&
+          age <= 24 * 60 * 60 * 1000 &&
+          (!recentCheckout || startedAt > recentCheckout.startedAt)
+        ) {
+          recentCheckout = Object.assign({}, product, {
+            reference: reference,
+            startedAt: startedAt,
+          });
+        }
+      });
     } catch (_error) {
       return;
     }
 
-    const checkoutAge = Date.now() - checkoutStartedAt;
-    const cameFromRecentAppRescueCheckout =
-      checkoutReference && checkoutAge >= 0 && checkoutAge <= 24 * 60 * 60 * 1000;
+    if (!recentCheckout) return;
 
-    if (!cameFromRecentAppRescueCheckout) return;
+    if (recentCheckout.id === "app_rescue_assessment") {
+      document.getElementById("paymentLabel").textContent = "App Rescue Assessment";
+      document.getElementById("paymentHeading").textContent =
+        "Your App Rescue Payment Is Complete";
+      document.getElementById("paymentLead").textContent =
+        "Thank you for purchasing the Four-Hour App Rescue Assessment.";
+      document.getElementById("appRescueNextSteps").classList.remove("d-none");
+    } else {
+      document.getElementById("paymentLabel").textContent = "Hourly Consulting";
+      document.getElementById("paymentHeading").textContent =
+        "Your Consulting Payment Is Complete";
+      document.getElementById("paymentLead").textContent =
+        "Thank you for purchasing senior software consulting hours.";
+      document.getElementById("hourlyNextSteps").classList.remove("d-none");
+    }
 
-    document.getElementById("paymentLabel").textContent = "App Rescue Assessment";
-    document.getElementById("paymentHeading").textContent = "Your App Rescue Payment Is Complete";
-    document.getElementById("paymentLead").textContent =
-      "Thank you for purchasing the Four-Hour App Rescue Assessment.";
-    document.getElementById("appRescueNextSteps").classList.remove("d-none");
-
-    const dedupeKey = "app_rescue_purchase_reported_" + checkoutReference;
+    const dedupeKey =
+      "paypal_purchase_reported_" + recentCheckout.id + "_" + recentCheckout.reference;
     if (localStorage.getItem(dedupeKey) === "1") return;
 
     localStorage.setItem(dedupeKey, "1");
-    localStorage.removeItem("app_rescue_checkout_reference");
-    localStorage.removeItem("app_rescue_checkout_started_at");
+    checkoutProducts.forEach(function (product) {
+      localStorage.removeItem(product.referenceKey);
+      localStorage.removeItem(product.startedAtKey);
+    });
 
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: "app_rescue_assessment_purchase",
-      transaction_id: checkoutReference,
-      product_id: "app_rescue_assessment",
-      product_name: "Four-Hour App Rescue Assessment",
-      value: 1000,
+    const purchaseEvent = {
+      event: recentCheckout.eventName,
+      transaction_id: recentCheckout.reference,
+      product_id: recentCheckout.id,
+      product_name: recentCheckout.name,
       currency: "USD",
-    });
+    };
+
+    if (recentCheckout.id === "app_rescue_assessment") {
+      purchaseEvent.value = recentCheckout.value;
+      purchaseEvent.value_source = "fixed_price";
+    } else {
+      purchaseEvent.unit_price = recentCheckout.unitPrice;
+      purchaseEvent.quantity_status = "not_returned_by_paypal";
+      purchaseEvent.value_status = "reconcile_with_paypal";
+    }
+
+    window.dataLayer.push(purchaseEvent);
   });
 </script>
