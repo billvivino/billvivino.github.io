@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "App Rescue and Technical Assessment"
-description: "Purchase a fixed-fee senior technical assessment for an existing application, prototype, MVP, or software codebase that is stalled, unstable, unfinished, or unclear."
+description: "Purchase a fixed-fee senior technical assessment for an existing application or software codebase that is stalled, unstable, inherited, blocked, or difficult to move forward."
 seo_cluster: "software-rescue"
 ---
 
@@ -48,46 +48,144 @@ seo_cluster: "software-rescue"
     border-radius: 8px;
   }
 
+  .assessment-situation,
+  .assessment-proof {
+    height: 100%;
+    background: #ffffff;
+    border: 1px solid #dce3ea;
+    border-radius: 10px;
+  }
+
+  .assessment-step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.5rem;
+    color: #ffffff;
+    background: #0a2540;
+    border-radius: 50%;
+    font-weight: 700;
+  }
+
 </style>
 
 <section class="container assessment-shell py-5" id="app-rescue-assessment">
   <div class="text-center mb-5">
-    <p class="assessment-label mb-2">Fixed-Fee Senior Technical Review</p>
+    <p class="assessment-label mb-2">Fixed-Fee Senior Technical Diagnosis</p>
     <h1 class="display-5 fw-bold">
-      Get Your Existing Software Project Moving Again
+      Find the Safest Path Forward for a Stalled App or Codebase
     </h1>
     <p class="lead mx-auto" style="max-width: 850px">
-      The Four-Hour App Rescue Assessment is for businesses with an existing
-      application, prototype, MVP, or codebase that is stalled, unstable,
-      unfinished, inherited, or unclear.
+      For operating businesses, funded teams, agencies, and product owners with
+      existing software already at risk. I inspect the actual system and help
+      you decide whether to stabilize, finish, refactor, modernize, or rebuild.
     </p>
   </div>
 
   <div class="qualification-notice rounded p-4 mb-4">
-    <h2 class="h5">An existing software product is required</h2>
+    <h2 class="h5">Existing code and a real business problem are required</h2>
+    <p class="mb-2">
+      This assessment is for an active product, inherited system, vendor build,
+      funded MVP, or internal application with a concrete technical problem.
+      It is not for idea-only projects, programming lessons, DIY/no-code
+      coaching, or speculative prototypes without committed implementation
+      budget.
+    </p>
     <p class="mb-0">
       You must own or control the product and be authorized to provide private
       source-code access. Do not send passwords, credentials, repository links,
-      or repository invitations before receiving secure intake instructions.
+      or invitations before receiving secure intake instructions.
     </p>
   </div>
+
+  <section class="mb-5" aria-labelledby="rescue-situations-heading">
+    <h2 class="text-center h3 mb-4" id="rescue-situations-heading">
+      Problems This Assessment Is Built to Resolve
+    </h2>
+    <div class="row g-3">
+      <div class="col-md-6 col-lg-4">
+        <div class="assessment-situation p-4">
+          <h3 class="h5">Vendor or developer takeover</h3>
+          <p class="mb-0">Understand what was delivered, what is missing, and whether the current code can be continued safely.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="assessment-situation p-4">
+          <h3 class="h5">Release or production blocker</h3>
+          <p class="mb-0">Identify the technical risks preventing a stable release, deployment, handoff, or production rollout.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="assessment-situation p-4">
+          <h3 class="h5">Architecture and codebase diagnosis</h3>
+          <p class="mb-0">Find the structural issues behind recurring defects, slow delivery, brittle integrations, or unclear ownership.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="assessment-situation p-4">
+          <h3 class="h5">Modernize, refactor, or rebuild</h3>
+          <p class="mb-0">Get an evidence-based recommendation before committing more budget to the wrong technical direction.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="assessment-situation p-4">
+          <h3 class="h5">Backend or integration failure</h3>
+          <p class="mb-0">Trace failures across APIs, authentication, data models, cloud services, mobile clients, and operational systems.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="assessment-situation p-4">
+          <h3 class="h5">Prototype production hardening</h3>
+          <p class="mb-0">Determine what an existing funded prototype needs before it can support real users, security, and ongoing development.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-5" aria-labelledby="rescue-proof-heading">
+    <h2 class="text-center h3 mb-4" id="rescue-proof-heading">
+      Relevant Rescue and Takeover Experience
+    </h2>
+    <div class="row g-3">
+      <div class="col-lg-4">
+        <div class="assessment-proof p-4">
+          <h3 class="h5">Healthcare platform re-architecture</h3>
+          <p class="mb-0">Inherited an unstable prototype and helped turn it into a secure surgical-readiness platform that progressed to funded pilot deployment and live clinical workflows.</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="assessment-proof p-4">
+          <h3 class="h5">NASA app stabilization</h3>
+          <p class="mb-0">Joined WeatherSats AR midstream, stabilized the Unity and AR codebase, fixed production defects, and helped ship across iOS and Android.</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="assessment-proof p-4">
+          <h3 class="h5">Production codebase takeovers</h3>
+          <p class="mb-0">Took over stalled and inherited mobile products, diagnosed release and architecture problems, and delivered practical repair, rebuild, and handoff plans.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <div class="assessment-card p-4 p-lg-5">
     <div class="row g-5 align-items-start">
       <div class="col-lg-7">
         <h2>Four-Hour App Rescue Assessment</h2>
         <p>
-          This is a focused diagnostic engagement for determining what is wrong,
-          what is risky, and what should happen next. It is not an open-ended
-          block of development time.
+          This is a focused diagnostic engagement for determining what is
+          wrong, what is risky, and what should happen next. It is not an
+          open-ended block of development time or a generic consultation call.
         </p>
 
         <h3 class="h5 mt-4">What you receive</h3>
         <ul class="assessment-checklist">
-          <li>Senior review of the existing codebase and current blocker.</li>
+          <li>Senior review of the existing codebase, architecture, and current blocker.</li>
           <li>Prioritized technical findings.</li>
           <li>Risk and feasibility assessment.</li>
-          <li>Recommended next steps and technical direction.</li>
+          <li>A recommendation to stabilize, finish, refactor, modernize, rebuild, or stop.</li>
           <li>Written findings and a debrief.</li>
         </ul>
 
@@ -113,8 +211,8 @@ seo_cluster: "software-rescue"
                 id="confirmExistingSoftware"
               />
               <label class="form-check-label" for="confirmExistingSoftware">
-                I confirm that an existing application, prototype, MVP, or
-                codebase exists for this assessment.
+                I confirm that an existing application or codebase exists and
+                that there is a concrete business or delivery problem to assess.
               </label>
             </div>
 
@@ -168,9 +266,29 @@ seo_cluster: "software-rescue"
     </div>
   </div>
 
+  <section class="mt-5" aria-labelledby="assessment-process-heading">
+    <h2 class="text-center h3 mb-4" id="assessment-process-heading">
+      What Happens Next
+    </h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <h3 class="h5"><span class="assessment-step-number">1</span>Secure intake</h3>
+        <p>After payment, I confirm fit, scheduling, the current blocker, and the safest way to provide authorized access.</p>
+      </div>
+      <div class="col-md-4">
+        <h3 class="h5"><span class="assessment-step-number">2</span>Focused review</h3>
+        <p>I inspect the code, architecture, deployment path, integrations, and available evidence related to the problem.</p>
+      </div>
+      <div class="col-md-4">
+        <h3 class="h5"><span class="assessment-step-number">3</span>Decision and path forward</h3>
+        <p>You receive written findings and a debrief. If implementation makes sense, it is scoped separately with no obligation to continue.</p>
+      </div>
+    </div>
+  </section>
+
   <p class="text-center mt-4 mb-0">
-    Looking for a selected prototype build, larger engagement, or partnership?
-    <a href="/contact.html">Send a general project inquiry</a>.
+    Have an existing system but need to confirm whether the assessment fits?
+    <a href="/contact.html">Send a qualified project inquiry</a>.
   </p>
 </section>
 
@@ -247,7 +365,7 @@ seo_cluster: "software-rescue"
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Four-Hour App Rescue Assessment",
-  "description": "Senior technical assessment for an existing application, prototype, MVP, or software codebase.",
+  "description": "Senior technical diagnosis for an existing application or software codebase that is stalled, unstable, inherited, blocked, or difficult to move forward.",
   "provider": {
     "@type": "Organization",
     "name": "Bill Vivino Technology, LLC",
