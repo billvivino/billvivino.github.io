@@ -55,6 +55,16 @@
       >
         {{ page.primary_cta | default: "Discuss Your Project" }}
       </a>
+      {% if page.secondary_cta and page.secondary_cta_url %}
+      <a
+        href="{{ page.secondary_cta_url }}"
+        class="btn btn-outline-primary btn-lg ms-sm-2 mt-2 mt-sm-0"
+        data-seo-cta="service_to_secondary_offer"
+        data-seo-cluster="{{ page.seo_cluster | default: page.service_type }}"
+      >
+        {{ page.secondary_cta }}
+      </a>
+      {% endif %}
     </div>
   </div>
 </section>
@@ -80,6 +90,47 @@
     </div>
   </div>
 </section>
+
+{% if page.service_engagements %}
+<section class="py-5" aria-labelledby="service-engagements-heading">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 id="service-engagements-heading">
+        {{ page.service_engagements_heading | default: "Ways to Start" }}
+      </h2>
+      {% if page.service_engagements_intro %}
+      <p class="mx-auto" style="max-width: 840px">
+        {{ page.service_engagements_intro }}
+      </p>
+      {% endif %}
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      {% for engagement in page.service_engagements %}
+      <div class="col-md-6 col-lg-4">
+        <div class="border rounded p-4 h-100 bg-white d-flex flex-column">
+          {% if engagement.label %}
+          <p class="text-uppercase fw-semibold text-muted small mb-2">
+            {{ engagement.label }}
+          </p>
+          {% endif %}
+          <h3 class="h5">{{ engagement.title }}</h3>
+          <p>{{ engagement.text }}</p>
+          <a
+            href="{{ engagement.url }}"
+            class="btn btn-outline-primary mt-auto"
+            data-seo-cta="service_to_engagement"
+            data-seo-cluster="{{ page.seo_cluster | default: page.service_type }}"
+          >
+            {{ engagement.cta | default: "View Details" }}
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
 
 {% if page.service_proof_points %}
 <section class="py-5">

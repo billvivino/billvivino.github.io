@@ -24,7 +24,7 @@ permalink: /sitemap.xml
   {% for post in site.posts %}
       <url>
         <loc>{{ base }}{{ post.url }}</loc>
-        <lastmod>{{ post.date | date: "%Y-%m-%d" }}</lastmod>
+        <lastmod>{{ post.last_modified_at | default: post.date | date: "%Y-%m-%d" }}</lastmod>
       </url>
   {% endfor %}
 </urlset>
