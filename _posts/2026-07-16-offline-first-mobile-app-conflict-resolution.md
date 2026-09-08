@@ -3,7 +3,7 @@ layout: post
 title: "Offline-First Mobile Apps Are Conflict-Resolution Systems"
 description: "Offline-first mobile apps require more than caching. Learn how to design safe synchronization, retries, conflict resolution, and user-visible sync states."
 date: 2026-07-16
-last_modified_at: 2026-09-07
+last_modified_at: 2026-09-08
 seo_cluster: mobile-systems
 seo_pillar: true
 permalink: /blog/offline-first-mobile-app-conflict-resolution/

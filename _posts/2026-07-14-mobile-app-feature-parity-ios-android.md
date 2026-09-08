@@ -3,7 +3,7 @@ layout: post
 title: "Mobile App Feature Parity Is Not Screenshot Matching"
 description: "Mobile app feature parity requires more than matching screens. Learn how to keep iOS, Android, web, and backend behavior aligned in production software."
 date: 2026-07-14
-last_modified_at: 2026-09-07
+last_modified_at: 2026-09-08
 categories: mobile-app-development software-development cross-platform backend-integration
 tags:
   - mobile app feature parity
