@@ -3,7 +3,7 @@ layout: post
 title: "Mobile App Feature Parity Is Not Screenshot Matching"
 description: "Mobile app feature parity requires more than matching screens. Learn how to keep iOS, Android, web, and backend behavior aligned in production software."
 date: 2026-07-14
-last_modified_at: 2026-09-08
+last_modified_at: 2026-09-12
 categories: mobile-app-development software-development cross-platform backend-integration
 tags:
   - mobile app feature parity
@@ -278,6 +278,8 @@ Eventually, each application contains a slightly different historical interpreta
 That is why parity work can become surprisingly difficult. The engineer is not merely copying an implementation. They are reconstructing the current product truth from several imperfect sources.
 
 ## AI Can Accelerate the Wrong Definition of Parity
+
+AI also changes the cost of implementing a feature separately in Swift and Kotlin. That is part of [why I now favor native iOS and Android development](/posts/why-i-prefer-native-mobile-development-in-the-ai-era.html). The choice of framework does not remove the need to define and verify equivalent behavior.
 
 AI coding agents are good at finding analogous files and reproducing visible patterns.
 
