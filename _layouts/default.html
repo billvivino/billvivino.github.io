@@ -174,11 +174,13 @@
     <!-- End Google Tag Manager (noscript) -->
     {% include navbar.html %}
 
-    {{ content }}
+    <div class="site-content">
+      {{ content }}
 
-    {% if seo_is_tool and page.seo_service_path != false %}
-      {% include tool-service-path.html %}
-    {% endif %}
+      {% if seo_is_tool and page.seo_service_path != false %}
+        {% include tool-service-path.html %}
+      {% endif %}
+    </div>
 
     {% include footer.html %}
   </body>

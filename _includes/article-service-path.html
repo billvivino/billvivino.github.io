@@ -65,18 +65,14 @@
     {% assign article_cluster_label = "Software rescue and reliability" %}
     {% assign article_pillar_url = "/blog/software-rewrite-vs-stabilization/" %}
     {% assign article_pillar_title = "Software Rewrite vs. Stabilization" %}
-    {% assign article_service_url = "/fractional-cto-technical-advisor.html" %}
-    {% assign article_service_label = "Get a codebase rescue strategy" %}
-    {% assign article_service_text = "Use the current code, failure evidence, delivery constraints, and business risk to decide what to stabilize, refactor, replace, or stop." %}
+    {% assign article_service_url = "/hire-web-app-development-company.html" %}
+    {% assign article_service_label = "Explore platform development and recovery" %}
+    {% assign article_service_text = "Connect the technical problem to hands-on work on the application, backend, and data. Review what needs to launch, stabilize, or be replaced, and agree the next delivery stage." %}
 {% endcase %}
 
 <section class="border rounded-3 bg-light p-4 mt-5" aria-label="Related technical guidance and services" data-seo-cluster="{{ article_cluster }}">
   <p class="text-uppercase fw-semibold text-muted small mb-2">{{ article_cluster_label }}</p>
-  {% if page.seo_pillar == true %}
-    <h2 class="h4">Primary guide in this topic</h2>
-  {% else %}
-    <h2 class="h4">Continue with the primary guide</h2>
-  {% endif %}
+  <h2 class="h4">Apply This to Your Project</h2>
   <p>{{ article_service_text }}</p>
   <div class="d-flex flex-wrap gap-2">
     {% unless page.url == article_pillar_url %}

@@ -15,8 +15,9 @@
 }
 </script>
 
-<section class="py-5 text-center">
-  <div class="container">
+<section class="py-5 buyer-service-hero">
+  <div class="container service-hero-layout">
+    <div class="service-hero-copy">
     <p class="text-uppercase fw-semibold text-muted mb-2">
       {{ page.service_label }}
     </p>
@@ -25,18 +26,16 @@
       {{ page.service_lead }}
     </p>
 
-    {% capture service_hero_cta %}
-    <div class="mt-4">
+    <div class="service-hero-actions mt-3">
       <a
         href="/contact.html"
-        class="btn btn-primary btn-lg"
+        class="btn btn-primary"
         data-seo-cta="service_to_contact"
         data-seo-cluster="{{ page.seo_cluster | default: page.service_type }}"
       >
         {{ page.primary_cta | default: "Discuss Your Project" }}
       </a>
       {% if page.secondary_cta and page.secondary_cta_url %}
-      <div class="mt-3">
         <a
           href="{{ page.secondary_cta_url | escape }}"
           data-seo-cta="service_to_engagement"
@@ -44,15 +43,11 @@
         >
           {{ page.secondary_cta | escape }}
         </a>
-      </div>
       {% endif %}
     </div>
-    {% endcapture %}
-    {% if page.service_cta_before_image %}
-      {{ service_hero_cta }}
-    {% endif %}
+    </div>
 
-    <div class="text-center mt-4">
+    <div class="service-hero-art">
       <picture>
         {% if page.hero_avif %}
         <source srcset="{{ page.hero_avif }}" type="image/avif" />
@@ -63,7 +58,7 @@
         <img
           src="{{ page.hero_fallback }}"
           alt="{{ page.hero_alt }}"
-          class="img-fluid rounded"
+          class="img-fluid rounded service-hero-image"
           width="1200"
           height="800"
           loading="eager"
@@ -73,9 +68,6 @@
       </picture>
     </div>
 
-    {% unless page.service_cta_before_image %}
-      {{ service_hero_cta }}
-    {% endunless %}
   </div>
 </section>
 

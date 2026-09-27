@@ -34,7 +34,7 @@ breadcrumbs:
   .experience-hero {
     position: relative;
     overflow: hidden;
-    padding: clamp(4rem, 8vw, 7rem) 0;
+    padding: 1.5rem 0;
     background:
       radial-gradient(circle at 88% 16%, rgba(0, 179, 255, 0.2), transparent 28%),
       linear-gradient(145deg, #f8fbff 0%, var(--experience-sky) 100%);
@@ -42,7 +42,7 @@ breadcrumbs:
   }
 
   .experience-kicker {
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     color: var(--experience-blue) !important;
     font-size: 0.82rem;
     font-weight: 700;
@@ -51,18 +51,25 @@ breadcrumbs:
   }
 
   .experience-hero h1 {
-    max-width: 13ch;
+    max-width: none;
     color: var(--experience-navy) !important;
-    font-size: clamp(2.45rem, 5vw, 4.6rem);
-    line-height: 1.04;
-    letter-spacing: -0.04em;
+    font-size: clamp(1.75rem, 2.6vw, 2.35rem);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
   }
 
   .experience-hero .lead {
     max-width: 63ch;
     color: #36536d !important;
-    font-size: clamp(1.08rem, 2vw, 1.28rem);
-    line-height: 1.7;
+    font-size: 1.0625rem;
+    line-height: 1.5;
+  }
+
+  .experience-hero .experience-intro {
+    max-width: none;
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
   }
 
   .experience-actions {
@@ -71,17 +78,34 @@ breadcrumbs:
     gap: 0.8rem;
   }
 
+  .experience-hero .experience-actions {
+    margin-top: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
   .experience-actions .btn {
     white-space: normal;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .experience-illustration {
+    display: block;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    margin-bottom: 0.75rem;
   }
 
   .experience-summary-card {
     position: relative;
-    padding: clamp(1.5rem, 3vw, 2.25rem);
+    padding: 1rem;
     background: rgba(255, 255, 255, 0.92);
     border: 1px solid rgba(0, 102, 204, 0.18);
     border-radius: 1.25rem;
-    box-shadow: 0 1.1rem 3rem rgba(10, 37, 64, 0.12);
   }
 
   .experience-summary-card::before {
@@ -100,7 +124,7 @@ breadcrumbs:
   }
 
   .experience-summary-card li {
-    margin-bottom: 0.85rem;
+    margin-bottom: 0.5rem;
     color: #36536d;
     line-height: 1.55;
   }
@@ -112,8 +136,8 @@ breadcrumbs:
   .experience-tech-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.55rem;
-    margin: 2rem 0 0;
+    gap: 0.35rem;
+    margin: 0.75rem 0 0;
     padding: 0;
     list-style: none;
   }
@@ -126,7 +150,8 @@ breadcrumbs:
 
   .experience-tech-list a {
     display: block;
-    padding: 0.45rem 0.75rem;
+    padding: 0.4rem 0.65rem;
+    white-space: nowrap;
     color: var(--experience-ink);
     background: #ffffff;
     border: 1px solid var(--experience-border);
@@ -152,11 +177,11 @@ breadcrumbs:
 
   .experience-card:target {
     border-color: var(--experience-blue);
-    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.12);
+    outline: 3px solid rgba(0, 102, 204, 0.12);
   }
 
   .experience-section {
-    padding: clamp(4rem, 7vw, 6rem) 0;
+    padding: 1.5rem 0;
   }
 
   .experience-section-muted {
@@ -173,13 +198,13 @@ breadcrumbs:
 
   .experience-section-header {
     max-width: 790px;
-    margin-bottom: 2.25rem;
+    margin-bottom: 1rem;
   }
 
   .experience-section-header h2 {
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     color: var(--experience-navy) !important;
-    font-size: clamp(1.85rem, 3vw, 2.6rem);
+    font-size: clamp(1.5rem, 2.2vw, 1.85rem);
     line-height: 1.16;
     letter-spacing: -0.025em;
   }
@@ -188,16 +213,15 @@ breadcrumbs:
   .experience-prose {
     max-width: 72ch;
     color: #405d75 !important;
-    line-height: 1.75;
+    line-height: 1.55;
   }
 
   .experience-card {
     height: 100%;
-    padding: clamp(1.4rem, 2.5vw, 2rem);
+    padding: 1rem;
     background: #ffffff;
     border: 1px solid var(--experience-border);
     border-radius: 1rem;
-    box-shadow: 0 0.5rem 1.5rem rgba(10, 37, 64, 0.055);
   }
 
   .experience-card h3 {
@@ -210,7 +234,7 @@ breadcrumbs:
   .experience-card p,
   .experience-card li {
     color: #405d75 !important;
-    line-height: 1.68;
+    line-height: 1.55;
   }
 
   .experience-card p:last-child,
@@ -230,10 +254,10 @@ breadcrumbs:
 
   .experience-feature-list li {
     position: relative;
-    margin-bottom: 1rem;
+    margin-bottom: 0.65rem;
     padding-left: 1.25rem;
     color: #405d75;
-    line-height: 1.65;
+    line-height: 1.55;
   }
 
   .experience-feature-list li::before {
@@ -255,7 +279,7 @@ breadcrumbs:
     display: flex;
     flex-wrap: wrap;
     gap: 0.65rem 1.25rem;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
   }
 
   .experience-text-link-group a {
@@ -264,7 +288,7 @@ breadcrumbs:
 
   .experience-feature-panel {
     height: 100%;
-    padding: clamp(1.6rem, 3vw, 2.35rem);
+    padding: 1rem;
     background: #ffffff;
     border: 1px solid rgba(0, 102, 204, 0.2);
     border-radius: 1.15rem;
@@ -279,16 +303,10 @@ breadcrumbs:
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding: 1.65rem;
+    padding: 1rem;
     background: #ffffff;
     border: 1px solid var(--experience-border);
     border-radius: 1rem;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .experience-link-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0.8rem 1.8rem rgba(10, 37, 64, 0.1);
   }
 
   .experience-link-card h3 {
@@ -306,7 +324,7 @@ breadcrumbs:
   }
 
   .experience-cta {
-    padding: clamp(4rem, 8vw, 6.5rem) 0;
+    padding: 1.5rem 0;
     background: linear-gradient(135deg, #0a2540 0%, #001730 100%);
   }
 
@@ -331,9 +349,23 @@ breadcrumbs:
     outline-offset: 3px;
   }
 
+  @media (min-width: 1200px) {
+    .experience-tech-list {
+      gap: 0.25rem;
+    }
+
+    .experience-tech-list li {
+      font-size: 0.8125rem;
+    }
+
+    .experience-tech-list a {
+      padding-inline: 0.25rem;
+    }
+  }
+
   @media (max-width: 767.98px) {
     .experience-hero {
-      padding: 3.5rem 0;
+      padding: 1rem 0;
     }
 
     .experience-hero h1 {
@@ -350,7 +382,7 @@ breadcrumbs:
     }
 
     .experience-summary-card {
-      margin-top: 1rem;
+      margin-top: 0;
     }
 
     .experience-tech-list {
@@ -363,8 +395,7 @@ breadcrumbs:
       scroll-behavior: auto;
     }
 
-    .experience-tech-list a,
-    .experience-link-card {
+    .experience-tech-list a {
       transition: none;
     }
 
@@ -429,12 +460,12 @@ breadcrumbs:
           <h1 id="experience-title" class="mb-4">
             Senior Software Consulting &amp; Product Development Experience
           </h1>
-          <p class="lead mb-4">
+          <p class="lead experience-intro mb-4">
             Bill Vivino works with founders, technical leaders, and organizations
             that need an experienced development partner—not another layer between
             the business problem and the engineering work.
           </p>
-          <p class="experience-prose mb-4">
+          <p class="experience-prose experience-intro mb-4">
             His work spans native and cross-platform mobile applications, web
             products, backend APIs, cloud systems, AI integrations, Unity, and
             augmented reality. Engagements range from new product development to
@@ -442,10 +473,10 @@ breadcrumbs:
             codebases.
           </p>
           <div class="experience-actions">
-            <a href="/contact.html" class="btn btn-primary btn-lg">
+            <a href="/contact.html" class="btn btn-primary">
               Discuss a Software Project
             </a>
-            <a href="/contact.html" class="btn btn-outline-primary btn-lg">
+            <a href="/contact.html" class="btn btn-outline-primary">
               Request Full Detailed Résumé
             </a>
           </div>
@@ -463,7 +494,10 @@ breadcrumbs:
         </div>
 
         <div class="col-lg-5">
-          <aside class="experience-summary-card" aria-label="Experience at a glance">
+          <img class="experience-illustration" src="/assets/optimized/software-development-workspace.webp"
+            alt="AI-generated editorial image of a software development workspace"
+            width="1000" height="667" loading="eager" fetchpriority="high" />
+          <aside class="experience-summary-card card-elevated" aria-label="Experience at a glance">
             <p class="experience-summary-title">Experience at a glance</p>
             <ul class="mb-0 ps-3">
               <li>Full-stack product work across mobile, web, APIs, data, and cloud</li>
@@ -503,7 +537,7 @@ breadcrumbs:
         </div>
 
         <div class="col-lg-4">
-          <div class="experience-card">
+          <div class="experience-card card-elevated">
             <h3>Where this experience is most useful</h3>
             <ul class="experience-feature-list">
               <li>New products and focused MVP development</li>
@@ -535,7 +569,7 @@ breadcrumbs:
 
       <div class="row g-4">
         <div class="col-md-6 col-xl-3">
-          <article class="experience-card">
+          <article class="experience-card card-elevated">
             <h3>Mobile Applications</h3>
             <p>
               iOS with Swift, SwiftUI, UIKit, Combine, StoreKit, Vision, WatchKit,
@@ -545,7 +579,7 @@ breadcrumbs:
           </article>
         </div>
         <div class="col-md-6 col-xl-3">
-          <article class="experience-card">
+          <article class="experience-card card-elevated">
             <h3>Web, APIs &amp; Data</h3>
             <p>
               React, Next.js, Node.js, Express, Firebase Functions, REST APIs,
@@ -555,7 +589,7 @@ breadcrumbs:
           </article>
         </div>
         <div class="col-md-6 col-xl-3">
-          <article class="experience-card">
+          <article class="experience-card card-elevated">
             <h3>Cloud &amp; Operations</h3>
             <p>
               Firebase, Azure, AWS, Docker, BigQuery, Cloud Pub/Sub, deployment,
@@ -565,7 +599,7 @@ breadcrumbs:
           </article>
         </div>
         <div class="col-md-6 col-xl-3">
-          <article class="experience-card">
+          <article class="experience-card card-elevated">
             <h3>AI, Unity &amp; AR</h3>
             <p>
               Generative AI application integrations, Apple Vision, TensorFlow.js,
@@ -591,7 +625,7 @@ breadcrumbs:
 
       <div class="row g-4">
         <div class="col-lg-6">
-          <article class="experience-card">
+          <article class="experience-card card-elevated">
             <h3>Surgical Workflow Coordination Platform</h3>
             <p>
               Full-stack architecture and delivery across TypeScript, React,
@@ -609,7 +643,7 @@ breadcrumbs:
         </div>
 
         <div class="col-lg-6">
-          <article class="experience-card">
+          <article class="experience-card card-elevated">
             <h3>Industrial Field-Service Operations Platform</h3>
             <p>
               Architecture and implementation of a cross-platform mobile
@@ -626,7 +660,7 @@ breadcrumbs:
         </div>
 
         <div class="col-lg-6">
-          <article class="experience-card">
+          <article class="experience-card card-elevated">
             <h3>Mobile Field &amp; Connected-Device Systems</h3>
             <p>
               Selected work includes native measurement and mapping tools that
@@ -644,7 +678,7 @@ breadcrumbs:
         </div>
 
         <div class="col-lg-6">
-          <article class="experience-card">
+          <article class="experience-card card-elevated">
             <h3>Consumer, Community &amp; Creator Products</h3>
             <p>
               Product work spans native iOS, native Android, responsive web,
@@ -677,7 +711,7 @@ breadcrumbs:
 
       <div class="row g-4">
         <div class="col-md-6 col-lg-4">
-          <article id="ios-experience" class="experience-card experience-anchor-target">
+          <article id="ios-experience" class="experience-card experience-anchor-target card-elevated">
             <h3>iOS, Swift &amp; SwiftUI</h3>
             <p>
               Native application work across SwiftUI and UIKit, Firebase-backed
@@ -691,7 +725,7 @@ breadcrumbs:
         </div>
 
         <div class="col-md-6 col-lg-4">
-          <article id="mobile-shared-experience" class="experience-card experience-anchor-target">
+          <article id="mobile-shared-experience" class="experience-card experience-anchor-target card-elevated">
             <h3>Android, Kotlin &amp; shared products</h3>
             <p>
               Native Android work in Kotlin plus React Native/Expo delivery across
@@ -705,7 +739,7 @@ breadcrumbs:
         </div>
 
         <div class="col-md-6 col-lg-4">
-          <article id="spatial-experience" class="experience-card experience-anchor-target">
+          <article id="spatial-experience" class="experience-card experience-anchor-target card-elevated">
             <h3>Connected and spatial experiences</h3>
             <p>
               Wireless device communication, external positioning data,
@@ -732,7 +766,7 @@ breadcrumbs:
 
       <div class="row g-4">
         <div class="col-lg-4">
-          <article id="backend-api-experience" class="experience-card experience-anchor-target">
+          <article id="backend-api-experience" class="experience-card experience-anchor-target card-elevated">
             <h3>Web applications and backend APIs</h3>
             <p>
               React and Next.js interfaces connected to Node.js/Express services,
@@ -747,7 +781,7 @@ breadcrumbs:
         </div>
 
         <div class="col-lg-4">
-          <article id="cloud-data-experience" class="experience-card experience-anchor-target">
+          <article id="cloud-data-experience" class="experience-card experience-anchor-target card-elevated">
             <h3>Cloud and data systems</h3>
             <p>
               Firebase, Azure, AWS, Docker, BigQuery, Power BI, Azure Data Factory,
@@ -759,7 +793,7 @@ breadcrumbs:
         </div>
 
         <div class="col-lg-4">
-          <article id="ai-experience" class="experience-card experience-anchor-target">
+          <article id="ai-experience" class="experience-card experience-anchor-target card-elevated">
             <h3>AI integrations in real products</h3>
             <p>
               Experience includes a cross-platform generative-AI assistant with
@@ -791,7 +825,7 @@ breadcrumbs:
 
       <div class="row g-4">
         <div class="col-lg-6">
-          <article class="experience-feature-panel">
+          <article class="experience-feature-panel card-elevated">
             <h3>Public Science Education AR Experience</h3>
             <p class="experience-prose">
               Unity and C# work for a publicly released iOS and Android educational
@@ -803,7 +837,7 @@ breadcrumbs:
         </div>
 
         <div class="col-lg-6">
-          <article class="experience-feature-panel">
+          <article class="experience-feature-panel card-elevated">
             <h3>Internal Program Reporting &amp; Cloud Data</h3>
             <p class="experience-prose">
               In a separate engagement, Bill designed and deployed an internal
@@ -850,7 +884,7 @@ breadcrumbs:
         </div>
 
         <div class="col-lg-4">
-          <div class="experience-card">
+          <div class="experience-card card-elevated">
             <h3>Delivery approach</h3>
             <ul class="experience-feature-list">
               <li>Start with the system’s real constraints</li>
@@ -892,7 +926,7 @@ breadcrumbs:
         </div>
 
         <div class="col-lg-4">
-          <aside class="experience-card">
+          <aside class="experience-card card-elevated">
             <h3>Additional qualifications</h3>
             <ul class="experience-feature-list">
               <li>Software released through major mobile app stores and the web</li>
@@ -919,28 +953,28 @@ breadcrumbs:
 
       <div class="row g-4">
         <div class="col-md-6 col-xl-3">
-          <article class="experience-link-card">
+          <article class="experience-link-card card-elevated">
             <h3>Software Services</h3>
             <p>Review mobile, web, backend, AI, architecture, and rescue services.</p>
             <a href="/services.html">Explore software services</a>
           </article>
         </div>
         <div class="col-md-6 col-xl-3">
-          <article class="experience-link-card">
+          <article class="experience-link-card card-elevated">
             <h3>Working Together</h3>
             <p>Understand ownership, scope, collaboration, and delivery expectations.</p>
             <a href="/how-engagements-work/">Read How Engagements Work</a>
           </article>
         </div>
         <div class="col-md-6 col-xl-3">
-          <article class="experience-link-card">
+          <article class="experience-link-card card-elevated">
             <h3>Engagement Options</h3>
             <p>Compare focused work blocks for active products and technical decisions.</p>
             <a href="/pricing.html">Review pricing and engagement options</a>
           </article>
         </div>
         <div class="col-md-6 col-xl-3">
-          <article class="experience-link-card">
+          <article class="experience-link-card card-elevated">
             <h3>Start a Conversation</h3>
             <p>Share the product, codebase, integration, or architecture problem.</p>
             <a href="/contact.html">Contact Bill about your project</a>

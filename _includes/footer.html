@@ -1,18 +1,12 @@
 <!-- ======= Client Testimonials ======= -->
+{% if page.show_testimonials %}
+{% assign review_card_elevation = "shadow-sm" %}
+{% if page.url == "/" or page.url == "/index.html" %}
+  {% assign review_card_elevation = "card-elevated" %}
+{% endif %}
 <section class="testimonials py-5 bg-dark text-light">
   <div class="container">
     <div class="text-center mb-4">
-      <picture>
-        <source srcset="/assets/optimized/bill-logo-no-text.avif" type="image/avif">
-        <source srcset="/assets/optimized/bill-logo-no-text.webp" type="image/webp">
-        <img
-          src="/assets/optimized/bill-logo-no-text.webp"
-          alt="BVT logo"
-          width="160"
-          height="160"
-          loading="lazy"
-          style="height: 120px; margin-bottom: 10px">
-      </picture>
       <h2 class="fw-bold mb-2">What Clients Say</h2>
       <p class="text-muted mb-0">Verified reviews from real projects</p>
     </div>
@@ -20,7 +14,7 @@
     <div class="row g-4 justify-content-center">
       <div class="col-md-4">
         <div
-          class="review-card p-4 h-100 text-center border-0 rounded-4 shadow-sm"
+          class="review-card p-4 h-100 text-center border-0 rounded-4 {{ review_card_elevation }}"
         >
           <p class="mb-3">“Amazing in communication.”</p>
           <div class="stars mb-2">⭐⭐⭐⭐⭐</div>
@@ -29,7 +23,7 @@
       </div>
       <div class="col-md-4">
         <div
-          class="review-card p-4 h-100 text-center border-0 rounded-4 shadow-sm"
+          class="review-card p-4 h-100 text-center border-0 rounded-4 {{ review_card_elevation }}"
         >
           <p class="mb-3">“Went above and beyond.”</p>
           <div class="stars mb-2">⭐⭐⭐⭐⭐</div>
@@ -38,7 +32,7 @@
       </div>
       <div class="col-md-4">
         <div
-          class="review-card p-4 h-100 text-center border-0 rounded-4 shadow-sm"
+          class="review-card p-4 h-100 text-center border-0 rounded-4 {{ review_card_elevation }}"
         >
           <p class="mb-3">
             “It was great working with Bill! Very pleasant and knowledgeable.”
@@ -61,10 +55,11 @@
     </div>
   </div>
 </section>
+{% endif %}
 
 <!-- ======= Footer ======= -->
-<footer class="site-footer mt-5">
-  <div class="container py-5">
+<footer class="site-footer mt-4">
+  <div class="container py-4">
     <div class="row align-items-start">
       <!-- Column 1: Company Info -->
       <div class="col-md-4 text-center text-md-start mb-4 mb-md-0">
@@ -81,7 +76,7 @@
         </picture>
         <p class="mb-1 fw-bold">Bill Vivino Technology, LLC</p>
         <p class="small mb-2">
-          Custom Software Development · North Jersey & NYC Metro
+          Custom Software Development
         </p>
         <p class="small mb-0">
           <a href="tel:+19733582341" class="footer-link">(973) 358-2341</a
@@ -92,44 +87,27 @@
         </p>
       </div>
 
-      <!-- Column 2: Quick Links -->
+      <!-- Engagement details stay accessible without crowding the main navigation. -->
       <div class="col-md-4 text-center mb-4 mb-md-0">
-        <h6 class="text-uppercase mb-3">Quick Links</h6>
+        <h6 class="text-uppercase mb-3">Working Together</h6>
         <div>
-          <a href="/" class="footer-link d-block">Home</a>
           <a href="/services.html" class="footer-link d-block">Services</a>
-          <a href="/portfolio.html" class="footer-link d-block">Portfolio</a>
+          <a href="/how-engagements-work/" class="footer-link d-block">How Engagements Work</a>
           <a href="/pricing.html" class="footer-link d-block">Pricing</a>
+          <a href="/app-rescue-assessment.html" class="footer-link d-block">App Rescue Assessment</a>
           <a href="/contact.html" class="footer-link d-block">Contact</a>
-          <a
-            href="https://billvivinotechnology.com/sitemap.xml"
-            class="footer-link d-block"
-            target="_blank"
-            rel="noopener"
-          >
-            Sitemap
-          </a>
         </div>
       </div>
 
-      <!-- Column 3: Map Embed -->
+      <!-- Supporting resources are preserved, but are not competing service offers. -->
       <div class="col-md-4 text-center text-md-end">
-        <h6 class="text-uppercase mb-3">Find Us</h6>
-        <div
-          class="ratio ratio-1x1"
-          style="max-width: 100%; border-radius: 8px; overflow: hidden"
-        >
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d385861.0437278586!2d-74.49830245!3d40.92584395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x83df44ed4d347b8d%3A0x96f055ba2c38d529!2sBill%20Vivino%20Technology%20LLC!5e0!3m2!1sen!2sus!4v1760457495102!5m2!1sen!2sus"
-            width="100%"
-            height="250"
-            style="border: 0"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          >
-          </iframe>
-        </div>
+        <h6 class="text-uppercase mb-3">Resources &amp; Profiles</h6>
+        <a href="/blog.html" class="footer-link d-block">Articles &amp; Case Studies</a>
+        <a href="/toolbox.html" class="footer-link d-block">Software Decision Tools</a>
+        <a href="/coding-ai-portal.html" class="footer-link d-block">Coding AI Portal</a>
+        <a href="/2026-mvp-blueprint.html" class="footer-link d-block">MVP Blueprint</a>
+        <a href="https://www.upwork.com/freelancers/billvivino" class="footer-link d-block" target="_blank" rel="noopener">Client Reviews on Upwork</a>
+        <a href="https://www.linkedin.com/in/billvivino/" class="footer-link d-block" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
 
@@ -139,6 +117,8 @@
     <div class="text-center small text-muted">
       © <span id="year"></span> Bill Vivino Technology, LLC · All Rights
       Reserved
+      · <a href="/privacy.html" class="footer-link">Privacy</a>
+      · <a href="/sitemap.xml" class="footer-link">Sitemap</a>
     </div>
   </div>
 
