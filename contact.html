@@ -2,7 +2,7 @@
 layout: default
 title: "Discuss Your Software or AI Project — Bill Vivino"
 description: "Share an app, codebase, AI integration, or workflow problem. Start a conversation about the objective, systems, scope, and next practical step."
-last_modified_at: 2026-09-13
+last_modified_at: 2026-09-27
 ---
 
 <section class="container py-5" style="max-width: 760px">
@@ -10,12 +10,11 @@ last_modified_at: 2026-09-13
     <p class="text-uppercase fw-semibold text-primary small mb-2">
       General Project Inquiries
     </p>
-    <h1>Discuss Your Software or AI Workflow</h1>
+    <h1>Discuss Your Software or AI Project</h1>
     <p class="lead">
-      Tell us what exists today, where work gets stuck, and what result or
-      decision you need. For AI assisted development or specialist AI workflow
-      automation, include the workflow, the systems involved, and who
-      would use the result.
+      Tell us what you want to build, automate, or improve—from AI-powered
+      software and assistants to business workflows, mobile apps, and existing
+      systems. Not sure where AI fits? Start with the problem you want to solve.
     </p>
   </div>
 
@@ -70,9 +69,43 @@ last_modified_at: 2026-09-13
     </div>
 
     <div class="mb-3">
+      <label for="type" class="form-label">Project Type</label>
+      <select id="type" name="type" class="form-select" aria-describedby="project-type-help" required>
+        <option value="" disabled selected>Choose…</option>
+        <optgroup label="AI &amp; automation">
+          <option>AI workflow / business process automation</option>
+          <option>AI-powered app or software product</option>
+          <option>AI assistant, chatbot, or knowledge search</option>
+          <option>AI agents &amp; tool integrations (MCP)</option>
+          <option>Improve or rescue an existing AI system</option>
+          <option>AI feasibility &amp; architecture review</option>
+        </optgroup>
+        <optgroup label="Software &amp; applications">
+          <option>Custom software / internal business tools</option>
+          <option>iOS SwiftUI</option>
+          <option>Android Kotlin</option>
+          <option>Native Cross-Platform (SwiftUI/Kotlin-Jetpack)</option>
+          <option>React Native Cross-Platform</option>
+          <option>Backend / Firebase</option>
+          <option>Healthcare / connected care integration</option>
+          <option>AR / VR / 3D / Game (Unity)</option>
+          <option>Web App (React, Next.js, etc.)</option>
+        </optgroup>
+        <option>Not sure yet — help me define the project</option>
+        <option>Other</option>
+      </select>
+      <p id="project-type-help" class="form-text mb-0">
+        Choose the closest fit; describe any overlap below.
+      </p>
+    </div>
+
+    <div class="mb-3">
       <label for="projectStage" class="form-label">Current Project Stage</label>
       <select id="projectStage" name="project_stage" class="form-select" required>
         <option value="" disabled selected>Choose…</option>
+        <option>Exploring an idea or checking feasibility</option>
+        <option>Existing business workflow to automate</option>
+        <option>New software or AI automation build</option>
         <option>Focused consulting sprint or technical review</option>
         <option>Existing application or codebase</option>
         <option>Existing prototype or MVP that needs completion</option>
@@ -103,23 +136,6 @@ last_modified_at: 2026-09-13
     </div>
 
     <div class="mb-3">
-      <label for="type" class="form-label">Project Type</label>
-      <select id="type" name="type" class="form-select" required>
-        <option value="" disabled selected>Choose…</option>
-        <option value="AI / MCP integration or workflow review">AI Assisted Development / AI Workflow Automation Specialist</option>
-        <option>iOS SwiftUI</option>
-        <option>Android Kotlin</option>
-        <option>Native Cross-Platform (SwiftUI/Kotlin-Jetpack)</option>
-        <option>React Native Cross-Platform</option>
-        <option>Backend / Firebase</option>
-        <option>Healthcare / connected care integration</option>
-        <option>AR / VR / 3D / Game (Unity)</option>
-        <option>Web App (React, Next.js, etc.)</option>
-        <option>Other</option>
-      </select>
-    </div>
-
-    <div class="mb-3">
       <label for="message" class="form-label">Project Description</label>
       <textarea
         class="form-control"
@@ -128,7 +144,7 @@ last_modified_at: 2026-09-13
         rows="5"
         minlength="50"
         required
-        placeholder="Describe the current workflow or product, the main problem, the decision owner, and a useful result (minimum 50 characters)…"
+        placeholder="What should the software or automation do? Describe the current process, systems involved, intended users, and desired result (minimum 50 characters)…"
       ></textarea>
       <p class="form-text mb-0">
         Include a baseline if you have one. Please do not include passwords,
