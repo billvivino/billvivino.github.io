@@ -37,6 +37,7 @@ or that the earlier traffic decline has been diagnosed.
 
 2. **Practical AI engineering**
    - Primary guide: `/posts/ai-doesnt-replace-senior-engineers-it-expands-their-reach.html`
+   - Guide focus: reviewing AI-assisted code before it ships, with explicit verification and handoff limits.
    - Commercial destination: `/ai-integration-consultant.html`
    - Best new evidence: evaluations, retrieval boundaries, model fallbacks, human review, cost measurements, and production integration lessons.
 
@@ -62,3 +63,13 @@ Before creating a new article, answer all six questions:
 6. What reader decision will be easier after reading it?
 
 If questions 2–4 do not have strong answers, update an existing article instead of publishing a new one.
+
+## September 3 editorial differentiation
+
+Keep the existing URLs for the July 7–9 articles. Their roles are now distinct:
+
+- **July 7:** codebase investigation before editing, including dependency tracing, client contract differences, and evidence to inspect.
+- **July 8:** the practical-AI primary guide, focused on reviewing a proposed change, tests, runtime behavior, and remaining uncertainty before release.
+- **July 9:** two existing firsthand debugging examples, centered on Firebase Admin initialization and authenticated Android image loading. This belongs with mobile/Firebase systems and links to the App Rescue Assessment for diagnosis.
+
+Use these articles for their existing purposes rather than publishing another general argument that AI makes senior engineers more important. Add case evidence only when it is documented; do not invent client details, time savings, or outcomes. These edits are an editorial improvement, not a claim of a Google penalty or a guaranteed traffic recovery.

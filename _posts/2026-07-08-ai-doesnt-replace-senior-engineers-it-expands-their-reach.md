@@ -1,9 +1,10 @@
 ---
 layout: post
-title: "AI Doesn't Replace Senior Engineers. It Expands Their Reach."
-description: "AI coding tools do not replace senior engineers. They expand how much of a system strong engineers can understand, review, and improve."
+title: "Reviewing AI-Assisted Code Before It Ships"
+description: "A practical review guide for AI-assisted changes: establish product intent, inspect the diff, check tests, and verify behavior across the running system."
 date: 2026-07-08
-last_modified_at: 2026-08-20
+last_modified_at: 2026-09-03
+permalink: /posts/ai-doesnt-replace-senior-engineers-it-expands-their-reach.html
 seo_cluster: practical-ai
 seo_pillar: true
 categories: ai software-development consulting senior-engineering
@@ -45,7 +46,7 @@ og_image: "/assets/optimized/senior-engineer-ai-era.webp"
 
 <div class="tldr-box">
   <strong>TL;DR</strong><br />
-  AI coding tools do not remove the need for senior engineering judgment. They expand how much of a system strong engineers can inspect, align, and improve.
+  AI expands how much of a system I can inspect and change. Before shipping, I still need to establish the intended behavior, review the actual diff, and verify the affected flow. A plausible implementation and a passing test answer different questions.
 </div>
 
 <picture class="blog-img-right">
@@ -60,121 +61,73 @@ og_image: "/assets/optimized/senior-engineer-ai-era.webp"
   />
 </picture>
 
-If you spend enough time on YouTube, TikTok, or X, you'll eventually hear the same promise:
+After months of working with agentic coding tools every day, I've changed how I think about their value.
 
-> "You don't need to know how to code anymore."
+The biggest benefit is the amount of a system I can understand, review, and improve. I can follow a feature across backend, web, iOS, and Android, then use the agent to help bring those implementations into alignment.
 
-After months of working with agentic coding tools every day, I've come to almost the opposite conclusion.
+That wider reach also makes the review decision important: what evidence tells me a change is ready to ship?
 
-The biggest benefit of AI coding isn't that it replaces software engineers.
+This guide sets out the questions I use to think about that decision. It is a review framework, not a guarantee that every defect will be caught or a report of measured productivity gains.
 
-It's that it dramatically expands the surface area a good engineer can understand, review, and improve.
+## Establish the Intended Behavior
 
-## The Wrong Mental Model
+Before judging an implementation, I need to know what it is supposed to do. A clear task should identify the business rule, the affected users, the constraints, and what is outside the change.
 
-A lot of people present AI as if software development is becoming a one-shot exercise.
+Otherwise, an agent can implement a plausible interpretation that does not match the product. The resulting code may be tidy and internally consistent while still answering the wrong question.
 
-Write a prompt.
+For an inherited system, an existing behavior is evidence of what the software does today. It is not, by itself, proof of what the business wants it to do.
 
-Generate an application.
+## Review the Change in Context
 
-Ship it.
+I want to inspect the actual diff and the behavior around it, not just a summary of completed work.
 
-The implication is that architecture, consistency, and engineering judgment no longer matter.
+- Does the change fit the API contract and data model?
+- Is an existing rule being reused, or has a second version appeared?
+- Do permission and validation checks still happen in the right place?
+- Are all affected clients accounted for?
+- Has unrelated cleanup made a focused change harder to review?
 
-But if you've ever inherited a poorly designed codebase, you already know what happens when nobody owns those things.
+When the affected consumers are unclear, I start with [a bounded codebase investigation](/posts/agentic-coding-does-not-replace-senior-engineers.html). That article explains how I use an agent to trace dependencies before deciding which files need changes.
 
-AI doesn't magically fix weak engineering.
+Finding more code does not mean editing more code. The scope should follow the product problem and the evidence.
 
-It scales it.
+## Read What the Tests Actually Prove
 
-If someone doesn't understand system design, API contracts, state management, testing, deployment, or long-term maintainability, they'll simply generate those mistakes much faster and over a much larger codebase.
+A passing test is useful only in relation to its assertions and setup. A test that repeats the implementation's assumptions can preserve the same mistake.
 
-## The Real Superpower
+The questions I would ask during review are:
 
-The real advantage I've discovered is visibility.
+- Does the test assert the intended business behavior?
+- Does it cover the failure or edge case this change addresses?
+- Are mocks hiding the integration that needs verification?
+- Was the relevant test actually run against this change?
 
-Instead of spending hours tracing how one API change propagates through five repositories, I can ask an agent to map every dependency.
+Not every edit needs the same test strategy. A narrow logic change and an authentication flow across clients have different risks. The verification should be chosen for the behavior that could break, rather than for the number of tests produced.
 
-Instead of manually searching dozens of files, I can review an entire feature's implementation across backend, web, iOS, and Android before making a change.
+## Check the Running System When Source Is Not Enough
 
-Instead of hoping every client interprets an API contract consistently, I can update the contract, inspect each consumer, identify mismatches, and systematically bring everything back into alignment.
+A build confirms something different from a working user flow. Configuration, credentials, sessions, and deployment conditions can determine whether apparently correct code runs as intended.
 
-That's not replacing engineering.
+In [two mobile debugging examples](/posts/ai-has-not-replaced-senior-developers.html), I describe a notification path whose Firebase Admin client was uninitialized and an Android image request that lacked its session cookie. The useful clues were the runtime state and the HTTP response.
 
-That's amplifying engineering.
+Those examples are not evidence that every problem requires the same fix. They show why a review sometimes has to leave the diff and follow the failing request.
 
-## More Time Thinking Like an Architect
+## Make the Remaining Uncertainty Explicit
 
-Ironically, AI has made me spend less time writing individual lines of code and more time thinking about architecture.
+A useful handoff should let another person understand both the change and the limits of its verification. I would want it to answer:
 
-Questions like:
+- What changed, and why?
+- What tests and runtime checks were completed?
+- What expected behavior did those checks demonstrate?
+- What could not be checked in the available environment?
+- What remains a separate issue rather than part of this patch?
 
-- Is this abstraction correct?
-- Does this API belong here?
-- Is this feature consistent across every platform?
-- Are these naming conventions coherent?
-- Are we accumulating technical debt?
-- Does this implementation fit the direction of the product?
+That makes the release decision concrete. An untested environment or unresolved product rule should remain visible, even when the implementation looks finished.
 
-Those questions have become more important, not less.
+## Where Engineering Judgment Fits
 
-The typing was never the hard part.
+Early on, I looked at inconsistent AI-generated projects and assumed agentic coding was the problem. I now think that explanation was too simple. Tools can accelerate useful work, but someone still has to own product intent, architecture, and the decision to release.
 
-The thinking always was.
+The advantage I value is being able to apply that judgment across more of the system. AI helps with investigation, implementation, and verification; review connects that work to the product it needs to serve.
 
-## Why I Changed My Mind
-
-Early on, I looked at AI-generated projects built by people without much software experience.
-
-Many were inconsistent, fragile, and difficult to maintain.
-
-I assumed agentic coding was the problem.
-
-Now I think I had cause and effect backwards.
-
-The problem wasn't the AI.
-
-The problem was that nobody was steering it.
-
-A codebase reflects the judgment of the person directing it.
-
-That has always been true.
-
-AI simply makes that person's judgment visible at a much larger scale.
-
-## The Best Engineers Get More Leverage
-
-The biggest change isn't that junior engineers suddenly become senior engineers.
-
-It's that experienced engineers can now operate across a much wider portion of a system.
-
-I can review more code.
-
-I can inspect more edge cases.
-
-I can refactor more confidently.
-
-I can keep multiple applications moving in the same architectural direction.
-
-The result isn't necessarily fewer engineers.
-
-It's that each engineer can apply good engineering decisions across a much larger codebase than was practical before.
-
-## Software Is Still a Sculpture
-
-I've always thought building software feels more like sculpting than manufacturing.
-
-Every feature affects another.
-
-Every abstraction changes the shape of the system.
-
-Every shortcut leaves marks that someone will eventually have to smooth away.
-
-Agentic coding doesn't change that.
-
-It just hands you better tools.
-
-The sculptor still matters.
-
-In fact, the better the tools become, the more important the sculptor becomes.
+If your existing application has reached the point where nobody is confident what can safely ship, the [App Rescue Assessment](/app-rescue-assessment.html) offers a bounded technical diagnosis with prioritized findings and next steps. It is an assessment, not an implementation package or a promise that every issue can be resolved within it.
