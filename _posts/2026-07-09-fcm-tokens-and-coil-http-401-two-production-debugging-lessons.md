@@ -3,8 +3,8 @@ layout: post
 title: "FCM Tokens and Coil HTTP 401: Two Production Debugging Lessons"
 description: "Two bugs from my mobile work: missing Firebase Admin credentials blocked notifications, and Coil image requests needed the authenticated session cookie."
 date: 2026-07-09
-last_modified_at: 2026-09-03
-permalink: /posts/ai-has-not-replaced-senior-developers.html
+last_modified_at: 2026-09-28
+permalink: /posts/fcm-tokens-and-coil-http-401-two-production-debugging-lessons.html
 categories: software-development mobile-app-development firebase debugging ai
 og_image: "/assets/optimized/human-engineers-thumb.webp"
 ---

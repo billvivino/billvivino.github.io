@@ -3,8 +3,8 @@ layout: post
 title: "Using Coding Agents to Trace a Change Across a Codebase"
 description: "How I use coding agents to investigate dependencies, compare mobile clients, and identify contract mismatches before deciding what to change."
 date: 2026-07-07
-last_modified_at: 2026-09-03
-permalink: /posts/agentic-coding-does-not-replace-senior-engineers.html
+last_modified_at: 2026-09-28
+permalink: /posts/using-coding-agents-to-trace-a-change-across-a-codebase.html
 seo_cluster: practical-ai
 categories: ai software-development consulting technical-leadership
 og_image: "/assets/optimized/agentic-coding-wider-architectural-vision.webp"
@@ -113,12 +113,12 @@ The investigation may uncover duplication, an old workaround, and an actual rele
 
 I still have to account for product intent, deployment risk, and the reason a compromise exists. Sometimes the right decision is a narrow fix and a separate ticket for the deeper architectural problem. Sometimes two flows should remain different.
 
-My [AI-assisted code review guide](/posts/ai-doesnt-replace-senior-engineers-it-expands-their-reach.html) covers the next decision: how to review a proposed change and its verification before it ships.
+My [AI-assisted code review guide](/posts/reviewing-ai-assisted-code-before-it-ships.html) covers the next decision: how to review a proposed change and its verification before it ships.
 
 ## Know When the Code Map Is Not Enough
 
 Source inspection cannot answer every operational question. A response shape can be correct while a request lacks authentication. A send function can exist while its service client was never initialized.
 
-I describe those two concrete failures in [debugging Firebase notifications and Android image loading](/posts/ai-has-not-replaced-senior-developers.html). They required following runtime evidence, not just locating the expected code.
+I describe those two concrete failures in [debugging Firebase notifications and Android image loading](/posts/fcm-tokens-and-coil-http-401-two-production-debugging-lessons.html). They required following runtime evidence, not just locating the expected code.
 
 For me, the benefit of a coding agent here is a wider field of view. The useful outcome is a better-founded change decision, including a clear account of what I have not verified yet.

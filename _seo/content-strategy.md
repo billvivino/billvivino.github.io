@@ -36,7 +36,7 @@ or that the earlier traffic decline has been diagnosed.
    - Best new evidence: architecture diagrams, synchronization failure modes, performance measurements, release lessons, and Firebase operating-cost examples.
 
 2. **Practical AI engineering**
-   - Primary guide: `/posts/ai-doesnt-replace-senior-engineers-it-expands-their-reach.html`
+   - Primary guide: `/posts/reviewing-ai-assisted-code-before-it-ships.html`
    - Guide focus: reviewing AI-assisted code before it ships, with explicit verification and handoff limits.
    - Commercial destination: `/ai-integration-consultant.html`
    - Best new evidence: evaluations, retrieval boundaries, model fallbacks, human review, cost measurements, and production integration lessons.
@@ -64,9 +64,9 @@ Before creating a new article, answer all six questions:
 
 If questions 2–4 do not have strong answers, update an existing article instead of publishing a new one.
 
-## September 3 editorial differentiation
+## September 28 editorial differentiation
 
-Keep the existing URLs for the July 7–9 articles. Their roles are now distinct:
+Use title-matching canonical URLs for the July 7–9 articles and preserve their prior URLs as `noindex` redirects. Their roles are now distinct:
 
 - **July 7:** codebase investigation before editing, including dependency tracing, client contract differences, and evidence to inspect.
 - **July 8:** the practical-AI primary guide, focused on reviewing a proposed change, tests, runtime behavior, and remaining uncertainty before release.

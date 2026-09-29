@@ -3,8 +3,8 @@ layout: post
 title: "Reviewing AI-Assisted Code Before It Ships"
 description: "A practical review guide for AI-assisted changes: establish product intent, inspect the diff, check tests, and verify behavior across the running system."
 date: 2026-07-08
-last_modified_at: 2026-09-03
-permalink: /posts/ai-doesnt-replace-senior-engineers-it-expands-their-reach.html
+last_modified_at: 2026-09-28
+permalink: /posts/reviewing-ai-assisted-code-before-it-ships.html
 seo_cluster: practical-ai
 seo_pillar: true
 categories: ai software-development consulting senior-engineering
@@ -87,7 +87,7 @@ I want to inspect the actual diff and the behavior around it, not just a summary
 - Are all affected clients accounted for?
 - Has unrelated cleanup made a focused change harder to review?
 
-When the affected consumers are unclear, I start with [a bounded codebase investigation](/posts/agentic-coding-does-not-replace-senior-engineers.html). That article explains how I use an agent to trace dependencies before deciding which files need changes.
+When the affected consumers are unclear, I start with [a bounded codebase investigation](/posts/using-coding-agents-to-trace-a-change-across-a-codebase.html). That article explains how I use an agent to trace dependencies before deciding which files need changes.
 
 Finding more code does not mean editing more code. The scope should follow the product problem and the evidence.
 
@@ -108,7 +108,7 @@ Not every edit needs the same test strategy. A narrow logic change and an authen
 
 A build confirms something different from a working user flow. Configuration, credentials, sessions, and deployment conditions can determine whether apparently correct code runs as intended.
 
-In [two mobile debugging examples](/posts/ai-has-not-replaced-senior-developers.html), I describe a notification path whose Firebase Admin client was uninitialized and an Android image request that lacked its session cookie. The useful clues were the runtime state and the HTTP response.
+In [two mobile debugging examples](/posts/fcm-tokens-and-coil-http-401-two-production-debugging-lessons.html), I describe a notification path whose Firebase Admin client was uninitialized and an Android image request that lacked its session cookie. The useful clues were the runtime state and the HTTP response.
 
 Those examples are not evidence that every problem requires the same fix. They show why a review sometimes has to leave the diff and follow the failing request.
 
