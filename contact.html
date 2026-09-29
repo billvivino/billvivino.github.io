@@ -180,6 +180,24 @@ last_modified_at: 2026-09-29
       can help distinguish a quick pilot from a production-ready system.
     </div>
 
+    <div class="mb-3">
+      <label for="discoverySource" class="form-label">How did you first hear about us? (optional)</label>
+      <select id="discoverySource" name="discovery_source" class="form-select">
+        <option value="">Prefer not to say / not sure</option>
+        <option value="chatgpt_ad">An ad in ChatGPT</option>
+        <option value="chatgpt_answer">A ChatGPT answer or recommendation</option>
+        <option value="other_ai">Another AI assistant</option>
+        <option value="search">Google, Bing, or another search engine</option>
+        <option value="referral">A personal referral</option>
+        <option value="social">LinkedIn or another social site</option>
+        <option value="other">Somewhere else</option>
+      </select>
+    </div>
+    <p class="small text-muted">
+      Your inquiry is processed by Formspree. We include limited referral details
+      to understand how people find us. Please do not include passwords, patient
+      information, or other sensitive records. See our <a href="/privacy.html">privacy policy</a>.
+    </p>
     <button type="submit" class="btn btn-primary w-100">
       Send Project Inquiry
     </button>
@@ -243,6 +261,19 @@ last_modified_at: 2026-09-29
     if (!form || !tsField) return;
 
     tsField.value = Date.now().toString();
+    // An opaque receipt reference stays with the private inquiry, never in analytics.
+    const inquiryReference = window.crypto && window.crypto.randomUUID
+      ? window.crypto.randomUUID() : "";
+    function hiddenField(name, value) {
+      let field = form.querySelector('input[type="hidden"][name="' + name + '"]');
+      if (!field) {
+        field = document.createElement("input");
+        field.type = "hidden";
+        field.name = name;
+        form.appendChild(field);
+      }
+      field.value = value;
+    }
 
     const defaultBudgetHelp = budgetHelp ? budgetHelp.textContent.trim() : "";
     function updateBudgetHelp() {
@@ -316,14 +347,14 @@ last_modified_at: 2026-09-29
         return;
       }
 
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: "general_project_inquiry_submit",
-        project_stage: document.getElementById("projectStage").value,
-        budget_range: document.getElementById("budget").value,
-        project_type: document.getElementById("type").value,
-        engagement_source: engagementSource ? engagementSource.value : "",
-      });
+      if (inquiryReference) hiddenField("inquiry_reference", inquiryReference);
+      if (window.BVTMeasurement) {
+        const attribution = window.BVTMeasurement.attributionFields();
+        Object.keys(attribution).forEach(function (key) { hiddenField(key, attribution[key]); });
+        window.BVTMeasurement.trackInquiryAttempt();
+      }
+      // Preserve native Formspree submission, including its spam/CAPTCHA flow.
+      // This event is only an attempt. Receipt is confirmed in Formspree/inbox.
     });
   });
 </script>
