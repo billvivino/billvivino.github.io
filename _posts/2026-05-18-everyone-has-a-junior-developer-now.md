@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Everyone Has a Junior Developer Now"
+title: "AI Coding Agents Need an Engineering Review Loop"
 date: 2026-05-17
 og_image: "/assets/optimized/everyone-has-a-junior-developer-now.webp"
-description: "AI coding agents feel less like senior engineers and more like extremely fast junior developers who make confident assumptions. That changes software development — but maybe not in the way people think."
+description: "AI coding agents can complete substantial work. A context, review, and verification loop turns generated progress into trustworthy software."
 ---
 
 <style>
@@ -52,7 +52,11 @@ description: "AI coding agents feel less like senior engineers and more like ext
 
 <div class="tldr-box">
   <strong>TL;DR</strong><br />
-  AI coding agents currently behave less like senior engineers and more like extremely fast junior developers. They generate huge amounts of code quickly, but also make aggressive assumptions that increase review burden, architectural risk, and hidden technical debt.
+  Calling an AI coding agent a fast junior developer captures its momentum but
+  misses part of the picture. Agents can complete substantial work when they
+  receive strong context and feedback. The bottleneck shifts from generating
+  code to making assumptions visible, reviewing changes, and verifying that the
+  integrated system behaves correctly.
 </div>
 
 <picture class="blog-img-right">
@@ -60,14 +64,14 @@ description: "AI coding agents feel less like senior engineers and more like ext
   <source srcset="/assets/optimized/everyone-has-a-junior-developer-now.webp" type="image/webp" />
   <img
     src="/assets/optimized/everyone-has-a-junior-developer-now.webp"
-    alt="Illustration representing an AI coding assistant acting like a junior developer under supervision"
+    alt="Illustration representing an AI coding assistant working inside an engineering review process"
     width="300"
     loading="lazy"
     decoding="async"
   />
 </picture>
 
-I finally spent some real time using AI coding agents directly instead of just talking about them from the sidelines. And my immediate reaction was not:
+When I first spent real time using AI coding agents directly, my immediate reaction was not:
 
 > “This replaces engineers.”
 
@@ -75,9 +79,11 @@ It was:
 
 > “Everyone now has access to an extremely fast junior developer.”
 
-That sounds impressive until you remember what managing junior developers is actually like. The issue wasn’t that the AI couldn’t produce code. It produced *tons* of code. Rapidly. Confidently. Relentlessly.
+That comparison described the experience of receiving a large amount of implementation quickly and then finding assumptions I needed to inspect. It was useful as a first reaction, but it is not a complete model for what coding agents can do.
 
-The issue was the assumptions.
+The agent could trace code, propose changes across several files, write tests, and revise its work after feedback. It also filled gaps in the prompt with plausible choices. The important distinction was not junior versus senior. It was generated progress versus verified progress.
+
+The assumptions showed up in details such as:
 
 The loose typing.  
 The inferred architecture.  
@@ -98,12 +104,11 @@ function process(data: any) {
 
 Or entire assumptions about backend response shapes that were never specified.
 
-The AI would happily move forward by collapsing uncertainty into guesses.
+When necessary context was absent, the agent sometimes kept moving by turning uncertainty into an unverified decision.
 
-## AI coding agents optimize for forward motion, not correctness
+## Ambiguity becomes part of the implementation
 
-Human senior engineers usually pause at ambiguity.  
-They ask questions like:
+Experienced engineers learn to recognize when ambiguity changes the risk of a feature. They ask questions like:
 
 * “What’s the actual API contract?”
 * “Should this be nullable?”
@@ -111,52 +116,49 @@ They ask questions like:
 * “Is this supposed to fail loudly or silently?”
 * “Do we control this type upstream?”
 
-Good engineers are often slower precisely because they resist making assumptions.  
-AI agents do the opposite.  
-They aggressively resolve ambiguity because stalling looks like failure.
+That pause is not opposition to progress. It is part of establishing what “correct” means.
 
-That creates an uncanny experience where the output looks productive while quietly accumulating technical risk underneath.
+An agent asked only to finish a feature will reasonably infer missing details. Better prompts, repository instructions, typed contracts, tests, and examples improve those decisions. They do not eliminate the need to expose and verify consequential assumptions.
 
 ---
 
-## The real bottleneck wasn’t typing speed anyway
+## Context is an engineering input
 
-A lot of the AI hype assumes software engineering is fundamentally limited by how quickly humans can write syntax.  
-But in most professional systems, that isn’t the bottleneck.  
-The bottlenecks are things like:
+Coding agents become substantially more useful when the repository makes its expectations legible. Useful context includes:
 
-* understanding unclear business rules
-* navigating legacy architecture
-* discovering hidden edge cases
-* coordinating with stakeholders
-* maintaining consistency across systems
-* validating assumptions
-* understanding operational consequences
-* resisting fragile shortcuts
+* API schemas and representative payloads
+* architectural boundaries and ownership rules
+* commands for tests, builds, and static analysis
+* examples of accepted patterns
+* explicit security and privacy constraints
+* a definition of done tied to observable behavior
 
-The actual act of typing code is often the easy part.
+This is not documentation written only for AI. It is the same material that helps a new teammate work safely in an unfamiliar system.
 
-This is why using AI coding agents can feel strangely similar to supervising a junior developer:
-
-* they move fast
-* they generate volume
-* they create momentum
-* they occasionally do impressive things
-* but you still have to review everything carefully
-
-And critically:
-
-> the review burden does not disappear.
-
-In some cases, it increases.
+The quality of the output reflects both the model and the environment the team gives it. Treating context as part of the engineering system improves human and agent work together.
 
 ---
 
-## “But it made me faster”
+## Review becomes the throughput constraint
 
-Sure.  
-I think AI absolutely increases local velocity.  
-Especially for:
+AI can generate more candidate changes than a team can responsibly absorb. That makes review capacity a design problem, not a final glance at a large diff.
+
+A useful loop is:
+
+1. Ask for a plan and identify the assumptions that matter.
+2. Keep the change small enough to understand.
+3. Inspect the diff for contract, state, permission, and failure-path changes.
+4. Run targeted tests and the broader checks appropriate to the risk.
+5. Exercise the integrated behavior, not only isolated units.
+6. Feed failures and corrections back into the next iteration.
+
+The agent can participate in every step. It can explain its plan, identify affected callers, write tests, run checks, and investigate failures. The accountable reviewer decides whether those checks establish enough confidence to merge and release.
+
+---
+
+## The leverage is real
+
+AI has increased my local velocity, especially for:
 
 * boilerplate
 * scaffolding
@@ -167,28 +169,25 @@ Especially for:
 * UI iteration
 * small utilities
 
-But there’s a difference between:
+It can also help with less mechanical work: tracing an unfamiliar code path, comparing implementation options, forming a debugging hypothesis, or checking whether a change is consistent across platforms.
+
+The useful distinction is between:
 
 > generating more code
 
 and
 
-> safely shipping more systems.
+> delivering more verified behavior.
 
-Those are not the same thing.
+Lines of code, files changed, and tasks completed are weak measures if the integration later creates rework. A better productivity measure includes review time, escaped defects, operational reliability, and whether the next engineer can understand the result.
 
-If an engineer now spends less time typing but more time auditing AI assumptions, validating architecture, correcting types, and unwinding bad abstractions, the net productivity gain may be much smaller than people expect.  
-Especially on large production systems.
+On a well-instrumented codebase with clear contracts, the gain can be substantial. On a poorly understood system, the first productive use of an agent may be to help create that missing clarity.
 
 ---
 
-## The hidden cost: confidence inflation
+## Fluent output is not evidence
 
-One thing I noticed immediately is that AI-generated code often arrives with a level of confidence disproportionate to its correctness.  
-That’s dangerous organizationally.  
-A weak junior developer usually signals uncertainty visibly.  
-AI often does not.  
-So companies may accidentally absorb large amounts of:
+Generated code can arrive with a level of confidence disproportionate to the evidence available. That creates risk when fluency is treated as verification. A change can look complete while still containing:
 
 * subtly incorrect logic
 * fragile assumptions
@@ -196,61 +195,27 @@ So companies may accidentally absorb large amounts of:
 * architectural inconsistency
 * hidden operational risk
 
-while believing development speed has permanently accelerated.  
-The code looks finished sooner than it actually is.
+The answer is not to distrust every generated line. It is to require evidence appropriate to the consequence of the change: a type check for one question, a contract test for another, and a staged production rollout for something users or data depend on.
 
 ---
 
-## This changes the floor more than the ceiling
+## Generation is abundant; ownership is not
 
-I do think AI changes the industry significantly.  
-But maybe not in the way many people think.  
-The biggest impact may be:
+AI has lowered the minimum effort required to prototype, scaffold applications, connect APIs, and explore interfaces. That expands who can build and how much a small team can attempt.
 
-> the minimum capability level required to produce software has dropped dramatically.
+Production systems still need someone to own the decisions that the code embodies:
 
-Everyone can now prototype.  
-Everyone can scaffold apps.  
-Everyone can connect APIs.  
-Everyone can generate interfaces.
+* Which source of truth wins when data conflicts?
+* Which failure modes are acceptable?
+* Which dependency can the product rely on?
+* What must be monitored after release?
+* When should the team roll back rather than patch forward?
 
-That matters.  
-But high-trust engineering environments are not built around prototypes.  
-They’re built around:
+Agents can analyze these questions and offer strong recommendations. Ownership means a person or team connects the recommendation to business context, validates it, and remains responsible for what happens next.
 
-* reliability
-* maintainability
-* operational stability
-* correctness
-* risk management
-* long-term architecture
+That is the new bottleneck I see most clearly. Code generation is increasingly available. Context, review attention, and accountable judgment remain finite.
 
-And those are still deeply human judgment problems.
-
----
-
-## The irony: good engineers may become more valuable
-
-Ironically, if AI continues generating large quantities of plausible-but-imperfect code, then the ability to:
-
-* detect bad assumptions
-* enforce architectural consistency
-* identify hidden edge cases
-* maintain system integrity
-* review critically
-
-may become even more valuable than before.  
-Because now the limiting factor is no longer:
-
-> “Who can produce code?”
-
-It becomes:
-
-> “Who can correctly judge the code being produced?”
-
-That’s a very different skill.  
-And right now, I’m not convinced the underlying LLM technology is precise enough to eliminate that layer.  
-At least not yet.
+The teams that benefit most will not be the ones that ask agents to generate the largest volume. They will be the ones that build a reliable loop from intent to implementation to evidence.
 
 <p class="mt-4">
   Need help stabilizing, rebuilding, or scaling a software system?

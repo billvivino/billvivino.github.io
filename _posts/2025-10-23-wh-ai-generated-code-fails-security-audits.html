@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Why AI-Generated Code Usually Fails Security Audits"
-description: "Learn why AI-generated code often fails security audits, how vibe coding creates hidden risk, and a practical checklist to ship secure software that passes."
+title: "How to Prepare AI-Assisted Code for a Security Audit"
+description: "A practical checklist for pairing AI-assisted development with threat modeling, secure review, test evidence, and audit-ready controls."
 date: 2025-10-23
-og_image: "/assets/optimized/ai-vibe-coders.webp"
+og_image: "/assets/optimized/even-ai-development-benefits-from-engineering.webp"
 ---
 
 <style>
@@ -50,9 +50,7 @@ og_image: "/assets/optimized/ai-vibe-coders.webp"
 </div>
 
 <header class="container mt-5 text-center">
-  <h1 class="fw-bold">
-    Why AI-Generated Code Usually Fails Security Audits
-  </h1>
+  <h1 class="fw-bold">How to Prepare AI-Assisted Code for a Security Audit</h1>
   <time datetime="2025-10-23" class="text-muted d-block mb-4"
     >October 23, 2025</time
   >
@@ -61,41 +59,40 @@ og_image: "/assets/optimized/ai-vibe-coders.webp"
 <main class="container post-body pb-5" style="max-width: 800px">
   <article>
     <p class="lead">
-      Founders, product leads, and engineering managers who lean on vibe
-      coding or quick AI coding helpers to speed delivery often hit a wall
-      when the security review starts. The pain is familiar: missing input
-      validation, stale dependencies, weak secrets handling, and no
-      traceable threat model. At Bill Vivino Technology we blend AI
-      productivity with disciplined secure engineering so you can ship fast
-      and still pass audits on the first attempt.
+      AI can accelerate implementation, testing, and review across an entire
+      product. A security audit asks a different question: can the team show
+      how risks were identified, controls were chosen, and behavior was
+      verified? At Bill Vivino Technology, we pair AI productivity with a
+      disciplined secure-development process so teams can move quickly and
+      produce credible audit evidence.
     </p>
 
     <picture class="blog-img-right">
-      <source srcset="/assets/optimized/ai-vibe-coders.avif" type="image/avif" />
-      <source srcset="/assets/optimized/ai-vibe-coders.webp" type="image/webp" />
+      <source srcset="/assets/optimized/even-ai-development-benefits-from-engineering.avif" type="image/avif" />
+      <source srcset="/assets/optimized/even-ai-development-benefits-from-engineering.webp" type="image/webp" />
       <img
-        src="../assets/optimized/ai-vibe-coders.webp"
-        alt="Developer relying on AI vibe coding while overlooking a failing security checklist"
-        width="300"
-        height="300"
+        src="../assets/optimized/even-ai-development-benefits-from-engineering.webp"
+        alt="AI-assisted application moving through an engineered delivery pipeline"
+        width="1536"
+        height="1024"
         loading="lazy"
         decoding="async"
       />
     </picture>
 
-    <h2>The hook: AI helps you ship features, not security</h2>
+    <h2>Feature delivery and security evidence are different work</h2>
     <p>
-      Tools that promise to <em>write the app for you</em> can be amazing
-      for prototypes. The problem appears during audit week. Most
-      AI-generated snippets are optimized for functional correctness and
-      speed, not for the review questions your auditor will actually ask.
-      That creates audit gaps that stall releases and trigger costly rework.
+      Coding agents can contribute to secure design, implementation, testing,
+      and review. An auditor still needs traceable evidence. If a team has
+      optimized only for working features and speed, questions about threat
+      models, dependencies, access controls, and verification can expose gaps
+      that delay a release.
     </p>
 
     <h2>Common failure patterns we see in audits</h2>
     <ul class="custom-checklist">
       <li>
-        <strong>Dependency risk</strong> - AI samples often pin old
+        <strong>Dependency risk</strong> - Generated or copied examples can pin old
         libraries or pull in transitive packages with known CVEs and no
         SBOM.
       </li>
@@ -126,20 +123,20 @@ og_image: "/assets/optimized/ai-vibe-coders.webp"
       </li>
     </ul>
 
-    <h2>Why vibe coding increases risk</h2>
+    <h2>Why unreviewed generation increases risk</h2>
     <p>
-      Vibe coding trades process for momentum. You can definitely
-      <a href="../portfolio.html">get a demo live</a> fast with it. But
-      without guardrails your AI assistant cannot guarantee alignment with
-      frameworks like OWASP ASVS or NIST SSDF. When auditors ask
-      <em>Why does this control exist and where is it verified</em>, a code
-      dump is not enough.
+      AI-assisted development can create valuable momentum and help you
+      <a href="../portfolio.html">get a demo live</a> quickly. But
+      neither generated nor human-written code automatically guarantees
+      alignment with frameworks like OWASP ASVS or NIST SSDF. When auditors
+      ask <em>Why does this control exist and where is it verified</em>, a
+      code dump is not enough.
     </p>
 
-    <h2>Solution: AI with a security system behind it</h2>
+    <h2>Pair AI with a security system</h2>
     <p>
-      We pair AI coding with a repeatable secure SDLC that passes enterprise
-      and startup audits in the NYC metro market. Our approach:
+      We pair AI coding with a repeatable secure SDLC designed to support
+      enterprise and startup audits. Our approach:
     </p>
     <ul class="custom-checklist">
       <li>
@@ -180,19 +177,19 @@ og_image: "/assets/optimized/ai-vibe-coders.webp"
     </p>
 
     <picture class="blog-img-right">
-      <source srcset="/assets/optimized/ai-security-fails.avif" type="image/avif" />
-      <source srcset="/assets/optimized/ai-security-fails.webp" type="image/webp" />
+      <source srcset="/assets/optimized/domain-experts-engineers-ai-software.avif" type="image/avif" />
+      <source srcset="/assets/optimized/domain-experts-engineers-ai-software.webp" type="image/webp" />
       <img
-        src="../assets/optimized/ai-security-fails.webp"
-        alt="Security audit checklist highlighting failed controls in AI-generated code"
-        width="300"
-        height="300"
+        src="../assets/optimized/domain-experts-engineers-ai-software.webp"
+        alt="Domain expert and engineer reviewing an AI-assisted software system"
+        width="1536"
+        height="1024"
         loading="lazy"
         decoding="async"
       />
     </picture>
 
-    <h2>Checklist: ship AI-assisted code that passes audits</h2>
+    <h2>Checklist: prepare AI-assisted code for an audit</h2>
     <ol>
       <li>
         Define a one-page threat model and data classification for the
@@ -216,19 +213,18 @@ og_image: "/assets/optimized/ai-vibe-coders.webp"
     </ol>
 
     <h2>People also ask</h2>
-    <h3>Why AI-generated code usually fails security audits interview</h3>
+    <h3>What should a team explain during a security-audit interview?</h3>
     <p>
-      Interviewers want a structured answer: lack of standards mapping,
-      insufficient input validation, weak secrets handling, and missing
-      evidence. Tie your response to controls and how to close gaps with CI
-      policies and code review.
+      A useful answer connects identified risks to controls, tests, CI checks,
+      and retained evidence. It should also identify known gaps and explain how
+      the team is prioritizing remediation.
     </p>
-    <h3>Do AI-generated code outages really happen</h3>
+    <h3>Can AI-assisted code contribute to outages?</h3>
     <p>
-      Yes. Outages occur when generated code hides fragile assumptions.
-      Typical triggers include unbounded retries, unexpected input shapes,
-      or race conditions created by naive async patterns. Proper testing and
-      SRE guardrails reduce this risk.
+      Outages occur in AI-assisted and hand-written systems when fragile
+      assumptions go untested. Typical triggers include unbounded retries,
+      unexpected input shapes, or race conditions in asynchronous code.
+      Appropriate testing and operational guardrails reduce this risk.
     </p>
 
     <!-- FAQ Section -->
@@ -239,10 +235,10 @@ og_image: "/assets/optimized/ai-vibe-coders.webp"
           Can AI code a website that passes a security audit
         </summary>
         <p>
-          AI can help produce components quickly, but passing an audit
-          requires a process: secure design, vetted dependencies, tests, CI
-          scan gates, and human review. We combine AI productivity with a
-          hardened SDLC so your site clears review.
+          AI can help produce and review substantial parts of a website, but
+          audit readiness also requires secure design, vetted dependencies,
+          tests, CI scan gates, and accountable review. Those practices create
+          evidence an auditor can evaluate.
         </p>
       </details>
       <details>
@@ -255,22 +251,22 @@ og_image: "/assets/optimized/ai-vibe-coders.webp"
         </p>
       </details>
       <details>
-        <summary>How fast can we remediate AI coding risks</summary>
+        <summary>How should we prioritize remediation?</summary>
         <p>
-          Typical remediation takes one to three sprints depending on scope.
-          We prioritize dependency risk, secrets, and auth first, then round
-          out logging, tests, and documentation so you can pass the next
-          review.
+          Start with findings that can expose data or identities, including
+          authentication, authorization, secrets, and critical dependencies.
+          Then address logging, tests, recovery, and documentation according to
+          the system's risk and the audit findings.
         </p>
       </details>
     </section>
 
     <h2>Key Takeaways</h2>
     <p>
-      AI coding boosts speed, but vibe coding without guardrails increases
-      audit risk. Pair generation with secure design, standards mapping, CI
-      gates, and senior review. The result is software that ships fast and
-      passes the first time.
+      AI coding boosts speed, and the same tools can help with security work.
+      Pair generation with secure design, standards mapping, CI gates, and
+      accountable senior review. The result is faster development backed by
+      evidence an auditor can evaluate.
     </p>
 
     <div class="text-center my-5">

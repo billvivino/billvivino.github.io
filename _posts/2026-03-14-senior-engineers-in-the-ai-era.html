@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Why Senior Engineers Will Become More Valuable in the Age of AI"
-description: "AI can generate code, but it cannot design reliable systems. Senior engineers will become more valuable as complexity grows."
+title: "Architecture Review Checklist for AI-Assisted Software Delivery"
+description: "A practical architecture review for AI-assisted changes: verify contracts, state, recovery, security, operations, and release evidence before shipping."
 date: 2026-03-14
 og_image: "/assets/optimized/senior-engineer-ai-era.webp"
 ---
@@ -51,13 +51,13 @@ og_image: "/assets/optimized/senior-engineer-ai-era.webp"
 
 <div class="container py-4">
   <article class="post-body">
-    <h1>Why Senior Engineers Will Become More Valuable in the Age of AI</h1>
+    <h1>Architecture Review Checklist for AI-Assisted Software Delivery</h1>
 
     <div class="tldr-box">
-      <strong>TLDR:</strong> AI is great at generating code, but terrible at
-      managing system complexity. As AI accelerates development, the demand for
-      senior engineers who can design, stabilize, and scale systems will
-      increase.
+      <strong>TL;DR:</strong> A generated implementation is a proposal, not a
+      release decision. Review the contracts, state and data, failure recovery,
+      security, operations, and supporting evidence. Record what was verified,
+      what remains uncertain, and who owns the decision to ship.
     </div>
 
     <picture class="blog-img-right">
@@ -65,7 +65,7 @@ og_image: "/assets/optimized/senior-engineer-ai-era.webp"
       <source srcset="/assets/optimized/senior-engineer-ai-era.webp" type="image/webp" />
       <img
         src="/assets/optimized/senior-engineer-ai-era.webp"
-        alt="Senior engineers in the AI era"
+        alt="Architecture review for an AI-assisted software change"
         width="500"
         height="300"
         loading="lazy"
@@ -73,152 +73,223 @@ og_image: "/assets/optimized/senior-engineer-ai-era.webp"
       />
     </picture>
 
-    <h2>The Popular Narrative</h2>
+    <h2>Use the Review to Make a Decision</h2>
 
     <p>
-      The current narrative around AI and software development sounds simple:
+      AI can help trace a codebase, draft an implementation, propose tests, and
+      revise a change quickly. The architecture review should not repeat that
+      work. Its purpose is to decide whether the proposed change belongs in the
+      system and whether the available evidence supports releasing it.
     </p>
 
-    <ul>
-      <li>AI can write code</li>
-      <li>Companies need fewer engineers</li>
-      <li>Development becomes cheaper</li>
-    </ul>
-
-    <p>That narrative is partially true.</p>
-
-    <p>AI has dramatically increased the speed at which code can be written.</p>
-
-    <p>But code is not the hard part of building software.</p>
-
-    <h2>Code Was Never the Bottleneck</h2>
-
-    <p>
-      Even before AI existed, writing code was rarely the hardest part of
-      building real systems.
-    </p>
-
-    <p>The difficult parts have always been:</p>
+    <p>Begin the review with five facts:</p>
 
     <ul>
-      <li>defining the correct system architecture</li>
-      <li>managing state across services</li>
-      <li>handling failure modes</li>
-      <li>scaling safely under load</li>
-      <li>designing systems that evolve over time</li>
-    </ul>
-
-    <p>AI is extremely good at generating small pieces of code.</p>
-
-    <p>It is much worse at understanding long-term system consequences.</p>
-
-    <p>And that difference is where senior engineers live.</p>
-
-    <h2>AI Increases System Complexity</h2>
-
-    <p>
-      Paradoxically, AI often increases system complexity rather than reducing
-      it.
-    </p>
-
-    <p>Why?</p>
-
-    <p>Because AI allows teams to build faster.</p>
-
-    <p>
-      And when teams build faster, they create more systems, more integrations,
-      more workflows, and more dependencies.
-    </p>
-
-    <p>The faster software is created, the more architecture matters.</p>
-
-    <p>And architecture is a senior engineering skill.</p>
-
-    <h2>The Hidden Cost of AI-Generated Code</h2>
-
-    <p>AI-generated code often introduces hidden problems:</p>
-
-    <ul>
-      <li>inconsistent patterns</li>
-      <li>poor error handling</li>
-      <li>state synchronization bugs</li>
-      <li>performance issues</li>
-      <li>security risks</li>
-    </ul>
-
-    <p>These problems rarely appear immediately.</p>
-
-    <p>They appear when the system scales.</p>
-
-    <p>And when that happens, companies do not call junior engineers.</p>
-
-    <p>They call senior engineers.</p>
-
-    <h2>The Real Role of Senior Engineers</h2>
-
-    <p>Senior engineers are not primarily valued for writing code.</p>
-
-    <p>They are valued for:</p>
-
-    <ul>
-      <li>identifying system constraints</li>
-      <li>making architectural tradeoffs</li>
-      <li>preventing catastrophic failure modes</li>
-      <li>guiding systems through scale</li>
+      <li>the intended user and business behavior</li>
+      <li>the systems and clients that may be affected</li>
+      <li>the assumptions made by the implementation</li>
+      <li>the evidence already collected</li>
+      <li>the person who owns the release decision</li>
     </ul>
 
     <p>
-      These skills become more important, not less, when AI accelerates
-      development.
+      If those facts are unclear, the right next step is investigation rather
+      than a larger generated diff. A
+      <a href="/posts/agentic-coding-does-not-replace-senior-engineers.html"
+        >bounded dependency trace</a
+      >
+      can establish the affected contracts before the implementation expands.
     </p>
 
-    <h2>The Future: AI + Senior Engineers</h2>
-
-    <p>The most effective development teams will combine two things:</p>
-
-    <ul>
-      <li>AI for speed</li>
-      <li>senior engineering judgment for stability</li>
-    </ul>
-
-    <p>AI will generate the code.</p>
+    <h2>1. Contracts and Consumers</h2>
 
     <p>
-      Senior engineers will decide what code should exist in the first place.
+      Review what crosses each boundary: API payloads, database records, events,
+      files, SDK calls, and user-visible states. Then identify every known
+      producer and consumer of that contract.
     </p>
 
-    <p>And that distinction is enormous.</p>
-
-    <h2>What This Means for the Industry</h2>
-
-    <p>Over the next decade, we are likely to see:</p>
-
     <ul>
-      <li>fewer junior coding roles</li>
-      <li>more demand for experienced system architects</li>
-      <li>smaller but more skilled engineering teams</li>
-      <li>faster iteration cycles</li>
+      <li>Does the change alter a field, enum, default, or error response?</li>
+      <li>Do web, iOS, Android, background jobs, and reports interpret it the same way?</li>
+      <li>Can old and new clients operate during a staggered rollout?</li>
+      <li>Is compatibility enforced, or merely assumed?</li>
     </ul>
 
-    <p>The engineers who thrive will not be those who simply write code.</p>
+    <p>
+      <strong>Decision change:</strong> a locally correct endpoint may need a
+      compatibility layer or a coordinated release after the review reveals an
+      older client that still depends on the previous response shape.
+    </p>
 
-    <p>They will be the engineers who understand systems.</p>
+    <h2>2. State, Data, and Invariants</h2>
 
-    <h2>Final Thought</h2>
-
-    <p>AI can generate code.</p>
-
-    <p>But someone still has to decide:</p>
+    <p>
+      Establish the source of truth and the rules that must remain true before,
+      during, and after the change.
+    </p>
 
     <ul>
-      <li>what system to build</li>
-      <li>how it should behave</li>
-      <li>how it should scale</li>
-      <li>how it survives real-world use</li>
+      <li>Which system owns the state?</li>
+      <li>Can a retry create duplicates or apply the same transition twice?</li>
+      <li>How will existing data be migrated, validated, and rolled back?</li>
+      <li>What happens when two users or services update the same record?</li>
+      <li>Which history, audit, or retention requirements must survive?</li>
     </ul>
 
-    <p>That responsibility belongs to senior engineers.</p>
+    <p>
+      <strong>Decision change:</strong> a proposed one-step update may become an
+      idempotent operation with an explicit migration and rollback plan when the
+      review identifies existing records or concurrent writers.
+    </p>
 
-    <p>And in the age of AI, their value is only increasing.</p>
+    <h2>3. Failure and Recovery</h2>
+
+    <p>
+      The happy path demonstrates possibility. The recovery path determines
+      whether the feature can be operated safely.
+    </p>
+
+    <ul>
+      <li>What can partially succeed?</li>
+      <li>Which failures should retry, stop, compensate, or ask for help?</li>
+      <li>Can the user resume without repeating completed work?</li>
+      <li>What state remains after a timeout, crash, or interrupted deployment?</li>
+      <li>How will support identify and repair a failed transaction?</li>
+    </ul>
+
+    <p>
+      <strong>Decision change:</strong> a feature may be released behind a flag
+      rather than to everyone when recovery still depends on an untested manual
+      procedure.
+    </p>
+
+    <h2>4. Security and Access Boundaries</h2>
+
+    <p>
+      Check the identity and authority behind every read, write, and external
+      call. A request that is valid for one user, tenant, or role may be invalid
+      for another.
+    </p>
+
+    <ul>
+      <li>Are authentication and authorization checked at the correct boundary?</li>
+      <li>Can identifiers be used to cross tenant or ownership boundaries?</li>
+      <li>Are inputs validated before they reach storage or another service?</li>
+      <li>Could logs, prompts, analytics, or error messages expose sensitive data?</li>
+      <li>Are credentials and permissions limited to what the feature needs?</li>
+    </ul>
+
+    <p>
+      <strong>Decision change:</strong> a shared helper may need to remain split
+      when two workflows have different authorization or audit requirements.
+    </p>
+
+    <h2>5. Operations and Rollout</h2>
+
+    <p>
+      Review how the change will be configured, deployed, observed, and reversed
+      in the environment where it will actually run.
+    </p>
+
+    <ul>
+      <li>What is the safe deployment order across services and clients?</li>
+      <li>Which configuration, secrets, queues, indexes, or scheduled jobs are required?</li>
+      <li>What metric, log, or trace will show that the feature is healthy?</li>
+      <li>What load, rate-limit, latency, or cost boundary should be watched?</li>
+      <li>Can the team disable or roll back the change without losing data?</li>
+    </ul>
+
+    <p>
+      <strong>Decision change:</strong> an implementation that passes locally
+      may require observability and a staged rollout before it is ready for a
+      production audience.
+    </p>
+
+    <h2>6. Evidence and Remaining Uncertainty</h2>
+
+    <p>
+      A passing test is useful evidence, but the review should state what that
+      test proves. Combine evidence from the diff, automated tests, runtime
+      behavior, logs, migrations, and affected clients.
+    </p>
+
+    <ul>
+      <li>Which acceptance criteria were exercised?</li>
+      <li>Were failure and permission paths tested, not only the happy path?</li>
+      <li>Was the running system inspected where static review was insufficient?</li>
+      <li>Were all affected platforms or consumers checked?</li>
+      <li>What remains unverified, and who accepts that risk?</li>
+    </ul>
+
+    <p>
+      The
+      <a href="/posts/ai-doesnt-replace-senior-engineers-it-expands-their-reach.html"
+        >AI-assisted code review guide</a
+      >
+      goes deeper on comparing product intent, the actual diff, tests, and
+      runtime behavior.
+    </p>
+
+    <h2>The Architecture Review Record</h2>
+
+    <p>
+      Keep the artifact short enough to update. A useful record can fit into
+      seven fields:
+    </p>
+
+    <ol>
+      <li><strong>Intent:</strong> the behavior the change is meant to create.</li>
+      <li><strong>Scope:</strong> the systems, clients, and data it can affect.</li>
+      <li><strong>Contracts:</strong> the boundaries reviewed and compatibility required.</li>
+      <li><strong>Evidence:</strong> tests, runtime checks, logs, or artifacts inspected.</li>
+      <li><strong>Recovery:</strong> how failure, rollback, and repair will work.</li>
+      <li><strong>Open questions:</strong> uncertainty that remains before or after release.</li>
+      <li><strong>Decision:</strong> accept, revise, stage, or block, with a named owner.</li>
+    </ol>
+
+    <p>
+      This record changes an architecture review from a general expression of
+      concern into a decision someone can verify later. It also gives the next
+      AI-assisted session better context than the code alone.
+    </p>
+
+    <h2>A Small Illustrative Decision</h2>
+
+    <p>
+      Consider a proposed change that adds a status to an API response and a
+      screen that displays it. The generated code compiles, the endpoint test
+      passes, and the new screen works.
+    </p>
+
+    <p>
+      The architecture review finds that a background job writes the same
+      status, an older mobile client treats an unknown value as an error, and no
+      metric reports failed transitions. The decision changes from “ship the
+      feature” to “add backward-compatible handling, test both writers, and
+      instrument the transition before a staged release.”
+    </p>
+
+    <p>
+      That example is illustrative, not a claim about a specific client. Its
+      purpose is to show the artifact at work: the review connects a plausible
+      implementation to the rest of the system and produces a different,
+      testable release plan.
+    </p>
+
+    <h2>The Outcome Is a Better Release Decision</h2>
+
+    <p>
+      Architecture review is not a contest between generated code and human
+      code. It is a disciplined way to decide what evidence is sufficient for
+      this system, this risk, and this release.
+    </p>
+
+    <p>
+      Accept the change when its behavior and boundaries are understood. Revise
+      it when the design is sound but the contracts or recovery path are
+      incomplete. Stage it when production evidence is still needed. Block it
+      when access, data integrity, or safe recovery remains unknown.
+    </p>
   </article>
 </div>
