@@ -1,0 +1,206 @@
+---
+layout: default
+title: "Fixed-Price Software Project Retainers"
+description: "Plan a prototype, MVP, full application, or larger software engagement with a proposal-defined fixed-price retainer and clear payment options."
+last_modified_at: 2026-09-29
+seo_cluster: product-strategy
+---
+
+{% assign retainer_tiers = site.data.project_retainer_tiers | where: "fixed_price", true %}
+
+<style>
+  .retainer-page {
+    --retainer-navy: #0a2540;
+    --retainer-blue: #0d6efd;
+    --retainer-soft: #f4f7fb;
+  }
+
+  .retainer-hero {
+    background:
+      radial-gradient(circle at top right, rgba(13, 110, 253, 0.14), transparent 42%),
+      linear-gradient(135deg, #f8fbff 0%, #ffffff 70%);
+    border: 1px solid #dce6f2;
+    border-radius: 1rem;
+    padding: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .retainer-hero h1 {
+    color: var(--retainer-navy);
+    max-width: 760px;
+  }
+
+  .retainer-hero .lead {
+    max-width: 760px;
+  }
+
+  .retainer-tier-card {
+    border: 1px solid #dce3ea;
+    border-radius: 0.85rem;
+    box-shadow: 0 8px 24px rgba(10, 37, 64, 0.07);
+  }
+
+  .retainer-tier-card .card-body {
+    display: flex;
+    flex-direction: column;
+    padding: 1.4rem;
+  }
+
+  .retainer-range {
+    color: var(--retainer-blue);
+    font-size: 1.65rem;
+    font-weight: 800;
+    line-height: 1.1;
+  }
+
+  .retainer-best-for {
+    background: var(--retainer-soft);
+    border-radius: 0.65rem;
+    color: #34495e;
+    padding: 0.85rem;
+  }
+
+  .payment-choice {
+    border: 1px solid #dce3ea;
+    border-radius: 0.85rem;
+    height: 100%;
+    padding: 1.4rem;
+  }
+
+  .payment-choice h3 {
+    color: var(--retainer-navy);
+  }
+
+  .retainer-boundary {
+    background: #fff8e6;
+    border: 1px solid #f2d27d;
+    border-radius: 0.85rem;
+    padding: 1.25rem;
+  }
+
+  .retainer-page .btn {
+    min-height: 44px;
+  }
+</style>
+
+<main class="container retainer-page py-4">
+  <section class="retainer-hero mb-5">
+    <p class="text-uppercase fw-semibold text-primary small mb-2">
+      Proposal-Defined Software Delivery
+    </p>
+    <h1 class="display-5 fw-bold mb-3">Fixed-Price Project Retainers</h1>
+    <p class="lead mb-3">
+      Choose the closest planning range. Your accepted written proposal sets the
+      exact delivery phase, scope, schedule, fee, and payment terms before
+      checkout.
+    </p>
+    <p class="mb-0 text-muted">
+      These ranges help start the right conversation. They are not open-ended
+      promises or automatic checkout prices.
+    </p>
+  </section>
+
+  <section aria-labelledby="retainer-ranges-heading" class="mb-5">
+    <div class="text-center mb-4">
+      <p class="text-uppercase fw-semibold text-primary small mb-1">Planning Ranges</p>
+      <h2 id="retainer-ranges-heading" class="h3 mb-2">Select the closest project size</h2>
+      <p class="text-muted mb-0">
+        The same ranges appear in the project inquiry form.
+      </p>
+    </div>
+
+    <div class="row g-4">
+      {% for tier in retainer_tiers %}
+        <div class="col-md-6">
+          <article class="card retainer-tier-card h-100" id="{{ tier.id }}">
+            <div class="card-body">
+              <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-3">
+                <h3 class="h4 mb-0">{{ tier.name }}</h3>
+                <span class="retainer-range">{{ tier.range }}</span>
+              </div>
+              <p>{{ tier.description }}</p>
+              <p class="retainer-best-for small mb-3">
+                <strong>Best fit:</strong> {{ tier.best_for }}
+              </p>
+              <a
+                href="/contact.html?budget={{ tier.id | url_encode }}&amp;engagement=fixed-price-retainer"
+                class="btn btn-outline-primary mt-auto"
+                data-seo-cta="retainer_to_project_contact"
+                data-seo-cluster="product-strategy"
+              >
+                {{ tier.cta_label }}
+              </a>
+            </div>
+          </article>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section aria-labelledby="payment-options-heading" class="mb-5">
+    <div class="text-center mb-4">
+      <p class="text-uppercase fw-semibold text-primary small mb-1">Payment Structure</p>
+      <h2 id="payment-options-heading" class="h3 mb-2">
+        Fund an accepted proposal in one of two ways
+      </h2>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-6">
+        <div class="payment-choice">
+          <p class="text-uppercase fw-semibold text-primary small mb-2">Option 1</p>
+          <h3 class="h4">Discounted Prepaid Total</h3>
+          <p class="mb-0">
+            Pay the exact proposal fee before work begins and receive the dollar
+            discount shown in your proposal. The approved PayPal payment link
+            matches that proposal and project.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="payment-choice">
+          <p class="text-uppercase fw-semibold text-primary small mb-2">Option 2</p>
+          <h3 class="h4">Fixed Weekly Plan</h3>
+          <p class="mb-0">
+            Pay the standard proposal fee through a defined number of weekly
+            installments. The proposal shows the payment amount, number of
+            payments, total, and schedule before the first payment is due.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="retainer-boundary mb-5" aria-labelledby="retainer-boundary-heading">
+    <h2 id="retainer-boundary-heading" class="h4">What the fixed price covers</h2>
+    <p class="mb-2">
+      Payment covers only the delivery phase and deliverables in the accepted
+      written proposal. Added or changed work requires written approval and may
+      change the fee or schedule.
+    </p>
+    <p class="mb-0">
+      Project-specific terms address assumptions, third-party costs, scheduling,
+      missed payments, cancellation, and any unused prepaid balance before
+      checkout is made available.
+    </p>
+  </section>
+
+  <section class="text-center mb-4" aria-labelledby="retainer-next-step-heading">
+    <h2 id="retainer-next-step-heading" class="h3">Start with the closest range</h2>
+    <p class="mx-auto" style="max-width: 700px">
+      Share the product, current stage, and desired result. The matching budget
+      range will already be selected in the inquiry form.
+    </p>
+    <a
+      href="/contact.html?engagement=fixed-price-retainer"
+      class="btn btn-primary btn-lg"
+      data-seo-cta="retainer_to_project_contact"
+      data-seo-cluster="product-strategy"
+    >
+      Discuss a Fixed-Price Project
+    </a>
+    <p class="small text-muted mt-3 mb-0">
+      Have an existing product that is stalled or unclear?
+      <a href="/app-rescue-assessment.html">Review the $1,000 App Rescue Assessment</a>.
+    </p>
+  </section>
+</main>

@@ -1,0 +1,44 @@
+- id: prototype
+  name: Prototype
+  range: "$5k–$10k"
+  form_value: "$5k–$10k — Prototype"
+  description: "Selected prototypes and focused proofs of concept that validate the core workflow, product direction, or technical feasibility."
+  best_for: "A bounded proof of concept, a new prototype, or the first working version of one essential workflow."
+  cta_label: "Discuss a Prototype Retainer"
+  fixed_price: true
+
+- id: mvp
+  name: MVP
+  range: "$10k–$25k"
+  form_value: "$10k–$25k — MVP"
+  description: "A usable first release centered on the essential workflow and agreed integrations."
+  best_for: "A new MVP or an existing prototype that needs focused work to become usable, testable, and ready for real users."
+  cta_label: "Discuss an MVP Retainer"
+  fixed_price: true
+
+- id: full-application
+  name: Full Application
+  range: "$25k–$50k"
+  form_value: "$25k–$50k — Full application"
+  description: "A broader production application with multiple workflows, integrations, or operational requirements."
+  best_for: "A defined application release with an agreed feature boundary, delivery plan, and technical architecture."
+  cta_label: "Discuss a Full Application Retainer"
+  fixed_price: true
+
+- id: larger-engagement
+  name: Larger Engagement
+  range: "$50k+"
+  form_value: "$50k+"
+  description: "Multi-platform, regulated, integration-heavy, or phased delivery requiring a tailored plan."
+  best_for: "Multi-platform products, regulated workflows, complex integrations, or phased production programs."
+  cta_label: "Discuss a Larger Engagement Retainer"
+  fixed_price: true
+
+- id: consulting
+  name: Consulting Review or Implementation
+  range: "Scope to agree"
+  form_value: "Consulting sprint or review — budget to be scoped"
+  option_label: "Consulting review or implementation — scope and spending cap to agree"
+  description: "Focused senior technical help when the right scope and spending cap depend on the current system or decision."
+  best_for: "Architecture, implementation planning, code review, technical direction, or a focused consulting sprint."
+  fixed_price: false

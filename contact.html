@@ -2,7 +2,7 @@
 layout: default
 title: "Discuss Your Software or AI Project — Bill Vivino"
 description: "Share an app, codebase, AI integration, or workflow problem. Start a conversation about the objective, systems, scope, and next practical step."
-last_modified_at: 2026-09-27
+last_modified_at: 2026-09-29
 ---
 
 <section class="container py-5" style="max-width: 760px">
@@ -26,6 +26,7 @@ last_modified_at: 2026-09-27
   >
     <input type="text" name="_gotcha" style="display: none" />
     <input type="hidden" id="ts" name="ts" value="" />
+    <input type="hidden" id="engagementSource" name="engagement_source" value="" />
     <input
       type="hidden"
       name="_subject"
@@ -117,19 +118,26 @@ last_modified_at: 2026-09-27
 
     <div class="mb-3">
       <label for="budget" class="form-label">Approximate Budget</label>
-      <select id="budget" name="budget" class="form-select" required>
+      <select id="budget" name="budget" class="form-select" aria-describedby="budget-help" required>
         <option value="" disabled selected>Select a range</option>
-        <option>$5k–$10k — Prototype</option>
-        <option>$10k–$25k — MVP</option>
-        <option>$25k–$50k — Full application</option>
-        <option>$50k+</option>
-        <option value="Consulting sprint or review — budget to be scoped">Consulting review or implementation — scope and spending cap to agree</option>
+        {% for tier in site.data.project_retainer_tiers %}
+          {% assign option_label = tier.option_label | default: tier.form_value %}
+          <option
+            value="{{ tier.form_value | escape }}"
+            data-tier="{{ tier.id | escape }}"
+            data-description="{{ tier.description | escape }}"
+          >{{ option_label }}</option>
+        {% endfor %}
       </select>
+      <p id="budget-help" class="form-text mb-0">
+        Choose the closest planning range. The accepted proposal states the exact fee.
+      </p>
     </div>
 
     <div class="mt-2 mb-3 small text-muted">
-      For MVP and production-build planning, you can sanity-check scope and cost
-      with the
+      Review the
+      <a href="/fixed-price-retainers.html">fixed-price project retainer options</a>
+      or sanity-check MVP and production-build scope and cost with the
       <a href="/custom-software-cost-reality-check.html">
         Custom Software Cost Reality Check
       </a>.
@@ -204,22 +212,22 @@ last_modified_at: 2026-09-27
   <div class="card">
     <div class="card-body">
       <p class="mb-2">
-        <strong>What does a typical MVP cost?</strong><br />
-        Most MVP engagements fall between <strong>$15k–$40k</strong>, depending
-        on scope and platform. Existing MVP completion and rescue work begins
-        with the current state of the product and codebase.
+        <strong>How much should I plan for?</strong><br />
+        Prototype retainers generally fall in <strong>$5k–$10k</strong>, MVP
+        retainers in <strong>$10k–$25k</strong>, and full-application work in
+        <strong>$25k–$50k</strong>. Larger or multi-phase engagements may exceed
+        $50k. These are planning ranges; the accepted proposal states the exact fee.
       </p>
       <p class="mb-2">
-        <strong>How are larger engagements structured?</strong><br />
-        Larger implementation engagements generally use time-and-materials
-        billing with a weekly cap. Scope can be paused or adjusted at a milestone
-        review.
+        <strong>How are project retainers paid?</strong><br />
+        Choose the discounted prepaid total or the standard total through a
+        fixed number of weekly payments. The first payment is due before work begins.
       </p>
       <p class="mb-0">
-        <strong>What about a new prototype?</strong><br />
-        Selected prototype builds start around <strong>$5k</strong>. They use the
-        general inquiry path and are separate from the App Rescue Assessment,
-        which requires existing software.
+        <strong>Does fixed price guarantee every outcome?</strong><br />
+        No. The fee covers the proposal-defined delivery phase and deliverables.
+        Unknown conditions and work outside that scope are reviewed and approved
+        separately.
       </p>
     </div>
   </div>
@@ -229,9 +237,43 @@ last_modified_at: 2026-09-27
   document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("contactForm");
     const tsField = document.getElementById("ts");
+    const budgetField = document.getElementById("budget");
+    const budgetHelp = document.getElementById("budget-help");
+    const engagementSource = document.getElementById("engagementSource");
     if (!form || !tsField) return;
 
     tsField.value = Date.now().toString();
+
+    const defaultBudgetHelp = budgetHelp ? budgetHelp.textContent.trim() : "";
+    function updateBudgetHelp() {
+      if (!budgetField || !budgetHelp) return;
+      const selectedOption = budgetField.options[budgetField.selectedIndex];
+      budgetHelp.textContent = selectedOption && selectedOption.dataset.description
+        ? selectedOption.dataset.description
+        : defaultBudgetHelp;
+    }
+
+    if (budgetField) {
+      budgetField.addEventListener("change", updateBudgetHelp);
+
+      const params = new URLSearchParams(window.location.search);
+      const requestedTier = params.get("budget");
+      const matchingOption = Array.from(budgetField.options).find(function (option) {
+        return option.dataset.tier === requestedTier;
+      });
+
+      if (matchingOption) {
+        budgetField.value = matchingOption.value;
+        updateBudgetHelp();
+      }
+
+      if (
+        engagementSource &&
+        params.get("engagement") === "fixed-price-retainer"
+      ) {
+        engagementSource.value = "fixed-price-retainer";
+      }
+    }
 
     form.addEventListener("submit", function (event) {
       const requiredIds = [
@@ -280,6 +322,7 @@ last_modified_at: 2026-09-27
         project_stage: document.getElementById("projectStage").value,
         budget_range: document.getElementById("budget").value,
         project_type: document.getElementById("type").value,
+        engagement_source: engagementSource ? engagementSource.value : "",
       });
     });
   });
