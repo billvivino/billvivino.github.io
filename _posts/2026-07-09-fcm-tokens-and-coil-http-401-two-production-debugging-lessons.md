@@ -6,7 +6,7 @@ date: 2026-07-09
 last_modified_at: 2026-09-28
 permalink: /posts/fcm-tokens-and-coil-http-401-two-production-debugging-lessons.html
 categories: software-development mobile-app-development firebase debugging ai
-og_image: "/assets/optimized/human-engineers-thumb.webp"
+og_image: "/assets/optimized/offline-first-mobile-app-data-synchronization.webp"
 ---
 
 <style>
@@ -48,11 +48,11 @@ og_image: "/assets/optimized/human-engineers-thumb.webp"
 </div>
 
 <picture class="blog-img-right">
-  <source srcset="/assets/optimized/human-engineers-thumb.avif" type="image/avif" />
-  <source srcset="/assets/optimized/human-engineers-thumb.webp" type="image/webp" />
+  <source srcset="/assets/optimized/offline-first-mobile-app-data-synchronization.avif" type="image/avif" />
+  <source srcset="/assets/optimized/offline-first-mobile-app-data-synchronization.webp" type="image/webp" />
   <img
-    src="/assets/optimized/human-engineers-thumb.webp"
-    alt="Human software engineer reviewing code and guiding AI-assisted development"
+    src="/assets/optimized/offline-first-mobile-app-data-synchronization.webp"
+    alt="Mobile application tracing authenticated data and notification flows between a phone and cloud backend"
     width="300"
     loading="lazy"
     decoding="async"
