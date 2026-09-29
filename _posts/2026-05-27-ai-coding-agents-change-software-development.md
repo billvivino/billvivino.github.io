@@ -226,7 +226,7 @@ Those questions do not go away because a coding agent can produce files quickly.
 
 If anything, they become more important.
 
-This is the same pattern I have written about in [why hiring a software developer still matters](/posts/why-hire-a-software-developer-in-2026.html), [why vibe coding gets expensive](/posts/the-real-dangers-of-vibe-coding.html), and [why AI-generated code often fails security audits](/posts/wh-ai-generated-code-fails-security-audits.html).
+This is the same pattern I have written about in [when to hire a software developer](/posts/when-should-you-hire-a-software-developer-in-2026.html), [moving an AI-built prototype to production](/posts/from-ai-built-prototype-to-production.html), and [preparing AI-assisted code for a security audit](/posts/how-to-prepare-ai-assisted-code-for-a-security-audit.html).
 
 Generating software is easier now.
 

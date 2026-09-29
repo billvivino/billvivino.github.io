@@ -2,6 +2,8 @@
 layout: post
 title: "AI Coding Agents Need an Engineering Review Loop"
 date: 2026-05-17
+last_modified_at: 2026-09-28
+permalink: /posts/ai-coding-agents-need-an-engineering-review-loop.html
 og_image: "/assets/optimized/everyone-has-a-junior-developer-now.webp"
 description: "AI coding agents can complete substantial work. A context, review, and verification loop turns generated progress into trustworthy software."
 ---
@@ -85,9 +87,9 @@ The agent could trace code, propose changes across several files, write tests, a
 
 The assumptions showed up in details such as:
 
-The loose typing.  
-The inferred architecture.  
-The invented abstractions.  
+The loose typing.<br />
+The inferred architecture.<br />
+The invented abstractions.<br />
 The “I’ll just wire this up for you” behavior.
 
 In TypeScript especially, I noticed the same pattern over and over:
