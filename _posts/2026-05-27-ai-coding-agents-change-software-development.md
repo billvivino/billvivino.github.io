@@ -1,8 +1,9 @@
 ---
 layout: post
 title: "AI Coding Agents Are Changing Software Development"
-description: "I used agentic coding tools on real software work. They help, but their real value is delegation, not replacing developer judgment."
+description: "How I use coding agents for repository investigation, implementation, and verification, with clear task boundaries and accountable engineering decisions."
 date: 2026-05-27
+last_modified_at: 2026-11-01
 og_image: "/assets/optimized/ai-coding-agents-change-software-development.webp"
 ---
 
@@ -41,7 +42,7 @@ og_image: "/assets/optimized/ai-coding-agents-change-software-development.webp"
 
 <div class="tldr-box">
   <strong>TL;DR</strong><br />
-  I have been using agentic coding tools on real software work, not just demos. They are useful, but not in the way the hype suggests. The biggest change is delegation. AI coding agents make good technical judgment more important, not less.
+  I use coding agents for repository investigation, implementation, and verification. The biggest change is how I delegate work: clear context and checks let agents contribute across a project while I remain accountable for engineering decisions.
 </div>
 
 <picture class="blog-img-right">
@@ -66,13 +67,9 @@ I mean actual repo work: reading existing files, fixing bugs, checking rendered 
 
 That experience has made one thing clear:
 
-**AI coding agents are useful, but not in the way the hype usually suggests.**
+**AI coding agents can contribute across investigation, implementation, and verification.**
 
-They are not magic senior engineers.
-They are not automatic product builders.
-They are not a substitute for technical ownership.
-
-But they are real leverage.
+Their usefulness grows when the task has clear context, acceptance criteria, and a way to check the result. Technical ownership connects that work to the product's needs.
 
 In fact, this article was drafted with the help of an agentic coding workflow. The same tool was used to inspect my repo, repair SEO front matter, run a local Jekyll build, stage files, and create a commit. That is the point. The useful part was not that the tool had opinions. The useful part was that I could delegate bounded work while still deciding what mattered.
 
@@ -206,7 +203,7 @@ I think they make senior judgment more visible.
 
 ## What founders should understand
 
-For founders, AI coding agents are both useful and dangerous.
+For founders, AI coding agents make substantial implementation work more accessible.
 
 They can reduce execution friction. They can help build prototypes. They can speed up repetitive work. They can make it easier to explore an idea before investing heavily.
 

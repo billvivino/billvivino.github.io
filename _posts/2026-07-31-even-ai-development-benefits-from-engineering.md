@@ -3,6 +3,7 @@ layout: post
 title: "Even AI Development Benefits from Engineering"
 description: "I am using AI to refactor the Discover feed in our social media app, but the work still has to happen in measured stages: isolate the bottleneck, preserve behavior, cache safely, and gradually move expensive ranking calculations off the phone."
 date: 2026-07-31
+last_modified_at: 2026-11-01
 permalink: /blog/even-ai-development-benefits-from-engineering/
 categories: ai software-development software-engineering mobile-development
 tags:
@@ -64,7 +65,7 @@ og_image: "/assets/optimized/even-ai-development-benefits-from-engineering.webp"
   <source srcset="/assets/optimized/even-ai-development-benefits-from-engineering.avif" type="image/avif" />
   <source srcset="/assets/optimized/even-ai-development-benefits-from-engineering.webp" type="image/webp" />
   <img
-    src="/assets/images/even-ai-development-benefits-from-engineering.png"
+    src="/assets/optimized/even-ai-development-benefits-from-engineering.webp"
     alt="A generic social media Discover feed improving through staged image loading, ranking calculations, privacy checks, and cloud aggregation"
     width="420"
     height="280"
@@ -234,7 +235,7 @@ AI does not make those habits obsolete.
 
 It makes the feedback loop around them faster.
 
-At least in 2026, even AI cannot one-shot a careful refactor of a real social feed with performance, ranking, privacy, and cost constraints.
+For this Discover refactor, I am using staged changes to verify performance, ranking, privacy, and cost constraints. That is the process this application needs, not a claim that every AI-assisted refactor has the same limits.
 
 It can help us move through the stages much faster.
 

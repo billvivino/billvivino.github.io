@@ -3,6 +3,7 @@ layout: post
 title: "AI-Written Code Is Creating a \"Cleanup Tax\""
 description: "AI-generated code can accelerate startups, but it can also create hidden maintenance costs. The opportunity is codebase stabilization, architecture review, test coverage, and production hardening."
 date: 2026-06-28
+last_modified_at: 2026-11-01
 categories: ai software-development consulting technical-debt
 og_image: "/assets/optimized/ai-generated-code-cleanup-tax.webp"
 ---
@@ -51,7 +52,7 @@ og_image: "/assets/optimized/ai-generated-code-cleanup-tax.webp"
 
 <div class="tldr-box">
   <strong>TL;DR</strong><br />
-  AI can make code appear faster than teams can safely absorb it. The business opportunity is not arguing with the tool. It is helping companies clean up, stabilize, test, and harden the codebases that AI helped them create.
+  AI can accelerate implementation. When review and integration lag behind, maintenance work can accumulate. This article examines the signs to check and how to prioritize repairs without assuming every AI-assisted codebase needs a rewrite.
 </div>
 
 <picture class="blog-img-right">
@@ -82,7 +83,7 @@ The feature shipped.
 
 Then someone has to maintain it.
 
-That is where the cleanup tax appears.
+That is where overlooked review and integration work can become visible.
 
 ## Speed Is Not the Same as System Health
 
@@ -106,7 +107,7 @@ That is a different standard.
 
 ## The Cleanup Tax
 
-The cleanup tax is the cost that arrives after fast code generation.
+The cleanup tax is the maintenance cost that can follow rapid development when review and integration do not keep pace. It is not an inevitable consequence of AI-assisted code, and the same issues occur in manually written software.
 
 It shows up as:
 
@@ -122,7 +123,7 @@ It shows up as:
 
 None of these issues always breaks the product immediately.
 
-That is why they are dangerous.
+That makes them worth checking against the application's actual behavior.
 
 The application can look finished while the maintenance burden is quietly increasing underneath.
 
@@ -144,9 +145,7 @@ That is not always a model failure.
 
 It is often a context problem.
 
-The AI sees the task.
-
-A senior engineer has to see the system.
+Repository context and explicit verification can help an agent account for those relationships. A senior engineer remains responsible for deciding whether the change fits the system.
 
 ## This Is Where Human Engineering Becomes More Valuable
 
@@ -176,21 +175,13 @@ Those are not decorative tasks.
 
 They are the difference between a prototype and a maintainable product.
 
-## The Paid Audit Opportunity
+## Turn Observations into a Repair Plan
 
-For founders and small teams, this creates a very practical service category:
-
-> AI-generated code cleanup audit.
-
-Not a vague code review.
-
-Not a rewrite proposal disguised as advice.
-
-A focused engagement that answers:
+A useful review connects observed behavior to a prioritized repair plan. It answers:
 
 - What parts of the codebase are stable?
 - What parts are risky?
-- Where has AI-generated duplication accumulated?
+- Where has duplication accumulated, and does it cause inconsistent behavior?
 - Which workflows need test coverage first?
 - Which architectural decisions will become expensive later?
 - What should be fixed before more features are added?
@@ -232,9 +223,7 @@ Fifth, production behavior.
 
 Logs, errors, permissions, deployment assumptions, secrets, rate limits, background jobs, and failure modes.
 
-AI-generated code often looks most impressive in the happy path.
-
-Production software is mostly about everything outside the happy path.
+Review successful paths alongside failures, permissions, and recovery. AI-assisted implementation can include those checks when the task and verification process make them explicit.
 
 ## The Real Product Is Confidence
 
@@ -280,7 +269,7 @@ And for engineers who know how to stabilize real systems, it is a very clear mar
 
 <p class="mt-4">
   If your product was built quickly with AI and now needs a stabilization pass,
-  <a href="../contact.html">send me a note</a>. I can review the architecture,
+  <a href="/app-rescue-assessment.html">review the App Rescue Assessment</a>. I can review the architecture,
   identify the highest-risk cleanup work, and turn the codebase into a clearer
   production plan.
 </p>
