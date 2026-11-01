@@ -1,20 +1,26 @@
 ---
 layout: default
 title: "Discuss Your Software or AI Project — Bill Vivino"
-description: "Share an app, codebase, AI integration, or workflow problem. Start a conversation about the objective, systems, scope, and next practical step."
-last_modified_at: 2026-09-29
+description: "Discuss paid software or AI work for your business. Flexible hourly or fixed-price engagements, with scope and budget agreed before work begins."
+last_modified_at: 2026-11-01
 ---
 
 <section class="container py-5" style="max-width: 760px">
   <div class="text-center mb-4">
     <p class="text-uppercase fw-semibold text-primary small mb-2">
-      General Project Inquiries
+      Paid Business Project Inquiries
     </p>
     <h1>Discuss Your Software or AI Project</h1>
     <p class="lead">
-      Tell us what you want to build, automate, or improve—from AI-powered
+      Tell us what your business needs to build, automate, or improve—from AI-powered
       software and assistants to business workflows, mobile apps, and existing
       systems. Not sure where AI fits? Start with the problem you want to solve.
+    </p>
+    <p class="mb-0">
+      Hourly and fixed-price engagements are both available. This is paid
+      engineering and consulting for businesses with a real project and a
+      budget. We agree the scope, pricing model, and spending limit before work
+      begins.
     </p>
   </div>
 
@@ -117,7 +123,19 @@ last_modified_at: 2026-09-29
     </div>
 
     <div class="mb-3">
-      <label for="budget" class="form-label">Approximate Budget</label>
+      <label for="pricingModel" class="form-label">Pricing Preference (optional)</label>
+      <select id="pricingModel" name="pricing_model" class="form-select" aria-describedby="pricing-model-help">
+        <option value="" selected>Open to either — agree after reviewing the scope</option>
+        <option value="hourly">Hourly</option>
+        <option value="fixed-price">Fixed price</option>
+      </select>
+      <p id="pricing-model-help" class="form-text mb-0">
+        Neither model is required to inquire. We can agree the approach together.
+      </p>
+    </div>
+
+    <div class="mb-3">
+      <label for="budget" class="form-label">Approximate Engagement Budget</label>
       <select id="budget" name="budget" class="form-select" aria-describedby="budget-help" required>
         <option value="" disabled selected>Select a range</option>
         {% for tier in site.data.project_retainer_tiers %}
@@ -130,13 +148,15 @@ last_modified_at: 2026-09-29
         {% endfor %}
       </select>
       <p id="budget-help" class="form-text mb-0">
-        Choose the closest planning range. The accepted proposal states the exact fee.
+        Choose a planning range for the work, not a pricing model. New builds
+        start at $5K; focused consulting is scoped separately. The accepted
+        proposal confirms the rate or fixed fee and spending limit.
       </p>
     </div>
 
     <div class="mt-2 mb-3 small text-muted">
       Review the
-      <a href="/fixed-price-retainers.html">fixed-price project retainer options</a>
+      <a href="/pricing.html">hourly and fixed-price options</a>
       or sanity-check MVP and production-build scope and cost with the
       <a href="/custom-software-cost-reality-check.html">
         Custom Software Cost Reality Check
@@ -226,26 +246,39 @@ last_modified_at: 2026-09-29
 </section>
 
 <section class="container my-5" style="max-width: 680px">
-  <h2 class="h5 fw-bold mb-3 text-center">Project Budget FAQ</h2>
+  <h2 class="h5 fw-bold mb-3 text-center">Pricing &amp; Budget FAQ</h2>
   <div class="card">
     <div class="card-body">
       <p class="mb-2">
-        <strong>How much should I plan for?</strong><br />
-        Prototype retainers generally fall in <strong>$5k–$10k</strong>, MVP
-        retainers in <strong>$10k–$25k</strong>, and full-application work in
-        <strong>$25k–$50k</strong>. Larger or multi-phase engagements may exceed
-        $50k. These are planning ranges; the accepted proposal states the exact fee.
+        <strong>Which pricing models are available?</strong><br />
+        Both hourly and fixed-price engagements are available. Senior hourly
+        consulting is ${{ site.paypal.hourly_consulting_rate | default: 175 }}/hour;
+        fixed-price work has a proposal-defined scope and fee. We agree the
+        model together based on the scope and your preferred budget controls.
       </p>
       <p class="mb-2">
-        <strong>How are project retainers paid?</strong><br />
-        Choose the discounted prepaid total or the standard total through a
-        fixed number of weekly payments. The first payment is due before work begins.
+        <strong>How much should I plan for?</strong><br />
+        New prototype builds generally fall in <strong>$5k–$10k</strong>, MVP
+        builds in <strong>$10k–$25k</strong>, and full-application work in
+        <strong>$25k–$50k</strong>. Larger or multi-phase engagements may exceed
+        $50k. Focused consulting or implementation is scoped to an agreed
+        spending limit. These are engagement budgets, not a requirement to use
+        a particular pricing model.
+      </p>
+      <p class="mb-2">
+        <strong>How are pricing and payments agreed?</strong><br />
+        The accepted proposal confirms the scope, hourly rate or fixed fee,
+        spending limit, and payment schedule before work begins. Hourly work
+        follows the agreed time allowance and budget. Fixed-price retainers
+        may use a prepaid total or a fixed weekly payment plan as specified in
+        the proposal.
       </p>
       <p class="mb-0">
-        <strong>Does fixed price guarantee every outcome?</strong><br />
-        No. The fee covers the proposal-defined delivery phase and deliverables.
-        Unknown conditions and work outside that scope are reviewed and approved
-        separately.
+        <strong>Does either pricing model guarantee every outcome?</strong><br />
+        No. Fixed-price fees cover the proposal-defined delivery phase and
+        deliverables; hourly work covers the agreed engineering time. Unknown
+        conditions and work outside the agreed scope are reviewed and approved
+        separately for either model.
       </p>
     </div>
   </div>

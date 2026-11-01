@@ -333,3 +333,19 @@ test("invalid and too-fast forms generate no inquiry event, and native fallback 
   delete current.window.BVTMeasurement;
   assert.equal(current.submit().prevented, false);
 });
+
+test("flexible pricing keeps both models neutral and preserves business and budget qualification", function () {
+  const preference = contactSource.match(/<select\b[^>]*id="pricingModel"[^>]*>([\s\S]*?)<\/select>/);
+  assert.ok(preference, "contact page should offer a pricing preference");
+  assert.ok(!/\brequired\b/.test(preference[0]), "pricing preference must remain optional");
+  assert.match(preference[1], /<option value="" selected>Open to either/);
+  assert.match(preference[1], /<option value="hourly">Hourly<\/option>/);
+  assert.match(preference[1], /<option value="fixed-price">Fixed price<\/option>/);
+  assert.match(contactSource, /Hourly and fixed-price engagements are both available/);
+  assert.match(contactSource, /Paid Business Project Inquiries/);
+  assert.match(contactSource, /businesses with a real project and a\s+budget/);
+  assert.match(contactSource, /New builds\s+start at \$5K/);
+  assert.match(contactSource, /<select\b[^>]*id="budget"[^>]*\brequired\b/);
+  assert.match(contactSource, /<select\b[^>]*id="projectStage"[^>]*\brequired\b/);
+  assert.match(contactSource, /action="https:\/\/formspree\.io\/f\/mqapjzyq"/);
+});
