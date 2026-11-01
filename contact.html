@@ -372,9 +372,8 @@ last_modified_at: 2026-11-01
         return;
       }
 
-      const uniqueWords = new Set(message.split(/\s+/).filter(Boolean)).size;
       const repeatedChars = /([a-zA-Z])\1{4,}/.test(message);
-      if (message.length < 50 || uniqueWords < 20 || repeatedChars) {
+      if (message.length < 50 || repeatedChars) {
         event.preventDefault();
         alert("Please provide at least 50 meaningful characters about your project.");
         return;

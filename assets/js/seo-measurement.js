@@ -20,11 +20,26 @@
   const sources = ["chatgpt", "chatgpt.com", "openai", "google", "bing", "linkedin", "linkedin.com", "perplexity", "perplexity.ai", "claude", "claude.ai", "copilot", "copilot.microsoft.com", "gemini", "gemini.google.com", "newsletter"];
   const mediums = ["cpc", "ppc", "paid", "paid_social", "referral", "organic", "email", "social"];
   // Only public, reviewed labels belong here. Never accept arbitrary query text.
-  const campaigns = ["bvt_ai_workflow_pilot_01"];
-  const creatives = ["workflow_integration", "existing_product"];
+  const campaigns = ["bvt_ai_workflow_pilot_01", "bvt_services_pilot_2026q4"];
+  // Verified pilot ad groups map to reviewed service labels, never arbitrary URL text.
+  const pilotAdGroups = {
+    "198079217021": "healthcare-software-consulting",
+    "198325661502": "mobile-app-development",
+    "201167615997": "modernization-and-maintenance",
+    "201167640917": "cto-and-architecture-advisory",
+    "201293596979": "backend-and-api-integration",
+    "204002759751": "web-and-business-software",
+    "206073959172": "ai-implementation-and-automation",
+    "207886226784": "app-rescue-and-code-review",
+  };
+  const creatives = ["workflow_integration", "existing_product"].concat(Object.values(pilotAdGroups));
   const aiHosts = ["chatgpt.com", "chat.openai.com", "perplexity.ai", "claude.ai", "copilot.microsoft.com", "gemini.google.com"];
   function listed(value, allowed) {
     return allowed.includes(value) ? value : "";
+  }
+  function contentLabel(value) {
+    return Object.prototype.hasOwnProperty.call(pilotAdGroups, value)
+      ? pilotAdGroups[value] : listed(value, creatives);
   }
   function referrerHost() {
     try { return new URL(document.referrer).hostname.toLowerCase(); }
@@ -37,7 +52,7 @@
     return {
       source: source, medium: medium, evidence: evidence, channel: channel,
       campaign: listed(params.get("utm_campaign"), campaigns),
-      content: listed(params.get("utm_content"), creatives),
+      content: contentLabel(params.get("utm_content")),
       landing_path: config.page_path,
     };
   }

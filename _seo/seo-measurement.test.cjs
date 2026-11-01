@@ -197,6 +197,43 @@ test("paid attribution survives contact navigation without rewriting URLs", func
   assert.equal(first.window.location.href, paid);
 });
 
+test("the Google services pilot keeps its campaign and each reviewed service through inquiry submission", function () {
+  const groups = {
+    "198079217021": "healthcare-software-consulting",
+    "198325661502": "mobile-app-development",
+    "201167615997": "modernization-and-maintenance",
+    "201167640917": "cto-and-architecture-advisory",
+    "201293596979": "backend-and-api-integration",
+    "204002759751": "web-and-business-software",
+    "206073959172": "ai-implementation-and-automation",
+    "207886226784": "app-rescue-and-code-review",
+  };
+  Object.entries(groups).forEach(function ([id, label]) {
+    const first = page({ url: "https://billvivinotechnology.com/ai-integration-consultant.html?utm_source=google&utm_medium=cpc&utm_campaign=bvt_services_pilot_2026q4&utm_content=" + id + "&gclid=private-click-id&utm_term=private-search-text" });
+    const contact = page({ url: "https://billvivinotechnology.com/contact.html", memory: first.memory });
+    contact.loadForm();
+    contact.advance(21000);
+    assert.equal(contact.submit().prevented, false);
+    ["first", "last"].forEach(function (which) {
+      const fields = contact.window.BVTMeasurement.attributionFields();
+      assert.equal(fields["bvt_" + which + "_campaign"], "bvt_services_pilot_2026q4");
+      assert.equal(fields["bvt_" + which + "_content"], label);
+      assert.equal(contact.form.children.find(function (item) { return item.name === "bvt_" + which + "_content"; }).value, label);
+    });
+    const payload = JSON.stringify(contact.window.dataLayer) + Array.from(contact.memory.values()).join("");
+    [id, "private-click-id", "private-search-text", "utm_term"].forEach(function (secret) { assert.ok(!payload.includes(secret)); });
+  });
+});
+
+test("unreviewed ad-group values and inherited object properties stay out of attribution", function () {
+  ["999999999999", "person@example.com", "__proto__", "constructor"].forEach(function (content) {
+    const current = page({ url: "https://billvivinotechnology.com/contact.html?utm_source=google&utm_medium=cpc&utm_campaign=bvt_services_pilot_2026q4&utm_content=" + encodeURIComponent(content) });
+    assert.equal(current.window.BVTMeasurement.attributionFields().bvt_last_content, "");
+    const payload = JSON.stringify(current.window.dataLayer) + Array.from(current.memory.values()).join("");
+    assert.ok(!payload.includes(content));
+  });
+});
+
 test("a new tagged source changes last touch while preserving first touch", function () {
   const first = page({ url: paid });
   const second = page({
@@ -332,6 +369,22 @@ test("invalid and too-fast forms generate no inquiry event, and native fallback 
   current.fields.message.value = "Our team needs a system that links inventory scheduling customer updates and project reporting across several existing applications with reliable permissions and approvals.";
   delete current.window.BVTMeasurement;
   assert.equal(current.submit().prevented, false);
+});
+
+test("a concise qualified inquiry passes the displayed minimum while missing budgets and spam remain blocked", function () {
+  const current = page();
+  current.loadForm();
+  current.advance(21000);
+  current.fields.message.value = "We need our CRM and billing system integrated. Budget $10k. Target next month.";
+  assert.equal(current.fields.message.value.length, 78);
+  assert.equal(current.submit().prevented, false);
+  current.fields.budget.value = "";
+  assert.equal(current.submit().prevented, true);
+  current.fields.budget.value = "Consulting review or implementation";
+  current.fields.message.value = "a".repeat(70);
+  assert.equal(current.submit().prevented, true);
+  current.fields.message.value = "We need our CRM integrated.";
+  assert.equal(current.submit().prevented, true);
 });
 
 test("flexible pricing keeps both models neutral and preserves business and budget qualification", function () {
