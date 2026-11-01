@@ -1,339 +1,75 @@
 ---
 layout: default
-title: "AI Software Development & Automation Services"
-description: "Build AI features and workflow automation with senior engineering across apps, APIs, data, evaluation, and operational software."
-last_modified_at: 2026-09-13
+title: "AI Software Development: Coding Assistance & Product Integration"
+description: "Compare using AI to develop software with adding AI to a business workflow. See a BVT prototype architecture and practical evaluation examples."
+last_modified_at: 2026-11-01
 canonical: "https://billvivinotechnology.com/ai-software-development.html"
+seo_cluster: practical-ai
+og_image: "/assets/optimized/ai_automation_services.webp"
 ---
 
-<section class="text-white text-center py-5">
-  <div class="container">
-    <h1 class="display-5 fw-bold">
-      AI Software Development & Automation Services
-    </h1>
+<main class="container py-5" style="max-width: 1000px">
+  <p class="text-uppercase text-muted small fw-semibold">Practical AI engineering · Decision guide</p>
+  <h1>AI Software Development: Coding Assistance &amp; Product Integration</h1>
+  <p class="lead">AI can help your team build software and become a useful feature inside that software. These are two different decisions, with different ways to measure success.</p>
+  <p>Use this guide to choose the next step. For implementation scope and working with BVT, visit <a href="/ai-integration-consultant.html" data-seo-cta="guide_to_service" data-seo-cluster="practical-ai">AI integration and workflow automation services</a>.</p>
 
-    <p class="lead">
-      Build AI features and workflow automation around the systems your business
-      already uses. Work directly with Bill on the application, data,
-      integrations, testing, and operating behavior that make the feature useful
-      to your team.
-    </p>
+  <picture class="d-block text-center my-4">
+    <source srcset="/assets/optimized/ai_automation_services.avif" type="image/avif">
+    <source srcset="/assets/optimized/ai_automation_services.webp" type="image/webp">
+    <img src="/assets/optimized/ai_automation_services.webp" alt="AI software development and workflow automation" class="img-fluid rounded service-hero-image" width="1200" height="800" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto">
+  </picture>
 
-    <p class="mt-3 mx-auto" style="max-width: 900px;">
-      AI-augmented software engineering combines AI-assisted implementation
-      with Bill's architecture decisions, code review, and testing. Apply it to
-      application features, backend integrations, and operational workflows with
-      direct technical ownership.
-    </p>
-
-    <a href="contact.html" class="btn btn-primary btn-lg mt-2">
-      Discuss Your AI Project
-    </a>
-
-    <div class="text-center mt-4">
-      <picture>
-        <source srcset="/assets/optimized/ai_automation_services.avif" type="image/avif">
-        <source srcset="/assets/optimized/ai_automation_services.webp" type="image/webp">
-        <img
-          src="/assets/optimized/ai_automation_services.webp"
-          alt="AI Software Development Services"
-          class="img-fluid rounded service-hero-image"
-          width="1200"
-          height="800"
-          loading="eager"
-          fetchpriority="high"
-          style="max-width: 100%; height: auto">
-      </picture>
+  <section class="my-5" aria-labelledby="choice-heading">
+    <h2 id="choice-heading">Which problem are you solving?</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered align-middle">
+        <thead><tr><th scope="col">Your objective</th><th scope="col">Useful evidence</th><th scope="col">Next step</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Use coding agents to build or maintain software</th><td>Changes that satisfy requirements, pass relevant checks, and work across the affected application.</td><td><a href="/posts/reviewing-ai-assisted-code-before-it-ships.html">Review AI-assisted code before it ships</a></td></tr>
+          <tr><th scope="row">Add AI to a recurring business task</th><td>Accepted outputs, human review time, fallback work, access controls, and cost per completed task.</td><td><a href="/ai-integration-consultant.html">Explore AI integration services</a></td></tr>
+          <tr><th scope="row">Choose hosted, local, or hybrid models</th><td>The same evaluation tasks across candidates, including quality, latency, data terms, and total operating effort.</td><td><a href="/posts/the-surprising-part-of-local-ai-wasnt-the-model.html">Read the local-model experiment</a></td></tr>
+        </tbody>
+      </table>
     </div>
+    <p>A project can use all three. A coding agent may help implement a document assistant; the assistant still needs its own data access, evaluations, deployment, and operating owner.</p>
+  </section>
 
-  </div>
-</section>
+  <section id="prototype-evidence" class="border rounded-3 p-4 bg-light my-5" aria-labelledby="prototype-heading">
+    <h2 id="prototype-heading">A concrete example: BVT's intake prototype</h2>
+    <p>The <a href="/coding-ai-portal.html">internal coding AI prototype</a> pairs a browser interface with a FastAPI backend and an Ollama model host. The backend searches a small Markdown knowledge base by keyword, adds matching passages to the prompt, and returns those source snippets with the response.</p>
+    <ol class="row g-3 list-unstyled mt-3" aria-label="Prototype request flow">
+      <li class="col-md-3"><div class="border rounded p-3 h-100 bg-white"><strong>1. Browser</strong><br />Sends the question and selected project context.</div></li>
+      <li class="col-md-3"><div class="border rounded p-3 h-100 bg-white"><strong>2. Application API</strong><br />Checks input and rate limits; retrieves matching passages.</div></li>
+      <li class="col-md-3"><div class="border rounded p-3 h-100 bg-white"><strong>3. Model host</strong><br />Generates a response using that context.</div></li>
+      <li class="col-md-3"><div class="border rounded p-3 h-100 bg-white"><strong>4. Response</strong><br />Returns the answer, source snippets, and a recommendation for human follow-up.</div></li>
+    </ol>
+    <p>The backend also has an explicit unavailable-model response. That gives the interface a failure to handle instead of treating every request as a successful answer. Source snippets show what was retrieved; they do not establish that every generated claim is supported.</p>
+    <p class="mb-0">This describes implemented prototype code, not a production service or measured client outcome. The portal displays a static brief when its backend is unavailable. Connecting private business records would require application-enforced authorization and representative evaluation before rollout.</p>
+  </section>
 
-<section class="py-5" aria-labelledby="ai-fde-heading">
-  <div class="container text-center">
-    <h2 id="ai-fde-heading">AI Assisted Development / AI Workflow Automation Specialist</h2>
-    <p class="lead mx-auto" style="max-width: 900px">
-      We offer AI assisted development and specialist AI workflow automation
-      for workflow discovery, architecture, implementation,
-      evaluation, and rollout. Explore how we work alongside your team and
-      what an initial engagement can produce.
-    </p>
-    <a href="/ai-integration-consultant.html" class="btn btn-primary">
-      Explore AI Assisted Development &amp; Workflow Automation
-    </a>
-  </div>
-</section>
+  <section class="my-5" aria-labelledby="eval-heading">
+    <h2 id="eval-heading">What would make a pilot useful?</h2>
+    <p>For a document assistant, agree observable behavior before comparing models. This is an example evaluation plan, not a report of tests already passed.</p>
+    <div class="table-responsive"><table class="table">
+      <thead><tr><th scope="col">Test input or condition</th><th scope="col">Expected behavior</th><th scope="col">Measure</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Question answered by an approved document</th><td>Answer reflects the document and links to the relevant evidence.</td><td>Accepted answers and correction time.</td></tr>
+        <tr><th scope="row">Missing or conflicting source material</th><td>Make the uncertainty visible and route the unresolved question for review.</td><td>Unsupported claims and useful escalations.</td></tr>
+        <tr><th scope="row">Record outside the user's access</th><td>The application withholds that record before model retrieval.</td><td>Denied-access cases, including indirect requests.</td></tr>
+        <tr><th scope="row">Instruction embedded in a retrieved document</th><td>Treat it as source content; it cannot authorize a tool action or change access.</td><td>Attempts that cross the agreed action boundary.</td></tr>
+        <tr><th scope="row">Model timeout or unavailable provider</th><td>Explain the failure and offer a recoverable next step.</td><td>Recovery time, retries, and manual fallback effort.</td></tr>
+      </tbody>
+    </table></div>
+    <p>AI can produce useful answers while still requiring too much review for a particular task. Measure the entire workflow alongside output quality. For actions such as updating a customer record, add an explicit approval and recovery test.</p>
+  </section>
 
-<section class="py-5 bg-light">
-  <div class="container text-center">
-    <h2 class="mb-4">AI Systems We Build</h2>
-
-    <div class="row g-4">
-      <div class="col-md-6 col-lg-3">
-        <div class="border rounded p-4 h-100 bg-white">
-          <h5>AI-Powered Applications</h5>
-          <p>
-            GPT-integrated platforms, AI-assisted workflows, intelligent
-            search systems, conversational interfaces, and AI-enhanced
-            mobile or web applications.
-          </p>
-          <a href="/ai-integration-consultant.html" class="btn btn-outline-primary btn-sm mt-2">
-            AI Integration Consulting
-          </a>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-3">
-        <div class="border rounded p-4 h-100 bg-white">
-          <h5>Workflow Automation</h5>
-          <p>
-            Operational automation systems, CRM integrations, reporting
-            pipelines, internal tools, and AI-assisted business process
-            automation.
-          </p>
-          <a href="/toolbox.html" class="btn btn-outline-primary btn-sm mt-2">
-            Explore Tools
-          </a>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-3">
-        <div class="border rounded p-4 h-100 bg-white">
-          <h5>Backend AI Infrastructure</h5>
-          <p>
-            Node.js APIs, Firebase systems, vector search, retrieval
-            workflows, data pipelines, and scalable backend architecture.
-          </p>
-          <a href="/firebase-vs-supabase-vs-aws-vs-heroku-2026.html" class="btn btn-outline-primary btn-sm mt-2">
-            Read Infrastructure Guide
-          </a>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-3">
-        <div class="border rounded p-4 h-100 bg-white">
-          <h5>Agent Stack Evaluation</h5>
-          <p>
-            Hosted frontier models, open or self-hosted models, hybrid routing,
-            evals, cost controls, data boundaries, and reliability tradeoffs.
-          </p>
-          <a href="/ai-integration-consultant.html" class="btn btn-outline-primary btn-sm mt-2">
-            Evaluate Your AI Stack
-          </a>
-        </div>
-      </div>
+  <section class="border rounded-3 p-4 my-5" aria-labelledby="decision-heading">
+    <h2 id="decision-heading">Define a useful first integration</h2>
+    <p>Start with one workflow, a measurable baseline, and the evidence needed to decide whether a pilot should continue.</p>
+    <div class="d-flex flex-wrap gap-3">
+      <a class="btn btn-outline-primary" href="/ai-integration-consultant.html" data-seo-cta="guide_to_service" data-seo-cluster="practical-ai">Explore AI integration services</a>
     </div>
-
-    <div class="row justify-content-center mt-4">
-      <div class="col-lg-10">
-        <div class="border rounded p-4 bg-white text-start">
-          <span class="badge bg-primary mb-2">Internal Prototype</span>
-          <h3 class="h4">Coding AI Portal: Intake and Architecture</h3>
-          <p>
-            An internal prototype exploring how a consulting assistant could
-            turn a software question into a useful intake brief and human
-            handoff. The page demonstrates the workflow and describes a proposed
-            local-model architecture with retrieval, evaluation, access controls,
-            and a custom API.
-          </p>
-          <a href="/coding-ai-portal.html" class="btn btn-outline-primary">
-            View the Prototype and Architecture
-          </a>
-          <a href="/ai-integration-consultant.html" class="btn btn-outline-primary ms-2">
-            Discuss an AI Integration
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="py-5">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-10 text-center">
-        <h2 class="mb-4">
-          Engineering Around the AI Model
-        </h2>
-
-        <p>
-          An AI feature depends on the software around the model: access to the
-          right data, reliable interfaces, clear permissions, testable behavior,
-          and a plan for handling mistakes. Those are engineering and product
-          decisions as well as model decisions.
-        </p>
-
-        <p>
-          Successful AI applications require scalable backend systems,
-          good data flow design, maintainable infrastructure, operational
-          reliability, and thoughtful product integration.
-        </p>
-
-        <p>
-          The model decision is now an architecture decision. Teams need to know
-          when to use hosted frontier APIs, when open or self-hosted models make
-          sense, and when hybrid routing is the practical answer.
-        </p>
-
-        <p>
-          Bill Vivino Technology helps startups and businesses evaluate AI
-          prototypes, build integrations, and prepare a controlled rollout.
-          For teams that need product and architecture
-          direction for an active build before implementation, see
-          <a href="/fractional-cto-technical-advisor.html">fractional CTO and technical advisory support</a>.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="py-5 bg-light">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-10">
-        <h2 class="text-center mb-5">
-          Common AI & Automation Problems We Help Solve
-        </h2>
-
-        <div class="row g-4">
-          <div class="col-md-6">
-            <ul>
-              <li>Prototypes with unclear release readiness</li>
-              <li>GPT integrations without scalable architecture</li>
-              <li>No clear model-routing or evaluation strategy</li>
-              <li>Workflow automation bottlenecks</li>
-              <li>Backend systems becoming difficult to maintain</li>
-              <li>Disconnected APIs and operational tooling</li>
-            </ul>
-          </div>
-
-          <div class="col-md-6">
-            <ul>
-              <li>Scaling AI applications beyond prototypes</li>
-              <li>Firebase and backend infrastructure complexity</li>
-              <li>Poor operational visibility and reporting</li>
-              <li>AI features lacking product integration</li>
-              <li>Technical debt from rushed implementations</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="py-5">
-  <div class="container text-center">
-    <h2 class="mb-4">AI Development Capabilities</h2>
-
-    <div class="row justify-content-center g-4">
-      <div class="col-md-3">
-        <div class="border rounded p-4 h-100">
-          <h5>Model & Agent Routing</h5>
-          <p>
-            Hosted APIs, open/self-hosted models, hybrid routing, evals, and
-            operational AI tooling.
-          </p>
-          <a href="/ai-integration-consultant.html" class="btn btn-outline-primary btn-sm mt-2">
-            View AI Consulting
-          </a>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <div class="border rounded p-4 h-100">
-          <h5>Backend Systems</h5>
-          <p>
-            Node.js APIs, Firebase architecture, scalable data systems,
-            and cloud infrastructure.
-          </p>
-          <a href="/database-model-decision.html" class="btn btn-outline-primary btn-sm mt-2">
-            Open Decision Tool
-          </a>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <div class="border rounded p-4 h-100">
-          <h5>Operational Automation</h5>
-          <p>
-            Internal tooling, reporting systems, CRM automation, and
-            workflow orchestration.
-          </p>
-          <a href="/scope-freeze-vs-scope-drift-estimator.html" class="btn btn-outline-primary btn-sm mt-2">
-            Try Estimator
-          </a>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <div class="border rounded p-4 h-100">
-          <h5>System Stabilization</h5>
-          <p>
-            Improve maintainability, scalability, and operational
-            reliability as complexity grows.
-          </p>
-          <a href="/over-abstracted-architecture-detector.html" class="btn btn-outline-primary btn-sm mt-2">
-            Run Architecture Check
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="py-5 bg-light">
-  <div class="container">
-    <div class="text-center mb-5">
-      <h2 class="mb-4">Related Software Development Insights</h2>
-      <p class="lead">
-        Commentary on AI-assisted development, software complexity, and
-        modern engineering systems.
-      </p>
-    </div>
-
-    <div class="row g-4">
-      <div class="col-md-6">
-        <div class="border rounded p-4 h-100 bg-white">
-          <h4>When Should You Hire a Software Developer in 2026?</h4>
-          <p>
-            Decide when AI alone is enough, when a focused review is enough,
-            and when a product needs sustained engineering ownership.
-          </p>
-          <a href="/posts/when-should-you-hire-a-software-developer-in-2026.html" class="btn btn-outline-primary">
-            Read Article
-          </a>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="border rounded p-4 h-100 bg-white">
-          <h4>AI Coding Agents Need an Engineering Review Loop</h4>
-          <p>
-            See how context, review, and verification turn AI-generated
-            progress into trustworthy software.
-          </p>
-          <a href="/posts/ai-coding-agents-need-an-engineering-review-loop.html" class="btn btn-outline-primary">
-            Read Article
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="text-muted text-center py-5">
-  <div class="container">
-    <h2>Need Help Building or Stabilizing AI Software Systems?</h2>
-
-    <p class="lead">
-      Work directly with a senior software engineer on AI-integrated
-      applications, backend systems, workflow automation, and scalable
-      software architecture.
-    </p>
-
-    <a href="contact.html" class="btn btn-primary btn-lg mt-3">
-      Discuss Your AI Workflow
-    </a>
-  </div>
-</section>
+  </section>
+  <p class="text-muted small">By Bill Vivino · Updated November 1, 2026. The prototype description reflects BVT's implementation; the evaluation table is a proposed method for a business integration.</p>
+</main>

@@ -39,6 +39,7 @@ or that the earlier traffic decline has been diagnosed.
    - Primary guide: `/posts/reviewing-ai-assisted-code-before-it-ships.html`
    - Guide focus: reviewing AI-assisted code before it ships, with explicit verification and handoff limits.
    - Commercial destination: `/ai-integration-consultant.html`
+   - Decision guide and implemented prototype boundary: `/ai-software-development.html`. Keep this informational, not a second service pitch.
    - Best new evidence: evaluations, retrieval boundaries, model fallbacks, human review, cost measurements, and production integration lessons.
 
 3. **Software rescue and reliability**
@@ -52,6 +53,21 @@ or that the earlier traffic decline has been diagnosed.
    - Best new evidence: scope decisions, build-versus-buy analysis, vendor evaluation, estimation boundaries, funding constraints, and roadmap tradeoffs.
 
 ## Publication gate
+
+The November 1 AI pass retains existing URLs and artwork. The older AI software
+page now separates coding assistance from product integration and documents the
+internal intake prototype. Its evaluation table is a proposed test plan, not
+passed tests or client results. The retired Vibe Code Loss Calculator article
+explains its retirement and points to code-review and AI integration
+paths. AI articles should contribute evidence or a specific decision, then link
+to the primary AI integration service instead of repeating a full sales page.
+
+The commercial focus is AI integration for existing business software. Use the
+primary service page for that offer and the guide for implementation evidence.
+The readiness/ROI planner remains removed. A future tool needs a specific buyer
+decision and defensible inputs; adding an AI label is not evidence of search
+demand. Measure non-branded service queries and qualified inquiries separately
+from calculator visibility and generative AI impressions.
 
 Before creating a new article, answer all six questions:
 

@@ -3,6 +3,7 @@ layout: post
 title: "The Surprising Part of Local AI Wasn't the Model"
 description: "Building a self-hosted coding assistant taught me that the biggest challenge isn't running the model. It's understanding the economics and architecture around it."
 date: 2026-06-18
+last_modified_at: 2026-11-01
 categories: ai software-development local-ai
 og_image: "/assets/optimized/local-ai-is-closer-than-most-businesses-realize.webp"
 ---
@@ -70,7 +71,7 @@ I assumed the difficult part would be the AI.
 
 It wasn’t.
 
-## The First Test: Small Models Aren’t Good Enough
+## What the Smaller Model Missed in My First Test
 
 I started with Qwen2.5-Coder 1.5B running locally through Ollama.
 
@@ -186,13 +187,9 @@ If every engineer relies heavily on AI, subscription and token costs can become 
 
 That’s where local models become attractive.
 
-Not because they’re better.
+My experiment was not a controlled benchmark across providers. Model quality varies by task, and hosting adds support, hardware, and availability costs that a token-price comparison can miss.
 
-They’re not.
-
-GPT-5.5 and Claude are still stronger.
-
-The question is whether a local model that delivers most of the value at a fraction of the operational cost is good enough for a specific workflow.
+The question is whether a local model provides enough useful output, at an acceptable total cost, for a specific workflow.
 
 Increasingly, I think the answer is yes.
 
@@ -209,11 +206,13 @@ The opportunity is helping organizations understand:
 - Operational tradeoffs
 - When self-hosting actually makes sense
 
-Many companies will never benefit from local AI.
+Some workflows do not justify the hardware and operating effort of self-hosting.
 
-Others will save substantial amounts of money by moving portions of their workflow to self-hosted models.
+Others may reduce costs by moving selected work to self-hosted models, if quality and operating effort hold up in a measured pilot.
 
 The hard part is determining which category a business falls into.
+
+Compare review time, fallback work, usage costs, and fixed operating effort. The [prototype architecture guide](/ai-software-development.html#prototype-evidence) describes the implementation boundary behind this experiment; it does not claim a production deployment or measured client savings.
 
 ## What I Learned
 
