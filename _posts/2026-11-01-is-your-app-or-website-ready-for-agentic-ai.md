@@ -8,8 +8,10 @@ permalink: /posts/is-your-app-or-website-ready-for-agentic-ai.html
 seo_cluster: practical-ai
 categories: [ai, software-development, mobile-app-development]
 tags: [agentic AI, WebMCP, Mobile MCP, MCP, App Intents, application architecture]
-og_image: "/assets/optimized/senior-engineer-ai-era.webp"
+og_image: "/assets/optimized/agentic-ai-readiness.webp"
 ---
+
+<img src="{{ '/assets/optimized/agentic-ai-readiness.webp' | relative_url }}" alt="Illustration of a website and mobile app connected by action cards and confirmation checkmarks." class="img-fluid rounded mb-4" width="1672" height="941" fetchpriority="high" decoding="async">
 
 What happens when a customer arrives with an AI assistant and asks it to use your product?
 
