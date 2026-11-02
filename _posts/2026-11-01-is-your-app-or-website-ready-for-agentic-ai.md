@@ -37,11 +37,7 @@ The Model Context Protocol provides a way for a connected client to discover ava
 
 ChatGPT and Codex plugins provide one packaging route. A plugin can contain skills, an MCP server, or both, with optional interface components. The plugin is the installable package; its MCP server can supply the actual tools. Supported capabilities still depend on where the plugin runs. [OpenAI's plugin architecture](https://developers.openai.com/plugins/concepts/plugins)
 
-I have started exploring these ideas with CRAFT, our social beer app. In an initial iOS simulator probe, a local Mobile MCP client opened the installed app and navigated from Activity to Discover using accessibility controls. A subsequent inspection confirmed that Discover was selected.
-
-That result establishes a narrow capability: an external tool connection can operate that part of CRAFT's interface. The driver followed a predefined workflow; a language-model agent was not choosing the steps. More complete workflows and validation against a freshly built app remain separate work. The distinction between an early demonstration and a released product capability needs to stay visible.
-
-For an existing business application, I would assess readiness in a similar way:
+For an existing business application, I would assess readiness in the following areas:
 
 - **Choose a useful workflow.** Start with a task customers or staff already perform, with a clear beginning and observable result.
 - **Describe the available actions clearly.** Inputs, required fields, and outcomes should have explicit meanings. Accessible labels also help when automation operates the existing interface.
