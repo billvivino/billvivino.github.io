@@ -1,10 +1,11 @@
 - id: prototype
-  name: Prototype
-  range: "$5k–$10k"
-  form_value: "$5k–$10k — Prototype"
-  description: "Selected prototypes and focused proofs of concept that validate the core workflow, product direction, or technical feasibility."
-  best_for: "A bounded proof of concept, a new prototype, or the first working version of one essential workflow."
-  cta_label: "Discuss a Prototype Retainer"
+  name: Working Prototype
+  range: "$10,000"
+  form_value: "$10,000 — Working Prototype (4–6 weeks)"
+  description: "A fixed-price working prototype in 4–6 weeks from the agreed kickoff, focused on one essential workflow."
+  best_for: "Founders and teams ready to test a product idea with working software, a demonstration, and source-code handoff."
+  cta_label: "View the Prototype Offer"
+  url: "/working-prototype.html"
   fixed_price: true
 
 - id: mvp

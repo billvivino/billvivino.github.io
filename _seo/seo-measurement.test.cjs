@@ -397,7 +397,7 @@ test("flexible pricing keeps both models neutral and preserves business and budg
   assert.match(contactSource, /Hourly and fixed-price engagements are both available/);
   assert.match(contactSource, /Paid Business Project Inquiries/);
   assert.match(contactSource, /businesses with a real project and a\s+budget/);
-  assert.match(contactSource, /New builds\s+start at \$5K/);
+  assert.match(contactSource, /The Working Prototype is a fixed\s+\$10,000; other work can be hourly or fixed price/);
   assert.match(contactSource, /<select\b[^>]*id="budget"[^>]*\brequired\b/);
   assert.match(contactSource, /<select\b[^>]*id="projectStage"[^>]*\brequired\b/);
   assert.match(contactSource, /action="https:\/\/formspree\.io\/f\/mqapjzyq"/);

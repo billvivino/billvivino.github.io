@@ -2,7 +2,7 @@
 layout: default
 title: "Fixed-Price Software Project Retainers"
 description: "Plan a prototype, MVP, full application, or larger software engagement with a proposal-defined fixed-price retainer and clear payment options."
-last_modified_at: 2026-09-29
+last_modified_at: 2026-11-05
 seo_cluster: product-strategy
 ---
 
@@ -93,8 +93,8 @@ seo_cluster: product-strategy
       checkout.
     </p>
     <p class="mb-0 text-muted">
-      These ranges help start the right conversation. They are not open-ended
-      promises or automatic checkout prices.
+      The <a href="/working-prototype.html">Working Prototype offer is $10,000 for 4–6 weeks</a>.
+      Larger engagements use the planning ranges below and a tailored proposal.
     </p>
   </section>
 
@@ -121,7 +121,7 @@ seo_cluster: product-strategy
                 <strong>Best fit:</strong> {{ tier.best_for }}
               </p>
               <a
-                href="/contact.html?budget={{ tier.id | url_encode }}&amp;engagement=fixed-price-retainer"
+                href="{% if tier.url %}{{ tier.url }}{% else %}/contact.html?budget={{ tier.id | url_encode }}&amp;engagement=fixed-price-retainer{% endif %}"
                 class="btn btn-outline-primary mt-auto"
                 data-seo-cta="retainer_to_project_contact"
                 data-seo-cluster="product-strategy"

@@ -2,7 +2,7 @@
 layout: default
 title: "Discuss Your Software or AI Project — Bill Vivino"
 description: "Discuss paid software or AI work for your business. Flexible hourly or fixed-price engagements, with scope and budget agreed before work begins."
-last_modified_at: 2026-11-01
+last_modified_at: 2026-11-05
 ---
 
 <section class="container py-5" style="max-width: 760px">
@@ -116,7 +116,7 @@ last_modified_at: 2026-11-01
         <option>Focused consulting sprint or technical review</option>
         <option>Existing application or codebase</option>
         <option>Existing prototype or MVP that needs completion</option>
-        <option>New prototype build — selected engagements only</option>
+        <option value="working-prototype">Working Prototype — $10,000 in 4–6 weeks</option>
         <option>Referral or agency partnership</option>
         <option>Other</option>
       </select>
@@ -148,9 +148,9 @@ last_modified_at: 2026-11-01
         {% endfor %}
       </select>
       <p id="budget-help" class="form-text mb-0">
-        Choose a planning range for the work, not a pricing model. New builds
-        start at $5K; focused consulting is scoped separately. The accepted
-        proposal confirms the rate or fixed fee and spending limit.
+        Choose the closest engagement budget. The Working Prototype is a fixed
+        $10,000; other work can be hourly or fixed price. The accepted proposal
+        confirms the rate or fixed fee and spending limit.
       </p>
     </div>
 
@@ -258,8 +258,9 @@ last_modified_at: 2026-11-01
       </p>
       <p class="mb-2">
         <strong>How much should I plan for?</strong><br />
-        New prototype builds generally fall in <strong>$5k–$10k</strong>, MVP
-        builds in <strong>$10k–$25k</strong>, and full-application work in
+        Our <a href="/working-prototype.html">Working Prototype</a> is
+        <strong>$10,000, delivered in 4–6 weeks</strong> from the agreed kickoff.
+        Larger MVP builds generally fall in <strong>$10k–$25k</strong>, and full-application work in
         <strong>$25k–$50k</strong>. Larger or multi-phase engagements may exceed
         $50k. Focused consulting or implementation is scoped to an agreed
         spending limit. These are engagement budgets, not a requirement to use
@@ -267,6 +268,7 @@ last_modified_at: 2026-11-01
       </p>
       <p class="mb-2">
         <strong>How are pricing and payments agreed?</strong><br />
+        The Working Prototype is a one-time $10,000 payment after scope and kickoff are confirmed.
         The accepted proposal confirms the scope, hourly rate or fixed fee,
         spending limit, and payment schedule before work begins. Hourly work
         follows the agreed time allowance and budget. Fixed-price retainers
@@ -336,6 +338,12 @@ last_modified_at: 2026-11-01
         params.get("engagement") === "fixed-price-retainer"
       ) {
         engagementSource.value = "fixed-price-retainer";
+      }
+      if (params.get("engagement") === "working-prototype") {
+        if (engagementSource) engagementSource.value = "working-prototype";
+        document.getElementById("projectStage").value = "working-prototype";
+        document.getElementById("pricingModel").value = "fixed-price";
+        document.getElementById("timeline").value = "4–6 weeks from the agreed kickoff";
       }
     }
 

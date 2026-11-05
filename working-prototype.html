@@ -1,0 +1,77 @@
+---
+layout: default
+title: "$10,000 Software Prototype in 4–6 Weeks — BVT"
+description: "Turn one core product workflow into a working software prototype for $10,000 in 4–6 weeks. Includes planning, development, testing, and source-code handoff."
+last_modified_at: 2026-11-05
+seo_cluster: "product-strategy"
+---
+
+{% assign prototype_payment_url = site.paypal.working_prototype_url | default: "" %}
+
+<section class="container py-4" aria-labelledby="prototype-heading">
+  <div class="row g-4 align-items-center">
+    <div class="col-lg-7">
+      <p class="text-uppercase fw-semibold text-primary small mb-2">BVT Working Prototype</p>
+      <h1 id="prototype-heading">Your Working Prototype in 4–6 Weeks</h1>
+      <p class="lead">Turn your product idea into software people can try. For a fixed $10,000, we build one essential workflow with usable screens, working application logic, and a clear handoff.</p>
+      <p class="mb-0">Work directly with an experienced developer. AI-assisted implementation, hands-on review, and testing help move your idea from a conversation to a working demonstration.</p>
+    </div>
+    <div class="col-lg-5">
+      <div class="card card-elevated border-success">
+        <div class="card-body p-4">
+          <p class="text-uppercase small fw-semibold text-success mb-1">One fixed project fee</p>
+          <p class="display-5 fw-bold mb-1">$10,000 <span class="fs-6 fw-normal">USD</span></p>
+          <p class="fw-semibold mb-3">4–6 weeks from the agreed kickoff</p>
+          <a href="/contact.html?budget=prototype&amp;engagement=working-prototype" class="btn btn-primary w-100" data-seo-cta="prototype_to_project_contact" data-seo-cluster="product-strategy">Discuss Your Prototype</a>
+          <p class="small text-muted mt-3 mb-2">Already agreed on scope and a kickoff date? Pay the fixed project fee below.</p>
+          {% if prototype_payment_url != "" %}
+          <a href="{{ prototype_payment_url | escape }}" class="btn btn-outline-primary w-100" data-seo-cta="prototype_to_paypal" data-seo-cluster="product-strategy">Pay $10,000 with PayPal</a>
+          {% else %}
+          <p class="small mb-0">We’ll provide the payment link once your project scope is confirmed.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container pb-4" aria-labelledby="prototype-includes-heading">
+  <h2 class="h3 mb-3" id="prototype-includes-heading">From a Clear Plan to Working Software</h2>
+  <div class="row g-3">
+    <div class="col-md-4">
+      <article class="card card-elevated h-100"><div class="card-body">
+        <h3 class="h5">Define the workflow</h3>
+        <p class="mb-0">Agree on the main user journey, essential screens, platform, integrations, and what the prototype needs to demonstrate.</p>
+      </div></article>
+    </div>
+    <div class="col-md-4">
+      <article class="card card-elevated h-100"><div class="card-body">
+        <h3 class="h5">Build and review</h3>
+        <p class="mb-0">Develop the agreed screens and application logic. Review progress together and check the core workflow with manual testing and automated smoke tests.</p>
+      </div></article>
+    </div>
+    <div class="col-md-4">
+      <article class="card card-elevated h-100"><div class="card-body">
+        <h3 class="h5">Demonstrate and hand over</h3>
+        <p class="mb-0">Receive a working demonstration, source code, setup notes, and recommended next steps. Gather feedback before investing in a broader release.</p>
+      </div></article>
+    </div>
+  </div>
+  <div class="mt-4">
+    <h2 class="h4">A Focused First Build</h2>
+    <p>Choose one core workflow on one platform: a web product, a native mobile app, or an AI-powered business tool. We confirm the scope and kickoff together; the 4–6 week delivery window assumes agreed access, assets, and timely feedback.</p>
+    <p class="mb-0">Additional platforms, production rollout, third-party fees, and ongoing support are scoped separately. For a broader release, explore <a href="/fixed-price-retainers.html">larger project engagements</a>. See our <a href="/portfolio.html">project work</a> and <a href="/videos/how-ai-tools-speed-accurate-development.html">development workflow</a>.</p>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "BVT Working Prototype",
+  "serviceType": "Software prototype development",
+  "description": "One core software workflow, delivered in 4–6 weeks from the agreed kickoff, including planning, development, testing, and source-code handoff.",
+  "provider": {"@type": "Organization", "name": "Bill Vivino Technology, LLC", "url": "https://billvivinotechnology.com/"},
+  "offers": {"@type": "Offer", "price": "10000", "priceCurrency": "USD", "url": "https://billvivinotechnology.com/working-prototype.html"}
+}
+</script>
