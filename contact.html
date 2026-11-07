@@ -1,8 +1,8 @@
 ---
 layout: default
 title: "Discuss Your Software or AI Project — Bill Vivino"
-description: "Discuss software or AI work for your business. Choose weekly delivery, a fixed-price build, or dedicated development time, with scope and budget agreed before work begins."
-last_modified_at: 2026-11-07
+description: "Discuss paid software or AI work for your business. Flexible hourly or fixed-price engagements, with scope and budget agreed before work begins."
+last_modified_at: 2026-11-05
 ---
 
 <section class="container py-5" style="max-width: 760px">
@@ -17,8 +17,10 @@ last_modified_at: 2026-11-07
       systems. Not sure where AI fits? Start with the problem you want to solve.
     </p>
     <p class="mb-0">
-      Choose a weekly Build Cycle, a fixed-price build, or Dedicated Dev Access.
-      We agree the scope, schedule, and budget before work begins.
+      Hourly and fixed-price engagements are both available. This is paid
+      engineering and consulting for businesses with a real project and a
+      budget. We agree the scope, pricing model, and spending limit before work
+      begins.
     </p>
   </div>
 
@@ -123,13 +125,12 @@ last_modified_at: 2026-11-07
     <div class="mb-3">
       <label for="pricingModel" class="form-label">Pricing Preference (optional)</label>
       <select id="pricingModel" name="pricing_model" class="form-select" aria-describedby="pricing-model-help">
-        <option value="" selected>Help me choose after reviewing the scope</option>
-        <option value="weekly">BVT Build Cycle — weekly asynchronous delivery</option>
-        <option value="fixed-price">Fixed-price build — agreed deliverables</option>
-        <option value="hourly">Dedicated Dev Access — reserved hours</option>
+        <option value="" selected>Open to either — agree after reviewing the scope</option>
+        <option value="hourly">Hourly</option>
+        <option value="fixed-price">Fixed price</option>
       </select>
       <p id="pricing-model-help" class="form-text mb-0">
-        We can agree the approach together.
+        Neither model is required to inquire. We can agree the approach together.
       </p>
     </div>
 
@@ -147,14 +148,15 @@ last_modified_at: 2026-11-07
         {% endfor %}
       </select>
       <p id="budget-help" class="form-text mb-0">
-        Choose the closest offer or project budget. We confirm what fits before
-        you commit. Weekly fees, fixed deliverables, and reserved hours purchase different services.
+        Choose the closest engagement budget. The Working Prototype is a fixed
+        $10,000; other work can be hourly or fixed price. The accepted proposal
+        confirms the rate or fixed fee and spending limit.
       </p>
     </div>
 
     <div class="mt-2 mb-3 small text-muted">
       Review the
-      <a href="/pricing.html">delivery and pricing options</a>
+      <a href="/pricing.html">hourly and fixed-price options</a>
       or sanity-check MVP and production-build scope and cost with the
       <a href="/custom-software-cost-reality-check.html">
         Custom Software Cost Reality Check
@@ -249,29 +251,36 @@ last_modified_at: 2026-11-07
     <div class="card-body">
       <p class="mb-2">
         <strong>Which pricing models are available?</strong><br />
-        <a href="/build-cycle.html">BVT Build Cycle</a> provides asynchronous delivery
-        at $2,500/week. <a href="/fixed-price-retainers.html">Fixed-price builds</a>
-        start at $2,500 for a defined deliverable. Dedicated Dev Access reserves
-        your booked hours exclusively at ${{ site.paypal.hourly_consulting_rate | default: 175 }}/hour.
+        Both hourly and fixed-price engagements are available. Senior hourly
+        consulting is ${{ site.paypal.hourly_consulting_rate | default: 175 }}/hour;
+        fixed-price work has a proposal-defined scope and fee. We agree the
+        model together based on the scope and your preferred budget controls.
       </p>
       <p class="mb-2">
         <strong>How much should I plan for?</strong><br />
-        A Proof of Concept is $2,500; a Workflow Build is $5,000. Our
-        <a href="/working-prototype.html">Working Prototype is $10,000 in 4–6 weeks</a>.
-        Production releases are custom scoped, typically starting at $25,000.
+        Our <a href="/working-prototype.html">Working Prototype</a> is
+        <strong>$10,000, delivered in 4–6 weeks</strong> from the agreed kickoff.
+        Larger MVP builds generally fall in <strong>$10k–$25k</strong>, and full-application work in
+        <strong>$25k–$50k</strong>. Larger or multi-phase engagements may exceed
+        $50k. Focused consulting or implementation is scoped to an agreed
+        spending limit. These are engagement budgets, not a requirement to use
+        a particular pricing model.
       </p>
       <p class="mb-2">
         <strong>How are pricing and payments agreed?</strong><br />
-        We confirm scope, availability, and payment terms before checkout.
-        Build Cycles are approved individually. Fixed-price installments, if agreed,
-        pay for a defined project and do not purchase the weekly delivery service.
+        The Working Prototype is a one-time $10,000 payment after scope and kickoff are confirmed.
+        The accepted proposal confirms the scope, hourly rate or fixed fee,
+        spending limit, and payment schedule before work begins. Hourly work
+        follows the agreed time allowance and budget. Fixed-price retainers
+        may use a prepaid total or a fixed weekly payment plan as specified in
+        the proposal.
       </p>
       <p class="mb-0">
-        <strong>What does each commitment cover?</strong><br />
-        A Build Cycle covers one week of non-exclusive delivery on an agreed
-        workstream. A fixed-price build covers the accepted deliverables.
-        Dedicated Dev Access covers reserved time, including live collaboration.
-        Changes to scope or budget require agreement.
+        <strong>Does either pricing model guarantee every outcome?</strong><br />
+        No. Fixed-price fees cover the proposal-defined delivery phase and
+        deliverables; hourly work covers the agreed engineering time. Unknown
+        conditions and work outside the agreed scope are reviewed and approved
+        separately for either model.
       </p>
     </div>
   </div>
@@ -324,19 +333,14 @@ last_modified_at: 2026-11-07
         updateBudgetHelp();
       }
 
-      const engagement = params.get("engagement");
-      const pricingModels = {
-        "fixed-price-retainer": "fixed-price",
-        "fixed-price-build": "fixed-price",
-        "working-prototype": "fixed-price",
-        "build-cycle": "weekly",
-        "dedicated-access": "hourly"
-      };
-      if (Object.prototype.hasOwnProperty.call(pricingModels, engagement)) {
-        if (engagementSource) engagementSource.value = engagement;
-        document.getElementById("pricingModel").value = pricingModels[engagement];
+      if (
+        engagementSource &&
+        params.get("engagement") === "fixed-price-retainer"
+      ) {
+        engagementSource.value = "fixed-price-retainer";
       }
-      if (engagement === "working-prototype") {
+      if (params.get("engagement") === "working-prototype") {
+        if (engagementSource) engagementSource.value = "working-prototype";
         document.getElementById("projectStage").value = "working-prototype";
         document.getElementById("pricingModel").value = "fixed-price";
         document.getElementById("timeline").value = "4–6 weeks from the agreed kickoff";
