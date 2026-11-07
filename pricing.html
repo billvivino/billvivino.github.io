@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Software Development Pricing — $2,000/Week Implementation"
-description: "Dedicated Implementation at $2,000/week, with engineering review and testing. Fixed-price builds and reserved One-on-One Engineering at $250/hour also available."
+title: "Software Development Packages — Implementation, Fixed Builds & One-on-One Engineering"
+description: "Compare Dedicated Implementation, fixed-price builds, Working Prototypes, and reserved One-on-One Engineering. Discuss your project to find the right package."
 last_modified_at: 2026-11-07
 ---
 
@@ -63,7 +63,7 @@ last_modified_at: 2026-11-07
         <div class="card-body">
           <p class="pricing-kind">Weekly development</p>
           <h2>{{ weekly.name }}</h2>
-          <p class="pricing-price">{{ weekly.range }}<span> / week</span></p>
+          <p class="pricing-price">{{ weekly.range }}</p>
           <p class="pricing-basis">Weekly subscription · Cancel future renewals anytime</p>
           <p class="pricing-summary">Move your next feature, fix, or integration forward. AI-assisted implementation, personally reviewed and tested by Bill.</p>
           <ul class="pricing-includes">
@@ -72,8 +72,8 @@ last_modified_at: 2026-11-07
             <li>Written updates and a weekly walkthrough</li>
             <li>No routine status calls or hourly billing</li>
           </ul>
-          <a href="{{ site.paypal.weekly_implementation_url }}" class="btn btn-primary mt-auto" data-seo-cta="pricing_to_weekly_paypal" data-seo-cluster="software-consulting" aria-describedby="weekly-billing-note">Subscribe · $2,000/week</a>
-          <p class="pricing-checkout-note" id="weekly-billing-note">Billed at checkout, then weekly until canceled.<br>Confirm your start date before payment.</p>
+          <a href="/contact.html?budget=weekly-implementation&amp;engagement=weekly-implementation#contactForm" class="btn btn-primary mt-auto" data-seo-cta="pricing_to_weekly_inquiry" data-seo-cluster="software-consulting" aria-describedby="weekly-billing-note">Discuss Your Implementation</a>
+          <p class="pricing-checkout-note" id="weekly-billing-note">Price and billing schedule agreed after inquiry.<br>Confirm your start date before payment.</p>
           <a href="#weekly-terms" class="pricing-details">Weekly delivery &amp; terms</a>
         </div>
       </article>
@@ -102,15 +102,15 @@ last_modified_at: 2026-11-07
           <p class="pricing-kind">Bring a product to life</p>
           <h2>{{ prototype.name }}</h2>
           <p class="pricing-price">{{ prototype.range }}</p>
-          <p class="pricing-basis">Fixed scope · 4–6 weeks from kickoff</p>
+          <p class="pricing-basis">Fixed scope · From the agreed kickoff</p>
           <p class="pricing-summary">Turn one essential product journey into working software you can demonstrate, test with users, and build on.</p>
           <ul class="pricing-includes">
             <li>Usable screens and application logic</li>
             <li>Manual testing and automated smoke tests</li>
             <li>Demonstration and source-code handoff</li>
           </ul>
-          <a href="{{ site.paypal.working_prototype_url }}" class="btn btn-outline-primary mt-auto" data-seo-cta="pricing_to_prototype_paypal" data-seo-cluster="product-strategy">Pay $10,000</a>
-          <p class="pricing-checkout-note">One-time payment · Agree scope first.</p>
+          <a href="/contact.html?budget=prototype&amp;engagement=working-prototype#contactForm" class="btn btn-outline-primary mt-auto" data-seo-cta="pricing_to_prototype_inquiry" data-seo-cluster="product-strategy">Discuss Your Prototype</a>
+          <p class="pricing-checkout-note">Scope, price, and kickoff agreed after inquiry.</p>
           <a href="/working-prototype.html" class="pricing-details">What's included</a>
         </div>
       </article>
@@ -125,8 +125,8 @@ last_modified_at: 2026-11-07
         <p>Reserve Bill Vivino for hands-on development, architecture, and collaboration with your team. Your project receives his full, undivided attention during reserved engagement hours. Recurring weekly capacity and longer engagements available; on-site work by arrangement.</p>
       </div>
       <div class="premium-booking">
-        <p class="pricing-price">${{ premium.amount }}<span> / hour</span></p>
-        <a href="{{ site.paypal.one_on_one_engineering_url }}" class="btn btn-outline-primary" data-seo-cta="pricing_to_one_on_one_paypal" data-seo-cluster="software-consulting">Reserve Engineering Time</a>
+        <p class="pricing-price">{{ premium.range }}</p>
+        <a href="/contact.html?budget=consulting&amp;engagement=dedicated-access#contactForm" class="btn btn-outline-primary" data-seo-cta="pricing_to_one_on_one_inquiry" data-seo-cluster="software-consulting">Discuss an Engineering Engagement</a>
         <p class="pricing-checkout-note">Confirm availability before payment.</p>
       </div>
     </div>
@@ -136,6 +136,6 @@ last_modified_at: 2026-11-07
     <p>Unsure about an existing codebase? Start with the <a href="/app-rescue-assessment.html">$1,000 App Rescue Assessment</a>.</p>
     <a href="/contact.html?budget=larger-engagement">Discuss a Larger Engagement →</a>
   </div>
-  <p class="pricing-terms" id="weekly-terms"><strong>Weekly delivery:</strong> Agree priorities and a start date before subscribing. Work progresses through implementation, review, testing, and a weekly recorded walkthrough; larger items continue across weeks. Dedicated Implementation is a non-exclusive service: BVT may serve other clients, and the fee does not reserve a fixed number of labor hours or guarantee completion of a whole project in one week. PayPal charges $2,000 at checkout and every week until canceled. Cancel before your next billing date to stop future charges. Hosting and third-party services are separate.</p>
-  <p class="pricing-terms">Prices in USD. Confirm scope, availability, and your start date before payment. One-on-One Engineering reserves Bill's attention exclusively during agreed engagement hours; checkout quantity equals hours. Recurring schedules and longer engagements are agreed in writing. Travel is quoted separately. Existing client agreements remain unchanged.</p>
+  <p class="pricing-terms" id="weekly-terms"><strong>Weekly delivery:</strong> Agree priorities and a start date before subscribing. Work progresses through implementation, review, testing, and a weekly recorded walkthrough; larger items continue across weeks. Dedicated Implementation is a non-exclusive service: BVT may serve other clients, and the fee does not reserve a fixed number of labor hours or guarantee completion of a whole project in one week. Subscription pricing and billing frequency are agreed in writing before a private payment link is sent. Cancel before your next billing date to stop future charges. Hosting and third-party services are separate.</p>
+  <p class="pricing-terms">Prices in USD. Confirm scope, availability, and your start date before payment. One-on-One Engineering reserves Bill's attention exclusively during agreed engagement hours; rates and reserved hours are agreed before payment. Recurring schedules and longer engagements are agreed in writing. Travel is quoted separately. Existing client agreements remain unchanged.</p>
 </section>
