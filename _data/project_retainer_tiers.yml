@@ -1,26 +1,71 @@
+- id: build-cycle
+  name: BVT Build Cycle
+  range: "$2,500"
+  amount: 2500
+  form_value: "$2,500 per week — BVT Build Cycle"
+  description: "One five-business-day cycle of asynchronous implementation, review, and testing on an agreed workstream. A non-exclusive delivery service, with no hourly billing."
+  fixed_price: false
+
+- id: proof-of-concept
+  name: Proof of Concept
+  range: "$2,500"
+  form_value: "$2,500 — Proof of Concept"
+  description: "Test one technical idea before committing to a larger build."
+  best_for: "Check whether an AI task, integration, or product interaction can work with representative data."
+  deliverables:
+    - "One runnable technical demonstration"
+    - "Agreed test cases and findings"
+    - "Source code and a handoff"
+  boundary: "For evaluation using test data; customer-facing UI and production rollout are separate."
+  cta_label: "Discuss a Proof of Concept"
+  fixed_price: true
+  package: true
+
+- id: workflow-build
+  name: Workflow Build
+  range: "$5,000"
+  form_value: "$5,000 — Workflow Build"
+  description: "Automate one bounded process in existing software or a simple internal tool."
+  best_for: "Add a focused automation, internal tool, or feature to an existing system."
+  deliverables:
+    - "One workflow and up to one integration"
+    - "A simple interface where needed"
+    - "Testing, source code, and setup notes"
+  boundary: "Existing system or simple standalone tool; broader product work and migrations are separate."
+  cta_label: "Discuss a Workflow Build"
+  fixed_price: true
+  package: true
+
 - id: prototype
   name: Working Prototype
   range: "$10,000"
   form_value: "$10,000 — Working Prototype (4–6 weeks)"
   description: "A fixed-price working prototype in 4–6 weeks from the agreed kickoff, focused on one essential workflow."
+  summary: "Build one product journey people can try, in 4–6 weeks from the agreed kickoff."
   best_for: "Founders and teams ready to test a product idea with working software, a demonstration, and source-code handoff."
   cta_label: "View the Prototype Offer"
   url: "/working-prototype.html"
   fixed_price: true
+  package: true
+  deliverables:
+    - "One platform, usable screens, and application logic"
+    - "Manual testing and smoke tests"
+    - "Demonstration and source-code handoff"
+  boundary: "A working prototype for feedback; broader production rollout is separate."
 
 - id: mvp
-  name: MVP
+  name: Expanded Prototype or MVP
   range: "$10k–$25k"
-  form_value: "$10k–$25k — MVP"
+  form_value: "$10k–$25k — Expanded prototype or MVP (custom scope)"
   description: "A usable first release centered on the essential workflow and agreed integrations."
   best_for: "A new MVP or an existing prototype that needs focused work to become usable, testable, and ready for real users."
   cta_label: "Discuss an MVP Retainer"
   fixed_price: true
 
 - id: full-application
-  name: Full Application
+  name: Production Release
   range: "$25k–$50k"
-  form_value: "$25k–$50k — Full application"
+  form_value: "$25k–$50k — Production release (custom scope)"
   description: "A broader production application with multiple workflows, integrations, or operational requirements."
   best_for: "A defined application release with an agreed feature boundary, delivery plan, and technical architecture."
   cta_label: "Discuss a Full Application Retainer"
@@ -36,10 +81,10 @@
   fixed_price: true
 
 - id: consulting
-  name: Consulting Review or Implementation
-  range: "Scope to agree"
-  form_value: "Consulting sprint or review — budget to be scoped"
-  option_label: "Consulting review or implementation — scope and spending cap to agree"
-  description: "Focused senior technical help when the right scope and spending cap depend on the current system or decision."
+  name: Dedicated Dev Access
+  range: "$175/hour"
+  form_value: "Dedicated Dev Access — hours and budget to agree"
+  option_label: "Dedicated Dev Access — reserved hours at $175/hour"
+  description: "Exclusive attention during your booked hours: implementation, live collaboration, architecture, troubleshooting, and work alongside your team."
   best_for: "Architecture, implementation planning, code review, technical direction, or a focused consulting sprint."
   fixed_price: false
