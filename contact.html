@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Discuss Your Software or AI Project — Bill Vivino"
-description: "Discuss software or AI work for your business. Choose weekly delivery, a fixed-price build, or dedicated development time, with scope and budget agreed before work begins."
+description: "Discuss software or AI work for your business. Choose a fixed-price build or a reserved engineering engagement, with scope and budget agreed before work begins."
 last_modified_at: 2026-11-07
 ---
 
@@ -17,7 +17,7 @@ last_modified_at: 2026-11-07
       systems. Not sure where AI fits? Start with the problem you want to solve.
     </p>
     <p class="mb-0">
-      Choose a weekly Build Cycle, a fixed-price build, or Dedicated Dev Access.
+      Choose weekly Dedicated Implementation, a fixed-price build or One-on-One Engineering.
       We agree the scope, schedule, and budget before work begins.
     </p>
   </div>
@@ -114,7 +114,7 @@ last_modified_at: 2026-11-07
         <option>Focused consulting sprint or technical review</option>
         <option>Existing application or codebase</option>
         <option>Existing prototype or MVP that needs completion</option>
-        <option value="working-prototype">Working Prototype — $10,000 in 4–6 weeks</option>
+        <option value="working-prototype">Working Prototype — 4–6 weeks</option>
         <option>Referral or agency partnership</option>
         <option>Other</option>
       </select>
@@ -124,9 +124,10 @@ last_modified_at: 2026-11-07
       <label for="pricingModel" class="form-label">Pricing Preference (optional)</label>
       <select id="pricingModel" name="pricing_model" class="form-select" aria-describedby="pricing-model-help">
         <option value="" selected>Help me choose after reviewing the scope</option>
-        <option value="weekly">BVT Build Cycle — weekly asynchronous delivery</option>
+        <option value="weekly">Dedicated Implementation — quote after inquiry</option>
+
         <option value="fixed-price">Fixed-price build — agreed deliverables</option>
-        <option value="hourly">Dedicated Dev Access — reserved hours</option>
+        <option value="hourly">One-on-One Engineering — exclusive personal time</option>
       </select>
       <p id="pricing-model-help" class="form-text mb-0">
         We can agree the approach together.
@@ -148,7 +149,7 @@ last_modified_at: 2026-11-07
       </select>
       <p id="budget-help" class="form-text mb-0">
         Choose the closest offer or project budget. We confirm what fits before
-        you commit. Weekly fees, fixed deliverables, and reserved hours purchase different services.
+        you commit. Fixed deliverables and reserved hours purchase different services.
       </p>
     </div>
 
@@ -249,28 +250,30 @@ last_modified_at: 2026-11-07
     <div class="card-body">
       <p class="mb-2">
         <strong>Which pricing models are available?</strong><br />
-        <a href="/build-cycle.html">BVT Build Cycle</a> provides asynchronous delivery
-        at $2,500/week. <a href="/fixed-price-retainers.html">Fixed-price builds</a>
-        start at $2,500 for a defined deliverable. Dedicated Dev Access reserves
-        your booked hours exclusively at ${{ site.paypal.hourly_consulting_rate | default: 175 }}/hour.
+        <a href="/pricing.html#weekly-implementation">Dedicated Implementation</a> provides weekly development with pricing agreed after inquiry.
+        <a href="/fixed-price-retainers.html">Fixed-price builds</a>
+        are quoted after paid discovery. One-on-One Engineering reserves
+        Bill’s personal attention during reserved engagement hours at an agreed rate, with recurring weekly capacity or longer engagements by agreement.
       </p>
       <p class="mb-2">
         <strong>How much should I plan for?</strong><br />
-        A Proof of Concept is $2,500; a Workflow Build is $5,000. Our
-        <a href="/working-prototype.html">Working Prototype is $10,000 in 4–6 weeks</a>.
+        Dedicated Implementation is quoted after we discuss your workstream. Custom builds begin with a separately agreed discovery fee, followed by a fixed build quote. Our
+        <a href="/working-prototype.html">Working Prototype runs 4–6 weeks from kickoff, with scope and price agreed upfront</a>.
         Production releases are custom scoped, typically starting at $25,000.
       </p>
       <p class="mb-2">
         <strong>How are pricing and payments agreed?</strong><br />
         We confirm scope, availability, and payment terms before checkout.
-        Build Cycles are approved individually. Fixed-price installments, if agreed,
-        pay for a defined project and do not purchase the weekly delivery service.
+        Dedicated Implementation pricing and billing frequency are agreed in writing before a private payment link is sent. Cancel before the next billing date to stop future charges.
+        Fixed-price installments, if agreed,
+        pay for a defined project. Paid discovery does not commit you to the subsequent build.
       </p>
       <p class="mb-0">
         <strong>What does each commitment cover?</strong><br />
-        A Build Cycle covers one week of non-exclusive delivery on an agreed
-        workstream. A fixed-price build covers the accepted deliverables.
-        Dedicated Dev Access covers reserved time, including live collaboration.
+        Weekly Dedicated Implementation covers one active workstream, engineering review, testing, and progress updates; it does not reserve a fixed number of labor hours. See the <a href="/pricing.html#weekly-terms">weekly delivery terms</a>.
+
+        A fixed-price build covers the accepted deliverables.
+        One-on-One Engineering reserves exclusive, hands-on engagement hours, including live collaboration.
         Changes to scope or budget require agreement.
       </p>
     </div>
@@ -329,12 +332,17 @@ last_modified_at: 2026-11-07
         "fixed-price-retainer": "fixed-price",
         "fixed-price-build": "fixed-price",
         "working-prototype": "fixed-price",
-        "build-cycle": "weekly",
+        "app-rescue-assessment": "fixed-price",
+        "weekly-implementation": "weekly",
+
         "dedicated-access": "hourly"
       };
       if (Object.prototype.hasOwnProperty.call(pricingModels, engagement)) {
         if (engagementSource) engagementSource.value = engagement;
         document.getElementById("pricingModel").value = pricingModels[engagement];
+      }
+      if (engagement === "app-rescue-assessment") {
+        document.getElementById("projectStage").value = "Existing application or codebase";
       }
       if (engagement === "working-prototype") {
         document.getElementById("projectStage").value = "working-prototype";

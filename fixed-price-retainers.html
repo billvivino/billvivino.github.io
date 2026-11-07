@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Fixed-Price Software Builds — $2,500 Proof of Concept to $10,000 Prototype"
-description: "Choose a $2,500 proof of concept, $5,000 workflow build, or $10,000 working prototype. Defined scope, testing, and source-code handoff; larger releases quoted separately."
+title: "Fixed-Price Software Builds — Discovery, Scope & Delivery"
+description: "Scope a fixed-price software build through paid discovery, or choose a Working Prototype in 4–6 weeks. Clear deliverables, testing, and source-code handoff."
 last_modified_at: 2026-11-07
 seo_cluster: product-strategy
 ---
@@ -25,7 +25,7 @@ seo_cluster: product-strategy
 
   <section class="row g-3" aria-label="Fixed-price packages">
     {% for tier in packages %}
-    <div class="col-lg-4">
+    <div class="col-lg-6">
       <article class="card card-elevated h-100" id="{{ tier.id }}">
         <div class="card-body d-flex flex-column">
           <h2 class="h4 mb-2">{{ tier.name }}</h2>
@@ -35,8 +35,14 @@ seo_cluster: product-strategy
             {% for deliverable in tier.deliverables %}<li>{{ deliverable }}</li>{% endfor %}
           </ul>
           <p class="package-boundary">{{ tier.boundary }}</p>
-          <a href="{% if tier.url %}{{ tier.url }}{% else %}/contact.html?budget={{ tier.id | url_encode }}&amp;engagement=fixed-price-build{% endif %}"
-            class="btn btn-outline-primary mt-auto" data-seo-cta="fixed_build_to_next_step" data-seo-cluster="product-strategy">{{ tier.cta_label }}</a>
+          {% if tier.id == 'prototype' %}
+          <a href="/contact.html?budget=prototype&amp;engagement=working-prototype#contactForm" class="btn btn-outline-primary mt-auto" data-seo-cta="fixed_build_to_prototype_inquiry" data-seo-cluster="product-strategy">Discuss Your Prototype</a>
+          <p class="small text-muted text-center mt-2 mb-0">Scope, price, and kickoff agreed after inquiry.</p>
+          {% else %}
+          <a href="/contact.html?budget={{ tier.id }}&amp;engagement=fixed-price-build" class="btn btn-outline-primary mt-auto" data-seo-cta="fixed_build_to_discovery" data-seo-cluster="product-strategy">{{ tier.cta_label }}</a>
+          <p class="small text-muted text-center mt-2 mb-0">Discovery fee agreed before work begins.</p>
+          {% endif %}
+          {% if tier.url %}<a href="{{ tier.url }}" class="small text-center mt-2">View full offer details</a>{% endif %}
         </div>
       </article>
     </div>
@@ -51,17 +57,17 @@ seo_cluster: product-strategy
     </div>
     <div class="col-md-6" id="mvp">
       <h2 class="h5">Need room to evolve?</h2>
-      <p class="mb-1">An expanded prototype or MVP can be scoped between packages. For changing priorities in an existing product, use a <a href="/build-cycle.html">$2,500 BVT Build Cycle</a> and approve one week at a time.</p>
+      <p class="mb-1">An expanded prototype or MVP can be custom scoped. For changing priorities, use <a href="/pricing.html#weekly-implementation">Dedicated Implementation with pricing agreed after inquiry</a>.</p>
       <a href="/contact.html?budget=mvp&amp;engagement=fixed-price-build">Discuss a Custom Scope</a>
     </div>
   </section>
 
   <section class="package-next mt-3" aria-labelledby="fixed-scope-heading" id="larger-engagement">
     <h2 id="fixed-scope-heading" class="h5">Agree the finish line before the work starts</h2>
-    <p class="mb-2">The written proposal names the inputs, deliverables, acceptance checks, schedule, and payment terms. Changes are approved separately. All packages include source-code handoff; hosting and third-party charges are separate.</p>
+    <p class="mb-2">For a custom build, paid discovery defines the inputs, deliverables, acceptance checks, and delivery plan. You then receive a fixed build quote and decide whether to proceed. Builds include testing and source-code handoff; scope changes and third-party charges are separate.</p>
     <details>
       <summary class="fw-semibold">Payment and scheduling</summary>
-      <p class="mt-2 mb-2">The Working Prototype is $10,000 for 4–6 weeks from the agreed kickoff. Proof of Concept and Workflow Build schedules are confirmed after scoping. Your proposal sets the prepaid total or an agreed installment plan; installments fund that fixed project and are separate from the weekly Build Cycle service.</p>
+      <p class="mt-2 mb-2">We agree the discovery fee and scope before discovery starts, then quote the build separately. The Working Prototype keeps its defined scope and 4–6 week schedule from kickoff, with no additional discovery fee. Each build proposal sets its price and payment schedule.</p>
       <p class="mb-0">Availability, access, feedback requirements, cancellation, and any treatment of unused prepaid funds are agreed before payment.</p>
     </details>
     <p class="small text-muted mt-2 mb-0">Prices in USD. Not sure what your existing system needs? Start with the <a href="/app-rescue-assessment.html">$1,000 App Rescue Assessment</a>.</p>

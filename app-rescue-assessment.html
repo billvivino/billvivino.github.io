@@ -1,11 +1,9 @@
 ---
 layout: default
 title: "App Rescue and Technical Assessment"
-description: "Purchase a fixed-fee senior technical assessment for an existing application or software codebase that is stalled, unstable, inherited, blocked, or difficult to move forward."
+description: "Discuss a fixed-fee senior technical assessment for an existing application or software codebase that is stalled, unstable, inherited, blocked, or difficult to move forward."
 seo_cluster: "software-rescue"
 ---
-
-{% assign assessment_payment_url = site.paypal.app_rescue_assessment_url | default: "" %}
 
 <style>
   .assessment-shell {
@@ -218,7 +216,7 @@ seo_cluster: "software-rescue"
         <div class="border rounded p-4">
           <p class="assessment-label mb-2">One Fixed Price</p>
           <p class="assessment-price mb-2">$1,000</p>
-          <p class="text-muted">Paid once through PayPal before intake.</p>
+          <p class="text-muted">Confirm fit and scheduling before payment.</p>
 
           <div class="purchase-confirmations p-3 my-4">
             <div class="form-check mb-3">
@@ -252,31 +250,25 @@ seo_cluster: "software-rescue"
                 id="confirmAssessmentScope"
               />
               <label class="form-check-label" for="confirmAssessmentScope">
-                I understand that this purchase covers assessment and findings,
+                I understand that this service covers assessment and findings,
                 not a guarantee that repairs will be completed within four hours.
               </label>
             </div>
           </div>
 
-          {% if assessment_payment_url != "" %}
           <button
             type="button"
             class="btn btn-primary btn-lg w-100"
-            id="revealAssessmentCheckout"
+            id="openAssessmentInquiry"
             disabled
           >
-            Continue to Secure PayPal Checkout
+            Discuss Your Assessment
           </button>
-          {% else %}
-          <button type="button" class="btn btn-secondary btn-lg w-100" disabled>
-            PayPal Checkout Setup Pending
-          </button>
-          {% endif %}
 
           <p class="small text-muted mt-3 mb-0">
-            After successful payment, you will receive the secure intake and
-            scheduling instructions. Do not send repository credentials through
-            this page.
+            Send your project inquiry first. We’ll confirm fit and scheduling,
+            then email your payment link and secure intake instructions.
+            Do not send repository credentials through this page.
           </p>
         </div>
       </div>
@@ -290,7 +282,7 @@ seo_cluster: "software-rescue"
     <div class="row g-4">
       <div class="col-md-4">
         <h3 class="h5"><span class="assessment-step-number">1</span>Secure intake</h3>
-        <p>After payment, I confirm fit, scheduling, the current blocker, and the safest way to provide authorized access.</p>
+        <p>We first confirm fit, scheduling, and the current blocker, then arrange payment and the safest way to provide authorized access.</p>
       </div>
       <div class="col-md-4">
         <h3 class="h5"><span class="assessment-step-number">2</span>Focused review</h3>
@@ -314,8 +306,7 @@ seo_cluster: "software-rescue"
     const confirmations = Array.from(
       document.querySelectorAll(".assessment-confirmation")
     );
-    const revealButton = document.getElementById("revealAssessmentCheckout");
-    const assessmentPaymentUrl = {{ assessment_payment_url | jsonify }};
+    const inquiryButton = document.getElementById("openAssessmentInquiry");
 
     function confirmationsComplete() {
       return confirmations.length === 3 && confirmations.every(function (input) {
@@ -323,57 +314,19 @@ seo_cluster: "software-rescue"
       });
     }
 
-    function syncCheckoutButton() {
-      if (revealButton) revealButton.disabled = !confirmationsComplete();
+    function syncInquiryButton() {
+      inquiryButton.disabled = !confirmationsComplete();
     }
 
     confirmations.forEach(function (input) {
-      input.addEventListener("change", syncCheckoutButton);
+      input.addEventListener("change", syncInquiryButton);
     });
-    syncCheckoutButton();
+    syncInquiryButton();
 
-    if (revealButton && assessmentPaymentUrl) {
-      revealButton.addEventListener("click", function () {
-        if (!confirmationsComplete()) return;
-
-        revealButton.disabled = true;
-        revealButton.textContent = "Opening Secure PayPal Checkout…";
-
-        const checkoutReference =
-          "AR-" +
-          Date.now().toString(36).toUpperCase() +
-          "-" +
-          Math.random().toString(36).slice(2, 10).toUpperCase();
-
-        try {
-          localStorage.setItem("app_rescue_checkout_reference", checkoutReference);
-          localStorage.setItem("app_rescue_checkout_started_at", Date.now().toString());
-        } catch (_error) {
-          // Checkout still works when storage is unavailable.
-        }
-
-        let checkoutOpened = false;
-        function openPayPalCheckout() {
-          if (checkoutOpened) return;
-          checkoutOpened = true;
-          window.location.assign(assessmentPaymentUrl);
-        }
-
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          event: "app_rescue_assessment_checkout_start",
-          product_id: "app_rescue_assessment",
-          product_name: "Four-Hour App Rescue Assessment",
-          checkout_reference: checkoutReference,
-          value: 1000,
-          currency: "USD",
-          eventCallback: openPayPalCheckout,
-          eventTimeout: 800,
-        });
-
-        window.setTimeout(openPayPalCheckout, 900);
-      });
-    }
+    inquiryButton.addEventListener("click", function () {
+      if (!confirmationsComplete()) return;
+      window.location.assign("/contact.html?engagement=app-rescue-assessment#contactForm");
+    });
   });
 </script>
 

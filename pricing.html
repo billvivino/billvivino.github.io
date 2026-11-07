@@ -1,197 +1,141 @@
 ---
 layout: default
-title: "Software Development Pricing — Weekly Delivery, Fixed Builds & Dedicated Access"
-description: "Choose BVT Build Cycle at $2,500/week, fixed-price software builds from $2,500, or Dedicated Dev Access at $175/hour. Clear scope, senior review, and testing."
+title: "Software Development Packages — Implementation, Fixed Builds & One-on-One Engineering"
+description: "Compare Dedicated Implementation, fixed-price builds, Working Prototypes, and reserved One-on-One Engineering. Discuss your project to find the right package."
 last_modified_at: 2026-11-07
 ---
 
-{% assign hourly_payment_url = site.paypal.hourly_consulting_url | default: "" %}
-{% assign hourly_rate = site.paypal.hourly_consulting_rate | default: 175 %}
-{% assign cycle = site.data.project_retainer_tiers | where: "id", "build-cycle" | first %}
+{% assign weekly = site.data.project_retainer_tiers | where: "id", "weekly-implementation" | first %}
 {% assign proof = site.data.project_retainer_tiers | where: "id", "proof-of-concept" | first %}
+{% assign prototype = site.data.project_retainer_tiers | where: "id", "prototype" | first %}
+{% assign premium = site.data.project_retainer_tiers | where: "id", "consulting" | first %}
 
 <style>
-  .pricing-page .card-body { padding: 0.75rem !important; }
-
-  @media (min-width: 992px) {
-    .pricing-intro {
-      display: grid;
-      grid-template-columns: 5fr 7fr;
-      gap: 1.5rem;
-      align-items: center;
-      text-align: left;
-    }
-    .pricing-intro h1 { margin-bottom: 0; }
+  .pricing-page { --pricing-ink: #102b43; max-width: 1280px; }
+  .pricing-page .pricing-intro { max-width: 830px; margin: 0 auto 1.25rem; text-align: center; }
+  .pricing-page .pricing-intro h1 { color: var(--pricing-ink); font-size: clamp(1.7rem, 3vw, 2.25rem); margin-bottom: .5rem; }
+  .pricing-page .pricing-intro p { margin-bottom: 0; }
+  .pricing-page .pricing-card { border-radius: 14px; border: 1px solid #d9e2e9; }
+  .pricing-page .pricing-card.is-featured { border: 2px solid #0d6efd; }
+  .pricing-page .pricing-card .card-body { padding: 1.1rem; display: flex; flex-direction: column; }
+  .pricing-page .pricing-kind { color: #536575; font-size: .75rem; font-weight: 700; letter-spacing: .075em; text-transform: uppercase; margin-bottom: .45rem; }
+  .pricing-page .pricing-card h2 { font-size: 1.3rem; color: var(--pricing-ink); margin-bottom: .7rem; }
+  .pricing-page .pricing-price { font-size: 2.1rem; font-weight: 750; line-height: 1.1; color: var(--pricing-ink); margin: 0 0 .35rem; }
+  .pricing-page .pricing-price span { font-size: 1rem; font-weight: 400; }
+  .pricing-page .pricing-basis { font-size: .85rem; color: #536575; margin-bottom: .85rem; }
+  .pricing-page .pricing-summary { font-size: .96rem; line-height: 1.45; margin-bottom: .65rem; }
+  .pricing-page .pricing-includes { font-size: .92rem; line-height: 1.45; padding-left: 1.1rem; margin-bottom: 1rem; }
+  .pricing-page .pricing-includes li + li { margin-top: .25rem; }
+  .pricing-page .btn { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+  .pricing-page .pricing-premium { border: 1px solid #cbd6df; border-radius: 14px; margin-top: 1rem; background: #f4f7fa; }
+  .pricing-page .pricing-premium .card-body { padding: 1rem 1.1rem; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .75rem 1.5rem; align-items: center; }
+  .pricing-page .pricing-premium h2 { font-size: 1.25rem; margin-bottom: .35rem; color: var(--pricing-ink); }
+  .pricing-page .pricing-premium p { margin: 0; font-size: .92rem; }
+  .pricing-page .pricing-premium .premium-booking { text-align: right; }
+  .pricing-page .premium-booking .pricing-price { font-size: 1.65rem; margin-bottom: .5rem; }
+  .pricing-page .pricing-next { display: flex; gap: 1rem; justify-content: space-between; align-items: baseline; margin-top: 1rem; font-size: .9rem; }
+  .pricing-page .pricing-next p { margin: 0; }
+  .pricing-page .pricing-terms { font-size: .8rem; color: #536575; margin: .6rem 0 0; }
+  .pricing-page .pricing-checkout-note { font-size: .8rem; color: #536575; margin: .45rem 0 0; text-align: center; }
+  .pricing-page .pricing-details { font-size: .85rem; margin-top: .35rem; text-align: center; }
+  @media (max-width: 991.98px) {
+    .pricing-page .pricing-card { height: auto !important; }
+    .pricing-page .pricing-card .btn { margin-top: 0 !important; }
   }
-
-  .pricing-page .pricing-price {
-    font-size: 2rem;
-    line-height: 1.2;
-    margin: 0;
-    white-space: nowrap;
-  }
-
-  .pricing-card-heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .pricing-card-heading h2 {
-    font-size: 1.25rem;
-    margin: 0;
-  }
-
-  .pricing-page .pricing-larger-build {
-    margin-top: 1rem;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 0.25rem 1.5rem;
-    align-items: center;
-  }
-
-  .pricing-larger-build h2 { font-size: 1.125rem; margin: 0; }
-  .pricing-larger-build p { margin: 0; }
-  .pricing-larger-build > a { grid-column: 2; grid-row: 1 / 3; }
-
   @media (max-width: 767.98px) {
-    .pricing-card-heading { flex-wrap: wrap; gap: 0.5rem; }
-    .pricing-page .pricing-larger-build { display: block; }
-    .pricing-larger-build p { margin: 0.5rem 0; }
-  }
-
-  .pricing-page .card .btn {
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    .pricing-page .pricing-premium .card-body { grid-template-columns: 1fr; }
+    .pricing-page .pricing-premium .premium-booking { text-align: left; }
+    .pricing-page .pricing-next { display: block; }
+    .pricing-page .pricing-next > a { display: inline-block; margin-top: .6rem; }
   }
 </style>
 
-<section class="container pricing-page py-3">
-  <div class="pricing-intro mb-3">
-    <div>
-      <p class="text-uppercase fw-semibold text-primary small mb-1">
-        Clear Starting Points
-      </p>
-      <h1 class="h2">Three Ways to Build with BVT</h1>
-    </div>
-    <p class="mx-auto mb-0">
-      Choose ongoing delivery, a defined result, or time reserved for your team.
-      Each includes experienced engineering, hands-on review, and testing.
-    </p>
-  </div>
+<section class="container pricing-page py-3" aria-labelledby="pricing-heading">
+  <header class="pricing-intro">
+    <p class="pricing-kind mb-1">AI-assisted development. Senior engineering judgment.</p>
+    <h1 id="pricing-heading">Software development, on your terms.</h1>
+    <p>Keep your roadmap moving or bring a defined idea to life. Every option includes engineering review, testing, and work you can inspect.</p>
+  </header>
 
-  <div class="row g-4 justify-content-center align-items-stretch">
-    <div class="col-md-6 col-lg-4">
-      <div class="card h-100 border-primary card-elevated">
-        <div class="card-body d-flex flex-column p-3">
-          <p class="text-uppercase fw-semibold text-primary small mb-1">
-            Weekly Delivery
-          </p>
-          <div class="pricing-card-heading">
-            <h2 class="card-title">BVT Build Cycle</h2>
-            <p class="pricing-price fw-bold text-primary">{{ cycle.range }}<span class="fs-6">/wk</span></p>
-          </div>
-          <p class="card-text mb-2">
-            Keep a product moving with one agreed workstream and a clear
-            five-business-day delivery cycle.
-          </p>
-          <ul class="text-start mb-2">
+  <div class="row g-3 align-items-stretch" aria-label="Implementation offers">
+    <div class="col-lg-4">
+      <article class="card card-elevated pricing-card is-featured h-100" id="weekly-implementation">
+        <div class="card-body">
+          <p class="pricing-kind">Weekly development</p>
+          <h2>{{ weekly.name }}</h2>
+          <p class="pricing-price">{{ weekly.range }}</p>
+          <p class="pricing-basis">Weekly subscription · Cancel future renewals anytime</p>
+          <p class="pricing-summary">Move your next feature, fix, or integration forward. AI-assisted implementation, personally reviewed and tested by Bill.</p>
+          <ul class="pricing-includes">
+            <li>One active workstream, with agreed priorities</li>
             <li>Implementation, review, and testing</li>
-            <li>Written updates and a demo or handoff</li>
-            <li>No routine calls or hourly billing</li>
-            <li>Non-exclusive service; book one cycle at a time</li>
+            <li>Written updates and a weekly walkthrough</li>
+            <li>No routine status calls or hourly billing</li>
           </ul>
-          <a
-            href="/build-cycle.html"
-            class="btn btn-primary mt-auto"
-            data-seo-cta="pricing_to_build_cycle"
-            data-seo-cluster="software-consulting"
-          >
-            Explore Build Cycle
-          </a>
+          <a href="/contact.html?budget=weekly-implementation&amp;engagement=weekly-implementation#contactForm" class="btn btn-primary mt-auto" data-seo-cta="pricing_to_weekly_inquiry" data-seo-cluster="software-consulting" aria-describedby="weekly-billing-note">Discuss Your Implementation</a>
+          <p class="pricing-checkout-note" id="weekly-billing-note">Price and billing schedule agreed after inquiry.<br>Confirm your start date before payment.</p>
+          <a href="#weekly-terms" class="pricing-details">Weekly delivery &amp; terms</a>
         </div>
-      </div>
+      </article>
     </div>
 
-    <div class="col-md-6 col-lg-4">
-      <div class="card h-100 border-success card-elevated">
-        <div class="card-body d-flex flex-column p-3">
-          <p class="text-uppercase fw-semibold text-success small mb-1">
-            Defined Deliverables
-          </p>
-          <div class="pricing-card-heading">
-            <h2 class="card-title">Fixed-Price Builds</h2>
-            <p class="pricing-price fw-bold text-success"><span class="d-block small fs-6 fw-normal">from</span>{{ proof.range }}</p>
-          </div>
-          <p class="card-text mb-2">
-            Know what will be delivered and what it costs before work begins.
-            Start small or plan a complete product phase.
-          </p>
-          <ul class="text-start mb-2">
-            {% for tier in site.data.project_retainer_tiers %}{% if tier.package %}
-            <li>{{ tier.name }} — {{ tier.range }}</li>
-            {% endif %}{% endfor %}
-            <li>Larger releases scoped and quoted separately</li>
+    <div class="col-lg-4">
+      <article class="card card-elevated pricing-card h-100">
+        <div class="card-body">
+          <p class="pricing-kind">One defined project</p>
+          <h2>{{ proof.name }}</h2>
+          <p class="pricing-price">{{ proof.range }}</p>
+          <p class="pricing-basis">Paid discovery first · Build quoted separately</p>
+          <p class="pricing-summary">{{ proof.description }}</p>
+          <ul class="pricing-includes">
+            {% for item in proof.deliverables %}<li>{{ item }}</li>{% endfor %}
           </ul>
-          <a
-            href="/fixed-price-retainers.html"
-            class="btn btn-success mt-auto"
-            data-seo-cta="pricing_to_fixed_builds"
-            data-seo-cluster="product-strategy"
-          >
-            Compare Fixed-Price Builds
-          </a>
+          <a href="/contact.html?budget=proof-of-concept&amp;engagement=fixed-price-build" class="btn btn-outline-primary mt-auto" data-seo-cta="pricing_to_fixed_build_discovery" data-seo-cluster="product-strategy">{{ proof.cta_label }}</a>
+          <p class="pricing-checkout-note">Discovery fee agreed before work begins.</p>
+          <a href="/fixed-price-retainers.html#proof-of-concept" class="pricing-details">What's included</a>
         </div>
-      </div>
+      </article>
     </div>
-
-    <div class="col-md-6 col-lg-4">
-      <div class="card h-100 border-warning card-elevated">
-        <div class="card-body d-flex flex-column p-3">
-          <p class="text-uppercase fw-semibold text-muted small mb-1">
-            Reserved Senior Attention
-          </p>
-          <div class="pricing-card-heading">
-            <h2 class="card-title">Dedicated Dev Access</h2>
-            <p class="pricing-price fw-bold">${{ hourly_rate }}<span class="fs-5">/hr</span></p>
-          </div>
-          <p class="card-text mb-2">
-            Your project has our exclusive attention during booked hours,
-            for hands-on implementation or direct collaboration with your team.
-          </p>
-          <ul class="text-start mb-2">
-            <li>Implementation, architecture, and troubleshooting</li>
-            <li>1:1 sessions, pairing, and team meetings</li>
-            <li>Choose 1–40 reserved hours</li>
-            <li><a href="/contact.html?budget=consulting&amp;engagement=dedicated-access">Confirm the schedule</a> before purchasing</li>
+    <div class="col-lg-4">
+      <article class="card card-elevated pricing-card h-100">
+        <div class="card-body">
+          <p class="pricing-kind">Bring a product to life</p>
+          <h2>{{ prototype.name }}</h2>
+          <p class="pricing-price">{{ prototype.range }}</p>
+          <p class="pricing-basis">Fixed scope · From the agreed kickoff</p>
+          <p class="pricing-summary">Turn one essential product journey into working software you can demonstrate, test with users, and build on.</p>
+          <ul class="pricing-includes">
+            <li>Usable screens and application logic</li>
+            <li>Manual testing and automated smoke tests</li>
+            <li>Demonstration and source-code handoff</li>
           </ul>
-          <a
-            href="{{ hourly_payment_url }}"
-            class="btn btn-outline-primary mt-auto"
-            data-seo-cta="pricing_to_hourly_purchase"
-            data-seo-cluster="software-consulting"
-            data-paypal-product="hourly_consulting"
-          >
-            Purchase Hours
-          </a>
+          <a href="/contact.html?budget=prototype&amp;engagement=working-prototype#contactForm" class="btn btn-outline-primary mt-auto" data-seo-cta="pricing_to_prototype_inquiry" data-seo-cluster="product-strategy">Discuss Your Prototype</a>
+          <p class="pricing-checkout-note">Scope, price, and kickoff agreed after inquiry.</p>
+          <a href="/working-prototype.html" class="pricing-details">What's included</a>
         </div>
-      </div>
+      </article>
     </div>
   </div>
 
-  <div class="pricing-larger-build">
-    <h2 class="h4">Not sure where to start?</h2>
-    <p>
-      Share the result you need. For a stalled or unclear codebase,
-      start with the <a href="/app-rescue-assessment.html">$1,000 App Rescue Assessment</a>.
-    </p>
-    <a href="/contact.html" class="btn btn-outline-primary">
-      Discuss Your Project
-    </a>
+  <article class="card card-elevated pricing-premium" id="white-glove">
+    <div class="card-body">
+      <div>
+        <p class="pricing-kind mb-1">Reserved engineering engagements</p>
+        <h2>One-on-One Engineering</h2>
+        <p>Reserve Bill Vivino for hands-on development, architecture, and collaboration with your team. Your project receives his full, undivided attention during reserved engagement hours. Recurring weekly capacity and longer engagements available; on-site work by arrangement.</p>
+      </div>
+      <div class="premium-booking">
+        <p class="pricing-price">{{ premium.range }}</p>
+        <a href="/contact.html?budget=consulting&amp;engagement=dedicated-access#contactForm" class="btn btn-outline-primary" data-seo-cta="pricing_to_one_on_one_inquiry" data-seo-cluster="software-consulting">Discuss an Engineering Engagement</a>
+        <p class="pricing-checkout-note">Confirm availability before payment.</p>
+      </div>
+    </div>
+  </article>
+
+  <div class="pricing-next">
+    <p>Unsure about an existing codebase? Start with the <a href="/app-rescue-assessment.html">$1,000 App Rescue Assessment</a>.</p>
+    <a href="/contact.html?budget=larger-engagement">Discuss a Larger Engagement →</a>
   </div>
-  <p class="small text-muted mt-3 mb-0">Prices in USD. Scope and availability are confirmed before payment. Weekly delivery purchases a service cycle; Dedicated Dev Access reserves your booked time exclusively.</p>
+  <p class="pricing-terms" id="weekly-terms"><strong>Weekly delivery:</strong> Agree priorities and a start date before subscribing. Work progresses through implementation, review, testing, and a weekly recorded walkthrough; larger items continue across weeks. Dedicated Implementation is a non-exclusive service: BVT may serve other clients, and the fee does not reserve a fixed number of labor hours or guarantee completion of a whole project in one week. Subscription pricing and billing frequency are agreed in writing before a private payment link is sent. Cancel before your next billing date to stop future charges. Hosting and third-party services are separate.</p>
+  <p class="pricing-terms">Prices in USD. Confirm scope, availability, and your start date before payment. One-on-One Engineering reserves Bill's attention exclusively during agreed engagement hours; rates and reserved hours are agreed before payment. Recurring schedules and longer engagements are agreed in writing. Travel is quoted separately. Existing client agreements remain unchanged.</p>
 </section>
