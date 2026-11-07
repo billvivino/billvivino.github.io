@@ -1,38 +1,23 @@
-- id: build-cycle
-  name: BVT Build Cycle
-  range: "$2,500"
-  amount: 2500
-  form_value: "$2,500 per week — BVT Build Cycle"
-  description: "One five-business-day cycle of asynchronous implementation, review, and testing on an agreed workstream. A non-exclusive delivery service, with no hourly billing."
+- id: weekly-implementation
+  name: Dedicated Implementation
+  range: "$2,000"
+  amount: 2000
+  form_value: "$2,000 per week — Dedicated Implementation"
+  description: "Weekly software development on one active workstream, with personal engineering review, testing, and written progress updates."
   fixed_price: false
 
 - id: proof-of-concept
-  name: Proof of Concept
-  range: "$2,500"
-  form_value: "$2,500 — Proof of Concept"
-  description: "Test one technical idea before committing to a larger build."
-  best_for: "Check whether an AI task, integration, or product interaction can work with representative data."
+  name: Fixed-Price Build
+  range: "Custom quote"
+  form_value: "Fixed-Price Build — quote after paid discovery"
+  description: "Start with paid discovery, then receive a fixed quote for a clearly defined build."
+  best_for: "A feature, integration, automation, or application that needs a clear scope before a build commitment."
   deliverables:
-    - "One runnable technical demonstration"
-    - "Agreed test cases and findings"
-    - "Source code and a handoff"
-  boundary: "For evaluation using test data; customer-facing UI and production rollout are separate."
-  cta_label: "Discuss a Proof of Concept"
-  fixed_price: true
-  package: true
-
-- id: workflow-build
-  name: Workflow Build
-  range: "$5,000"
-  form_value: "$5,000 — Workflow Build"
-  description: "Automate one bounded process in existing software or a simple internal tool."
-  best_for: "Add a focused automation, internal tool, or feature to an existing system."
-  deliverables:
-    - "One workflow and up to one integration"
-    - "A simple interface where needed"
-    - "Testing, source code, and setup notes"
-  boundary: "Existing system or simple standalone tool; broader product work and migrations are separate."
-  cta_label: "Discuss a Workflow Build"
+    - "Scope, technical risks, and acceptance checks"
+    - "Written build quote and delivery plan"
+    - "Separate approval before the build begins"
+  boundary: "Discovery has its own agreed fee. You decide whether to proceed with the separately quoted build."
+  cta_label: "Discuss Paid Discovery"
   fixed_price: true
   package: true
 
@@ -81,10 +66,11 @@
   fixed_price: true
 
 - id: consulting
-  name: Dedicated Dev Access
-  range: "$175/hour"
-  form_value: "Dedicated Dev Access — hours and budget to agree"
-  option_label: "Dedicated Dev Access — reserved hours at $175/hour"
-  description: "Exclusive attention during your booked hours: implementation, live collaboration, architecture, troubleshooting, and work alongside your team."
-  best_for: "Architecture, implementation planning, code review, technical direction, or a focused consulting sprint."
+  name: One-on-One Engineering
+  range: "$250/hour"
+  amount: 250
+  form_value: "One-on-One Engineering — reserved engagement at $250/hour"
+  option_label: "One-on-One Engineering — exclusive time at $250/hour"
+  description: "Reserve Bill Vivino for hands-on engineering and collaboration. Your project receives his full, undivided attention during reserved engagement hours. Recurring weekly capacity and longer engagements available."
+  best_for: "Ongoing hands-on development, architecture, live pairing, technical leadership, and work alongside your team; on-site work by arrangement."
   fixed_price: false

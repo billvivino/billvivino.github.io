@@ -10,6 +10,9 @@ paypal:
   hourly_consulting_url: "https://www.paypal.com/ncp/payment/EZAJKLB3668QE"
   hourly_consulting_rate: 175
   working_prototype_url: "https://www.paypal.com/ncp/payment/CW2NN55MHYG2S"
+  weekly_implementation_url: "https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-9TS17093PN744784SNLWNWYA"
+  fixed_price_build_url: "https://www.paypal.com/ncp/payment/U836VHHVLPT4W"
+  one_on_one_engineering_url: "https://www.paypal.com/ncp/payment/CKX7YLYERBF54"
 markdown: kramdown
 highlighter: rouge
 permalink: /posts/:title:output_ext
