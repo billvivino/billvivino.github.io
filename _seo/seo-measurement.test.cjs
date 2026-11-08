@@ -12,6 +12,9 @@ const contactSource = fs.readFileSync(path.join(root, "contact.html"), "utf8");
 const contactMatch = contactSource.match(/<script>([\s\S]*?)<\/script>/);
 assert.ok(contactMatch, "contact page should contain its validation script");
 const contactScript = contactMatch[1];
+const optionalProfileIds = [
+  "website", "linkedin", "facebook", "instagram", "x-profile", "github", "portfolio", "other-profiles",
+];
 
 function field(value) {
   return {
@@ -33,17 +36,19 @@ function page(options = {}) {
   ["name", "email", "phone", "projectStage", "type", "timeline", "message", "ts"].forEach(function (id) {
     fields[id] = field("private-" + id);
   });
+  fields.pricingModel = field("");
+  optionalProfileIds.forEach(function (id) { fields[id] = field(""); });
   fields.message.value = "Our team needs a system that links inventory scheduling customer updates and project reporting across several existing applications with reliable permissions and approvals.";
-  fields.budget = field("Prototype retainer - $5k-$10k");
+  fields.budget = field("Working Prototype — 4–6 weeks");
   fields.budget.options = [
     { value: "", dataset: {} },
     {
-      value: "Prototype retainer - $5k-$10k",
-      dataset: { tier: "prototype", description: "Prototype planning range" },
+      value: "Working Prototype — 4–6 weeks",
+      dataset: { tier: "prototype", description: "A fixed-price working prototype in 4–6 weeks from the agreed kickoff." },
     },
   ];
   fields.budget.selectedIndex = 1;
-  fields["budget-help"] = { textContent: "Choose the closest planning range." };
+  fields["budget-help"] = { textContent: "Choose the closest offer or project budget." };
   fields.engagementSource = field("");
   fields.engagementSource.name = "engagement_source";
   fields.engagementSource.type = "hidden";
@@ -339,19 +344,28 @@ test("valid contact submission preserves native delivery and keeps private field
   const current = page({ url: paid + "&budget=prototype&engagement=fixed-price-retainer" });
   current.loadForm();
   current.advance(21000);
-  assert.equal(current.fields.budget.value, "Prototype retainer - $5k-$10k");
+  assert.equal(current.fields.budget.value, "Working Prototype — 4–6 weeks");
   assert.equal(current.fields.engagementSource.value, "fixed-price-retainer");
+  assert.equal(current.fields.pricingModel.value, "fixed-price");
+  optionalProfileIds.forEach(function (id) {
+    current.fields[id].value = id === "website" ? "https://private-website.example/portfolio" : "@private-" + id;
+  });
   assert.equal(current.submit().prevented, false);
   assert.equal(current.form.children.find(function (item) { return item.name === "inquiry_reference"; }).value, "opaque-reference");
   assert.equal(current.form.children.find(function (item) { return item.name === "bvt_last_source"; }).value, "chatgpt");
   assert.equal(current.events("general_project_inquiry_submit_attempt").length, 1);
-  const payload = JSON.stringify(current.window.dataLayer);
+  const payload = JSON.stringify(current.window.dataLayer) + Array.from(current.memory.values()).join("");
+  optionalProfileIds.forEach(function (id) {
+    assert.ok(!payload.includes(current.fields[id].value), id + " must stay out of analytics and attribution storage");
+  });
   ["private-", "opaque-reference", "Our team needs", "project_stage", "budget_range", "engagement_source", "fixed-price-retainer"].forEach(function (secret) {
     assert.ok(!payload.includes(secret));
   });
   assert.equal(current.events("general_project_inquiry_submit").length, 0);
   assert.equal(current.events("generate_lead").length, 0);
-  current.submit();
+  optionalProfileIds.forEach(function (id) { current.fields[id].value = ""; });
+  current.fields.pricingModel.value = "";
+  assert.equal(current.submit().prevented, false, "blank optional profiles and pricing must not block submission");
   assert.equal(current.form.children.filter(function (item) { return item.name === "inquiry_reference"; }).length, 1);
 });
 
@@ -378,6 +392,10 @@ test("a concise qualified inquiry passes the displayed minimum while missing bud
   current.fields.message.value = "We need our CRM and billing system integrated. Budget $10k. Target next month.";
   assert.equal(current.fields.message.value.length, 78);
   assert.equal(current.submit().prevented, false);
+  const stage = current.fields.projectStage.value;
+  current.fields.projectStage.value = "";
+  assert.equal(current.submit().prevented, true);
+  current.fields.projectStage.value = stage;
   current.fields.budget.value = "";
   assert.equal(current.submit().prevented, true);
   current.fields.budget.value = "Consulting review or implementation";
@@ -387,18 +405,20 @@ test("a concise qualified inquiry passes the displayed minimum while missing bud
   assert.equal(current.submit().prevented, true);
 });
 
-test("flexible pricing keeps both models neutral and preserves business and budget qualification", function () {
+test("pricing preference stays optional while business, budget, and stage qualification remain", function () {
   const preference = contactSource.match(/<select\b[^>]*id="pricingModel"[^>]*>([\s\S]*?)<\/select>/);
   assert.ok(preference, "contact page should offer a pricing preference");
   assert.ok(!/\brequired\b/.test(preference[0]), "pricing preference must remain optional");
-  assert.match(preference[1], /<option value="" selected>Open to either/);
-  assert.match(preference[1], /<option value="hourly">Hourly<\/option>/);
-  assert.match(preference[1], /<option value="fixed-price">Fixed price<\/option>/);
-  assert.match(contactSource, /Hourly and fixed-price engagements are both available/);
+  assert.match(preference[1], /<option\b[^>]*value=""[^>]*\bselected\b[^>]*>/);
+  assert.equal((preference[1].match(/\bselected\b/g) || []).length, 1, "only the uncommitted option should be selected");
+  ["weekly", "fixed-price", "hourly"].forEach(function (model) {
+    assert.ok(preference[1].includes('value="' + model + '"'), model + " should remain available");
+  });
   assert.match(contactSource, /Paid Business Project Inquiries/);
-  assert.match(contactSource, /businesses with a real project and a\s+budget/);
-  assert.match(contactSource, /The Working Prototype is a fixed\s+\$10,000; other work can be hourly or fixed price/);
   assert.match(contactSource, /<select\b[^>]*id="budget"[^>]*\brequired\b/);
   assert.match(contactSource, /<select\b[^>]*id="projectStage"[^>]*\brequired\b/);
-  assert.match(contactSource, /action="https:\/\/formspree\.io\/f\/mqapjzyq"/);
+  const form = contactSource.match(/<form\b[^>]*id="contactForm"[^>]*>/);
+  assert.ok(form, "contact form should be present");
+  assert.match(form[0], /action="https:\/\/formspree\.io\/f\/mqapjzyq"/);
+  assert.match(form[0], /method="POST"/);
 });

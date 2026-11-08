@@ -2,7 +2,7 @@
 layout: default
 title: "Discuss Your Software or AI Project — Bill Vivino"
 description: "Discuss software or AI work for your business. Choose a fixed-price build or a reserved engineering engagement, with scope and budget agreed before work begins."
-last_modified_at: 2026-11-07
+last_modified_at: 2026-11-08
 ---
 
 <section class="container py-5" style="max-width: 760px">
@@ -72,6 +72,77 @@ last_modified_at: 2026-11-07
         placeholder="(973) 555-1234"
       />
     </div>
+
+    <div class="mb-3">
+      <label for="website" class="form-label">Personal or Business Website (optional)</label>
+      <input
+        type="text"
+        inputmode="url"
+        autocomplete="url"
+        autocapitalize="none"
+        spellcheck="false"
+        class="form-control"
+        id="website"
+        name="website"
+        placeholder="example.com"
+      />
+    </div>
+
+    <details class="mb-4 rounded border p-3">
+      <summary class="fw-semibold">Add Social Profiles (optional)</summary>
+      <p id="social-profiles-help" class="form-text mt-2 mb-3">
+        Share links or handles that help us learn about you or your project. Leave any blank.
+      </p>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label for="linkedin" class="form-label">LinkedIn</label>
+          <input type="text" inputmode="url" autocapitalize="none" spellcheck="false"
+            class="form-control" id="linkedin" name="linkedin"
+            aria-describedby="social-profiles-help" placeholder="linkedin.com/in/your-name" />
+        </div>
+        <div class="col-md-6">
+          <label for="facebook" class="form-label">Facebook</label>
+          <input type="text" inputmode="url" autocapitalize="none" spellcheck="false"
+            class="form-control" id="facebook" name="facebook"
+            aria-describedby="social-profiles-help" placeholder="facebook.com/your-profile" />
+        </div>
+        <div class="col-md-6">
+          <label for="instagram" class="form-label">Instagram</label>
+          <input type="text" inputmode="url" autocapitalize="none" spellcheck="false"
+            class="form-control" id="instagram" name="instagram"
+            aria-describedby="social-profiles-help" placeholder="@yourhandle" />
+        </div>
+        <div class="col-md-6">
+          <label for="x-profile" class="form-label">X / Twitter</label>
+          <input type="text" inputmode="url" autocapitalize="none" spellcheck="false"
+            class="form-control" id="x-profile" name="x_profile"
+            aria-describedby="social-profiles-help" placeholder="@yourhandle" />
+        </div>
+        <div class="col-md-6">
+          <label for="github" class="form-label">GitHub</label>
+          <input type="text" inputmode="url" autocapitalize="none" spellcheck="false"
+            class="form-control" id="github" name="github"
+            aria-describedby="social-profiles-help" placeholder="github.com/your-username" />
+        </div>
+        <div class="col-md-6">
+          <label for="portfolio" class="form-label">Portfolio / Professional Profile</label>
+          <input type="text" inputmode="url" autocapitalize="none" spellcheck="false"
+            class="form-control" id="portfolio" name="portfolio"
+            aria-describedby="social-profiles-help" placeholder="Behance, Dribbble, GitLab, Upwork, or another portfolio link" />
+        </div>
+        <div class="col-12">
+          <label for="other-profiles" class="form-label">Other Profiles</label>
+          <textarea class="form-control" id="other-profiles" name="other_profiles"
+            rows="2" aria-describedby="social-profiles-help other-profiles-help"
+            placeholder="Include the platform and link or handle, one per line."
+            autocapitalize="none" spellcheck="false"></textarea>
+          <p id="other-profiles-help" class="form-text mb-0">
+            Examples: YouTube, TikTok, Threads, Bluesky, Mastodon, Pinterest, Reddit,
+            Discord, Telegram, or WhatsApp.
+          </p>
+        </div>
+      </div>
+    </details>
 
     <div class="mb-3">
       <label for="type" class="form-label">Project Type</label>
